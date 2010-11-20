@@ -24,10 +24,9 @@ Generally for testing in Eclipse, you'll want to install Tomcat as Server availa
 
 Install PostgreSQL 9 per its usual mechanisms.  It's just a convention, but we use the DB user 'esignforms' for our admin account, and each 'deployment' (a customer system that has its own webapp and database on the server) uses a 5 character unique name that is used as that application's DB user.  The name is also the base name in the deployment folder for its database tables, log files, etc.
 
-Install cygwin if using Windows so can use Linux-like scripts.  Install the 'bin' scripts in the cywgin/Linux-user account.  For Windows, you'll need the .cygwin variants.  All cygwin files typically need to a 'dos2unix *' done on them so they'll run correctly.
+Install cygwin if using Windows so can use Linux-like scripts.  Install the 'bin' scripts in the cywgin/Linux-user account.  For Windows, you'll need the .cygwin variants.  All cygwin files typically need to a {{{dos2unix *}}} done on them so they'll run correctly.
 
-Create the deployment folder in the home directory (/home/esignforms/deployments) or C:\deployments.  Put the 'templates' folder
-in there that defines the structure used for each deployment.
+Create the deployment folder in the home directory (/home/esignforms/deployments) or C:\deployments.  Put the 'templates' folder in there that defines the structure used for each deployment.
 
 Update the ~/profile to point to the locations where all your stuff is.
 
