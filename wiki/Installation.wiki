@@ -67,7 +67,7 @@ createInitialProperties - Updated deployment with global properties id: 55136364
 Added template library: ESF/Library/Template
 
 Enter setup command (initdb,addsuperuser,setpassword,quit) [quit] : addsuperuser
-Enter super user's email address [support@yozons.com] : youremailhere@host.com
+Enter super user's email address [our default email] : youremailhere@host.com
 Enter super user's first/personal name [Yozons] : YourFirstName
 Enter super user's last/family name [Support] : YourLastName
 Initial super user password: Test                    (again, we just use 'Test' for our login password on developer test systems)
