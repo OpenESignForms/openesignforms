@@ -1,0 +1,82 @@
+#summary Basic installation instructions for developers.
+#labels Featured,Phase-Deploy
+
+= Introduction =
+
+These instructions are pretty high level right now, so we'll want to nail it down to a more easily repeatable set of instructions, but we had to start somewhere! 
+
+
+= Details =
+
+==Building Open eSignForms Using Eclipse==
+
+Create the Vaadin Eclipse project and download the code from CVS.
+
+You will need to compile the Vaadin widgets before testing.
+
+Note that we compile using Java 6.  Install Java in its normal location.  You will also need to install
+the JCE policy files for high encryption in Java's jre/lib/security folder so the BouncyCastle JCE provider
+can use higher grade encryption.
+
+Eclipse should automatically compile all of the regular code into the 'WebContent/WEB-INF/classes' folder.
+
+Generally for testing in Eclipse, you'll want to install Tomcat as Server available to Eclipse.
+
+==Database using PostgreSQL==
+
+Install PostgreSQL 9 per its usual mechanisms.  It's just a convention, but we use the DB user 'esignforms' for our admin account, and each 'deployment' (a customer system that has its own webapp and database on the server) uses a 5 character unique name that is used as that application's DB user.  The name is also the base name in the deployment folder for its database tables, log files, etc.
+
+Install cygwin if using Windows so can use Linux-like scripts.  Install the 'bin' scripts in the cywgin/Linux-user account.  For Windows, you'll need the .cygwin variants.  All cygwin files typically need to a 'dos2unix *' done on them so they'll run correctly.
+
+Create the deployment folder in the home directory (/home/esignforms/deployments) or C:\deployments.  Put the 'templates' folder
+in there that defines the structure used for each deployment.
+
+Update the ~/profile to point to the locations where all your stuff is.
+
+==Create the database==
+
+Install of the SQL code from 'database/postgresql/ddl' into the 'ddl' folder in your home folder.  We use the 5 letter deployment id for creating the database for a given webapp.
+{{{
+If you have a previous install and need to wipe it out first, use:
+  ./drop_db
+
+To create a DB, use:
+  ./create_db
+  Please enter the LOWERCASE name for the OpenESF database and user: test          (for testing, we just use 'test' for our deployid and DB user)
+  Please enter the password to use for the OpenESF esfapp user test: test          (for testing, we just use the password 'test')
+  Type 'y' to create the database.
+  Type 'y' to create the tables.
+  
+  ./rundbsetup
+  or
+  In Eclipse, create a Java Application (debug configuration) for 'DbSetup' like below and then run it:
+    Program to run: com.esignforms.open.db.tools.DbSetup
+    Arguments: -Xmx512m -Desf.deploybase=C:\deployments
+    
+    When you run it you'll see something like:
+Enter setup command (initdb,addsuperuser,setpassword,quit) [quit] : initdb
+insertDeployment - Created deployment with id: cf431b3d-32d6-4007-bb55-f5a613c3dd90
+Enter boot password 1: test1
+Enter boot password 2: test2
+insertBootKey - Added new boot key
+Added super group: ESF/Group/Deployment/SuperAdmin
+Added system admin group: System/Administrator
+Added All Users pseudo-group: ESF/Group/AllUsers
+Added External Users pseudo-group: ESF/Group/ExternalUsers
+createInitialProperties - Updated deployment with global properties id: 55136364-78c9-4101-8dc4-15af717165d8; deployment properties id: d746d7bd-cadc-4488-8cde-7ffdfa34d720
+Added template library: ESF/Library/Template
+
+Enter setup command (initdb,addsuperuser,setpassword,quit) [quit] : addsuperuser
+Enter super user's email address [support@yozons.com] : youremailhere@host.com
+Enter super user's first/personal name [Yozons] : YourFirstName
+Enter super user's last/family name [Support] : YourLastName
+Initial super user password: Test                    (again, we just use 'Test' for our login password on developer test systems)
+insertSuperUser - Added new super user: youremailhere@host.com
+insertUserIntoSuperGroup - Added new super user: YourFirstName YourLastName <youremailhere@host.com>; to super group: ESF/Group/Deployment/SuperAdmin
+
+Enter setup command (initdb,addsuperuser,setpassword,quit) [quit] : quit
+}}}
+
+==Running the Application Eclipse==
+
+In Eclipse, do Run->Debug As->Debug On Server  (assuming you have Tomcat configure as a Server)
