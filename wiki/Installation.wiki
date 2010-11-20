@@ -14,9 +14,7 @@ Create the Vaadin Eclipse project and download the code from CVS.
 
 You will need to compile the Vaadin widgets before testing.
 
-Note that we compile using Java 6.  Install Java in its normal location.  You will also need to install
-the JCE policy files for high encryption in Java's jre/lib/security folder so the BouncyCastle JCE provider
-can use higher grade encryption.
+Note that we compile using Java 6.  Install Java in its normal location.  You will also need to install the JCE policy files for high encryption in Java's jre/lib/security folder so the BouncyCastle JCE provider can use higher grade encryption.
 
 Eclipse should automatically compile all of the regular code into the 'WebContent/WEB-INF/classes' folder.
 
