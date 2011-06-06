@@ -1,0 +1,25 @@
+#summary Reminder tips for adding a new field type
+
+= Introduction =
+
+If the new data type is stored specially in a Record, your data type needs to extend com.esignforms.open.data.EsfValue.  Then you will likely have to update com.esignforms.open.data.Record to get/set this data type as it is mapped to/from XML.
+
+However, many field types just use an existing data type, such as EsfString as the underlying storage type.
+
+
+= Details =
+
+Modify the following:
+  * com.esignforms.open.prog.FieldTemplate - Update to include the new data type and related code. Note that there are two 'isTypeXXXX' methods, one static for callers who are checking the type based on the string type, and a method that essentially calls the static version. Also, be sure to add your new type to the SELECT_LIST_OF_ALL_TYPES array as that is used by the field editor's drop down.
+
+  * com.esignforms.open.vaadin.message.properties - Add the new field type to the PrettyCode.fieldTemplate.type.XXXX to give the name as it appears in the application to users who are configuring a field.
+
+  * com.esignforms.open.vaadin.config.PrettyCode - Add an appropriate entry in method fieldTemplateType(String typeCode) to return the property defined above. 
+
+  * com.esignforms.open.runtime.TransactionDocument - In Manager.createNew(), do anything special needed to initialize all fields in a newly created transaction.
+
+  * com.esignforms.open.jsp.libdocsgen.DocumentPageBean - Add code to load your field type in loadFieldsPartyCanEdit() and validatePartyInput().
+
+  * com.esignforms.open.vaadin.config.libraryProgramming.field.LibFieldForm - Visit setupFieldsByType(String type) to deal with any special setup needed for configuring fields of your type. In general, this page handles resetting Vaadin field validators, making certain fields visible/hidden, for common field specifications.
+
+  * com.esignforms.open.vaadin.config.libraryProgramming.field.TypeSubForm - Visit setItemDataSource(Item newDataSource) and the constructor's DefaultFieldFactory.createField() method where config elements are specialized for individual types.
