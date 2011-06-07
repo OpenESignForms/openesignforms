@@ -27,9 +27,10 @@ xorg-x11-fonts-truetype)
 
 In our various installs, we also did yum installs of:
   * libX11-devel
-  * openssl-devel
+  * openssl-devel (may only be needed if you use it to retrieve SSL-protected pages)
   * giflib
   * libpng
   * libjpeg
+  * a2ps (pretty sure not needed)
 
 Often these did not resolve issues, but unsure if they are helpful or not.
