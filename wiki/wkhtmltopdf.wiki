@@ -1,0 +1,35 @@
+#summary Configuring wkhtmltopdf on Linux
+#labels Phase-Deploy
+
+= Introduction =
+
+These are just some quick notes on setting up *wkhtmltopdf* on our CentOS Linux servers. As we gain expertise, I'm sure we'll iron out the details a bit better.
+
+
+= Details =
+
+  * Download wkhtmltopdf-0.10.0_rc2-static-i386.tar.bz2 from [http://code.google.com/p/wkhtmltopdf/ wkhtmltopdf on Google Code].
+
+  * Unzip using bunzip2
+
+  * Install dependencies via yum:
+    yum install libXrender libXext '*fonts*'
+    
+    (In particular you want urw-fonts, but you probably want others too, like
+xorg-x11-fonts-truetype)
+
+  * For our HTML, we typically use options:
+    wkhtmltopdf.i386 --page-size Letter --print-media-type --image-quality 100
+
+  * For the 32-bit static builds, assuming you are on 64-bit Linux, you'll want to make sure you have these components with .386 architecture. If you have the 64-bit versions, you can use 'yum whatprovides fontconfig' to discover the component details for the 32-bit version (in this case, fontconfig-2.4.1-7.el5.i385)
+
+= Questionable =
+
+In our various installs, we also did yum installs of:
+  * libX11-devel
+  * openssl-devel
+  * giflib
+  * libpng
+  * libjpeg
+
+Often these did not resolve issues, but unsure if they are helpful or not.
