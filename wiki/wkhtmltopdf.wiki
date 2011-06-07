@@ -14,6 +14,7 @@ These are just some quick notes on setting up *wkhtmltopdf* on our CentOS Linux 
 
   * Install dependencies via yum:
     yum install libXrender libXext '*fonts*'
+    yum remove tetex-fonts      (not needed and generates daily cron errors)
     
     (In particular you want urw-fonts, but you probably want others too, like xorg-x11-fonts-truetype)
 
