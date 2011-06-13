@@ -1,9 +1,11 @@
 #summary Basic installation instructions for developers.
-#labels Featured,Phase-Deploy
+#labels Featured,Phase-Implementation
 
 = Introduction =
 
 These instructions are pretty high level right now, so we'll want to nail it down to a more easily repeatable set of instructions, but we had to start somewhere! 
+
+You may want to start at the bottom with *Basic Windows Setup* if your computer is completely clean and you tend to work in an environment like we do, in which the server is reached using SCP/SSH.
 
 
 = Details =
@@ -77,3 +79,17 @@ Enter setup command (initdb,addsuperuser,setpassword,quit) [quit] : quit
 ==Running the Application Eclipse==
 
 In Eclipse, do Run->Debug As->Debug On Server  (assuming you have Tomcat configure as a Server)
+
+=Windows Basic Setup=
+
+We mostly use Windows 7, but we have a few XP and Vista folks, too.
+
+==Java 6==
+
+We start by installing the latest version of Java 6 SE available. It appears that these days you just need the JRE.
+
+Because of the sophisticated encryption we use, you'll need the high encryption JCE policy files installed in your jre/lib/security folder. Note that encryption entails issues with the U.S. government's misguided and impractical export rules.
+
+==Browsers==
+
+You can test as you see fit, but we're basically running the latest releases of Firefox, IE, Chrome, Safari and Opera. Earlier versions likely work, but with a Web 2.0 interface, a modern browser is best and fastest.
