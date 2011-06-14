@@ -51,8 +51,6 @@ You will need to compile the Vaadin widgets before testing.
 
 Eclipse should automatically compile all of the regular code into the 'WebContent/WEB-INF/classes' folder.
 
-Generally for testing in Eclipse, click Debug As->Debug On Server->Apache->Tomcat v7.0 Server. The first time you just need to point it to where you installed Tomcat above.
-
 ==Database using PostgreSQL==
 
 Install PostgreSQL 9 per its usual mechanisms. The version tested here was 9.0.4.
@@ -111,9 +109,7 @@ Enter setup command (initdb,addsuperuser,setpassword,quit) [quit] : quit
 
 ==Running the Application Eclipse==
 
-In Eclipse, do Run->Debug As->Debug On Server  (assuming you have Tomcat configure as a Server)
-
-
+Generally for testing in Eclipse, click Debug As->Debug On Server->Apache->Tomcat v7.0 Server. The first time you just need to point it to where you installed Tomcat above.
 
 ==Other tools==
 
