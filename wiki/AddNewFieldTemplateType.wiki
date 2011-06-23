@@ -23,3 +23,5 @@ Modify the following:
   * com.esignforms.open.vaadin.config.libraryProgramming.field.LibFieldForm - Visit setupFieldsByType(String type) to deal with any special setup needed for configuring fields of your type. In general, this page handles resetting Vaadin field validators, making certain fields visible/hidden, for common field specifications.
 
   * com.esignforms.open.vaadin.config.libraryProgramming.field.TypeSubForm - Visit setItemDataSource(Item newDataSource) and the constructor's DefaultFieldFactory.createField() method where config elements are specialized for individual types.
+
+  * om.esignforms.open.jsp.libdocsgen.taglib.FieldLabel (and Field) - For displaying your new field type in a form (input and display modes).
