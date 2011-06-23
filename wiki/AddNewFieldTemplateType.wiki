@@ -24,4 +24,4 @@ Modify the following:
 
   * com.esignforms.open.vaadin.config.libraryProgramming.field.TypeSubForm - Visit setItemDataSource(Item newDataSource) and the constructor's DefaultFieldFactory.createField() method where config elements are specialized for individual types.
 
-  * om.esignforms.open.jsp.libdocsgen.taglib.FieldLabel (and Field) - For displaying your new field type in a form (input and display modes).
+  * com.esignforms.open.jsp.libdocsgen.taglib.FieldLabel (and Field) - For displaying your new field type in a form (input and display modes).
