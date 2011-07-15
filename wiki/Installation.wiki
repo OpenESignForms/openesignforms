@@ -33,6 +33,8 @@ Install the latest version of [http://www.eclipse.org] Eclipse IDE for Java EE] 
 
 Install the [http://vaadin.com/eclipse Vaadin Eclipse Plugin] as instructed on their site.
 
+We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Servers.  Double-click your server (named Tomcat v6.0 Server at localhost or whatever version you are using) so you display the Overiew and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin for us) click the Edit button to uncheck the 'Auto reloading enabled'. 
+
 ==Building Open eSignForms Using Eclipse==
 
 Create the Vaadin Eclipse project by downloading the code from CVS, project open-eSignFormsVaadin.
