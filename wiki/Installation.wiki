@@ -25,7 +25,7 @@ Of course, those on Linux/Unix don't need to worry about this.
 
 ==Apache Tomcat==
 
-For testing, we generally run Tomcat from Eclipse, so it's best to download and install Tomcat next. If you plan on running Tomcat as a Windows service, there's a special installer for it. But we just download the ZIP file and really only run it via Eclipse, extracting to C:\Program Files. The version tested here was 7.0.14.
+For testing, we generally run Tomcat from Eclipse, so it's best to download and install Tomcat next. If you plan on running Tomcat as a Windows service, there's a special installer for it. But we just download the ZIP file and really only run it via Eclipse, extracting to C:\Program Files. The version tested here was 7.0.19. (There is a bug in Tomcat prior to this release that caused errors in the import of esf.js file because of the new javascript mime type standard that changed from text/javascript to application/javascript.)
 
 ==Eclipse==
 
@@ -102,10 +102,18 @@ To create a DB, use:
     Main class: com.esignforms.open.db.tools.DbSetup
     Program Arguments: /open-eSignFormsVaadin
     VM Arguments: -Xmx512m -Desf.deploybase=C:\deployments
+    Working directory: C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp2\wtpwebapps\open-eSignFormsVaadin\
+
+    (Obviously, you'll need to tweak any of the specific locations/names to match your environment.)
     
-    When you run it you'll see something like:
-Enter setup command (initdb,addsuperuser,setpassword,quit) [quit] : initdb
-insertDeployment - Created deployment with id: cf431b3d-32d6-4007-bb55-f5a613c3dd90
+    When you run DbSetup you'll see something like:
+
+Copyright (c) 2009-2011 Yozons, Inc.
+DbSetup - Sets up the database for Open eSignForms v1.6.3
+
+Enter setup command (initdb,addsuperuser,initsetup,setpassword,quit,convert1.5) [quit] : initdb
+2011-07-22 00:31:49.353 UTC-PublicKeyGenerator provider = BC version 1.46; keysize: 4096
+insertDeployment - Created deployment with id: b96513a5-9618-40ab-a1cd-79abf611ea32
 Enter boot password 1: test1
 Enter boot password 2: test2
 insertBootKey - Added new boot key
@@ -113,18 +121,77 @@ Added super group: ESF/Group/Deployment/SuperAdmin
 Added system admin group: System/Administrator
 Added All Users pseudo-group: ESF/Group/AllUsers
 Added External Users pseudo-group: ESF/Group/ExternalUsers
-createInitialProperties - Updated deployment with global properties id: 55136364-78c9-4101-8dc4-15af717165d8; deployment properties id: d746d7bd-cadc-4488-8cde-7ffdfa34d720
+createInitialProperties - Updated deployment with global properties id: adeb5303-bdbe-4d46-968e-a8787db45160; deployment properties id: d4acceb5-977c-484a-b801-9666f7e6fd07
 Added template library: ESF/Library/Template
 
-Enter setup command (initdb,addsuperuser,setpassword,quit) [quit] : addsuperuser
-Enter super user's email address [our default email] : youremailhere@host.com
-Enter super user's first/personal name [Yozons] : YourFirstName
-Enter super user's last/family name [Support] : YourLastName
-Initial super user password: Test                    (again, we just use 'Test' for our login password on developer test systems)
-insertSuperUser - Added new super user: youremailhere@host.com
-insertUserIntoSuperGroup - Added new super user: YourFirstName YourLastName <youremailhere@host.com>; to super group: ESF/Group/Deployment/SuperAdmin
+Enter setup command (initdb,addsuperuser,initsetup,setpassword,quit,convert1.5) [quit] : addsuperuser
+Enter super user's email address [support@yozons.com] : super@openesfdemo.com
+Enter super user's first/personal name [Yozons] : Super
+Enter super user's last/family name [Support] : Openesf
+Initial super user password: Test
+insertSuperUser - Added new super user: super@openesfdemo.com
+insertUserIntoSuperGroup - Added new super user: Super Openesf <super@openesfdemo.com>; to super group: ESF/Group/Deployment/SuperAdmin
 
-Enter setup command (initdb,addsuperuser,setpassword,quit) [quit] : quit
+Enter setup command (initdb,addsuperuser,initsetup,setpassword,quit,convert1.5) [quit] : initsetup
+Enter company name: Demo Company
+Enter company street address: 123 Main St.
+Enter company city: Kirkland
+Enter company state: WA
+Enter company zip: 98033
+Enter company default phone number [800.555.1212] : 800-555-4321
+Enter company group EsfName [CompanyRenamePlease] : DemoCo
+Enter company default email address [renameyser@pleaserenamecompany.com] : democo@david.com
+Enter programmer user's email address [open-esign@yozons.com] : myprogrammer@openesfdemo.com
+Created company group: com.esignforms.open.user.Group@a1c6407f
+Created company programming group: com.esignforms.open.user.Group@a1c6407f
+Added company programming group to Library, Package, Transaction Template and Transaction Listing views
+Added company groups to list/view the template library
+Created sample company library: Lib/DemoCo
+Updated deployment properties for 50MB Commercial DBSIZE license
+Created default style and version: ESF_DefaultDocumentStyle
+Set default style in template library: ESF/Library/Template
+Set default style in company library: Lib/DemoCo
+Created standard package document: StandardPackageDisclosures
+Created image: Logo
+Created image: SignHereLeftArrow
+Created image: PackageDocumentCompleted
+Created image: PackageDocumentFixRequested
+Created image: PackageDocumentRejected
+Created image: PackageDocumentToDo
+Created image: PackageDocumentViewOnly
+Created email template and version: SetPassword
+Created email template and version: ForgotPassword
+Created email template and version: PasswordChanged
+Created email template and version: PasswordLockout
+Created email template and version: DefaultPickupNotification
+Created dropdown and version: ESF_BackgroundColor
+Created dropdown and version: ESF_BorderTypes
+Created dropdown and version: ESF_Font
+Created dropdown and version: ESF_FontColor
+Created dropdown and version: ESF_FontSize
+Created dropdown and version: ESF_FontStyle
+Created dropdown and version: ESF_TextAlign
+Created dropdown and version: ESF_Locale
+Created dropdown and version: ESF_TimeZone
+Created dropdown and version: ESF_USA_PostalStatePossession
+Created dropdown and version: ESF_USA_PostalStates
+Created dropdown and version: ESF_PartyRenotifyTimes
+Created dropdown and version: ESF_TimeIntervalUnits
+Created drop and version: ESF_DateFormat
+Created dropdown and version: ESF_TimeFormat
+Created drop and version: ESF_DecimalFormat
+Created drop and version: ESF_IntegerFormat
+Created drop and version: ESF_MoneyFormat
+Created propertyset and version: ESF
+Created propertyset and version: MyCompany
+Created propertyset and version: MyCompany
+Added template package and version: ESF/Package/Template
+Added template package and version: Package/Template
+Added ESF template transaction template: ESF/TransactionTemplate/Template
+Added company template transaction template: TransactionTemplate/Template
+Created programming user: Open eSignForms Programming <myprogrammer@openesfdemo.com>
+
+Enter setup command (initdb,addsuperuser,initsetup,setpassword,quit,convert1.5) [quit] : quit
 }}}
 
 ==Running the Application Eclipse==
