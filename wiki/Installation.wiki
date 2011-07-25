@@ -118,9 +118,9 @@ To create a DB, use:
     When you run DbSetup you'll see something like:
 
 Copyright (c) 2009-2011 Yozons, Inc.
-DbSetup - Sets up the database for Open eSignForms v1.6.3
+DbSetup - Sets up the database for Open eSignForms v1.7.0
 
-Enter setup command (initdb,addsuperuser,initsetup,setpassword,quit,convert1.5) [quit] : initdb
+Enter setup command (initdb,addsuperuser,initsetup,setpassword,quit) [quit] : initdb
 2011-07-22 00:31:49.353 UTC-PublicKeyGenerator provider = BC version 1.46; keysize: 4096
 insertDeployment - Created deployment with id: b96513a5-9618-40ab-a1cd-79abf611ea32
 Enter boot password 1: test1
@@ -142,6 +142,7 @@ insertSuperUser - Added new super user: super@openesfdemo.com
 insertUserIntoSuperGroup - Added new super user: Super Openesf <super@openesfdemo.com>; to super group: ESF/Group/Deployment/SuperAdmin
 
 Enter setup command (initdb,addsuperuser,initsetup,setpassword,quit,convert1.5) [quit] : initsetup
+Enter Commercial DB license size in MB (enter 0 for AGPL deployment) [0] :
 Enter company name: Demo Company
 Enter company street address: 123 Main St.
 Enter company city: Kirkland
@@ -156,7 +157,6 @@ Created company programming group: com.esignforms.open.user.Group@a1c6407f
 Added company programming group to Library, Package, Transaction Template and Transaction Listing views
 Added company groups to list/view the template library
 Created sample company library: Lib/DemoCo
-Updated deployment properties for 50MB Commercial DBSIZE license
 Created default style and version: ESF_DefaultDocumentStyle
 Set default style in template library: ESF/Library/Template
 Set default style in company library: Lib/DemoCo
