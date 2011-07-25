@@ -25,7 +25,7 @@ Of course, those on Linux/Unix don't need to worry about this.
 
 ==Apache Tomcat==
 
-For testing, we generally run Tomcat from Eclipse, so it's best to download and install Tomcat next. If you plan on running Tomcat as a Windows service, there's a special installer for it. But we just download the ZIP file and really only run it via Eclipse, extracting to C:\Program Files. The version tested here was 7.0.19. (There is a bug in Tomcat prior to this release that caused errors in the import of esf.js file because of the new javascript mime type standard that changed from text/javascript to application/javascript.)
+For testing, we generally run Tomcat from Eclipse, so it's best to download and install Tomcat next. If you plan on running Tomcat as a Windows service, there's a special installer for it. But we just download the ZIP file and really only run it via Eclipse, extracting to C:\. The version tested here was 7.0.19. (There is a bug in Tomcat prior to this release that caused errors in the import of esf.js file because of the new javascript mime type standard that changed from text/javascript to application/javascript.)
 
 ==Eclipse==
 
@@ -33,7 +33,16 @@ Install the latest version of [http://www.eclipse.org] Eclipse IDE for Java EE] 
 
 Install the [http://vaadin.com/eclipse Vaadin Eclipse Plugin] as instructed on their site.
 
-We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Servers.  Double-click your server (named Tomcat v6.0 Server at localhost or whatever version you are using) so you display the Overiew and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin for us) click the Edit button to uncheck the 'Auto reloading enabled'. 
+We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Servers.  Double-click your server (named Tomcat v7.0 Server at localhost or whatever version you are using) so you display the Overiew and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin for us) click the Edit button to uncheck the 'Auto reloading enabled'. 
+
+Using the same Servers configuration, we make the following changes:
+
+Overview->Ports: Change HTTP/1.1 to use port 80 (unless you prefer 8080 for testing, but you'll need to put them in all your testing URLs).
+
+Overview->Timeouts: Change 'Start' to be 600 to give you more time if you plan on debugging code during application initialization and don't want Eclipse to timeout the startup of your webapp.
+
+Overview->Generation Information->Open launch configuration: 
+Add to Arguments tab, VM arguments: -Xmx512m -Desf.deploybase=C:\deployments
 
 ==Building Open eSignForms Using Eclipse==
 
@@ -100,7 +109,7 @@ To create a DB, use:
   In Eclipse, create a Java Application (debug configuration) for 'DbSetup' like below and then run it:
     Project: open-eSignFormsVaadin
     Main class: com.esignforms.open.db.tools.DbSetup
-    Program Arguments: /open-eSignFormsVaadin
+    Program Arguments: open-eSignFormsVaadin
     VM Arguments: -Xmx512m -Desf.deploybase=C:\deployments
     Working directory: C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp2\wtpwebapps\open-eSignFormsVaadin\
 
