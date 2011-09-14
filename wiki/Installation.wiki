@@ -21,6 +21,8 @@ You can test as you see fit, but we're basically running the latest releases of 
 
 We use [http://www.cygwin.com Cygwin on Windows] so we have a Unix/Linux-like environment for our shell scripts. We actually use very few since we only develop on Windows and have never deployed in production on Windows (though it certainly should be doable), but the scripts for DB setup and the like are still driven by shell scripts.  Generally, the standard install works well for our needs. 
 
+We like to modify the shortcut properties Options to increase the command history buffer size from 50 to 500, and include 'QuickEdit mode'. We also modify Layout to use width 220 in both locations and a screen buffer height of 5000 so we can scroll back easily.
+
 Of course, those on Linux/Unix don't need to worry about this.
 
 ==Apache Tomcat==
