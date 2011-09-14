@@ -31,7 +31,7 @@ For testing, we generally run Tomcat from Eclipse, so it's best to download and 
 
 ==Eclipse==
 
-Install the latest version of [http://www.eclipse.org] Eclipse IDE for Java EE] developers.  The version tested here is Helios. We extract all to c:\Program Files.  We set our workspace to c:\project.
+Install the latest version of [http://www.eclipse.org] Eclipse IDE for Java EE] developers.  The version tested here is Indigo. We extract all to c:\Program Files.  We set our workspace to c:\project.
 
 Install the [http://vaadin.com/eclipse Vaadin Eclipse Plugin] as instructed on their site.
 
