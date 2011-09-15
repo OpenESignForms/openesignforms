@@ -207,7 +207,7 @@ Created programming user: Open eSignForms Programming <myprogrammer@openesfdemo.
 Enter setup command (initdb,addsuperuser,initsetup,setpassword,quit,convert1.5) [quit] : quit
 }}}
 
-==Running the Application Eclipse==
+==Running the Application in Eclipse==
 
 Generally for testing in Eclipse, click Debug As->Debug On Server->Apache->Tomcat v7.0 Server. The first time you just need to point it to where you installed Tomcat above.
 
