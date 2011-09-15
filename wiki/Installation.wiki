@@ -23,7 +23,7 @@ We use [http://www.cygwin.com Cygwin on Windows] so we have a Unix/Linux-like en
 
 We generally add 'vim' from the Editors choices if you know how to use 'vi'.
 
-We like to modify the shortcut properties Options to increase the command history buffer size from 50 to 500, and include 'QuickEdit mode'. We also modify Layout to use width 220 in both locations and a screen buffer height of 5000 so we can scroll back easily.
+We like to modify the shortcut properties Options to increase the command history buffer size from 50 to 500, and include 'QuickEdit mode'. We also modify Layout to use width 220 in both locations and a screen buffer height of 5000 so we can scroll back easily. We also set the Font to 8x12.
 
 Of course, those on Linux/Unix don't need to worry about this.
 
