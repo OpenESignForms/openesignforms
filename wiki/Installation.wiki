@@ -35,7 +35,7 @@ Install the latest version of [http://www.eclipse.org] Eclipse IDE for Java EE] 
 
 Install the [http://vaadin.com/eclipse Vaadin Eclipse Plugin] as instructed on their site.
 
-We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Servers.  Double-click your server (named Tomcat v7.0 Server at localhost or whatever version you are using) so you display the Overiew and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin for us) click the Edit button to uncheck the 'Auto reloading enabled'. 
+We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Server->Servers.  If no servers appear, right-click New->Server; then choose Apache->Tomcat v7.0 Server, click Next and choose the location where you installed Tomcat (i.e. something like C:\apache-tomcat-7.0.21). Double-click your server (named Tomcat v7.0 Server at localhost or whatever version you are using) so you display the Overview and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin for us) click the Edit button to uncheck the 'Auto reloading enabled'. 
 
 Using the same Servers configuration, we make the following changes:
 
@@ -56,9 +56,9 @@ If you have edit/commit permission, you'll need a user account and password with
 
 {{{:extssh:USERNAME@open.esignforms.com:/home/cvs}}}
 
-It seems from a fresh install that you'll want to right click on the open-eSignFormsVaadin project, click on Properties, click on Vaadin, and even though it may show the current Vaadin JAR (6.6.1 at this time), you should do a download and APPLY to get it put into the Eclipse area where the GWT JARs are also stored.
+It seems from a fresh install that you'll want to right click on the open-eSignFormsVaadin project, click on Properties, click on Vaadin, and even though it may show the current Vaadin JAR (6.6.6 at this time), you should do a download and APPLY to get it put into the Eclipse area where the GWT JARs are also stored.
 
-(If you plan to do any VaadinCKEditor project work, not necessary for Open eSignForms itself, you'll need to install a subversion plugin -- we use Subversive SVN Team Provider from the Helios installation location and we selected the SVN Kit 1.3.5. That project is hosted on Google Code.)
+(If you plan to do any VaadinCKEditor project work, not necessary for Open eSignForms itself, you'll need to install a subversion plugin -- we use Subversive SVN Team Provider from the Eclipse installation location and we selected the SVN Kit 1.3.5. This related project is hosted on Google Code.)
 
 You will need to compile the Vaadin widgets before testing.
 
@@ -86,9 +86,9 @@ For Windows, the installer defaults to the user 'postgres' so you can add our DB
 psql -U postgres
 CREATE USER esignforms WITH PASSWORD 'esignforms' SUPERUSER;
 
-Install the 'bin' scripts in the cywgin/Linux-user account.  For Windows, you'll need the .cygwin variants.  All cygwin files typically need to a {{{dos2unix *}}} done on them so they'll run correctly. (See below for Cywin details.)
+Install the 'scripts' file in the cywgin/Linux-user account's 'bin' folder.  For Windows, you'll need the .cygwin variants.  All cygwin files typically need to a {{{dos2unix *}}} done on them so they'll run correctly. (See below for Cywin details.)
 
-Create the deployment folder in the home directory (/home/esignforms/deployments) or C:\deployments.  Put the 'templates' folder in there that defines the structure used for each deployment.
+Create the deployment folder in the home directory (/home/esignforms/deployments) or C:\deployments.  Put the 'templates' folder in there that defines the structure used for each deployment. You can delete the CVS subdirectories and DELETEME.txt files.
 
 Update the ~/profile to point to the locations where all your stuff is. The next time you run cygwin, it should have the new good values.
 
@@ -214,3 +214,5 @@ Generally for testing in Eclipse, click Debug As->Debug On Server->Apache->Tomca
 While not needed for this particular effort, we recommend PasswordSafe (sourceforge) or something similar so you can remember one great pass phrase and keep your various other passwords unique, so when your bank or the like is hacked, at least the password is not used in other sites that become vulnerable as a result.
 
 We also like OpenOffice for our office productivity.
+
+For Windows, we use WinSCP and Putty for SSH/SCP access to our Linux servers.
