@@ -11,7 +11,7 @@ These instructions are pretty high level right now, so we'll want to nail it dow
 
 We start by installing the latest version of [http://www.oracle.com/technetwork/java/javase/downloads/ Java 6 SE] available. It appears that these days you just need the JRE. The version tested here was 6.0.26.
 
-Because of the sophisticated encryption we use, you'll need the Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files installed in your jre/lib/security folder. Note that encryption entails issues with the U.S. government's misguided and impractical export rules.
+Because of the sophisticated encryption we use, you'll need the Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files installed in your jre/lib/security folder. Note that encryption entails issues with the U.S. government's misguided and impractical export rules. For Windows, be careful you may have 32-bit and 64-bit JREs installed and you'll want to update both as much depends on which Eclipse uses when it starts Tomcat, of if you run Tomcat directly yourself.
 
 ==Browsers==
 
@@ -21,7 +21,7 @@ You can test as you see fit, but we're basically running the latest releases of 
 
 We use [http://www.cygwin.com Cygwin on Windows] so we have a Unix/Linux-like environment for our shell scripts. We actually use very few since we only develop on Windows and have never deployed in production on Windows (though it certainly should be doable), but the scripts for DB setup and the like are still driven by shell scripts.  Generally, the standard install works well for our needs. 
 
-We generally add 'vim' from the Editors choices if you know how to use 'vi'.
+We generally add 'vim' from the Editors choices if you know how to use 'vi'. We often add links, too, if you ever need a command line web browser for simple testing needs.
 
 We like to modify the shortcut properties Options to increase the command history buffer size from 50 to 500, and include 'QuickEdit mode'. We also modify Layout to use width 220 in both locations and a screen buffer height of 5000 so we can scroll back easily. We also set the Font to 8x12.
 
@@ -37,7 +37,7 @@ Install the latest version of [http://www.eclipse.org] Eclipse IDE for Java EE] 
 
 Install the [http://vaadin.com/eclipse Vaadin Eclipse Plugin] as instructed on their site.
 
-We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Server->Servers.  If no servers appear, right-click New->Server; then choose Apache->Tomcat v7.0 Server, click Next and choose the location where you installed Tomcat (i.e. something like C:\apache-tomcat-7.0.21). Double-click your server (named Tomcat v7.0 Server at localhost or whatever version you are using) so you display the Overview and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin for us) click the Edit button to uncheck the 'Auto reloading enabled'. 
+We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Server->Servers.  If no servers appear, right-click New->Server; then choose Apache->Tomcat v7.0 Server, click Next and choose the location where you installed Tomcat (i.e. something like C:\apache-tomcat-7.0.21). Double-click your server (named Tomcat v7.0 Server at localhost or whatever version you are using) so you display the Overview and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin for us -- see below for downloading the project code first) click the Edit button to uncheck the 'Auto reloading enabled'. 
 
 Using the same Servers configuration, we make the following changes:
 
@@ -88,11 +88,11 @@ For Windows, the installer defaults to the user 'postgres' so you can add our DB
 psql -U postgres
 CREATE USER esignforms WITH PASSWORD 'esignforms' SUPERUSER;
 
-Install the 'scripts' file in the cywgin/Linux-user account's 'bin' folder.  For Windows, you'll need the .cygwin variants.  All cygwin files typically need to a {{{dos2unix *}}} done on them so they'll run correctly. (See below for Cywin details.)  Note that script files bashrc and profile should be in the home directory, not 'bin'. You can then update .bash_profile to include ". ~/profile" and .bashrc to include ". ~/bashrc".
+Install the 'scripts' file in the cywgin/Linux-user account's 'bin' folder.  For Windows, you'll need the .cygwin variants (we delete the file without the extension and then rename the .cygwin variants by removing that extension).  All cygwin files typically need to a {{{dos2unix *}}} done on them so they'll run correctly. (See below for Cywin details.)  Note that script files {{{bashrc}}} and {{{profile}}} should be in the home directory, not 'bin'. You can then update {{{.bash_profile}}} to include {{{. ~/profile}}} and {{{.bashrc}}} to include {{{. ~/bashrc}}}.
 
-Create the deployment folder in the home directory (/home/esignforms/deployments) or C:\deployments.  Put the 'templates' folder in there that defines the structure used for each deployment. You can delete the CVS subdirectories and DELETEME.txt files.
+Create the deployment folder in the home directory (/home/esignforms/deployments) or C:\deployments.  Put the 'templates' folder in there that defines the structure used for each deployment. You can delete the CVS subdirectories and DELETEME.txt files.  On Windows, you will want to give all users full permissions to the C:\deployments folder when testing. We are not sure the about the exact user permissions needed, but generally you want to access those files from Windows Explorer, your cygwin user, and the PostgreSQL user.
 
-Update the ~/profile to point to the locations where all your stuff is. The next time you run cygwin, it should have the new good values.
+Update the {{{~/profile}}} to point to the locations where all your stuff is. The next time you run cygwin, it should have the new good values. You can test with {{{java -version}}} and {{{psql template1}}} to see that Java and Postgresql are setup for cygwin access.
 
 ==Create the database==
 
