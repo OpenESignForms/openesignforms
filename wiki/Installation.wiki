@@ -70,7 +70,7 @@ Eclipse should automatically compile all of the regular code into the 'WebConten
 
 The standard JAR Open eSignForms is delivered with should include the .class and .java source files that go with it.
 
-There are also several *.properties files with passwords in them. For testing, these work out of the box, but of course in a production setting, you'll want to copy these individual .properties files into the WEB-INF/classes folder so they can have better values specified.
+There are also several `*`.properties files with passwords in them. For testing, these work out of the box, but of course in a production setting, you'll want to copy these individual .properties files into the WEB-INF/classes folder so they can have better values specified.
 
 openesignforms.properties - Sets the two boot passwords to 'test1' and 'test2' respectively.  These values must match the values given to DbSetup when a new system is deployed.
 
