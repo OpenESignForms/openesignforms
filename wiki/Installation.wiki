@@ -88,7 +88,7 @@ For Windows, the installer defaults to the user 'postgres' so you can add our DB
 psql -U postgres
 CREATE USER esignforms WITH PASSWORD 'esignforms' SUPERUSER;
 
-Install the 'scripts' file in the cywgin/Linux-user account's 'bin' folder.  For Windows, you'll need the .cygwin variants.  All cygwin files typically need to a {{{dos2unix *}}} done on them so they'll run correctly. (See below for Cywin details.)
+Install the 'scripts' file in the cywgin/Linux-user account's 'bin' folder.  For Windows, you'll need the .cygwin variants.  All cygwin files typically need to a {{{dos2unix *}}} done on them so they'll run correctly. (See below for Cywin details.)  Note that script files bashrc and profile should be in the home directory, not 'bin'. You can then update .bash_profile to include ". ~/profile" and .bashrc to include ". ~/bashrc".
 
 Create the deployment folder in the home directory (/home/esignforms/deployments) or C:\deployments.  Put the 'templates' folder in there that defines the structure used for each deployment. You can delete the CVS subdirectories and DELETEME.txt files.
 
