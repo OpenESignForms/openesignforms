@@ -78,6 +78,8 @@ connectionpools.properties - Sets the database user and password for each deploy
 
 _Remember, in production, you never want to use such passwords._
 
+In Linux, often the IP address 127.0.0.1 is mapped to {{{localhost.localdomain}}} as well as {{{localhost}}}. On Windows, the former is generally not present, so you either need to change the .properties files that use localhost.localdomain to be just localhost, or you need to update {{{c:\Windows\System32\drivers\etc\hosts}}} so that you map the address to both names.
+
 ==Database using PostgreSQL==
 
 Install PostgreSQL 9 per its usual mechanisms. The version tested here was 9.0.4.
