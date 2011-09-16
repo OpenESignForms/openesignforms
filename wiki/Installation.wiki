@@ -87,8 +87,8 @@ Install PostgreSQL 9 per its usual mechanisms. The version tested here was 9.0.4
 It's just a convention, but we use the DB user 'esignforms' for our admin account, and each 'deployment' (a customer system that has its own webapp and database on the server) uses a 5 character unique name that is used as that application's DB user.  The name is also the base name in the deployment folder for its database tables, log files, etc.
 
 For Windows, the installer defaults to the user 'postgres' so you can add our DB user with commands like (for production, use good passwords, of course):
-psql -U postgres
-CREATE USER esignforms WITH PASSWORD 'esignforms' SUPERUSER;
+{{{psql -U postgres
+CREATE USER esignforms WITH PASSWORD 'esignforms' SUPERUSER;}}}
 
 Install the 'scripts' file in the cywgin/Linux-user account's 'bin' folder.  For Windows, you'll need the .cygwin variants (we delete the file without the extension and then rename the .cygwin variants by removing that extension).  All cygwin files typically need to a {{{dos2unix *}}} done on them so they'll run correctly. (See below for Cywin details.)  Note that script files {{{bashrc}}} and {{{profile}}} should be in the home directory, not 'bin'. You can then update {{{.bash_profile}}} to include {{{. ~/profile}}} and {{{.bashrc}}} to include {{{. ~/bashrc}}}.
 
@@ -212,6 +212,22 @@ Enter setup command (initdb,addsuperuser,initsetup,setpassword,quit,convert1.5) 
 ==Running the Application in Eclipse==
 
 Generally for testing in Eclipse, click Debug As->Debug On Server->Apache->Tomcat v7.0 Server. The first time you just need to point it to where you installed Tomcat above.
+
+==SMTP and IMAP==
+
+Under the System config->Deployment link in the application, you must configure the SMTP Return Path hostname, SMTP server and IMAP server to use. These are Internet standard services external to Open eSignForms, but must be available. Open eSignForms sends out notifications and invitation emails using a scheme that will associate bounces and replies to the original email sent. 
+
+Our basic configuration works like this:
+
+  * Set the SMTP Return Path Hostname to the hostname where you are runnning your SMTP server. The Return-Path SMTP header, along with the Reply-To and Sender headers, are used by receiving systems to validate that an email is legitimate and not spam sent through an open relay. In general, this is the server name where Open eSignForms is installed. On our demo system, we use the value {{{open.esignforms.com}}} which results in emails sent with a return-path something like: {{{Return-Path: <deploy2_pxriwpqowoislybxlucq@open.esignforms.com>}}}  The 'deploy2' value is the deployment id so that a single server can run multiple deployments of our application for multiple customers. The 'pxriwpqowoislybxlucq' is a random, unique value that allows us to associate bounces and replies to the original email sent.
+
+  * Set the SMTP server to the server that sends out emails for your deployment. Typically this is the same as the SMTP eturn Path Hostname. You can also set the SMTP Port, SMTP Auth User, SMTP Auth Password and whether SSL should be used. For typical deployments, port 25 is fine, but for some home developer systems, you may find 587 works for you to bypass ISP firewalls. For a typical deployment where relaying is allowed only from the localhost, you may not need to set the Auth User, Password or SSL options.
+
+  * Set the IMAP Server to the server that will handle inbound emails, such as bounces and replies. This most certainly is the same value as the SMTP ReturnPath Hostname. The IMAP Port of 143 is standard. You will want to set the IMAP User and Password to be used to retrieve emails. We typically create a user account for each deployment, so in the example above, we'd have a user account 'deploy2' created. Note that this user account is only used for receiving email, and we do not allow it to be accessed from the Internet for login purposes.  We recommend using SSH with a setting that restricts user login accounts, and if possible, do as we do and prohibit 'root' login and only allow logins via public key authorization so password guessing cannot be used to hack your system.
+
+  * In our deployments, we use Postfix for SMTP, configured to allow only the localhost server to send out messages (external systems cannot relay through it). We then set the {{{/etc/postfix/virtual_alias}}} to use values like {{{/^deploy2_.*@open.esignforms.com$/ deploy2}}}  This basically will match that return path value and assign it to the right user account that we'll access via IMAP for correlating bounces and replies.
+
+  * In our deployments, we use dovecot for our IMAP server.
 
 ==Other tools==
 
