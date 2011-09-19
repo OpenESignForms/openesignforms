@@ -1,0 +1,24 @@
+#summary Create a new user account.
+#labels Phase-Support
+
+= Introduction =
+
+These are the steps to create a new user account.
+
+
+= Details =
+
+Procedure to create a new user.
+
+  # Login
+  # Click on Access control
+  # Click on Users.
+  # Click on an existing user who would be most like the new user account to be created.
+  # Click the 'Create like' button.
+  # Update the email address, names, etc. to reflect the new user.
+  # If necessary, click on the 'Update member of group(s)' list to change any group permissions.
+  # Click Save.
+  # Then click the 'Send SET password email' so the user can choose a new password.
+
+If an existing user has just forgotten his password, you can just do
+steps 1-3, then step 9. 
