@@ -14,7 +14,7 @@ The script {{{create_db}}} is used to create a new database. {{{create_db}}} als
 
 The script {{{drop_db}}} is used to drop an existing database. *Obviously, use this with care as all data will be lost.*
 
-The script {{{table_grants}}} is used to provide the standard TABLE GRANT statements to ensure the tables are accessible.
+The script {{{table_grants}}} is used to provide the standard TABLE GRANT statements to ensure the tables are accessible. In general, this script should be safe to run at any time and is even repeatable to ensure your tables are set with the right permissions.
 
 The file {{{tables.sql}}} is a PostgreSQL command file that creates all of the tables and related indexes.
 
@@ -33,6 +33,8 @@ a conversion.
 If you find {{{post.sql}}}, then you should run that script AFTER you run dbsetup.  A {{{post.sql}}} script implies that dbsetup needs to be run with a conversion.
 
 If you just find {{{update.sql}}}, then no dbsetup needs to be run for this version update, but you do need to update your database configuration to include this.
+
+_We recommend running the {{{table_grants} script after all upgrades to ensure the table permissions are as expected by the application._
 
 If you are doing multiple version updates at once, you basically need to do them in order to ensure a smooth upgrade.  That is, first do the optional {{{pre.sql}}}, rundbsetup and optional {{{post.sql}}} -- or more likely just the {{{update.sql}}} without any rundbsetup -- set for each version update. 
 
