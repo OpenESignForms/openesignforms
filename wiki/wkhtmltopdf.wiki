@@ -36,3 +36,11 @@ In our various installs, we also did yum installs of:
   * a2ps (pretty sure not needed)
 
 Often these did not resolve issues, but unsure if they are helpful or not.
+
+= Windows Developers =
+
+There is generally a Windows installer version for this program that can be used on Windows platforms. Our developers typically are on Windows, and so they make use of the Windows version if they need the PDF export capability.  
+
+We downloaded 'wkhtmltox-0.11.0_rc1-installer.exe' and when run, it installed the tool in {{{C:\Program Files (x86)\wkhtmltopdf}}}
+
+For Tomcat+Java on Windows 7, we found we had to add that path to Windows PATH. For Windows 7, we did this by clicking on the Windows icon, Right-click on Computer->Properties, click on Advanced system settings, click on Environment Variables button, under System variables scroll and click on Path, click the Edit button, then append at the end: {{{;C:\Program Files (x86)\wkhtmltopdf}}}
