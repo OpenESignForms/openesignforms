@@ -35,6 +35,8 @@ Hosting services are available on a shared server, or a private web server using
 
 = User Guide =
 
+This guide describes common functions performed by all users. See the [#System_Administrator_Guide System Administrator Guide] for details on setting up users and configuring the system, or the [#Point_&_Click_Programming_Guide Point & Click Programming Guide] for programming documents, packages, transactions and reports.
+
 == Login ==
 All users login on a page that is distinct for your deployment. Unlike other services, each customer or company has its own distinct web application and data base to allow for easy migration from shared hosting, to private hosting, to your own server. Also, this reduces any accidental data leaks or exposure of private data due to hacking attacks or unauthorized access that result from poor security habits of others. Sadly, large systems with millions of users become valuable targets to thieves and hackers.
 
@@ -45,6 +47,8 @@ All users login on a page that is distinct for your deployment. Unlike other ser
 Every deployment should have at least one user assigned to the *System/Administrator* group. The system administrator can delegate powers to other groups, including creating partner/department administrator groups who have similar capabilities, but over only a subset of all users.
 
 The system administrator is responsible for various system-wide settings, creating new users, resetting passwords and checking system activity logs. 
+
+See the [#User_Guide User Guide] for common user activities, or the [#Point_&_Click_Programming_Guide Point & Click Programming Guide] for programming documents, packages, transactions and reports.
 
 == Create a user account ==
 Each user who can start transactions, run reports, or process work via the To Do queue needs a user account. While you can share user accounts, we recommend you give each user his or her own login and password to aid in tracking user activity and to make it easier to handle password issues should one of the users no longer need access to the system.
