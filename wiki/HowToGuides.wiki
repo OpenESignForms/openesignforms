@@ -6,11 +6,14 @@
 <td width="50%" align="right">http://www.yozons.com/images/logoSmall.gif</td>
 </tr></table>
  
+= Table of Contents =
 <wiki:toc max_depth="1" />
 
 = Introduction =
 
 Thank you for using [http://open.esignforms.com Open eSignForms]^TM^ by [http://www.yozons.com Yozons]^TM^. We hope this guide will make it easy to learn how to use the various features this powerful, web-based electronic contracting software provides -- all at your fingertips through our point & click programming interface. No programmers are needed, yet you get a fully branded and customized solution! 
+
+<p align="right" size="1">[#Table_of_Contents Table of contents]</p>
 
 === Background ===
 Open eSignForms is based on over 10 years of experience building thousands of custom electronic signature solutions across a wide variety of industries and company sizes, from our start in 2001 with the Fortune 1 company to myriad 1-person companies. Our target market is primarily small businesses and departments of larger corporations that have 1-500 users who need to process documents repeatedly. Very small users are certainly welcome, but there are a multitude of free services for those individuals who need to do only 5 or fewer documents per month.
