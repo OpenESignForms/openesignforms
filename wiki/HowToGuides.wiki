@@ -6,45 +6,61 @@
 <td width="50%" align="right">http://www.yozons.com/images/logoSmall.gif</td>
 </tr></table>
  
-= Table of Contents =
 <wiki:toc max_depth="1" />
+<g:plusone size="medium"></g:plusone>
 
 = Introduction =
 
 Thank you for using [http://open.esignforms.com Open eSignForms]^TM^ by [http://www.yozons.com Yozons]^TM^. We hope this guide will make it easy to learn how to use the various features this powerful, web-based electronic contracting software provides -- all at your fingertips through our point & click programming interface. No programmers are needed, yet you get a fully branded and customized solution! 
 
-<p align="right" size="1">[#Table_of_Contents Table of contents]</p>
+<p align="right">[#Navigation Table of contents]</p>
 
 === Background ===
 Open eSignForms is based on over 10 years of experience building thousands of custom electronic signature solutions across a wide variety of industries and company sizes, from our start in 2001 with the Fortune 1 company to myriad 1-person companies. Our target market is primarily small businesses and departments of larger corporations that have 1-500 users who need to process documents repeatedly. Very small users are certainly welcome, but there are a multitude of free services for those individuals who need to do only 5 or fewer documents per month.
 
 Our users have streamlined their processes with sales agreements, HR and employee documents, federal and state W-4, I-9, W-9s, property rentals, school applications, financing documents, debt consolidation, non-disclosure agreements, licensing agreements, partnership documents, stockholder communications, student loans, pretty much any document you have and want to make available for rapid completion and easy searching.
 
+<p align="right">[#Navigation Table of contents]</p>
+
 === License ===
 As open source software under the [http://open.esignforms.com/agpl.txt GNU Affero GPL (AGPL)], you are free to download and install and use as you see fit so long as the forms you program are made available along with our source code to your users. 
 
+<p align="right">[#Navigation Table of contents]</p>
+
 === Hosting services ===
 Hosting services are available on a shared server, or a private web server using your domain name, or we can install it on your own Linux server in your data center. These all come with a commercial license and technical support services and are _only available from Yozons_ with [http://www.yozons.com/Open-eSignForms/pricing.jsp pricing shown here].
+
+<p align="right">[#Navigation Table of contents]</p>
 
 = User Guide =
 
 == Login ==
 All users login on a page that is distinct for your deployment. Unlike other services, each customer or company has its own distinct web application and data base to allow for easy migration from shared hosting, to private hosting, to your own server. Also, this reduces any accidental data leaks or exposure of private data due to hacking attacks or unauthorized access that result from poor security habits of others. Sadly, large systems with millions of users become valuable targets to thieves and hackers.
 
-= Point & Click Programming Guide =
-
-All customization and programming of documents, workflows and emails is done through the web-based interface. *No programmers are needed.* For those who prefer to have professional help, though, Yozons has partnered with other companies that offer professional services to handle all of your needs or just to get you started so that you can then just make new versions as necessary going forward.
+<p align="right">[#Navigation Table of contents]</p>
 
 = System Administrator Guide =
 
 == Create a user account ==
 Each user who can start transactions, run reports, or process work via the To Do queue needs a user account. While you can share user accounts, we recommend you give each user his or her own login and password to aid in tracking user activity and to make it easier to handle password issues should one of the users no longer need access to the system.
 
+<p align="right">[#Navigation Table of contents]</p>
+
 == Reset a user password ==
 While every user can reset his or her own password using the *forgotten password* feature linked on the login page, it is possible the user has forgotten the answer to that question as well. Also, you will use this procedure when you first create a new user account so that the user can select the initial password and forgotten password question & answer.
 
+<p align="right">[#Navigation Table of contents]</p>
+
 == Create a group ==
 All permissions are applied to groups, which is just a simple name used to identify one or more users who perform similar jobs or work together. A user can belong to one or more groups, and it's possible to create multiple groups to support multiple companies/partners who are sharing a single system so that each such company only sees users and groups that belong to their company, while allowing the owner of the deployment to view all users and all transactions across those companies.
+
+<p align="right">[#Navigation Table of contents]</p>
+
+= Point & Click Programming Guide =
+
+All customization and programming of documents, workflows and emails is done through the web-based interface. *No programmers are needed.* For those who prefer to have professional help, though, Yozons has partnered with other companies that offer professional services to handle all of your needs or just to get you started so that you can then just make new versions as necessary going forward.
+
+<p align="right">[#Navigation Table of contents]</p>
 
 = Contact Yozons =
 
