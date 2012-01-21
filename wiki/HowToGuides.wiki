@@ -101,7 +101,7 @@ Think up a good question that the system can ask you if you ever forget your pas
 
 Click the *Set my password* button once you have completed the form. If successful, click on the *[#Login login now]* link displayed and you can begin to use the application.
 
-Note that an email will be sent to you every time your password is changed, so if you did not just change your password, it is an indication someone may be accessing your account without authorization.
+_Note that an email will be sent to you every time your password is changed, so if you did not just change your password, it is an indication someone may be accessing your account without authorization._
 
 <p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
 
@@ -206,7 +206,7 @@ Under *System config->Stats* you can view statistics related to your system acti
 http://open.esignforms.com/images/HowToGuidesWiki/deploymentStats.png
 
 Under the *System* column:
-  * *Version* is the Open eSignForms application version. This is also shown at the bottom of the main application window, which is a link that shows version history.
+  * *Version* is the Open eSignForms application version. This is also displayed at the bottom right of the application window and you can click on the version to see the version history. http://open.esignforms.com/images/HowToGuidesWiki/copyrightAndVersion.png
   * *System started* is the date+time when the application was last started.
   * *Java version* is the [http://java.sun.com Java] version used to run your application.
   * *JVM Memory* is the amount of memory assigned to Java, as well as the maximum specified it can use. If the amount used reaches the maximum, garbage collection takes place to try to reduce the amount of memory in use.  This is for all web applications.
@@ -229,7 +229,23 @@ Under the *Database* column:
   * *Number of users* specifies the number of user accounts in your system. If you have a commercial users license, this is important to compare with your license size.
   * *Database size* specifies the size of your database. If you have a commercial DB license, this is important to compare with your license size.
   * *Backups/logs size* this is the additional space used to store database backups and application log files.
-  
+
+<p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
+
+== System logs ==
+
+Most activities that take place on the system are logged. This allows for trouble shooting as well as assigning blame (yes, we know _you_ did it)! See the [#Deployment_configuration Deployment configuration] for how long these log records are kept.
+
+http://open.esignforms.com/images/HowToGuidesWiki/systemLogs.png
+
+Specify the start date (or leave blank for the oldest records) and end date (or leave blank for the most recent records) and check the various types of records you want to see. If you are looking for something in particular, you can enter a value in the *Log record contains* field.  Click *Find matching* to list all matching system activity log records.
+
+Record types:
+  * *Version* records indicate new version installations and updates. Note that only version changes that require 'DbSetup' log such changes here.
+  * *Start/stop* records are recorded whenever your application starts and stops.
+  * *User* records show when any user logs in or out, or has an invalid password.
+  * *Config* records show when any user makes a configuration change to documents, packages, transactions, reports, etc.
+
 <p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
 
 ----
