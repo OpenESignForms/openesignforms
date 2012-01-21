@@ -5,10 +5,12 @@
 <td width="50%">http://open.esignforms.com/images/OpenESignFormsLogo.gif</td>
 <td width="50%" align="right">http://www.yozons.com/images/logoSmall.gif</td>
 </tr></table>
- 
+
 ==== List of Guides ====
 <wiki:toc max_depth="1" />
 <g:plusone size="medium"></g:plusone>
+
+----
 
 = Introduction =
 
@@ -33,6 +35,7 @@ Hosting services are available on a shared server, or a private web server using
 
 <p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
 
+----
 = User Guide =
 
 This guide describes common functions performed by all users. See the [#System_Administrator_Guide System Administrator Guide] for details on setting up users and configuring the system, or the [#Point_&_Click_Programming_Guide Point & Click Programming Guide] for programming documents, packages, transactions and reports.
@@ -40,8 +43,61 @@ This guide describes common functions performed by all users. See the [#System_A
 == Login ==
 All users login on a page that is distinct for your deployment. Unlike other services, each customer or company has its own distinct web application and data base to allow for easy migration from shared hosting, to private hosting, to your own server. Also, this reduces any accidental data leaks or exposure of private data due to hacking attacks or unauthorized access that result from poor security habits of others. Sadly, large systems with millions of users become valuable targets to thieves and hackers.
 
+Contact your system administrator if you need a new account so you can login, cannot reset your own password through the 'Forgot your password?' process, or for the web address (URL) to use for your deployment.  When a new user account is created, an email will be sent to your login email address allowing you to choose a new password, as well as set up a forgotten password question and answer.
+
+A typical login page looks like this:
+
+http://open.esignforms.com/images/HowToGuidesWiki/loginPage.png
+
+Your company's logo will appear at the top, along with your company name in the heading.
+
+Enter your email address and password, then click the Login button.  A password can be as long as a 50-character pass phrase that includes letters, numbers, spaces and special characters. It is case sensitive. We recommend at least 10 characters, something you can remember, but others will find impossible to guess. 
+
+Check the 'Remember email' box when on your own computer to avoid having to specify it ever time you login.
+
+If you have forgotten your password, click on the *Forgot your password?* link.
+
 <p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
 
+== Forgot your password ==
+
+If you have forgotten your password, shame on you! But assuming you set up a useful question and answer, you should be able to choose a new password automatically.
+
+From the login page, click the *Forgot your password?* link to show this page:
+
+http://open.esignforms.com/images/HowToGuidesWiki/requestPasswordReset.png
+
+Type in the email address you use to login, then click the *Send email to reset my password* button. 
+
+Then, check your email for a unique link that is sent to you to continue with the reset process. This step prevents people who do not control your email account from even attempting to reset your password. You should receive an email like the following:
+
+http://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordEmail.png
+
+Click on the link in the email and you will be presented with the question you set up when you set your password like the following:
+
+http://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordQuestion.png
+
+Type in the answer to your question. Note that it will be displayed, so do this in private. Unlike a password, the answer is _not_ case sensitive and non-alphanumeric characters (letters and numbers) are ignored. Click the *Continue* button.
+
+Assuming you gave the correct answer, you will then be prompted to set a new password as well as a new forgotten question and answer. The previous question will be auto-filled, but you can change it or keep it, and you will have to provide the answer again regardless. This is the standard page to [#Set_my_password Set my password].
+
+<p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
+
+== Set my password == 
+
+To set your password, as well as the forgotten password question and answer, you will be presented with this page:
+
+http://open.esignforms.com/images/HowToGuidesWiki/setMyPassword.png
+
+Enter your password two times to ensure you have typed the expected value. The password will be masked like a regular password field and is a phrase that can be a mix of letters, numbers, spaces and special characters. It is case sensitive.
+
+Think up a good question that the system can ask you if you ever forget your password and need to reset it and enter that in the *Question to ask you* field. Provide the corresponding answer in the *Answer you will provide to reset your password* field. Unlike a password, the answer will be displayed, so please do this in private. Answers are _not_ case sensitive and special characters are ignored. This is essentially a "second password" so make sure the question and related answer are not too easily guessed should anybody ever attempt to reset your password while they have access to your email account.
+
+Click the *Set my password* button once you have completed the form. If successful, click on the *[#Login login now]* link displayed and you can begin to use the application.
+
+<p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
+
+----
 = System Administrator Guide =
 
 Every deployment should have at least one user assigned to the *System/Administrator* group. The system administrator can delegate powers to other groups, including creating partner/department administrator groups who have similar capabilities, but over only a subset of all users.
@@ -65,12 +121,14 @@ All permissions are applied to groups, which is just a simple name used to ident
 
 <p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
 
+----
 = Point & Click Programming Guide =
 
 All customization and programming of documents, workflows and emails is done through the web-based interface. *No programmers are needed.* For those who prefer to have professional help, though, Yozons has partnered with other companies that offer professional services to handle all of your needs or just to get you started so that you can then just make new versions as necessary going forward.
 
 <p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
 
+----
 = Navigation =
 <wiki:toc max_depth="3" />
 
