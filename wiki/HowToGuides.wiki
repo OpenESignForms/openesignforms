@@ -55,7 +55,13 @@ Enter your email address and password, then click the Login button.  A password 
 
 Check the 'Remember email' box when on your own computer to avoid having to specify it ever time you login.
 
-If you have forgotten your password, click on the *Forgot your password?* link.
+If you have forgotten your password, click on the *[#Forgot_your_password Forgot your password?]* link.
+
+After you login, at the bottom of the web page, it will show when you logged in, when you previously logged, as well as the time when your browser last communicated with the server:
+
+http://open.esignforms.com/images/HowToGuidesWiki/loginTimeFooter.png
+
+You may want to check the previous login time and IP address to see if any unauthorized logins to your account took place. Also, most user sessions last about 30 minutes, so if your browser has not sent anything in that amount of time, your session will terminate, you will lose any unsaved work, and you'll have to login again. Clicking on anything in the application will likely communicate with the server and keep your session active.
 
 <p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
 
@@ -118,6 +124,52 @@ While every user can reset his or her own password using the *forgotten password
 
 == Create a group ==
 All permissions are applied to groups, which is just a simple name used to identify one or more users who perform similar jobs or work together. A user can belong to one or more groups, and it's possible to create multiple groups to support multiple companies/partners who are sharing a single system so that each such company only sees users and groups that belong to their company, while allowing the owner of the deployment to view all users and all transactions across those companies.
+
+<p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
+
+== Deployment configuration ==
+
+Under *System config->Deployment* you can view and modify certain deployment properties. Please do so with care. Click the *Edit* button to change values, but be certain you know what you are doing.
+
+http://open.esignforms.com/images/HowToGuidesWiki/deploymentProperties.png
+
+  * Every deployment has a *Unique deployment ID*, which is displayed at the top.  
+  * Note that the *ID* field is the related to the deployment properties record id as stored in the database. 
+  * The *Website URL Protocol+Address* is the domain name where your application runs and is used in all links sent out. Most deployments use the 'https://' protocol to ensure secure communications between the browser and the server.
+  * Ensure *Allow Production transactions* is checked if your deployment can run production transactions.
+  * Ensure *Allow Test transactions* is checked if your deployment can run test transactions.
+  * The *Default locale* specifies the language the application runs as. Currently, we only support US English.
+  * The *Default date format* specifies how dates are displayed by default.
+  * The *Default log/detailed date format* specifies how dates are displayed in various logs and other places where full dates are displayed.
+  * The *Default time zone* specifies the default time zone used. This can be overridden on a per-user basis.
+  * The *Default time format* specifies how times are displayed by default. Most people only show times through minutes.
+  * The *Default log/detailed time format* specifies how times are displayed in various logs. For logs, you probably want to display seconds, if not milliseconds.
+  * The *SMTP Server* is the IP address or host name of the SMTP server to use for sending outbound emails. Most will keep this set to 'localhost.localdomain' to use the system's SMTP server.
+  * The *SMTP Port* is the TCP port number SMTP is listening on. The default is 25. For some remote SMTP servers, you may have a value like 587 or perhaps 465 if you use SSL.
+  * The *SMTP Auth User* is set if your SMTP server requires AUTH protocol to send.
+  * The *SMTP Auth Password* is set if your SMTP server requires AUTH protocol to send.
+  * Check the *Use TLS* box if your SMTP server communicates over TLS.
+  * The *IMAP Server* is the IP address or host name of the IMAP server to use for retrieving inbound emails (mostly bounces and replies to automatically created emails sent by the application). Most will keep this set to 'localhost.localdomain' to use the system's IMAP server.
+  * The *IMAP Port* is the TCP port number IMAP is listening on. The default is 143.
+  * The *IMAP User* is generally set to your unique database name set for your deployment. It must be a valid user account on the server which is only used to accept inbound email for your application. On a secure server, we do not recommend allowing actual user logins to this account (we set it up so it's not valid to login to this account via SSH, for example), and keep it in its own group.
+  * The *IMAP Password* is the password that goes with the IMAP User login.
+  * Check the *Use SSL* box if your IMAP server communicates over SSL.
+  * The *Default Email FROM* is used as the FROM email address for emails not sent out on behalf of a user. We recommend the No-Reply@yourhost.com form as automated emails generally do not expect replies. Note, however, that many emails sent out will correlate a reply back to it if you view the emails through the application.
+  * The *SMTP Return Path Hostname* is the hostname where emails sent out will show. For anti-spamming measures, it should generally be the actual host name where your application is running and where the IMAP server will be able to process bounces.
+  * The *Start year* is the year your deployment was installed.
+  * The *Installation date* is the date your deployment was installed.
+  * The *Context path* is the URL path name appended to the 'Website URL Protocol+Address' to indicate your web application instance.
+  * The *License* specifies whether your system is running under the open source AGPL license, in which case you must provide source code for the application as well as all programming of documents you create, or if you have a commercial license based on number of users or database size.
+  * The *License size* is 0 for open source users, or specifies the maximum number of users or database size (in MB) of your license. Note that exceeding the maximum will not affect the system operation, but additional licensing fees will apply on renewal.
+  * The *Default session timeout* specifies the default web application session timeout in minutes. Most use 30 minutes. It should be long enough for a typical party to process your electronic documents. If a party is processing a document and does not interact with the server in this many minutes, the session will be terminated and the party will have to restart access.
+  * The *User session timeout* specifies the web application session timeout in minutes for users who have logged in. This is often used to ensure that users who login have a shorter timeout than parties who are invited to sign your documents.
+  * The *Retain stats logs* specifies how many days to keep usage statistics.
+  * The *Retain system start/stop logs* specifies how many days to keep system activity logs related to system starts and stops. Most will keep it for 365 days.
+  * The *System config changes* specifies how many days to keep system activity logs related to configuration changes, like creating, updating or deleting documents, packages and transactions across all users. Most will keep it for 90 days.
+  * The *System user activity* specifies how many days to keep system activity logs related to users logging in and out.  Most will keep it for 90 days.
+  * The *Retain user security logs* specifies how many days to keep security-related log records for each user who can login.
+  * The *User config* specifies how many days to keep log records regarding configuration changes, like creating, updating and deleting documents, packages and transactions, for each user.
+  * The *User login/logoff* specifies how many days to keep log records regarding logins and logoffs for each user.
 
 <p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
 
