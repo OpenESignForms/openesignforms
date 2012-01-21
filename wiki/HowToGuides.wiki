@@ -103,6 +103,30 @@ Click the *Set my password* button once you have completed the form. If successf
 
 <p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
 
+== Session expires == 
+
+In order to keep your user account safe should you stop using it, or if you just close your  browser without logging off first (a no-no! -- always logoff when you are done), the application will automatically log you off if you have not had any recent activity. Clicking on most areas of the application will keep your session active, with the last server access shown at the bottom. The system administrator can set how long a user session is, but it defaults to 30 minutes.
+
+If you click on something and see the following:
+
+http://open.esignforms.com/images/HowToGuidesWiki/sessionExpired.png
+
+it means your session expired due to lack of recent usage. Note any changes you may have made (if they were not already saved, they will be lost) and click on the red box to continue and [#Login login again].
+
+<p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
+
+== Communication problem == 
+
+It is possible that while you were logged in, your application was restarted, such as for a new release, to resolve a bug, or because of some error on the system or application code.
+
+If you click on something and see the following (or any other red box error):
+
+http://open.esignforms.com/images/HowToGuidesWiki/communicationProblem.png
+
+it means your session was terminated unexpectedly. Note any changes you may have made (if they were not already saved, they will be lost) and click on the red box to continue and [#Login login again].
+
+<p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
+
 ----
 = System Administrator Guide =
 
@@ -171,6 +195,39 @@ http://open.esignforms.com/images/HowToGuidesWiki/deploymentProperties.png
   * The *User config* specifies how many days to keep log records regarding configuration changes, like creating, updating and deleting documents, packages and transactions, for each user.
   * The *User login/logoff* specifies how many days to keep log records regarding logins and logoffs for each user.
 
+<p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
+
+== Deployment Statistics ==
+
+Under *System config->Stats* you can view statistics related to your system activity and versions.
+
+http://open.esignforms.com/images/HowToGuidesWiki/deploymentStats.png
+
+Under the *System* column:
+  * *Version* is the Open eSignForms application version. This is also shown at the bottom of the main application window, which is a link that shows version history.
+  * *System started* is the date+time when the application was last started.
+  * *Java version* is the [http://java.sun.com Java] version used to run your application.
+  * *JVM Memory* is the amount of memory assigned to Java, as well as the maximum specified it can use. If the amount used reaches the maximum, garbage collection takes place to try to reduce the amount of memory in use.  This is for all web applications.
+  * *Total threads* is the number of threads Java is using. This is for all web applications.
+  * *Backgrounder thread* should say 'Running' to indicate that the background task processor is running.
+  * *Email out thread* should say 'Running' to indicate that the outbound email processor is running.
+  * *Email in thread* should say 'Running' to indicate the the inbound email processor is running.
+
+Under the *Web server* column:
+  * *Version* is the web server version, which by default is [http://tomcat.apache.org/ Apache Tomcat].
+  * *Vaadin version* is the version of [http://www.vaadin.com Vaadin] used, which provides the user interface code for the Web 2.0 look.
+  * *HTTP threads* specifies the number of HTTP (non-secure) access threads are in the web server (and how many are inactive). This is for all web applications.
+  * *HTTPS threads* specifies the number of HTTPS (secure) access threads are in the web server (and how many are inactive). This is for all web applications.
+
+Under the *Database* column:
+  * *Version* is the database version, which by default is [http://www.postgresql.org PostgreSQL].
+  * *Max connections* specifies the maximum number of database connections in use out of the maximum allowed.
+  * *Connections* specifies the number of database connections currently in use, the number available for use, as well as the "idle" timeout for connections if they are not used.
+  * *Number of transactions* specifies the number of transactions in your database.
+  * *Number of users* specifies the number of user accounts in your system. If you have a commercial users license, this is important to compare with your license size.
+  * *Database size* specifies the size of your database. If you have a commercial DB license, this is important to compare with your license size.
+  * *Backups/logs size* this is the additional space used to store database backups and application log files.
+  
 <p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
 
 ----
