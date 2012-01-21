@@ -101,6 +101,8 @@ Think up a good question that the system can ask you if you ever forget your pas
 
 Click the *Set my password* button once you have completed the form. If successful, click on the *[#Login login now]* link displayed and you can begin to use the application.
 
+Note that an email will be sent to you every time your password is changed, so if you did not just change your password, it is an indication someone may be accessing your account without authorization.
+
 <p align="right"><font size="1">[#Navigation Table of contents]  or  [#List_of_Guides Top]</font></p>
 
 == Session expires == 
