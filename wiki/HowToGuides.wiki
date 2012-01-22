@@ -56,6 +56,61 @@ _You do not want to use Test mode for production transactions. If you do, your c
 
 <p align="right"><font size="1">[#Index Table of contents]  or  [#List_of_Guides Top]</font></p>
 
+== General tips and tricks == 
+
+Click on an object to select it. Often, if you it again, it will unselect it.
+
+To select multiple items when allowed, click the first item, then CTRL-click to add additional items, or CTRL-click a selected item to unselect it.  You can also click the first item, then SHIFT-click another item to select all items in the range between those two clicks.
+
+=== Menu items ===
+You can open any menu item feature by clicking on it, and it will replace the tab in the main part of the application screen. If you right click a menu item and bring up a context menu:
+
+http://open.esignforms.com/images/HowToGuidesWiki/rightClickMenuItem.png
+  * *Open in a new tab* means to open this item in a new tab rather than replace the current tab with the new screen.
+  * *Open in a new window* means to open this item in a new window that can be dragged about, though it is limited to the browser window and can fall behind other such windows and become invisible until you close the top window.
+  * *Open in a new browser window* mean to open this item in a new browser window that is distinct from the browser window, so they can be placed side-by-side, for example, on your computer screen.
+
+=== Tabular data ===
+Often, data is presented as a list in table, with column headers such as:
+
+http://open.esignforms.com/images/HowToGuidesWiki/tableColumns.png
+  * Click on a column name, such as 'Last name' in this example to sort the list by that column. Click it again to reverse the sort order.
+  * Click on a column and drag it to another position to re-order the columns.
+  * Click on the black right arrow in the far right side to display a list of all column names, and click on any column name to make that column disappear from the list. You can do this again to make that column appear again.
+  * Put your cursor over the vertical separator bar next to a column name and drag it to change the size of a given column.
+
+Currently, such changes are not remembered, though, so each time you run a query, the default columns and order, as well as the sort order, will return to the default.
+
+When data is listed by name, it's generally in alphabetic order.  When listing transactions and log records, generally the order is reverse time order so the most recent is at the top.
+
+=== Tooltips ===
+When in doubt, if you hover your mouse over a field or label, a tooltip will appear with helpful information; for example:
+http://open.esignforms.com/images/HowToGuidesWiki/tooltips.png
+
+=== Arrows reveal additional related data ===
+And finally, often items are listed in a tree or panel that only opens when you click on the arrow next to it's name:
+
+http://open.esignforms.com/images/HowToGuidesWiki/openCloseArrows.png
+
+When the arrow points down (such as *Programming* above), that item is "opened" and any elements it contains are displayed (in this case, *Libraries* appears). When the arrow points to the right (such as *Libraries* above), that item is "closed" and any elements it contains are not displayed. If you click on the arrow multiple times, will will alternate between being open and being closed.
+
+If there are no elements (or at least no elements you have *List* permission to) when you open an item, the arrow will change, but nothing will appear. This generally means you do not have permission to any items under it, or perhaps none have been created yet (such as for menu items *Reports*, or *Start transaction*), or if some exist, they are disabled and so do not appear in the listing.
+
+=== Resizing display areas ===
+For programmers and power users, we recommend your run this application with your browser maximized on a Full HD monitor/screen (1080 height) or greater.
+
+The application has various horizontal and vertical bars that allow for fields to be resized.  Just put your cursor over them, and if it is allowed, the cursor appearance will change to indicate that you can resize the areas with a click and drag to move it left and right, or up and down. This is true for the columns listed in table headers as well as various panels on the main application window.
+
+=== EsfNames and PathNames ===
+*EsfName* and the related *PathName* are used throughout to name objects in Open eSignForms. An EsfName is 1-50 upper and lowercase letters, starting with a letter, having no spaces, but allowing an underbar. The names must be unique for each object type, and names are not case sensitive, so ESFNAME and EsfName and esfname would be considered duplicates. Examples of valid EsfNames are: ExampleName, example_name and Example_1.  
+
+Some objects support a PathName, which is a series of one or more EsfNames separate by the slash character: */*  Examples of valid path names are: Simple_pathname, Company1/ExampleName, This/Is/Also/Valid.
+
+=== IDs or UIDs ===
+Open eSignForms makes extensive use of standards-based, globally unique identifiers that are 16 bytes long. All records/objects are assigned such a ID and are often displayed for debugging purposes on various screens.  A typical looking UID is: 6dfe4d5e-7be6-425c-b083-be5223d032f0. As part of the UID is randomly generated, you will not see any pattern in IDs as they are assigned. The ID is mostly used for finding the related record in the database when some issue arises that requires debugging the platform code.
+
+<p align="right"><font size="1">[#Index Table of contents]  or  [#List_of_Guides Top]</font></p>
+
 ----
 = User Guide =
 
@@ -93,6 +148,8 @@ When you login, you will see a welcome screen that includes links you may be int
 == Logoff http://open.esignforms.com/images/HowToGuidesWiki/logoffIcon.png == 
 
 Whenever you are done using the application, you should logoff. This not only protects access to your account, but it also frees server resources. If you just close your browser, go to another web site (URL) or remain idle for a long period of time, the web server will eventually time out your session.
+
+There is a logoff button on the bottom of the navigation bar on the left side column, as well as in the upper right corner.
 
 <p align="right"><font size="1">[#Index Table of contents]  or  [#List_of_Guides Top]</font></p>
 
@@ -205,21 +262,64 @@ it means your session was terminated unexpectedly. Note any changes you may have
 
 Every deployment should have at least one user assigned to the *System/Administrator* group. The system administrator can delegate powers to other groups, including creating partner/department administrator groups who have similar capabilities, but over only a subset of all users.
 
-The system administrator is responsible for various system-wide settings, creating new users, resetting passwords and checking system activity logs. 
+The system administrator is responsible for various system-wide settings, creating new users, groups, permissions, resetting passwords and checking system activity logs. 
 
 See the [#User_Guide User Guide] for common user activities, or the [#Point_&_Click_Programming_Guide Point & Click Programming Guide] for programming documents, packages, transactions and reports.
 
-== Create a user account ==
+<p align="right"><font size="1">[#Index Table of contents]  or  [#List_of_Guides Top]</font></p>
+
+== Users and Groups Overview ==
+
+A key concept in Open eSignForms is that permissions are assigned to Groups, and Users are assigned to Groups. Therefore, a User has the sum of permissions for all groups he or she belongs in.
+
+All deployments will have the *System/Administrator* group. It has access to all regular`*` users and groups. We recommend at least the following additional groups be created:
+  # A group for your company or department, such as MyCompany. You can put all users who belong into this group.
+  # A group for the programmers in your company or department, such as MyCompany/Programming. You can put just those folks, whether in your company or a hired professional services consultant, who will program documents and transactions in this group.
+  # A group for managers in your company or department who can see across all users in your company or department, such as MyCompany/Manager.
+  # If you will have multiple companies or departments using your deployment, you may consider a group for that plays the system administrator function, but limited to the company/dpartment, such as MyCompany/Administrator.
+
+(`*` There is also one special group called *ESF/Group/Deployment/SuperAdmin* that is created when the system is deployed. It is used to ensure access like "root" or "Administrator" provides for servers and PCs and is managed by whoever is responsible for the web application deployment.)
+
+<p align="right"><font size="1">[#Index Table of contents]  or  [#List_of_Guides Top]</font></p>
+
+== Permissions Overview ==
+
+All records (also known as objects) in the system generally have four common permissions associated with them:
+  # *List* permission specifies the groups that are allowed to see the record in a list, such as a drop down list or menu.
+  # *View Details* permission specifies the groups that are allowed to see the details of a record, such as all of the fields used to configure it.
+  # *Create/Create Like* permission specifies the groups that are allowed to create a new record (or object) like the existing record.
+  # *Update* permission specifies the groups that are allowed to update or modify the record.
+  # *Delete* permission specifies the groups that are allowed to delete the record.
+
+For User Interface (screens/views) components, the permissions generally describe whether a 'Create like' or 'Save' or 'Delete' button will even appear on that screen, and 'List' means whether that item will even appear on the navigation menu list on the left side.
+
+The Group object itself is special in that it also has a similar set of List, View, Create, Update and Delete permissions that are directed at the Users who belong to the group. An administrator for a group of users needs to have these permissions to manage the users in the group, but may only need List permission on the group itself.
+
+=== Configuring Permissions ===
+
+If you have View Details and Update permission for a given record, you can change the groups who have permission to manipulate that record, too. For example, for a given Group record's *List* permission:
+
+http://open.esignforms.com/images/HowToGuidesWiki/groupListPermission.png
+
+Select one or more groups from the left column (available groups you can choose from -- because you have *List* permission to those groups), and click the *>>* button to move them to the right side, which is the list of Groups that will have the specified permission. 
+
+Of course, you will have to click the Save button after your have made your changes.
+
+<p align="right"><font size="1">[#Index Table of contents]  or  [#List_of_Guides Top]</font></p>
+
+== Users http://open.esignforms.com/images/HowToGuidesWiki/usersIcon.png ==
+
 Each user who can start transactions, run reports, or process work via the To Do queue needs a user account. While you can share user accounts, we recommend you give each user his or her own login and password to aid in tracking user activity and to make it easier to handle password issues should one of the users no longer need access to the system.
 
 <p align="right"><font size="1">[#Index Table of contents]  or  [#List_of_Guides Top]</font></p>
 
-== Reset a user password ==
+=== Reset a user password ===
 While every user can reset his or her own password using the *forgotten password* feature linked on the login page, it is possible the user has forgotten the answer to that question as well. Also, you will use this procedure when you first create a new user account so that the user can select the initial password and forgotten password question & answer.
 
 <p align="right"><font size="1">[#Index Table of contents]  or  [#List_of_Guides Top]</font></p>
 
-== Create a group ==
+== Groups http://open.esignforms.com/images/HowToGuidesWiki/groupsIcon.png ==
+
 All permissions are applied to groups, which is just a simple name used to identify one or more users who perform similar jobs or work together. A user can belong to one or more groups, and it's possible to create multiple groups to support multiple companies/partners who are sharing a single system so that each such company only sees users and groups that belong to their company, while allowing the owner of the deployment to view all users and all transactions across those companies.
 
 <p align="right"><font size="1">[#Index Table of contents]  or  [#List_of_Guides Top]</font></p>
