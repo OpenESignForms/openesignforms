@@ -109,6 +109,36 @@ Some objects support a PathName, which is a series of one or more EsfNames separ
 === IDs or UIDs ===
 Open eSignForms makes extensive use of standards-based, globally unique identifiers that are 16 bytes long. All records/objects are assigned such a ID and are often displayed for debugging purposes on various screens.  A typical looking UID is: 6dfe4d5e-7be6-425c-b083-be5223d032f0. As part of the UID is randomly generated, you will not see any pattern in IDs as they are assigned. The ID is mostly used for finding the related record in the database when some issue arises that requires debugging the platform code.
 
+=== List of Records + Form Editing ===
+
+Most records are updated using a common look and feel: a list or table of records shown at the top, with a form for viewing and editing that record below. There is an adjustable slider that appears between the list and the form, so you can adjust the space for each by putting your cursor over the bar that separates them, waiting for the cursor to change indicating it is over the split panel line, and the click and drag the line to change how much space is allocated to each.
+
+To view or edit a record, just click on it in the list. If you click on it again, it will unselect the record and remove it from the form.
+
+Here's an example that describes common fields you will find on most forms:
+
+http://open.esignforms.com/images/HowToGuidesWiki/listFormViewTip.png
+
+In this case, note that the *Partners* group record is selected in the upper list of records and the details appear in the Form below.
+
+All records show an *[#IDs_or_UIDs Id]* that uniquely identifies this record. There is usually a *Created* date and user that shows when the record was created, as well as a *Last updated* date and user that shows when the record was last modified.
+
+*Enabled* records are actively used and listed. When it is *Disabled*, it is not used by the system, just as if it were deleted. We recommend you only delete records that were newly created and then you decide to abandon it. Once the record has been used in your operations, we recommend you just disable it if you no longer want it so that any references to that record can be maintained.
+
+Most records have either an [#EsfNames_and_PathNames EsfName or a PathName] that uniquely names the record of its type. When path names are allowed, we generally recommend that you prefix the name with the company, department or group that it belongs to, such as Company1/W4 and Company2/W4 to distinguish between the W4 transaction for Company1 verses the one for Company2. Note that the path name prefix has no real distinction (it does not enforce grouping, for example) other than to help you identify it's purpose and organization. 
+
+The *Description* field is provided for a short reminder tip about what the purpose of the record is.
+
+The *Comments* field is provided to maintain historical or other reference information you want to maintain about the record.
+
+The *Permissions* section generally defines access control permissions for the record itself, including List, View Details, Create/Create like, Update and Delete permissions.
+
+Most forms also include common buttons:
+  * The *Save* button will save any changes made. You must have Update permission to save changes.
+  * The *Cancel* button will discard any changes made since the last Save, and will put the form into read-only mode. If you have Update permission, an Edit button will appear allowing you to re-enter edit mode so you can update it again.
+  * The *Create like* button allows you to create a new record like the current record. If your record has permissions, and you are targeting the new record for a different company or department, remember to update the permissions to use the target group instead of the original groups. You must have 'Create like' permission to do this.
+  * The *Delete* button allows you to delete a record you no longer want. Please delete with caution, and just disable the record when in doubt. Once you delete the record, it will not be recoverable, and any logs or other references and associations to that record will be lost.
+
 <p align="right"><font size="1">[#Index Table of contents]  or  [#List_of_Guides Top]</font></p>
 
 ----
