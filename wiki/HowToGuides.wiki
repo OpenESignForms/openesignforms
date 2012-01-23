@@ -1,4 +1,4 @@
-#summary Users Guide for Open eSignForms
+#summary How-To Guides for Open eSignForms
 #labels Featured,Phase-Support
 
 <table width="100%"><tr>
