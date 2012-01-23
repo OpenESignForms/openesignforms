@@ -109,7 +109,7 @@ Some objects support a PathName, which is a series of one or more EsfNames separ
 === IDs or UIDs ===
 Open eSignForms makes extensive use of standards-based, globally unique identifiers that are 16 bytes long. All records/objects are assigned such a ID and are often displayed for debugging purposes on various screens.  A typical looking UID is: 6dfe4d5e-7be6-425c-b083-be5223d032f0. As part of the UID is randomly generated, you will not see any pattern in IDs as they are assigned. The ID is mostly used for finding the related record in the database when some issue arises that requires debugging the platform code.
 
-=== List of Records + Form Editing ===
+=== List of Records and Form Editing ===
 
 Most records are updated using a common look and feel: a list or table of records shown at the top, with a form for viewing and editing that record below. There is an adjustable slider that appears between the list and the form, so you can adjust the space for each by putting your cursor over the bar that separates them, waiting for the cursor to change indicating it is over the split panel line, and the click and drag the line to change how much space is allocated to each.
 
@@ -351,6 +351,46 @@ While every user can reset his or her own password using the *forgotten password
 == Groups http://open.esignforms.com/images/HowToGuidesWiki/groupsIcon.png ==
 
 All permissions are applied to groups, which is just a simple name used to identify one or more users who perform similar jobs or work together. A user can belong to one or more groups, and it's possible to create multiple groups to support multiple companies/partners who are sharing a single system so that each such company only sees users and groups that belong to their company, while allowing the owner of the deployment to view all users and all transactions across those companies.
+
+Configuring a group involves giving it a name and specifying which users belong to the group:
+
+http://open.esignforms.com/images/HowToGuidesWiki/groupEdit.png
+
+We recommend using a simple *PathName* that describes your group. However, if you support multiple companies or departments, you can prefix them to keep them organized, such as Company1 (for all users who work at Company1), Company1/Admin (for the users who can do the user administration functions for Company1), Company1/Manager (for the managers in Company1 that can see across all users), and Company1/Programming (for those who program the forms for Company1). 
+
+You are free to name as you see fit, of course, but since you will use them for assigning permissions, it's best if they make clear sense to you. If you have multiple companies with multiple departments in each, and you want each department to have control or limited access to just that department, consider using a scheme like Company1/Department1, Company1/Department1/Admin, Company1/Department1/Manager, etc., so you can then have Company1/Department2, Company1/Department2/Admin, Company1/Department2/Manager, etc.
+
+=== Permissions to access this group ===
+
+See [#Permissions Overview the permissions overview] for this basic setup of group permissions:
+
+http://open.esignforms.com/images/HowToGuidesWiki/groupPermissions.png
+
+This list specifies who can perform various operations related to this group record alone.
+
+=== Member users of this group ===
+
+To set which users are members of this group, click to open:
+
+http://open.esignforms.com/images/HowToGuidesWiki/groupMembers.png
+
+You can click one or more users from the left side and then click the *>>* button to add users to the group.  Or click one or more users from the right side and then click the *<<* button to remove users from the group.
+
+You can also set which groups a given [#Users user] belongs to by modifying that user's record.
+
+=== Permissions to access the member users of this group ===
+
+The permissions for accessing the records of the [#Users users] who belong to a group are set here:
+
+http://open.esignforms.com/images/HowToGuidesWiki/groupMemberPermissions.png
+
+Like the standard permissions, you can specify who can List, View Details, Create, Update and Delete users who belong to this group. Normally, this permission is left to the *System/Administrator* or if the group administrator, such as Company1/Admin if you build such a group.
+
+=== Show members ===
+
+If you click on the *Show members* button, a popup window that lists all users appears:
+
+http://open.esignforms.com/images/HowToGuidesWiki/groupMembersList.png
 
 <p align="right"><font size="1">[#Index Table of contents]  or  [#List_of_Guides Top]</font></p>
 
