@@ -537,6 +537,73 @@ http://open.esignforms.com/images/HowToGuidesWiki/groupMembersList.png
 
 <p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
 
+== Who's On Now http://open.esignforms.com/images/HowToGuidesWiki/whosOnNowIcon.png ==
+
+Click on *Access control->Who's on now* to display all active user sessions:
+
+http://open.esignforms.com/images/HowToGuidesWiki/userSessions.png
+
+  * For logged in users, the *Name* column is the user's login name. For external users, it is the transaction and role they are playing if that has been determined.
+  * The *IP* column shows the IP address (and host name when it can be determined by a reverse DNS lookup).
+  * The *Last* column shows the date-time when the user last accessed the server.
+  * The *Started* column shows the date-time when the user first accessed the server.
+  * The *Timeout* column shows the number of minutes the user's session will remain active if no user activity is taking place. Generally speaking, if the *Last* column is more than *Timeout* minutes from now, that user's session will timeout and the user will need to restart.
+
+<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
+
+== UI Views http://open.esignforms.com/images/HowToGuidesWiki/uiViewsIcon.png ==
+
+Click on *Access control->UI Views* to list all of the views (main pages/screens) that are accessible from the left side panel menu navigation.  "UI" stands for "user interface."
+
+http://open.esignforms.com/images/HowToGuidesWiki/uiViews.png
+
+We do not recommend changing the *View EsfName* of any views as it will break their functionality unless other programmer-level changes are made.
+
+We do not recommend changing permissions here much as it is generally best to set them once for all users, since users will naturally be limited to the users, groups, libraries and transactions that have been granted to them based on their permissions.  The UI permissions are mostly to determine whether a given item appears in the menu navigation or not.
+
+  * DeploymentPropertiesView controls *System config->Deployment*
+  * DeploymentStatsView controls *System config->Stats*
+  * GroupView controls *Access control->Groups*
+  * LibraryDocumentProgrammingTipsEditView controls *System config->Document program tips*
+  * LibraryProgrammingTipsEditView controls *System config->Program tips*
+  * LibraryView controls *Programming->Libraries*
+  * PackageAndVersionsMainView controls *Programming->Packages*
+  * ReportTemplateView controls *Programming->Report templates*
+  * SystemLogView controls *System config->System logs*
+  * ToDoListingView controls *To Do*
+  * TransactionListingView controls *General tran search*
+  * TransactionTemplateView controls *Programming->Tran templates*
+  * UIView controls this view *Access control->UI Views*
+  * UserView controls *Access control->Users*
+  * UserSessionView control *Access control->Who's on now?*
+  * AccessControlTipsEditView controls *System config->Access control link*
+  * AccessControlTipsView controls *Access control*
+  * ProgrammingTipsEditView controls *System config->Program link*
+  * ProgrammingTipsView controls *Programming*
+  * ReportTipsEditView controls *System config->Report link tips*
+  * ReportTipsView controls *Reports*
+  * StartTransactionTipsEditView controls *System config->Start tran tips*
+  * StartTransactionTipsView controls *Start transaction*
+  * SystemConfigTipsEditView controls *System config->System config link*
+  * SystemConfigTipsView controls *System config*
+  * WelcomeTipsEditView controls *System config->Welcome link*
+  * WelcomeTipsView* controls *Welcome*
+  
+<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
+
+=== Permissions to Access the XXXX screen ===
+
+http://open.esignforms.com/images/HowToGuidesWiki/uiViewsPermissions.png
+
+Permissions work the same here as for other permissions, but it doesn't affect the ability to change the UI record itself, but how the user interface works.
+  * *List* permission means the user will see this UI in the menus.
+  * *View details* means the user will see this UI in the menus.
+  * *Create* means the user will be allowed a *Create* or *Create like* button.
+  * *Update* means the user will be allowed a *Save* button.
+  * *Delete* means the user will be allowed a *Delete* button.
+
+_Note that having the permission here does not mean the button will always appear, since for records that have their own permissions, the user will need it on the specific object as well. If you remove *Delete* permissions for the UI, for example, that button will not appear even if the user's group allows them to otherwise delete that record._
+
 <p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
 
 == Deployment configuration http://open.esignforms.com/images/HowToGuidesWiki/deploymentPropertiesIcon.png ==
@@ -586,18 +653,6 @@ http://open.esignforms.com/images/HowToGuidesWiki/deploymentProperties.png
 _Remember to click *Save* after changing any values._
 
 <p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-== Who's On Now http://open.esignforms.com/images/HowToGuidesWiki/whosOnNowIcon.png ==
-
-Click on *Access control->Who's on now* to display all active user sessions:
-
-http://open.esignforms.com/images/HowToGuidesWiki/userSessions.png
-
-  * For logged in users, the *Name* column is the user's login name. For external users, it is the transaction and role they are playing if that has been determined.
-  * The *IP* column shows the IP address (and host name when it can be determined by a reverse DNS lookup).
-  * The *Last* column shows the date-time when the user last accessed the server.
-  * The *Started* column shows the date-time when the user first accessed the server.
-  * The *Timeout* column shows the number of minutes the user's session will remain active if no user activity is taking place. Generally speaking, if the *Last* column is more than *Timeout* minutes from now, that user's session will timeout and the user will need to restart.
 
 == Deployment Statistics http://open.esignforms.com/images/HowToGuidesWiki/deploymentStatsIcon.png ==
 
