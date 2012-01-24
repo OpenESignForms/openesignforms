@@ -6,16 +6,16 @@
 </tr></table>
 
 ==== Other How-To Guides ====
-  * [HowToGuides General How-To Guide Tips & Tricks]
-  * [UserGuide User's Guide]
-  * [SystemAdminGuide System Administrator's Guide]
+  * [HowToGuides General How-To Guide Tips & Tricks] (Read first)
+  * [UserGuide User's Guide] (Read first)
+  * *[SystemAdminGuide System Administrator's Guide]* (this guide)
   * [ProgrammingGuide Point & Click Programmer's Guide]
 
 ==== Table of contents ====
 <wiki:toc max_depth="3" />
 
 ----
-= System Administrator Guide =
+<h1>System Administrator Guide</h1>
 ----
 
 Every deployment should have at least one user assigned to the *System/Administrator* group. The system administrator can delegate powers to other groups, including creating partner/department administrator groups who have similar capabilities, but over only a subset of all users.
@@ -26,7 +26,7 @@ See the [HowToGuides#User_Guide User Guide] for common user activities, or the [
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Users and Groups Overview ==
+= Users and Groups Overview =
 
 A key concept in Open eSignForms is that permissions are assigned to Groups, and Users are assigned to Groups. Therefore, a User has the sum of permissions for all groups he or she belongs in.
 
@@ -40,7 +40,7 @@ All deployments will have the *System/Administrator* group. It has access to all
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Permissions Overview ==
+= Permissions Overview =
 
 All records (also known as objects) in the system generally have four common permissions associated with them:
   # *List* permission specifies the groups that are allowed to see the record in a list, such as a drop down list or menu.
@@ -55,7 +55,7 @@ The Group object itself is special in that it also has a similar set of List, Vi
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Configuring Permissions ===
+== Configuring Permissions ==
 
 If you have View Details and Update permission for a given record, you can change the groups who have permission to manipulate that record, too. For example, for a given Group record's *List* permission:
 
@@ -67,7 +67,7 @@ Of course, you will have to click the *Save* button after your have made your ch
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Users http://open.esignforms.com/images/HowToGuidesWiki/usersIcon.png ==
+= Users http://open.esignforms.com/images/HowToGuidesWiki/usersIcon.png =
 
 Click on *Access control->Users* to list and update user records.
 
@@ -83,14 +83,14 @@ http://open.esignforms.com/images/HowToGuidesWiki/userEdit.png
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Member of group(s) ===
+== Member of group(s) ==
 
 To list the groups the user belongs to, open the *Member of groups(s)* panel:
 http://open.esignforms.com/images/HowToGuidesWiki/userMemberOfGroups.png
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Update member of group(s) ===
+== Update member of group(s) ==
 
 To update the groups the user belongs to, open the *Update member of groups(s)* panel:
 http://open.esignforms.com/images/HowToGuidesWiki/userMemberOfGroupsUpdate.png
@@ -101,7 +101,7 @@ _Remember to click *Save* after changing the group membership._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== View user activity log ===
+== View user activity log ==
 
 Click on the *View activity log* button to display activity associated with the user:
 
@@ -118,7 +118,7 @@ Click the *Find matching* button to list all matching records.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== View user email ===
+== View user email ==
 
 Click on the *View email* button to display emails sent to or on behalf of the user:
 
@@ -137,14 +137,14 @@ http://open.esignforms.com/images/HowToGuidesWiki/userEmailDetails.png
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Send RESET password email ===
+== Send RESET password email ==
 Click the *Send RESET password email* to reset a user's password so that the user cannot login until he or she retrieves the email, clicks on the unique link it contains, and then chooses a password.
 
 _Note that the user cannot login once you click this button until they set a new password. The original password will no longer be valid once the button is clicked._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Create a new user account ===
+== Create a new user account ==
 
 Click on *Access control->Users*:
 
@@ -163,7 +163,7 @@ If the user does not receive the email in after a normal amount of time, you can
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Reset a user's password  ===
+== Reset a user's password  ==
 While every user can reset his or her own password using the *forgotten password* feature linked on the login page, it is possible the user has forgotten the answer to that question as well. 
 
 Click on *Access control->Users*:
@@ -177,7 +177,7 @@ If the user does not receive the email in after a normal amount of time, you can
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Groups http://open.esignforms.com/images/HowToGuidesWiki/groupsIcon.png ==
+= Groups http://open.esignforms.com/images/HowToGuidesWiki/groupsIcon.png =
 
 Click on *Access control->Groups* to list and update group records.
 
@@ -193,7 +193,7 @@ You are free to name as you see fit, of course, but since you will use them for 
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Permissions to access this group ===
+== Permissions to access this group ==
 
 See [#Permissions Overview the permissions overview] for this basic setup of group permissions:
 
@@ -205,7 +205,7 @@ _Remember to click *Save* after changing permissions._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Member users of this group ===
+== Member users of this group ==
 
 To set which users are members of this group, click to open:
 
@@ -219,7 +219,7 @@ _Remember to click *Save* after changing the group membership._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Permissions to access the member users of this group ===
+== Permissions to access the member users of this group ==
 
 The permissions for accessing the records of the [#Users users] who belong to a group are set here:
 
@@ -231,7 +231,7 @@ _Remember to click *Save* after changing permissions._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Show members ===
+== Show members ==
 
 If you click on the *Show members* button, a popup window that lists all users appears:
 
@@ -239,7 +239,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/groupMembersList.png
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Who's On Now http://open.esignforms.com/images/HowToGuidesWiki/whosOnNowIcon.png ==
+= Who's On Now http://open.esignforms.com/images/HowToGuidesWiki/whosOnNowIcon.png =
 
 Click on *Access control->Who's on now* to display all active user sessions:
 
@@ -253,7 +253,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/userSessions.png
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== UI Views http://open.esignforms.com/images/HowToGuidesWiki/uiViewsIcon.png ==
+= UI Views http://open.esignforms.com/images/HowToGuidesWiki/uiViewsIcon.png =
 
 Click on *Access control->UI Views* to list all of the views (main pages/screens) that are accessible from the left side panel menu navigation.  "UI" stands for "user interface."
 
@@ -293,7 +293,7 @@ We do not recommend changing permissions here much as it is generally best to se
   
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Permissions to Access the XXXX screen ===
+== Permissions to Access the XXXX screen ==
 
 http://open.esignforms.com/images/HowToGuidesWiki/uiViewsPermissions.png
 
@@ -308,7 +308,7 @@ _Note that having the permission here does not mean the button will always appea
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Deployment configuration http://open.esignforms.com/images/HowToGuidesWiki/deploymentPropertiesIcon.png ==
+= Deployment configuration http://open.esignforms.com/images/HowToGuidesWiki/deploymentPropertiesIcon.png =
 
 Under *System config->Deployment* you can view and modify certain deployment properties. Please do so with care. Click the *Edit* button to change values, but be certain you know what you are doing.
 
@@ -356,7 +356,7 @@ _Remember to click *Save* after changing any values._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Deployment Statistics http://open.esignforms.com/images/HowToGuidesWiki/deploymentStatsIcon.png ==
+= Deployment Statistics http://open.esignforms.com/images/HowToGuidesWiki/deploymentStatsIcon.png =
 
 Under *System config->Stats* you can view statistics related to your system activity and versions.
 
@@ -389,7 +389,7 @@ Under the *Database* column:
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== System logs http://open.esignforms.com/images/HowToGuidesWiki/systemLogsIcon.png ==
+= System logs http://open.esignforms.com/images/HowToGuidesWiki/systemLogsIcon.png =
 
 Under *System config->System logs*, you can view activities that take place on the system that are logged. This allows for trouble shooting as well as assigning blame (yes, we know _you_ did it)! See the [#Deployment_configuration Deployment configuration] for how long these log records are kept.
 
