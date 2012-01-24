@@ -38,6 +38,8 @@ All deployments will have the *System/Administrator* group. It has access to all
 
 (`*` There is also one special group called *ESF/Group/Deployment/SuperAdmin* that is created when the system is deployed. It is used to ensure access like "root" or "Administrator" provides for servers and PCs and is managed by whoever is responsible for the web application deployment.)
 
+Watch our [http://www.youtube.com/watch?v=4Y7TnY8NMZ4&hd=1 How-To Video on YouTube: HTV Users, Groups and Permissions].
+
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 = Permissions Overview =
@@ -52,6 +54,8 @@ All records (also known as objects) in the system generally have four common per
 For User Interface (screens/views) components, the permissions generally describe whether a 'Create like' or 'Save' or 'Delete' button will even appear on that screen, and 'List' means whether that item will even appear on the navigation menu list on the left side.
 
 The Group object itself is special in that it also has a similar set of List, View, Create, Update and Delete permissions that are directed at the Users who belong to the group. An administrator for a group of users needs to have these permissions to manage the users in the group, but may only need List permission on the group itself.
+
+Watch our [http://www.youtube.com/watch?v=4Y7TnY8NMZ4&hd=1 How-To Video on YouTube: HTV Users, Groups and Permissions].
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
@@ -161,6 +165,8 @@ An email will be sent to the user's email address so he or she can choose a pass
 
 If the user does not receive the email in after a normal amount of time, you can click the *View email* button to see if there was a bounce, such as if you had the email address incorrect or there was some other error.
 
+Watch our [http://www.youtube.com/watch?v=VnJGjbEwIfI&hd=1 How-To Video on YouTube: HTV Password Reset & Add New Users].
+
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 == Reset a user's password  ==
@@ -174,6 +180,8 @@ Click on *Access control->Users*:
 An email will be sent to the user's email address so he or she can choose a new password and, you hope, set a better forgotten password question & answer.
 
 If the user does not receive the email in after a normal amount of time, you can click the *View email* button to see if there was a bounce, such as if the email address was no longer valid or there was some other error.
+
+Watch our [http://www.youtube.com/watch?v=VnJGjbEwIfI&hd=1 How-To Video on YouTube: HTV Password Reset & Add New Users].
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
