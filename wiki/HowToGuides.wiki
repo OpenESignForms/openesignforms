@@ -1,4 +1,4 @@
-#summary How-To Guides for Open eSignForms
+#summary How-To Guide: Concepts, Tips & Tricks for Open eSignForms
 #labels Featured,Phase-Support
 
 <table width="100%"><tr>
@@ -6,11 +6,16 @@
 <td width="50%" align="right">http://www.yozons.com/images/logoSmall.gif</td>
 </tr></table>
 
-==== List of Guides ====
-<wiki:toc max_depth="1" />
-<g:plusone size="medium"></g:plusone>
+==== Other How-To Guides ====
+  * *[HowToGuides Concepts, Tips & Tricks]* (this guide)
+  * [UserGuide User's Guide]
+  * [SystemAdminGuide System Administrator's Guide]
+  * [ProgrammingGuide Point & Click Programmer's Guide]
 
-----
+==== Table of contents ====
+<wiki:toc max_depth="3" />
+
+<h1>How-To Guide: Concepts, Tips & Tricks</h1>
 
 = Introduction =
 
@@ -18,26 +23,26 @@ Thank you for using [http://open.esignforms.com Open eSignForms]^TM^ by [http://
 
 See our [http://www.youtube.com/watch?v=Au6FMeautUI&hd=1 YouTube video] for a 15-minute overview tour.
 
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Background ==
+= Background =
 Open eSignForms is based on over 10 years of experience building thousands of custom electronic signature solutions across a wide variety of industries and company sizes, from our start in 2001 with the Fortune 1 company to myriad 1-person companies. Our target market is primarily small businesses and departments of larger corporations that have 1-500 users who need to process documents repeatedly. Very small users are certainly welcome, but there are a multitude of free services for those individuals who need to do only 5 or fewer documents per month.
 
 Our users have streamlined their processes with sales agreements, HR and employee documents, federal and state W-4, I-9, W-9s, property rentals, school applications, financing documents, debt consolidation, non-disclosure agreements, licensing agreements, partnership documents, stockholder communications, student loans, pretty much any document you have and want to make available for rapid completion and easy searching.
 
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== License ==
+= License =
 As open source software under the [http://open.esignforms.com/agpl.txt GNU Affero GPL (AGPL)], you are free to download and install and use as you see fit so long as the forms you program are made available along with our source code to your users. 
 
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Hosting services ==
+= Hosting services =
 Hosting services are available on a shared server, or a private web server using your domain name, or we can install it on your own Linux server in your data center. These all come with a commercial license and technical support services and are _only available from Yozons_ with [http://www.yozons.com/Open-eSignForms/pricing.jsp pricing shown here].
 
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Production versus Test ==
+= Production versus Test =
 The concept of Production versus Test is used throughout Open eSignForms. This is a simple, but powerful, mechanism that allows you to keep Production transactions (those your business relies upon) separate from Test transactions (those you create while testing new documents, making changes, etc.).  Reports and To Do allow you to view one type or the other, but they are never mixed together.
 
 Test and Production transactions have distinct retention values so you may decide you want to keep your test transactions around for only 7 days, but you might keep your production transactions forever, or at least for as many years as you think you'll need them.
@@ -54,9 +59,9 @@ http://open.esignforms.com/images/HowToGuidesWiki/testTransactionMeta.png
 
 _You do not want to use Test mode for production transactions. If you do, your customers will be confused and they will be able to successfully contest it as not legally binding._
 
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== General tips and tricks == 
+= General tips and tricks =
 
 Always remember to click the *Save* button after you are done making any changes. If you are configuring a complex record that has popup windows, you will need to click *Ok* on those windows, then close them, and still click *Save* on the main record.
 
@@ -64,9 +69,9 @@ Click on an object to select it. Often, if you it again, it will unselect it.
 
 To select multiple items when allowed, click the first item, then CTRL-click to add additional items, or CTRL-click a selected item to unselect it.  You can also click the first item, then SHIFT-click another item to select all items in the range between those two clicks.
 
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Menu items ===
+== Menu items ==
 You can open any menu item feature by clicking on it, and it will replace the tab in the main part of the application screen. If you right click a menu item and bring up a context menu:
 
 http://open.esignforms.com/images/HowToGuidesWiki/rightClickMenuItem.png
@@ -74,9 +79,9 @@ http://open.esignforms.com/images/HowToGuidesWiki/rightClickMenuItem.png
   * *Open in a new window* means to open this item in a new window that can be dragged about, though it is limited to the browser window and can fall behind other such windows and become invisible until you close the top window.
   * *Open in a new browser window* mean to open this item in a new browser window that is distinct from the browser window, so they can be placed side-by-side, for example, on your computer screen.
 
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Tabular data ===
+== Tabular data ==
 Often, data is presented as a list in table, with column headers such as:
 
 http://open.esignforms.com/images/HowToGuidesWiki/tableColumns.png
@@ -89,15 +94,15 @@ Currently, such changes are not remembered, though, so each time you run a query
 
 When data is listed by name, it's generally in alphabetic order.  When listing transactions and log records, generally the order is reverse time order so the most recent is at the top.
 
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Tooltips ===
+== Tooltips ==
 When in doubt, if you hover your mouse over a field or label, a tooltip will appear with helpful information; for example:
 http://open.esignforms.com/images/HowToGuidesWiki/tooltips.png
 
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Arrows reveal additional related data ===
+== Arrows reveal additional related data ==
 And finally, often items are listed in a tree or panel that only opens when you click on the arrow next to it's name:
 
 http://open.esignforms.com/images/HowToGuidesWiki/openCloseArrows.png
@@ -106,30 +111,30 @@ When the arrow points down (such as *Programming* above), that item is "opened" 
 
 If there are no elements (or at least no elements you have *List* permission to) when you open an item, the arrow will change, but nothing will appear. This generally means you do not have permission to any items under it, or perhaps none have been created yet (such as for menu items *Reports*, or *Start transaction*), or if some exist, they are disabled and so do not appear in the listing.
 
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Resizing display areas ===
+== Resizing display areas ==
 For programmers and power users, we recommend your run this application with your browser maximized on a Full HD monitor/screen (1080 height) or greater.
 
 The application has various horizontal and vertical bars that allow for fields to be resized.  Just put your cursor over them, and if it is allowed, the cursor appearance will change to indicate that you can resize the areas with a click and drag to move it left and right, or up and down. This is true for the columns listed in table headers as well as various panels on the main application window.
 
 Popup windows can be moved by clicking on the title bar and dragging it.  Popup windows also can be resized using the handle displayed in the lower right corner.
 
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== EsfNames and PathNames ===
+== EsfNames and PathNames ==
 *EsfName* and the related *PathName* are used throughout to name objects in Open eSignForms. An EsfName is 1-50 upper and lowercase letters, starting with a letter, having no spaces, but allowing an underbar. The names must be unique for each object type, and names are not case sensitive, so ESFNAME and EsfName and esfname would be considered duplicates. Examples of valid EsfNames are: ExampleName, example_name and Example_1.  
 
 Some objects support a PathName, which is a series of one or more EsfNames separate by the slash character: */*  Examples of valid path names are: Simple_pathname, Company1/ExampleName, This/Is/Also/Valid.
 
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== IDs or UIDs ===
+== IDs or UIDs ==
 Open eSignForms makes extensive use of standards-based, globally unique identifiers that are 16 bytes long. All records/objects are assigned such a ID and are often displayed for debugging purposes on various screens.  A typical looking UID is: {{{6dfe4d5e-7be6-425c-b083-be5223d032f0}}}. As part of the UID is randomly generated, you will not see any pattern in IDs as they are assigned. The ID is mostly used for finding the related record in the database when some issue arises that requires debugging the platform code.
 
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== List of Records and Form Editing ===
+== List of Records and Form Editing ==
 
 Most records are updated using a common look and feel: a list or table of records shown at the top, with a form for viewing and editing that record below. There is an adjustable slider that appears between the list and the form, so you can adjust the space for each by putting your cursor over the bar that separates them, waiting for the cursor to change indicating it is over the split panel line, and the click and drag the line to change how much space is allocated to each.
 
@@ -161,559 +166,29 @@ Most forms also include common buttons:
 
 _Remember to click *Save* after changing any configuration._
 
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-----
-= User Guide = 
-----
+== Date ranges for searches ==
 
-This guide describes common functions performed by all users. See the [#System_Administrator_Guide System Administrator Guide] for details on setting up users and configuring the system, or the [#Point_&_Click_Programming_Guide Point & Click Programming Guide] for programming documents, packages, transactions and reports.
+There are various places where date ranges may be entered. They will include a *From date* and a *To date*:
 
-_Note that not all menu items are authorized to all users. If you do not see the item in your menu when you login, you either are not authorized, or you should contact our system administrator so that you are given permission to access that function._
+http://open.esignforms.com/images/HowToGuidesWiki/dateRanges.png
 
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
+Leave the *From date* blank to include the oldest records. Otherwise, put in the oldest date to use for matching records.
 
-== Login ==
-All users login on a page that is distinct for your deployment. Unlike other services, each customer or company has its own distinct web application and data base to allow for easy migration from shared hosting, to private hosting, to your own server. Also, this reduces any accidental data leaks or exposure of private data due to hacking attacks or unauthorized access that result from poor security habits of others. Sadly, large systems with millions of users become valuable targets to thieves and hackers.
+Leave the *To date* blank to include the newest records. Otherwise, put in the most recent date to use for matching records.
 
-Contact your system administrator if you need a new account so you can login, cannot reset your own password through the 'Forgot your password?' process, or for the web address (URL) to use for your deployment.  When a new user account is created, an email will be sent to your login email address allowing you to choose a new password, as well as set up a forgotten password question and answer.
+You may use the calendar button to bring up a calendar where you can select a date from it.
 
-A typical login page looks like this:
+http://open.esignforms.com/images/HowToGuidesWiki/calendarPopup.png
 
-http://open.esignforms.com/images/HowToGuidesWiki/loginPage.png
+Use the *<<* button to jump to the previous year. Use the *>>* button to jump to the next year.
 
-Your company's logo will appear at the top, along with your company name in the heading.
+Use the *<* button to jump to the previous month. Use the *>* button to jump to the next month.
 
-Enter your email address and password, then click the Login button.  A password can be as long as a 50-character pass phrase that includes letters, numbers, spaces and special characters. It is case sensitive. We recommend at least 10 characters, something you can remember, but others will find impossible to guess. 
+Click on any date to select that date.
 
-Check the 'Remember email' box when on your own computer to avoid having to specify it ever time you login.
-
-If you have forgotten your password, click on the *[#Forgot_your_password Forgot your password?]* link.
-
-After you login, at the bottom of the web page, it will show when you logged in, when you previously logged, as well as the time when your browser last communicated with the server:
-
-http://open.esignforms.com/images/HowToGuidesWiki/loginTimeFooter.png
-
-You may want to check the previous login time and IP address to see if any unauthorized logins to your account took place. Also, most user sessions last about 30 minutes, so if your browser has not sent anything in that amount of time, your session will terminate, you will lose any unsaved work, and you'll have to login again. Clicking on anything in the application will likely communicate with the server and keep your session active.
-
-When you login, you will see a welcome screen that includes links you may be interested in, as well as how to ask questions, report bugs, etc. Many pages have useful tips right inside them.
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-== Logoff http://open.esignforms.com/images/HowToGuidesWiki/logoffIcon.png == 
-
-Whenever you are done using the application, you should logoff. This not only protects access to your account, but it also frees server resources. If you just close your browser, go to another web site (URL) or remain idle for a long period of time, the web server will eventually time out your session.
-
-There is a logoff button on the bottom of the navigation bar on the left side column, as well as in the upper right corner.
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-== To Do http://open.esignforms.com/images/HowToGuidesWiki/toDoIcon.png == 
-
-Click on *To Do* from the main navigation bar to shows all active transactions that are queued for you to work on.
-
-http://open.esignforms.com/images/HowToGuidesWiki/toDoQueue.png
-
-All work is shown grouped by the type of transaction. Several column headers are fixed:
-  * *Party* is the party name for the current processing step of the transaction.
-  * *Status* is the current transaction status.
-  * *Last updated* is the last updated date-time for the transaction.
-  * *Role* is the party's display name for the current processing step of the transaction.
-
-If other columns are shown to help you understand the work To Do (such as the *Email to* and *Subject* in this example), those values are defined in the Package's *Map report fields*, in which the fields are shown in the order specified provided the *Show To Do* box is checked.
-
-To process a transaction, just click on it. This will open a new window for you to process the transaction. Close that window when you are done.
-
-Click the *Refresh* button to update the list, such as after processing some work or to check for new work.
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-== Start a transaction http://open.esignforms.com/images/HowToGuidesWiki/startTransactionIcon.png ==
-
-To start a transaction, open the *Start transaction* menu to list transactions you are authorized to start manually.
-
-Click on the transaction name to start that transaction for Production mode. A new window will pop up to allow you to work on that transaction. Close that window when you are done. If the transaction allows it, you can delete it from the package's document list using the *Delete this transaction* button. The package document list is either the first page you see, or while in edit mode, you can click on the *Return to the document list*  button to show it.
-
-If you are testing or making changes, you can run the transaction in Test mode by right-clicking on the transaction name:
-
-http://open.esignforms.com/images/HowToGuidesWiki/startTransactionTestModes.png
-
-Click on *Start TEST transaction* to start the transaction in Test mode using all of the most recent test versions where available. If a component has no test version, the production version will be used.
-
-Click on *Start TEST like Production* to start the transaction in Test mode, but using only production versions. This is a good "final test" after you migrate components from Test to Production, or when a customer says something odd is happening and you want to test out a production-level transaction, but in Test mode.
-
-_Note, some transactions may not be started by users, and those will not be listed here. Some transactions are configured to be started by *External users*, parties who are not logged in, such as transactions that are started by your customers who visit your web site or are started via integration of existing applications you have._
-
-[http://www.youtube.com/watch?v=14fy5296kPE&hd=1 See our YouTube video] on starting a transaction.
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-== Forgot your password http://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordLink.png ==
-
-If you have forgotten your password, shame on you! But assuming you set up a useful question and answer, you should be able to choose a new password automatically.
-
-From the login page, click the *Forgot your password?* link to show this page:
-
-http://open.esignforms.com/images/HowToGuidesWiki/requestPasswordReset.png
-
-Type in the email address you use to login, then click the *Send email to reset my password* button. 
-
-Then, check your email for a unique link that is sent to you to continue with the reset process. This step prevents people who do not control your email account from even attempting to reset your password. You should receive an email like the following:
-
-http://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordEmail.png
-
-Click on the link in the email and you will be presented with the question you set up when you set your password like the following:
-
-http://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordQuestion.png
-
-Type in the answer to your question. Note that it will be displayed, so do this in private. Unlike a password, the answer is _not_ case sensitive and non-alphanumeric characters (letters and numbers) are ignored. Click the *Continue* button.
-
-Assuming you gave the correct answer, you will then be prompted to set a new password as well as a new forgotten question and answer. The previous question will be auto-filled, but you can change it or keep it, and you will have to provide the answer again regardless. This is the standard page to [#Set_my_password Set my password].
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-== Set my password == 
-
-To set your password, as well as the forgotten password question and answer, you will be presented with this page:
-
-http://open.esignforms.com/images/HowToGuidesWiki/setMyPassword.png
-
-Enter your password two times to ensure you have typed the expected value. The password will be masked like a regular password field and is a phrase that can be a mix of letters, numbers, spaces and special characters. It is case sensitive.
-
-Think up a good question that the system can ask you if you ever forget your password and need to reset it and enter that in the *Question to ask you* field. Provide the corresponding answer in the *Answer you will provide to reset your password* field. Unlike a password, the answer will be displayed, so please do this in private. Answers are _not_ case sensitive and special characters are ignored. This is essentially a "second password" so make sure the question and related answer are not too easily guessed should anybody ever attempt to reset your password while they have access to your email account.
-
-Click the *Set my password* button once you have completed the form. If successful, click on the *[#Login login now]* link displayed and you can begin to use the application.
-
-_Note that an email will be sent to you every time your password is changed, so if you did not just change your password, it is an indication someone may be accessing your account without authorization._
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-== Session expires == 
-
-In order to keep your user account safe should you stop using it, or if you just close your  browser without logging off first (a no-no! -- always logoff when you are done), the application will automatically log you off if you have not had any recent activity. Clicking on most areas of the application will keep your session active, with the last server access shown at the bottom. The system administrator can set how long a user session is, but it defaults to 30 minutes.
-
-If you click on something and see the following:
-
-http://open.esignforms.com/images/HowToGuidesWiki/sessionExpired.png
-
-it means your session expired due to lack of recent usage. Note any changes you may have made (if they were not already saved, they will be lost) and click on the red box to continue and [#Login login again].
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-== Communication problem == 
-
-It is possible that while you were logged in, your application was restarted, such as for a new release, to resolve a bug, or because of some error on the system or application code.
-
-If you click on something and see the following (or any other red box error):
-
-http://open.esignforms.com/images/HowToGuidesWiki/communicationProblem.png
-
-it means your session was terminated unexpectedly. Note any changes you may have made (if they were not already saved, they will be lost) and click on the red box to continue and [#Login login again].
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-----
-= System Administrator Guide =
-----
-
-Every deployment should have at least one user assigned to the *System/Administrator* group. The system administrator can delegate powers to other groups, including creating partner/department administrator groups who have similar capabilities, but over only a subset of all users.
-
-The system administrator is responsible for various system-wide settings, creating new users, groups, permissions, resetting passwords and checking system activity logs. 
-
-See the [#User_Guide User Guide] for common user activities, or the [#Point_&_Click_Programming_Guide Point & Click Programming Guide] for programming documents, packages, transactions and reports.
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-== Users and Groups Overview ==
-
-A key concept in Open eSignForms is that permissions are assigned to Groups, and Users are assigned to Groups. Therefore, a User has the sum of permissions for all groups he or she belongs in.
-
-All deployments will have the *System/Administrator* group. It has access to all regular`*` users and groups. We recommend at least the following additional groups be created:
-  # A group for your company or department, such as MyCompany. You can put all users who belong into this group.
-  # A group for the programmers in your company or department, such as MyCompany/Programming. You can put just those folks, whether in your company or a hired professional services consultant, who will program documents and transactions in this group.
-  # A group for managers in your company or department who can see across all users in your company or department, such as MyCompany/Manager.
-  # If you will have multiple companies or departments using your deployment, you may consider a group for that plays the system administrator function, but limited to the company/department, such as MyCompany/Administrator.
-
-(`*` There is also one special group called *ESF/Group/Deployment/SuperAdmin* that is created when the system is deployed. It is used to ensure access like "root" or "Administrator" provides for servers and PCs and is managed by whoever is responsible for the web application deployment.)
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-== Permissions Overview ==
-
-All records (also known as objects) in the system generally have four common permissions associated with them:
-  # *List* permission specifies the groups that are allowed to see the record in a list, such as a drop down list or menu.
-  # *View Details* permission specifies the groups that are allowed to see the details of a record, such as all of the fields used to configure it.
-  # *Create/Create Like* permission specifies the groups that are allowed to create a new record (or object) like the existing record.
-  # *Update* permission specifies the groups that are allowed to update or modify the record.
-  # *Delete* permission specifies the groups that are allowed to delete the record.
-
-For User Interface (screens/views) components, the permissions generally describe whether a 'Create like' or 'Save' or 'Delete' button will even appear on that screen, and 'List' means whether that item will even appear on the navigation menu list on the left side.
-
-The Group object itself is special in that it also has a similar set of List, View, Create, Update and Delete permissions that are directed at the Users who belong to the group. An administrator for a group of users needs to have these permissions to manage the users in the group, but may only need List permission on the group itself.
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-=== Configuring Permissions ===
-
-If you have View Details and Update permission for a given record, you can change the groups who have permission to manipulate that record, too. For example, for a given Group record's *List* permission:
-
-http://open.esignforms.com/images/HowToGuidesWiki/groupListPermission.png
-
-Select one or more groups from the left column (available groups you can choose from -- because you have *List* permission to those groups), and click the *>>* button to move them to the right side, which is the list of Groups that will have the specified permission. 
-
-Of course, you will have to click the *Save* button after your have made your changes.
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-== Users http://open.esignforms.com/images/HowToGuidesWiki/usersIcon.png ==
-
-Click on *Access control->Users* to list and update user records.
-
-Each user who can start transactions, run reports, or process work via the To Do queue needs a user account. While you can share user accounts, we recommend you give each user his or her own login and password to aid in tracking user activity and to make it easier to handle password issues should one of the users no longer need access to the system.
-
-Configuring a user involves setting up the user's email address, name and what groups he or she belongs to:
-
-http://open.esignforms.com/images/HowToGuidesWiki/userEdit.png
-  * *Email address* must uniquely identify this user, and it should be a valid, working email address in order for the user to set a password, get email notifications, etc.
-  * *Email display name* is the name shown that goes with the email address to create a "fully qualified" email address. Most people use their full name or role, such as "Support" or "David Jones", which results in an email address of "Support <support@example.com>" or "David Jones <djones@example.com>".
-  * *First name* is the user's first, or personal, name.
-  * *Last name* is the user's last, or family, name.
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-=== Member of group(s) ===
-
-To list the groups the user belongs to, open the *Member of groups(s)* panel:
-http://open.esignforms.com/images/HowToGuidesWiki/userMemberOfGroups.png
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-=== Update member of group(s) ===
-
-To update the groups the user belongs to, open the *Update member of groups(s)* panel:
-http://open.esignforms.com/images/HowToGuidesWiki/userMemberOfGroupsUpdate.png
-
-Select one or more groups from the left side and click the *>>* button to add the user to those groups.  Select one or more groups from the right side and click the *<<* button to remove the user from those groups.
-
-_Remember to click *Save* after changing the group membership._
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-=== View user activity log ===
-
-Click on the *View activity log* button to display activity associated with the user:
-
-http://open.esignforms.com/images/HowToGuidesWiki/userActivityLog.png
-
-  * Enter a *From date* to start from a specific date (or select the date from the calendar popup). Leave blank to include the oldest records.
-  * Enter a *To date* to specify and ending date (or select the date from the calendar popup). Leave blank to include the newest records.
-  * Check *Login* to include user logins and logoffs.
-  * Check *Security* to include user security-related events.
-  * Check *Config* to include user updates, like adding, changing or deleting records.
-  * Enter some text in *Log record contains* field to search for records that contain the specified string.
-
-Click the *Find matching* button to list all matching records.
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-=== View user email ===
-
-Click on the *View email* button to display emails sent to or on behalf of the user:
-
-http://open.esignforms.com/images/HowToGuidesWiki/userEmails.png
-
-  * Enter a *From date* to start from a specific date (or select the date from the calendar popup). Leave blank to include the oldest records.
-  * Enter a *To date* to specify and ending date (or select the date from the calendar popup). Leave blank to include the newest records.
-
-Click the *Find matching* button to list all matching records.
-
-Emails that have an arrow next to them have a correlated reply or bounce. Click on the arrow to view those emails.
-
-Click on any row to view the email text:
-
-http://open.esignforms.com/images/HowToGuidesWiki/userEmailDetails.png
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-=== Send RESET password email ===
-Click the *Send RESET password email* to reset a user's password so that the user cannot login until he or she retrieves the email, clicks on the unique link it contains, and then chooses a password.
-
-_Note that the user cannot login once you click this button until they set a new password. The original password will no longer be valid once the button is clicked._
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-=== Create a new user account ===
-
-Click on *Access control->Users*:
-
-  # Select an existing user that is most like the new user you want to add. 
-  # Click the *Create like* button to create a new user record.
-  # Ensure the record id *Enabled*.
-  # Change the *Email address* to the new user's email address.
-  # Change the *Email display name*, *First name* and *Last name*.
-  # Click *Member of Groups* to open the panel that shows the groups. Adjust as necessary.
-  # Click the *Save* button to save the new user.
-  # Once you are ready to allow the user to login, click the *Send RESET password email* button.
-
-An email will be sent to the user's email address so he or she can choose a password and set the forgotten password question & answer.
-
-If the user does not receive the email in after a normal amount of time, you can click the *View email* button to see if there was a bounce, such as if you had the email address incorrect or there was some other error.
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-=== Reset a user's password  ===
-While every user can reset his or her own password using the *forgotten password* feature linked on the login page, it is possible the user has forgotten the answer to that question as well. 
-
-Click on *Access control->Users*:
-  # Select the user who has forgotten his password.
-  # Ensure the user is not *Disabled* as this could have been the reason why he or she could not login.
-  # Click the *Send RESET password email*.
-
-An email will be sent to the user's email address so he or she can choose a new password and, you hope, set a better forgotten password question & answer.
-
-If the user does not receive the email in after a normal amount of time, you can click the *View email* button to see if there was a bounce, such as if the email address was no longer valid or there was some other error.
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-== Groups http://open.esignforms.com/images/HowToGuidesWiki/groupsIcon.png ==
-
-Click on *Access control->Groups* to list and update group records.
-
-All permissions are applied to groups, which is just a simple name used to identify one or more users who perform similar jobs or work together. A user can belong to one or more groups, and it's possible to create multiple groups to support multiple companies/partners who are sharing a single system so that each such company only sees users and groups that belong to their company, while allowing the owner of the deployment to view all users and all transactions across those companies.
-
-Configuring a group involves giving it a name and specifying which users belong to the group:
-
-http://open.esignforms.com/images/HowToGuidesWiki/groupEdit.png
-
-We recommend using a simple *PathName* that describes your group. However, if you support multiple companies or departments, you can prefix them to keep them organized, such as Company1 (for all users who work at Company1), Company1/Admin (for the users who can do the user administration functions for Company1), Company1/Manager (for the managers in Company1 that can see across all users), and Company1/Programming (for those who program the forms for Company1). 
-
-You are free to name as you see fit, of course, but since you will use them for assigning permissions, it's best if they make clear sense to you. If you have multiple companies with multiple departments in each, and you want each department to have control or limited access to just that department, consider using a scheme like Company1/Department1, Company1/Department1/Admin, Company1/Department1/Manager, etc., so you can then have Company1/Department2, Company1/Department2/Admin, Company1/Department2/Manager, etc.
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-=== Permissions to access this group ===
-
-See [#Permissions Overview the permissions overview] for this basic setup of group permissions:
-
-http://open.esignforms.com/images/HowToGuidesWiki/groupPermissions.png
-
-This list specifies who can perform various operations related to this group record alone.
-
-_Remember to click *Save* after changing permissions._
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-=== Member users of this group ===
-
-To set which users are members of this group, click to open:
-
-http://open.esignforms.com/images/HowToGuidesWiki/groupMembers.png
-
-You can click one or more users from the left side and then click the *>>* button to add users to the group.  Or click one or more users from the right side and then click the *<<* button to remove users from the group.
-
-You can also set which groups a given [#Users user] belongs to by modifying that user's record.
-
-_Remember to click *Save* after changing the group membership._
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-=== Permissions to access the member users of this group ===
-
-The permissions for accessing the records of the [#Users users] who belong to a group are set here:
-
-http://open.esignforms.com/images/HowToGuidesWiki/groupMemberPermissions.png
-
-Like the standard permissions, you can specify who can List, View Details, Create, Update and Delete users who belong to this group. Normally, this permission is left to the *System/Administrator* or if the group administrator, such as Company1/Admin if you build such a group.
-
-_Remember to click *Save* after changing permissions._
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-=== Show members ===
-
-If you click on the *Show members* button, a popup window that lists all users appears:
-
-http://open.esignforms.com/images/HowToGuidesWiki/groupMembersList.png
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-== Who's On Now http://open.esignforms.com/images/HowToGuidesWiki/whosOnNowIcon.png ==
-
-Click on *Access control->Who's on now* to display all active user sessions:
-
-http://open.esignforms.com/images/HowToGuidesWiki/userSessions.png
-
-  * For logged in users, the *Name* column is the user's login name. For external users, it is the transaction and role they are playing if that has been determined.
-  * The *IP* column shows the IP address (and host name when it can be determined by a reverse DNS lookup).
-  * The *Last* column shows the date-time when the user last accessed the server.
-  * The *Started* column shows the date-time when the user first accessed the server.
-  * The *Timeout* column shows the number of minutes the user's session will remain active if no user activity is taking place. Generally speaking, if the *Last* column is more than *Timeout* minutes from now, that user's session will timeout and the user will need to restart.
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-== UI Views http://open.esignforms.com/images/HowToGuidesWiki/uiViewsIcon.png ==
-
-Click on *Access control->UI Views* to list all of the views (main pages/screens) that are accessible from the left side panel menu navigation.  "UI" stands for "user interface."
-
-http://open.esignforms.com/images/HowToGuidesWiki/uiViews.png
-
-We do not recommend changing the *View EsfName* of any views as it will break their functionality unless other programmer-level changes are made.
-
-We do not recommend changing permissions here much as it is generally best to set them once for all users, since users will naturally be limited to the users, groups, libraries and transactions that have been granted to them based on their permissions.  The UI permissions are mostly to determine whether a given item appears in the menu navigation or not.
-
-  * DeploymentPropertiesView controls *System config->Deployment*
-  * DeploymentStatsView controls *System config->Stats*
-  * GroupView controls *Access control->Groups*
-  * LibraryDocumentProgrammingTipsEditView controls *System config->Document program tips*
-  * LibraryProgrammingTipsEditView controls *System config->Program tips*
-  * LibraryView controls *Programming->Libraries*
-  * PackageAndVersionsMainView controls *Programming->Packages*
-  * ReportTemplateView controls *Programming->Report templates*
-  * SystemLogView controls *System config->System logs*
-  * ToDoListingView controls *To Do*
-  * TransactionListingView controls *General tran search*
-  * TransactionTemplateView controls *Programming->Tran templates*
-  * UIView controls this view *Access control->UI Views*
-  * UserView controls *Access control->Users*
-  * UserSessionView control *Access control->Who's on now?*
-  * AccessControlTipsEditView controls *System config->Access control link*
-  * AccessControlTipsView controls *Access control*
-  * ProgrammingTipsEditView controls *System config->Program link*
-  * ProgrammingTipsView controls *Programming*
-  * ReportTipsEditView controls *System config->Report link tips*
-  * ReportTipsView controls *Reports*
-  * StartTransactionTipsEditView controls *System config->Start tran tips*
-  * StartTransactionTipsView controls *Start transaction*
-  * SystemConfigTipsEditView controls *System config->System config link*
-  * SystemConfigTipsView controls *System config*
-  * WelcomeTipsEditView controls *System config->Welcome link*
-  * WelcomeTipsView* controls *Welcome*
-  
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-=== Permissions to Access the XXXX screen ===
-
-http://open.esignforms.com/images/HowToGuidesWiki/uiViewsPermissions.png
-
-Permissions work the same here as for other permissions, but it doesn't affect the ability to change the UI record itself, but how the user interface works.
-  * *List* permission means the user will see this UI in the menus.
-  * *View details* means the user will see this UI in the menus.
-  * *Create* means the user will be allowed a *Create* or *Create like* button.
-  * *Update* means the user will be allowed a *Save* button.
-  * *Delete* means the user will be allowed a *Delete* button.
-
-_Note that having the permission here does not mean the button will always appear, since for records that have their own permissions, the user will need it on the specific object as well. If you remove *Delete* permissions for the UI, for example, that button will not appear even if the user's group allows them to otherwise delete that record._
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-== Deployment configuration http://open.esignforms.com/images/HowToGuidesWiki/deploymentPropertiesIcon.png ==
-
-Under *System config->Deployment* you can view and modify certain deployment properties. Please do so with care. Click the *Edit* button to change values, but be certain you know what you are doing.
-
-http://open.esignforms.com/images/HowToGuidesWiki/deploymentProperties.png
-
-  * Every deployment has a *Unique deployment ID*, which is displayed at the top.  
-  * Note that the *ID* field is the related to the deployment properties record id as stored in the database. 
-  * The *Website URL Protocol+Address* is the domain name where your application runs and is used in all links sent out. Most deployments use the 'https://' protocol to ensure secure communications between the browser and the server.
-  * Ensure *Allow Production transactions* is checked if your deployment can run production transactions.
-  * Ensure *Allow Test transactions* is checked if your deployment can run test transactions.
-  * The *Default locale* specifies the language the application runs as. Currently, we only support US English.
-  * The *Default date format* specifies how dates are displayed by default.
-  * The *Default log/detailed date format* specifies how dates are displayed in various logs and other places where full dates are displayed.
-  * The *Default time zone* specifies the default time zone used. This can be overridden on a per-user basis.
-  * The *Default time format* specifies how times are displayed by default. Most people only show times through minutes.
-  * The *Default log/detailed time format* specifies how times are displayed in various logs. For logs, you probably want to display seconds, if not milliseconds.
-  * The *SMTP Server* is the IP address or host name of the SMTP server to use for sending outbound emails. Most will keep this set to 'localhost.localdomain' to use the system's SMTP server.
-  * The *SMTP Port* is the TCP port number SMTP is listening on. The default is 25. For some remote SMTP servers, you may have a value like 587 or perhaps 465 if you use SSL.
-  * The *SMTP Auth User* is set if your SMTP server requires AUTH protocol to send.
-  * The *SMTP Auth Password* is set if your SMTP server requires AUTH protocol to send.
-  * Check the *Use TLS* box if your SMTP server communicates over TLS.
-  * The *IMAP Server* is the IP address or host name of the IMAP server to use for retrieving inbound emails (mostly bounces and replies to automatically created emails sent by the application). Most will keep this set to 'localhost.localdomain' to use the system's IMAP server.
-  * The *IMAP Port* is the TCP port number IMAP is listening on. The default is 143.
-  * The *IMAP User* is generally set to your unique database name set for your deployment. It must be a valid user account on the server which is only used to accept inbound email for your application. On a secure server, we do not recommend allowing actual user logins to this account (we set it up so it's not valid to login to this account via SSH, for example), and keep it in its own group.
-  * The *IMAP Password* is the password that goes with the IMAP User login.
-  * Check the *Use SSL* box if your IMAP server communicates over SSL.
-  * The *Default Email FROM* is used as the FROM email address for emails not sent out on behalf of a user. We recommend the No-Reply@yourhost.com form as automated emails generally do not expect replies. Note, however, that many emails sent out will correlate a reply back to it if you view the emails through the application.
-  * The *SMTP Return Path Hostname* is the hostname where emails sent out will show. For anti-spamming measures, it should generally be the actual host name where your application is running and where the IMAP server will be able to process bounces.
-  * The *Start year* is the year your deployment was installed.
-  * The *Installation date* is the date your deployment was installed.
-  * The *Context path* is the URL path name appended to the 'Website URL Protocol+Address' to indicate your web application instance.
-  * The *License* specifies whether your system is running under the open source AGPL license, in which case you must provide source code for the application as well as all programming of documents you create, or if you have a commercial license based on number of users or database size.
-  * The *License size* is 0 for open source users, or specifies the maximum number of users or database size (in MB) of your license. Note that exceeding the maximum will not affect the system operation, but additional licensing fees will apply on renewal.
-  * The *Default session timeout* specifies the default web application session timeout in minutes. Most use 30 minutes. It should be long enough for a typical party to process your electronic documents. If a party is processing a document and does not interact with the server in this many minutes, the session will be terminated and the party will have to restart access.
-  * The *User session timeout* specifies the web application session timeout in minutes for users who have logged in. This is often used to ensure that users who login have a shorter timeout than parties who are invited to sign your documents.
-  * The *Retain stats logs* specifies how many days to keep usage statistics.
-  * The *Retain system start/stop logs* specifies how many days to keep system activity logs related to system starts and stops. Most will keep it for 365 days.
-  * The *System config changes* specifies how many days to keep system activity logs related to configuration changes, like creating, updating or deleting documents, packages and transactions across all users. Most will keep it for 90 days.
-  * The *System user activity* specifies how many days to keep system activity logs related to users logging in and out.  Most will keep it for 90 days.
-  * The *Retain user security logs* specifies how many days to keep security-related log records for each user who can login.
-  * The *User config* specifies how many days to keep log records regarding configuration changes, like creating, updating and deleting documents, packages and transactions, for each user.
-  * The *User login/logoff* specifies how many days to keep log records regarding logins and logoffs for each user.
-
-_Remember to click *Save* after changing any values._
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-== Deployment Statistics http://open.esignforms.com/images/HowToGuidesWiki/deploymentStatsIcon.png ==
-
-Under *System config->Stats* you can view statistics related to your system activity and versions.
-
-http://open.esignforms.com/images/HowToGuidesWiki/deploymentStats.png
-
-Under the *System* column:
-  * *Version* is the Open eSignForms application version. This is also displayed at the bottom right of the application window and you can click on the version to see the version history. http://open.esignforms.com/images/HowToGuidesWiki/copyrightAndVersion.png
-  * *System started* is the date+time when the application was last started.
-  * *Java version* is the [http://java.sun.com Java] version used to run your application.
-  * *JVM Memory* is the amount of memory assigned to Java, as well as the maximum specified it can use. If the amount used reaches the maximum, garbage collection takes place to try to reduce the amount of memory in use.  This is for all web applications.
-  * *Total threads* is the number of threads Java is using. This is for all web applications.
-  * *Backgrounder thread* should say 'Running' to indicate that the background task processor is running.
-  * *Email out thread* should say 'Running' to indicate that the outbound email processor is running.
-  * *Email in thread* should say 'Running' to indicate the the inbound email processor is running.
-
-Under the *Web server* column:
-  * *Version* is the web server version, which by default is [http://tomcat.apache.org/ Apache Tomcat].
-  * *Vaadin version* is the version of [http://www.vaadin.com Vaadin] used, which provides the user interface code for the Web 2.0 look.
-  * *HTTP threads* specifies the number of HTTP (non-secure) access threads are in the web server (and how many are inactive). This is for all web applications.
-  * *HTTPS threads* specifies the number of HTTPS (secure) access threads are in the web server (and how many are inactive). This is for all web applications.
-
-Under the *Database* column:
-  * *Version* is the database version, which by default is [http://www.postgresql.org PostgreSQL].
-  * *Max connections* specifies the maximum number of database connections in use out of the maximum allowed.
-  * *Connections* specifies the number of database connections currently in use, the number available for use, as well as the "idle" timeout for connections if they are not used.
-  * *Number of transactions* specifies the number of transactions in your database.
-  * *Number of users* specifies the number of user accounts in your system. If you have a commercial users license, this is important to compare with your license size.
-  * *Database size* specifies the size of your database. If you have a commercial DB license, this is important to compare with your license size.
-  * *Backups/logs size* this is the additional space used to store database backups and application log files.
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-== System logs http://open.esignforms.com/images/HowToGuidesWiki/systemLogsIcon.png ==
-
-Under *System config->System logs*, you can view activities that take place on the system that are logged. This allows for trouble shooting as well as assigning blame (yes, we know _you_ did it)! See the [#Deployment_configuration Deployment configuration] for how long these log records are kept.
-
-http://open.esignforms.com/images/HowToGuidesWiki/systemLogs.png
-
-Specify the start date (or leave blank for the oldest records) and end date (or leave blank for the most recent records) and check the various types of records you want to see. If you are looking for something in particular, you can enter a value in the *Log record contains* field.  Click *Find matching* to list all matching system activity log records.
-
-Record types:
-  * *Version* records indicate new version installations and updates. Note that only version changes that require 'DbSetup' log such changes here.
-  * *Start/stop* records are recorded whenever your application starts and stops.
-  * *User* records show when any user logs in or out, or has an invalid password.
-  * *Config* records show when any user makes a configuration change to documents, packages, transactions, reports, etc.
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-----
-= Point & Click Programming Guide =
-----
-
-All customization and programming of documents, workflows and emails is done through the web-based interface. *No programmers are needed.* For those who prefer to have professional help, though, Yozons has partnered with other companies that offer professional services to handle all of your needs or just to get you started so that you can then just make new versions as necessary going forward.
-
-<p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
-
-----
-= Index =
-<wiki:toc max_depth="3" />
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 = Contact Yozons =
 
