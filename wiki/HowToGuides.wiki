@@ -200,6 +200,10 @@ Click on any date to select that date.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+= How-To Videos on `YouTube` =
+
+Come and see our list of How-To Videos on `YouTube` on our [http://www.youtube.com/user/YozonsHTV YozonsHTV Channel].
+
 = Contact Yozons =
 
 Feel free to [http://www.yozons.com/contact.jsp contact Yozons] for inquiries regarding [http://www.yozons.com/Open-eSignForms/pricing.jsp pricing or professional services].
