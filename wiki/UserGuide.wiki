@@ -1,0 +1,164 @@
+#summary User's Guides for Open eSignForms
+
+<table width="100%"><tr>
+<td width="50%">http://open.esignforms.com/images/OpenESignFormsLogo.gif</td>
+<td width="50%" align="right">http://www.yozons.com/images/logoSmall.gif</td>
+</tr></table>
+
+==== Other How-To Guides ====
+  * [HowToGuides General How-To Guide Tips & Tricks]
+  * [UserGuide User's Guide] (this guide)
+  * [SystemAdminGuide System Administrator's Guide]
+  * [ProgrammingGuide Point & Click Programmer's Guide]
+
+==== Table of contents ====
+<wiki:toc max_depth="3" />
+
+----
+= User's Guide = 
+----
+
+This guide describes common functions performed by all users. See the [SystemAdminGuide System Administrator Guide] for details on setting up users and configuring the system, or the [ProgrammingGuide Point & Click Programming Guide] for programming documents, packages, transactions and reports.
+
+_Note that not all menu items are authorized to all users. If you do not see the item in your menu when you login, you either are not authorized, or you should contact our system administrator so that you are given permission to access that function._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Login ==
+All users login on a page that is distinct for your deployment. Unlike other services, each customer or company has its own distinct web application and data base to allow for easy migration from shared hosting, to private hosting, to your own server. Also, this reduces any accidental data leaks or exposure of private data due to hacking attacks or unauthorized access that result from poor security habits of others. Sadly, large systems with millions of users become valuable targets to thieves and hackers.
+
+Contact your system administrator if you need a new account so you can login, cannot reset your own password through the 'Forgot your password?' process, or for the web address (URL) to use for your deployment.  When a new user account is created, an email will be sent to your login email address allowing you to choose a new password, as well as set up a forgotten password question and answer.
+
+A typical login page looks like this:
+
+http://open.esignforms.com/images/HowToGuidesWiki/loginPage.png
+
+Your company's logo will appear at the top, along with your company name in the heading.
+
+Enter your email address and password, then click the Login button.  A password can be as long as a 50-character pass phrase that includes letters, numbers, spaces and special characters. It is case sensitive. We recommend at least 10 characters, something you can remember, but others will find impossible to guess. 
+
+Check the 'Remember email' box when on your own computer to avoid having to specify it ever time you login.
+
+If you have forgotten your password, click on the *[#Forgot_your_password Forgot your password?]* link.
+
+After you login, at the bottom of the web page, it will show when you logged in, when you previously logged, as well as the time when your browser last communicated with the server:
+
+http://open.esignforms.com/images/HowToGuidesWiki/loginTimeFooter.png
+
+You may want to check the previous login time and IP address to see if any unauthorized logins to your account took place. Also, most user sessions last about 30 minutes, so if your browser has not sent anything in that amount of time, your session will terminate, you will lose any unsaved work, and you'll have to login again. Clicking on anything in the application will likely communicate with the server and keep your session active.
+
+When you login, you will see a welcome screen that includes links you may be interested in, as well as how to ask questions, report bugs, etc. Many pages have useful tips right inside them.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Logoff http://open.esignforms.com/images/HowToGuidesWiki/logoffIcon.png == 
+
+Whenever you are done using the application, you should logoff. This not only protects access to your account, but it also frees server resources. If you just close your browser, go to another web site (URL) or remain idle for a long period of time, the web server will eventually time out your session.
+
+There is a logoff button on the bottom of the navigation bar on the left side column, as well as in the upper right corner.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>>
+
+== To Do http://open.esignforms.com/images/HowToGuidesWiki/toDoIcon.png == 
+
+Click on *To Do* from the main navigation bar to shows all active transactions that are queued for you to work on.
+
+http://open.esignforms.com/images/HowToGuidesWiki/toDoQueue.png
+
+All work is shown grouped by the type of transaction. Several column headers are fixed:
+  * *Party* is the party name for the current processing step of the transaction.
+  * *Status* is the current transaction status.
+  * *Last updated* is the last updated date-time for the transaction.
+  * *Role* is the party's display name for the current processing step of the transaction.
+
+If other columns are shown to help you understand the work To Do (such as the *Email to* and *Subject* in this example), those values are defined in the Package's *Map report fields*, in which the fields are shown in the order specified provided the *Show To Do* box is checked.
+
+To process a transaction, just click on it. This will open a new window for you to process the transaction. Close that window when you are done.
+
+Click the *Refresh* button to update the list, such as after processing some work or to check for new work.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Start a transaction http://open.esignforms.com/images/HowToGuidesWiki/startTransactionIcon.png ==
+
+To start a transaction, open the *Start transaction* menu to list transactions you are authorized to start manually.
+
+Click on the transaction name to start that transaction for Production mode. A new window will pop up to allow you to work on that transaction. Close that window when you are done. If the transaction allows it, you can delete it from the package's document list using the *Delete this transaction* button. The package document list is either the first page you see, or while in edit mode, you can click on the *Return to the document list*  button to show it.
+
+If you are testing or making changes, you can run the transaction in Test mode by right-clicking on the transaction name:
+
+http://open.esignforms.com/images/HowToGuidesWiki/startTransactionTestModes.png
+
+Click on *Start TEST transaction* to start the transaction in Test mode using all of the most recent test versions where available. If a component has no test version, the production version will be used.
+
+Click on *Start TEST like Production* to start the transaction in Test mode, but using only production versions. This is a good "final test" after you migrate components from Test to Production, or when a customer says something odd is happening and you want to test out a production-level transaction, but in Test mode.
+
+_Note, some transactions may not be started by users, and those will not be listed here. Some transactions are configured to be started by *External users*, parties who are not logged in, such as transactions that are started by your customers who visit your web site or are started via integration of existing applications you have._
+
+[http://www.youtube.com/watch?v=14fy5296kPE&hd=1 See our YouTube video] on starting a transaction.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Forgot your password http://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordLink.png ==
+
+If you have forgotten your password, shame on you! But assuming you set up a useful question and answer, you should be able to choose a new password automatically.
+
+From the login page, click the *Forgot your password?* link to show this page:
+
+http://open.esignforms.com/images/HowToGuidesWiki/requestPasswordReset.png
+
+Type in the email address you use to login, then click the *Send email to reset my password* button. 
+
+Then, check your email for a unique link that is sent to you to continue with the reset process. This step prevents people who do not control your email account from even attempting to reset your password. You should receive an email like the following:
+
+http://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordEmail.png
+
+Click on the link in the email and you will be presented with the question you set up when you set your password like the following:
+
+http://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordQuestion.png
+
+Type in the answer to your question. Note that it will be displayed, so do this in private. Unlike a password, the answer is _not_ case sensitive and non-alphanumeric characters (letters and numbers) are ignored. Click the *Continue* button.
+
+Assuming you gave the correct answer, you will then be prompted to set a new password as well as a new forgotten question and answer. The previous question will be auto-filled, but you can change it or keep it, and you will have to provide the answer again regardless. This is the standard page to [#Set_my_password Set my password].
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Set my password == 
+
+To set your password, as well as the forgotten password question and answer, you will be presented with this page:
+
+http://open.esignforms.com/images/HowToGuidesWiki/setMyPassword.png
+
+Enter your password two times to ensure you have typed the expected value. The password will be masked like a regular password field and is a phrase that can be a mix of letters, numbers, spaces and special characters. It is case sensitive.
+
+Think up a good question that the system can ask you if you ever forget your password and need to reset it and enter that in the *Question to ask you* field. Provide the corresponding answer in the *Answer you will provide to reset your password* field. Unlike a password, the answer will be displayed, so please do this in private. Answers are _not_ case sensitive and special characters are ignored. This is essentially a "second password" so make sure the question and related answer are not too easily guessed should anybody ever attempt to reset your password while they have access to your email account.
+
+Click the *Set my password* button once you have completed the form. If successful, click on the *[#Login login now]* link displayed and you can begin to use the application.
+
+_Note that an email will be sent to you every time your password is changed, so if you did not just change your password, it is an indication someone may be accessing your account without authorization._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Session expires == 
+
+In order to keep your user account safe should you stop using it, or if you just close your  browser without logging off first (a no-no! -- always logoff when you are done), the application will automatically log you off if you have not had any recent activity. Clicking on most areas of the application will keep your session active, with the last server access shown at the bottom. The system administrator can set how long a user session is, but it defaults to 30 minutes.
+
+If you click on something and see the following:
+
+http://open.esignforms.com/images/HowToGuidesWiki/sessionExpired.png
+
+it means your session expired due to lack of recent usage. Note any changes you may have made (if they were not already saved, they will be lost) and click on the red box to continue and [#Login login again].
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Communication problem == 
+
+It is possible that while you were logged in, your application was restarted, such as for a new release, to resolve a bug, or because of some error on the system or application code.
+
+If you click on something and see the following (or any other red box error):
+
+http://open.esignforms.com/images/HowToGuidesWiki/communicationProblem.png
+
+it means your session was terminated unexpectedly. Note any changes you may have made (if they were not already saved, they will be lost) and click on the red box to continue and [#Login login again].
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
