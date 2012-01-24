@@ -6,7 +6,7 @@
 <td width="50%" align="right">http://www.yozons.com/images/logoSmall.gif</td>
 </tr></table>
 
-==== Other How-To Guides ====
+==== How-To Guides ====
   * *[HowToGuides Concepts, Tips & Tricks]* (this guide)
   * [UserGuide User's Guide]
   * [SystemAdminGuide System Administrator's Guide]
