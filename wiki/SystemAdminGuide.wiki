@@ -6,7 +6,7 @@
 </tr></table>
 
 ==== Other How-To Guides ====
-  * [HowToGuides General How-To Guide Tips & Tricks] (Read first)
+  * [HowToGuides Concepts, Tips & Tricks] (Read first)
   * [UserGuide User's Guide] (Read first)
   * *[SystemAdminGuide System Administrator's Guide]* (this guide)
   * [ProgrammingGuide Point & Click Programmer's Guide]
