@@ -58,6 +58,8 @@ _You do not want to use Test mode for production transactions. If you do, your c
 
 == General tips and tricks == 
 
+Always remember to click the *Save* button after you are done making any changes. If you are configuring a complex record that has popup windows, you will need to click *Ok* on those windows, then close them, and still click *Save* on the main record.
+
 Click on an object to select it. Often, if you it again, it will unselect it.
 
 To select multiple items when allowed, click the first item, then CTRL-click to add additional items, or CTRL-click a selected item to unselect it.  You can also click the first item, then SHIFT-click another item to select all items in the range between those two clicks.
@@ -138,6 +140,8 @@ Most forms also include common buttons:
   * The *Cancel* button will discard any changes made since the last Save, and will put the form into read-only mode. If you have Update permission, an Edit button will appear allowing you to re-enter edit mode so you can update it again.
   * The *Create like* button allows you to create a new record like the current record. If your record has permissions, and you are targeting the new record for a different company or department, remember to update the permissions to use the target group instead of the original groups. You must have 'Create like' permission to do this.
   * The *Delete* button allows you to delete a record you no longer want. Please delete with caution, and just disable the record when in doubt. Once you delete the record, it will not be recoverable, and any logs or other references and associations to that record will be lost.
+
+_Remember to click Save after changing any configuration._
 
 <p align="right"><font size="1">[#Index Table of contents]  or  [#List_of_Guides Top]</font></p>
 
@@ -306,7 +310,7 @@ All deployments will have the *System/Administrator* group. It has access to all
   # A group for your company or department, such as MyCompany. You can put all users who belong into this group.
   # A group for the programmers in your company or department, such as MyCompany/Programming. You can put just those folks, whether in your company or a hired professional services consultant, who will program documents and transactions in this group.
   # A group for managers in your company or department who can see across all users in your company or department, such as MyCompany/Manager.
-  # If you will have multiple companies or departments using your deployment, you may consider a group for that plays the system administrator function, but limited to the company/dpartment, such as MyCompany/Administrator.
+  # If you will have multiple companies or departments using your deployment, you may consider a group for that plays the system administrator function, but limited to the company/department, such as MyCompany/Administrator.
 
 (`*` There is also one special group called *ESF/Group/Deployment/SuperAdmin* that is created when the system is deployed. It is used to ensure access like "root" or "Administrator" provides for servers and PCs and is managed by whoever is responsible for the web application deployment.)
 
@@ -341,6 +345,28 @@ Of course, you will have to click the Save button after your have made your chan
 
 Each user who can start transactions, run reports, or process work via the To Do queue needs a user account. While you can share user accounts, we recommend you give each user his or her own login and password to aid in tracking user activity and to make it easier to handle password issues should one of the users no longer need access to the system.
 
+Configuring a user involves setting up the user's email address, name and what groups he or she belongs to:
+
+http://open.esignforms.com/images/HowToGuidesWiki/userEdit.png
+  * *Email address* must uniquely identify this user, and it should be a valid, working email address in order for the user to set a password, get email notifications, etc.
+  * *Email display name* is the name shown that goes with the email address to create a "fully qualified" email address. Most people use their full name or role, such as "Support" or "David Jones", which results in an email address of "Support <support@example.com>" or "David Jones <djones@example.com>".
+  * *First name* is the user's first, or personal, name.
+  * *Last name* is the user's last, or family, name.
+
+=== Member of group(s) ===
+
+To list the groups the user belongs to, open the *Member of groups(s)* panel:
+http://open.esignforms.com/images/HowToGuidesWiki/userMemberOfGroups.png
+
+=== Update member of group(s) ===
+
+To update the groups the user belongs to, open the *Update member of groups(s)* panel:
+http://open.esignforms.com/images/HowToGuidesWiki/userMemberOfGroupsUpdate.png
+
+Select one or more groups from the left side and click the *>>* button to add the user to those groups.  Select one or more groups from the right side and click the *<<* button to remove the user from those groups.
+
+_Remember to click Save after changing the group membership._
+
 <p align="right"><font size="1">[#Index Table of contents]  or  [#List_of_Guides Top]</font></p>
 
 === Reset a user password ===
@@ -368,6 +394,8 @@ http://open.esignforms.com/images/HowToGuidesWiki/groupPermissions.png
 
 This list specifies who can perform various operations related to this group record alone.
 
+_Remember to click Save after changing permissions._
+
 === Member users of this group ===
 
 To set which users are members of this group, click to open:
@@ -378,6 +406,8 @@ You can click one or more users from the left side and then click the *>>* butto
 
 You can also set which groups a given [#Users user] belongs to by modifying that user's record.
 
+_Remember to click Save after changing the group membership._
+
 === Permissions to access the member users of this group ===
 
 The permissions for accessing the records of the [#Users users] who belong to a group are set here:
@@ -385,6 +415,8 @@ The permissions for accessing the records of the [#Users users] who belong to a 
 http://open.esignforms.com/images/HowToGuidesWiki/groupMemberPermissions.png
 
 Like the standard permissions, you can specify who can List, View Details, Create, Update and Delete users who belong to this group. Normally, this permission is left to the *System/Administrator* or if the group administrator, such as Company1/Admin if you build such a group.
+
+_Remember to click Save after changing permissions._
 
 === Show members ===
 
@@ -437,6 +469,8 @@ http://open.esignforms.com/images/HowToGuidesWiki/deploymentProperties.png
   * The *Retain user security logs* specifies how many days to keep security-related log records for each user who can login.
   * The *User config* specifies how many days to keep log records regarding configuration changes, like creating, updating and deleting documents, packages and transactions, for each user.
   * The *User login/logoff* specifies how many days to keep log records regarding logins and logoffs for each user.
+
+_Remember to click Save after changing any values._
 
 <p align="right"><font size="1">[#Index Table of contents]  or  [#List_of_Guides Top]</font></p>
 
