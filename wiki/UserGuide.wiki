@@ -6,8 +6,8 @@
 </tr></table>
 
 ==== Other How-To Guides ====
-  * [HowToGuides General How-To Guide Tips & Tricks]
-  * [UserGuide User's Guide] (this guide)
+  * [HowToGuides General How-To Guide Tips & Tricks] (Read first)
+  * *[UserGuide User's Guide]* (this guide)
   * [SystemAdminGuide System Administrator's Guide]
   * [ProgrammingGuide Point & Click Programmer's Guide]
 
@@ -15,7 +15,7 @@
 <wiki:toc max_depth="3" />
 
 ----
-= User's Guide = 
+<h1>User's Guide</h1> 
 ----
 
 This guide describes common functions performed by all users. See the [SystemAdminGuide System Administrator Guide] for details on setting up users and configuring the system, or the [ProgrammingGuide Point & Click Programming Guide] for programming documents, packages, transactions and reports.
@@ -24,7 +24,7 @@ _Note that not all menu items are authorized to all users. If you do not see the
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Login ==
+= Login =
 All users login on a page that is distinct for your deployment. Unlike other services, each customer or company has its own distinct web application and data base to allow for easy migration from shared hosting, to private hosting, to your own server. Also, this reduces any accidental data leaks or exposure of private data due to hacking attacks or unauthorized access that result from poor security habits of others. Sadly, large systems with millions of users become valuable targets to thieves and hackers.
 
 Contact your system administrator if you need a new account so you can login, cannot reset your own password through the 'Forgot your password?' process, or for the web address (URL) to use for your deployment.  When a new user account is created, an email will be sent to your login email address allowing you to choose a new password, as well as set up a forgotten password question and answer.
@@ -51,15 +51,15 @@ When you login, you will see a welcome screen that includes links you may be int
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Logoff http://open.esignforms.com/images/HowToGuidesWiki/logoffIcon.png == 
+= Logoff http://open.esignforms.com/images/HowToGuidesWiki/logoffIcon.png =
 
 Whenever you are done using the application, you should logoff. This not only protects access to your account, but it also frees server resources. If you just close your browser, go to another web site (URL) or remain idle for a long period of time, the web server will eventually time out your session.
 
 There is a logoff button on the bottom of the navigation bar on the left side column, as well as in the upper right corner.
 
-<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>>
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== To Do http://open.esignforms.com/images/HowToGuidesWiki/toDoIcon.png == 
+= To Do http://open.esignforms.com/images/HowToGuidesWiki/toDoIcon.png =
 
 Click on *To Do* from the main navigation bar to shows all active transactions that are queued for you to work on.
 
@@ -79,7 +79,7 @@ Click the *Refresh* button to update the list, such as after processing some wor
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Start a transaction http://open.esignforms.com/images/HowToGuidesWiki/startTransactionIcon.png ==
+= Start a transaction http://open.esignforms.com/images/HowToGuidesWiki/startTransactionIcon.png =
 
 To start a transaction, open the *Start transaction* menu to list transactions you are authorized to start manually.
 
@@ -99,7 +99,7 @@ _Note, some transactions may not be started by users, and those will not be list
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Forgot your password http://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordLink.png ==
+= Forgot your password http://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordLink.png =
 
 If you have forgotten your password, shame on you! But assuming you set up a useful question and answer, you should be able to choose a new password automatically.
 
@@ -123,7 +123,7 @@ Assuming you gave the correct answer, you will then be prompted to set a new pas
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Set my password == 
+= Set my password =
 
 To set your password, as well as the forgotten password question and answer, you will be presented with this page:
 
@@ -139,7 +139,7 @@ _Note that an email will be sent to you every time your password is changed, so 
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Session expires == 
+= Session expires =
 
 In order to keep your user account safe should you stop using it, or if you just close your  browser without logging off first (a no-no! -- always logoff when you are done), the application will automatically log you off if you have not had any recent activity. Clicking on most areas of the application will keep your session active, with the last server access shown at the bottom. The system administrator can set how long a user session is, but it defaults to 30 minutes.
 
@@ -151,7 +151,7 @@ it means your session expired due to lack of recent usage. Note any changes you 
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Communication problem == 
+= Communication problem =
 
 It is possible that while you were logged in, your application was restarted, such as for a new release, to resolve a bug, or because of some error on the system or application code.
 
