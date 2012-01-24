@@ -164,7 +164,8 @@ _Remember to click *Save* after changing any configuration._
 <p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
 
 ----
-= User Guide =
+= User Guide = 
+----
 
 This guide describes common functions performed by all users. See the [#System_Administrator_Guide System Administrator Guide] for details on setting up users and configuring the system, or the [#Point_&_Click_Programming_Guide Point & Click Programming Guide] for programming documents, packages, transactions and reports.
 
@@ -313,6 +314,7 @@ it means your session was terminated unexpectedly. Note any changes you may have
 
 ----
 = System Administrator Guide =
+----
 
 Every deployment should have at least one user assigned to the *System/Administrator* group. The system administrator can delegate powers to other groups, including creating partner/department administrator groups who have similar capabilities, but over only a subset of all users.
 
@@ -636,6 +638,7 @@ Record types:
 
 ----
 = Point & Click Programming Guide =
+----
 
 All customization and programming of documents, workflows and emails is done through the web-based interface. *No programmers are needed.* For those who prefer to have professional help, though, Yozons has partnered with other companies that offer professional services to handle all of your needs or just to get you started so that you can then just make new versions as necessary going forward.
 
