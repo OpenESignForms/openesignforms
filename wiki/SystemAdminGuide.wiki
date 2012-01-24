@@ -6,7 +6,10 @@
 </tr></table>
 
 ==== Other How-To Guides ====
-  * [HowToGuides General How-To Guides]
+  * [HowToGuides General How-To Guide Tips & Tricks]
+  * [UserGuide User's Guide]
+  * [SystemAdminGuide System Administrator's Guide]
+  * [ProgrammingGuide Point & Click Programmer's Guide]
 
 ==== Table of contents ====
 <wiki:toc max_depth="3" />
