@@ -61,6 +61,16 @@ _You do not want to use Test mode for production transactions. If you do, your c
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+= Types of users: User, All Users, External Users =
+
+In Open eSignForms, we use the term "user" to mean a user who has a login account to the application.
+
+The term "all users" means all users who have a login to the application _*and*_ are visible to you (meaning that you can see the users in a list of users). This is important because, for example, when you run a report across "all users," it's not literally all users who have a login, unless you are the system administrator who can see all such accounts, but just across all users who you are authorized to know about. So if you create a group and put 5 users in that group, and then you create a manager group who can see "all users" in that group, the manager will see just those 5 users, no matter how many actual users there are. From the manager's perspective, that is "all users."
+
+The term "external users" means all parties who fill out and process the documents you have, but do not have a login. These are typically your job applicants for an HR application, or your customers, clients, partners, etc. who you are doing business with and are signing your documents.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 = General tips and tricks =
 
 Always remember to click the *Save* button after you are done making any changes. If you are configuring a complex record that has popup windows, you will need to click *Ok* on those windows, then close them, and still click *Save* on the main record.
