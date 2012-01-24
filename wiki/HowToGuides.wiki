@@ -587,6 +587,18 @@ _Remember to click *Save* after changing any values._
 
 <p align="right"><font size="1">[#Index View index]  or  [#List_of_Guides Top]</font></p>
 
+== Who's On Now http://open.esignforms.com/images/HowToGuidesWiki/whosOnNowIcon.png ==
+
+Click on *Access control->Who's on now* to display all active user sessions:
+
+http://open.esignforms.com/images/HowToGuidesWiki/userSessions.png
+
+  * For logged in users, the *Name* column is the user's login name. For external users, it is the transaction and role they are playing if that has been determined.
+  * The *IP* column shows the IP address (and host name when it can be determined by a reverse DNS lookup).
+  * The *Last* column shows the date-time when the user last accessed the server.
+  * The *Started* column shows the date-time when the user first accessed the server.
+  * The *Timeout* column shows the number of minutes the user's session will remain active if no user activity is taking place. Generally speaking, if the *Last* column is more than *Timeout* minutes from now, that user's session will timeout and the user will need to restart.
+
 == Deployment Statistics http://open.esignforms.com/images/HowToGuidesWiki/deploymentStatsIcon.png ==
 
 Under *System config->Stats* you can view statistics related to your system activity and versions.
