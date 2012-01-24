@@ -139,7 +139,7 @@ _Note that an email will be sent to you every time your password is changed, so 
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Session expires =
+= Session expiration =
 
 In order to keep your user account safe should you stop using it, or if you just close your  browser without logging off first (a no-no! -- always logoff when you are done), the application will automatically log you off if you have not had any recent activity. Clicking on most areas of the application will keep your session active, with the last server access shown at the bottom. The system administrator can set how long a user session is, but it defaults to 30 minutes.
 
