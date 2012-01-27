@@ -107,6 +107,8 @@ See the [ProgrammingGuide Point & Click Programmer's Guide] for details on mappi
 
 Reports allow you to view the data stored in documents in your transactions, as well as provide basic control and monitoring of the related transactions themselves.
 
+[http://www.youtube.com/watch?v=_kQP9LK64gU&hd=1 See our YouTube video] on reports, which includes configuring them as well as running them.
+
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 == Searching and filtering matching transactions ==
@@ -160,17 +162,191 @@ http://open.esignforms.com/images/HowToGuidesWiki/reportTranDetail.png
 
 The *Download transaction data* button will download, as XML data, all of the data fields stored in the transaction. Typically, this is all related parameters that were posted at the time the transaction was created.
 
-The *Reason/note to log* field can be populated and then click the *Change status / Add log record* button next to it to choose from the action type to take: *Add reason/note to log (no status change)* is used to simply add a comment to the log for this transaction; *Cancel transaction* will cancel the transaction if it's currently in progress; *Suspend transaction* will suspend the transaction if it's currently in progress*; *Cancel suspended transaction* will cancel the currently suspended transaction; *Resume suspended transaction* will re-activate the suspended transaction so it's in progress again; *Re-activate canceled transaction* will re-activate a canceled transaction so it's in progress again.
+The *Reason/note to log* field can be populated and then click the *Change status / Add log record* button next to it to choose from the action type to take: *Add reason/note to log (no status change)* is used to simply add a comment to the log for this transaction; *Cancel transaction* will cancel the transaction if it's currently in progress; *Suspend transaction* will suspend the transaction if it's currently in progress; *Cancel suspended transaction* will cancel the currently suspended transaction; *Resume suspended transaction* will re-activate the suspended transaction so it's in progress again; *Re-activate canceled transaction* will re-activate a canceled transaction so it's in progress again.
 
-The *View activity log* button will popup an activity log (see below for more) that shows all actions taken with respect to the transaction, as well as any user-defined log records.
+The *View activity log* button will popup an activity log ([#Report_transaction_activity_log see below for more]) that shows all actions taken with respect to the transaction, as well as any user-defined log records.
 
-The *View email* button will popup a window that lists all emails sent related to this transaction, as well as any correlated replies or bounces.
+The *View email* button will popup a window that lists all emails sent related to this transaction, as well as any correlated replies or bounces. See [SystemAdminGuide#View_user_email the view user email information in the system administrator guide for any details.]
 
 The Party List shows each party to the transaction, including the status, number of documents, email address (if known), user who process as this party (if any), when the party was created, and a *More* button related to emails. If you click the *More* button, there will be an option to *View email* to see the emails for this party, and *Send email again* to send the email invitation associated with the party again, and if the party is still active, you can enter a *New email address* to transfer the party to a new email address should the original email address have been incorrect or you learned another person needs to process it.
 
-The Document List shows each document, whether the document was a Production or Test version, and the status of each party with respect to that document, including the party status, document status, last updated date and when the document and data snapshot was taken. If a snapshot exists, a *View/download snapshot* button appears and you can click to choose to *View document snapshot* to see the document at the time that party completed/signed it; *View document snapshot as PDF* to view that same document as a PDF file; *View data snapshot* to view the XML data in the document at the time the party completed it; and *Download Snapshot XML" to download the full snapshot and digitally signed data and document.
+The Document List shows each document by name and ID, whether the document was a Production or Test version, and the status of each party with respect to that document, including the party status, document status, last updated date and when the document and data snapshot was taken. The *Download document data* button can be used to download the data currently stored in the document in XML format. If a snapshot exists, a *View/download snapshot* button appears and you can click to choose to *View document snapshot* to see the document at the time that party completed/signed it; *View document snapshot as PDF* to view that same document as a PDF file; *View data snapshot* to view the XML data in the document at the time the party completed it; and *Download Snapshot XML* to download the full snapshot and digitally signed data and document.
 
 Lastly, there's an option to select one or more documents (either the latest version or the version after a particular party completed it) and download them together as a PDF file. Just select which documents are of interest, then click the *Download selected as PDF* button.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Report transaction activity log == 
+
+You can use the report's transaction activity log to follow every step the transaction has taken:
+
+http://open.esignforms.com/images/HowToGuidesWiki/reportTranActivityLog.png
+
+Select the *From date* and *To date* to narrow the range, or leave both blank to include the oldest through the newest records.  Check *General* to include general log records, those that relate to the basic process flow. Check *Basic trace* to include more details about the processing steps. And check *Detail trace* to include the most details about the processing steps.  The latter two are particularly important when programming test transactions to determine what may be wrong with your configuration.  You may also search for a particular string in the *Log record contains* field. Click the *Find matching* button to list all matching log records related to the transaction.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Example of transaction data in XML format ==
+
+If you download the data associated with a transaction, you will receive something like the following, which includes all parameters for initial values and related information about how the transaction was started. Basically, most are interested in the set of {{{<nameValue>}}} elements listed under {{{<nameValues>}}} element of the {{{<esfRecord}}}.
+
+{{{
+<esfRecord xmlns="http://open.esignforms.com/XMLSchema/2009">
+  <id>60be4b7b-f03c-46dd-b362-ae4a1ee10e52</id>
+  <esfname>data</esfname>
+  <encrypt>true</encrypt>
+  <compress>true</compress>
+  <nameValues count="24">
+    <nameValue>
+      <name>ESF_Request_RequestURL</name>
+      <value>http://open.esignforms.com/demo/S/Demo/Reports</value>
+    </nameValue>
+    <nameValue>
+      <name>ESF_Request_QueryString</name>
+      <value>
+tid=5c5df880-7476-44e9-8c2e-06f3a591b69e&ESFTEST=Yes&ESFLIKEPRODUCTION=Yes
+      </value>
+    </nameValue>
+    <nameValue>
+      <name>ESFTEST</name>
+      <value>Yes</value>
+    </nameValue>
+    <nameValue>
+      <name>ESF_Request_Header_user_agent</name>
+      <value>
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.77 Safari/535.7
+      </value>
+    </nameValue>
+    <nameValue>
+      <name>ESF_Request_Header_accept</name>
+      <value>
+text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+      </value>
+    </nameValue>
+    <nameValue>
+      <name>ESF_Started_By_User_Family_Name</name>
+      <value>Demo last name</value>
+    </nameValue>
+    <nameValue>
+      <name>ESF_Request_Header_referer</name>
+      <value>
+http://open.esignforms.com/demo/vaadin/;jsessionid=A0E4134A327E3AFCCD57480293FE63AD
+      </value>
+    </nameValue>
+    <nameValue type="uuid">
+      <name>ESF_Started_By_User_Id</name>
+      <value>7a4d38ce-7457-406f-9fb0-c174d2bc997c</value>
+    </nameValue>
+    <nameValue>
+      <name>ESF_Request_Header_connection</name>
+      <value>keep-alive</value>
+    </nameValue>
+    <nameValue>
+      <name>ESF_Request_Header_host</name>
+      <value>open.esignforms.com</value>
+    </nameValue>
+    <nameValue>
+      <name>ESFLIKEPRODUCTION</name>
+      <value>Yes</value>
+    </nameValue>
+    <nameValue type="datetime">
+      <name>ESF_Completed_Timestamp</name>
+      <value>2012-01-27T00:57:21Z</value>
+    </nameValue>
+    <nameValue type="emailaddress">
+      <name>ESF_Started_By_User_Email_Address</name>
+      <value>"Demo user" <demo@example.com></value>
+    </nameValue>
+    <nameValue>
+      <name>ESF_Started_By_User_Personal_Name</name>
+      <value>Demo</value>
+    </nameValue>
+    <nameValue type="datetime">
+      <name>ESF_Start_Timestamp</name>
+      <value>2012-01-27T00:56:16Z</value>
+    </nameValue>
+    <nameValue>
+      <name>ESF_Request_Header_accept_encoding</name>
+      <value>gzip,deflate,sdch</value>
+    </nameValue>
+    <nameValue>
+      <name>ESF_Started_By_User_Email</name>
+      <value>demo@example.com</value>
+    </nameValue>
+    <nameValue type="esfname">
+      <name>ESF_Completed_Party</name>
+      <value>FirstParty</value>
+    </nameValue>
+    <nameValue>
+      <name>ESF_Request_Header_cookie</name>
+      <value>
+JSESSIONID=A0E4134A327E3AFCCD57480293FE63AD; ce=demo%40example.com; __utma=148663459.1851346224.1282586987.1285177947.1300488096.3; __utma=77754314.164675453.1306035270.1312051316.1317158170.129; __utmz=77754314.1306035270.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)
+      </value>
+    </nameValue>
+    <nameValue>
+      <name>ESF_Request_RemoteAddr</name>
+      <value>50.46.122.56</value>
+    </nameValue>
+    <nameValue>
+      <name>tid</name>
+      <value>5c5df880-7476-44e9-8c2e-06f3a591b69e</value>
+    </nameValue>
+    <nameValue>
+      <name>ESF_Request_Method</name>
+      <value>GET</value>
+    </nameValue>
+    <nameValue>
+      <name>ESF_Request_Header_accept_language</name>
+      <value>en-US,en;q=0.8</value>
+    </nameValue>
+    <nameValue>
+      <name>ESF_Request_Header_accept_charset</name>
+      <value>ISO-8859-1,utf-8;q=0.7,*;q=0.3</value>
+    </nameValue>
+  </nameValues>
+</esfRecord>
+}}}
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Example of document data in XML format ==
+
+If you download the data associated with a document, you will receive something like the following:
+
+{{{
+<esfRecord xmlns="http://open.esignforms.com/XMLSchema/2009">
+  <id>bc313161-7891-47ae-96f4-3af98c4cb9b2</id>
+  <esfname>SampleReportDoc</esfname>
+  <encrypt>true</encrypt>
+  <compress>true</compress>
+  <nameValues count="6">
+    <nameValue type="money">
+      <name>desiredSalary</name>
+      <value>50000</value>
+    </nameValue>
+    <nameValue type="integer">
+      <name>yearGraduatedHighSchool</name>
+      <value>1998</value>
+    </nameValue>
+    <nameValue type="date">
+      <name>dob</name>
+      <value>1980-01-02</value>
+    </nameValue>
+    <nameValue>
+      <name>ssn</name>
+      <value>123456789</value>
+    </nameValue>
+    <nameValue>
+      <name>lastName</name>
+      <value>Franklin</value>
+    </nameValue>
+    <nameValue>
+      <name>firstName</name>
+      <value>Ben</value>
+    </nameValue>
+  </nameValues>
+</esfRecord>
+}}}
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
