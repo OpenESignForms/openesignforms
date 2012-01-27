@@ -124,7 +124,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/reportSearch.png
   * Enter an email address, or partial email address, in the *Party email* field to limit records to those transactions in which one of the parties is associated with a matching email address.
   * Check *In progress* to include transactions that are currently in progress.
   * Check *Completed* to include transactions that have been completed.
-  * Check *Suspended* to include transactions that have been suspended. A suspended transaction cannot be processed further until re-acivated.
+  * Check *Suspended* to include transactions that have been suspended. A suspended transaction cannot be processed further until re-activated.
   * Check *Only stalled* to limit the report to transactions that have stalled; that is, transactions that are in progress, but have no active party.
   * Choose the which date associated with the transactions to use: *Started* means the date the transaction was started; *Last updated* means the date the transaction was last changed or in use by a party; *Will cancel* means the date the transaction is set to automatically cancel itself if it does not complete before; and *Will expire* means the date the transaction will expire and be removed from the data base.
   * For *In date range* choose from one of the options: *Today* will show matching transactions for the current date; *Yesterday* will show matching transactions from yesterday; *Last 7 days* will show matching transactions for the last 7 days; *Last 30 days* will show matching transactions for the last 30 days; *Last 90 days* will show matching transactions for the last 90 days; *Last 365 days* will show matching transactions for the last 365 days; or *Date range* will let you choose your own date range starting from the *From date* through the *To date* fields.
@@ -361,6 +361,46 @@ If you download the data associated with a document, you will receive something 
   </nameValues>
 </esfRecord>
 }}}
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= General tran search http://open.esignforms.com/images/HowToGuidesWiki/generalTranSearchIcon.png =
+
+The general transaction search feature is very similar to [#Reports Reports], except that is has fixed fields in the listing instead of custom field selections. This feature provides full access to the transaction and thus has less control than with custom reports. It is recommended this feature only be given to system administrators or other power users who have full control over the transactions they can list. 
+
+This view provide basic control and monitoring of transactions that a user has List permission to view.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== General tran searching and filtering ==
+
+Below is a typical search and filtering control for general transaction search. 
+
+http://open.esignforms.com/images/HowToGuidesWiki/generalTranSearch.png
+
+  * Select one or more transaction types you'd like to list (only those transactions you are allowed to List are shown).
+  * Choose your date range starting from the *From date* through the *To date* fields.  
+  * Enter a unique transaction id in the *Tran id only search* field to search for a particular transaction. This mode skips all other search criteria, but of course the transaction found must be one of the types allowed.
+  * Enter an email address, or partial email address, in the *Party email* field to limit records to those transactions in which one of the parties is associated with a matching email address.
+  * The *Production* or *Test* radio buttons let you choose which type of transactions are you interested, those for testing, or those for production.
+  * Check *In progress* to include transactions that are currently in progress.
+  * Check *Completed* to include transactions that have been completed.
+  * Check *Suspended* to include transactions that have been suspended. A suspended transaction cannot be processed further until re-activated.
+  * Check *Only stalled* to limit the report to transactions that have stalled; that is, transactions that are in progress, but have no active party.
+
+Click the *Find matching* button to generate the listing based on matching transactions. The list of matching transactions will appear below.
+
+Click on any transaction row to bring up details and additional controls regarding the transaction. This is the same function as for [#Report_transaction_details report transaction details] shown above, except all buttons are enabled to provide full access to the transaction.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== General search transaction details ==
+
+See [#Report_transaction_details report transaction details] for details on this function.
+
+== General search transaction activity log == 
+
+See [#Report_transaction_activity_log report transaction activity log] for details on this function.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
