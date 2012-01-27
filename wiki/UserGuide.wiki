@@ -188,7 +188,7 @@ Select the *From date* and *To date* to narrow the range, or leave both blank to
 
 == Example of transaction data in XML format ==
 
-If you download the data associated with a transaction, you will receive something like the following, which includes all parameters for initial values and related information about how the transaction was started. Basically, most are interested in the set of {{{<nameValue>}}} elements listed under {{{<nameValues>}}} element of the {{{<esfRecord}}}.
+If you download the data associated with a transaction, you will receive something like the following, which includes all parameters for initial values and related information about how the transaction was started. Basically, most are interested in the set of {{{<nameValue>}}} elements listed under the {{{<nameValues>}}} element of the {{{<esfRecord}}} root element.
 
 {{{
 <esfRecord xmlns="http://open.esignforms.com/XMLSchema/2009">
@@ -306,6 +306,20 @@ JSESSIONID=A0E4134A327E3AFCCD57480293FE63AD; ce=demo%40example.com; __utma=14866
   </nameValues>
 </esfRecord>
 }}}
+
+  * ESF_Start_Timestamp is the date-time it was created.
+  * ESF_Started_By_User_Id is the user id of the person who started this transaction if it was started by a logged in user.
+  * ESF_Started_By_User_Email is the email address of the person who started this transaction if it was started by a logged in user.
+  * ESF_Started_By_User_Email_Address is the full email display name and email address of the person who started this transaction if it was started by a logged in user.
+  * ESF_Started_By_User_Personal_Name is the first/personal name of the person who started this transaction if it was started by a logged in user.
+  * ESF_Started_By_User_Family_Name is the last/family name of the person who started this transaction if it was started by a logged in user.
+  * _paramName_ is the value of the named parameter passed at startup (X prefix is needed if original param started with a number; '-', '/' or '.' replaced by '`_`').
+  * ESF_Request_Header`_`_headerName_ is the value of the named header passed at startup ('-', '/' or '.' replaced by '`_`').
+  * ESF_Request_Method is 'GET' or 'POST' based on type of original startup HTTP request.
+  * ESF_Request_ContentType is the HTTP request's mime-type/content-type when specified.
+  * ESF_Request_RequestURL is the HTTP request's original URL.
+  * ESF_Request_QueryString is the HTTP request's query string portion of the URL.
+  * ESF_Request_RemoteAddr is the HTTP request's remote address (typically an IP address).
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
