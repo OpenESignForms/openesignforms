@@ -32,7 +32,7 @@ Our users have streamlined their processes with sales agreements, HR and employe
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= License =
+= License (Open Source or Commercial) =
 As *open source* software under the [http://open.esignforms.com/agpl.txt GNU Affero GPL (AGPL)], you are free to download and install and use as you see fit so long as the forms you program are made available along with our source code to your users. _A *commercial license* is also available for those who prefer it._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
