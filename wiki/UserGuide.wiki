@@ -99,6 +99,81 @@ _Note, some transactions may not be started by users, and those will not be list
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+= Reports http://open.esignforms.com/images/HowToGuidesWiki/reportsIcon.png =
+
+To list reports you are allowed to run, open the Reports menu item. All reports are custom-built, but this example explains the main search criteria and capabilities.
+
+See the [ProgrammingGuide Point & Click Programmer's Guide] for details on mapping data fields from your packages to report fields, and for building a custom report that includes such report fields.
+
+Reports allow you to view the data stored in documents in your transactions, as well as provide basic control and monitoring of the related transactions themselves.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Searching and filtering matching transactions ==
+
+Below is a typical search and filtering control for reports. 
+
+http://open.esignforms.com/images/HowToGuidesWiki/reportSearch.png
+
+  * Select *Any transaction type* when you'd like to report on all transaction types defined for this report, which are listed below the "Any" entry. You may also select one or more specific transaction types to narrow the results.
+  * The *Production* or *Test* radio buttons let you choose which type of transactions are you interested, those for testing, or those for production.
+  * Select *Started by external parties* to find only those transactions started by external parties, those users who do not have a login and typically created the transaction by starting from your company's web site. The "external parties" option is only available if the report has authorized you to see them. You may also select *Started by any user*, if the report authorizes you to do so, to include all users (those listed below this entry). You may select *Started by me* to include transactions that you started (this is the default access). And if additional users are listed below that, you may select individual users. Multiple selections are allowed.
+  * Enter a unique transaction id in the *Tran id only search* field to search for a particular transaction. This mode skips all other search criteria, but of course the transaction found must be one of the types listed for the report.
+  * Enter an email address, or partial email address, in the *Party email* field to limit records to those transactions in which one of the parties is associated with a matching email address.
+  * Check *In progress* to include transactions that are currently in progress.
+  * Check *Completed* to include transactions that have been completed.
+  * Check *Suspended* to include transactions that have been suspended. A suspended transaction cannot be processed further until re-acivated.
+  * Check *Only stalled* to limit the report to transactions that have stalled; that is, transactions that are in progress, but have no active party.
+  * Choose the which date associated with the transactions to use: *Started* means the date the transaction was started; *Last updated* means the date the transaction was last changed or in use by a party; *Will cancel* means the date the transaction is set to automatically cancel itself if it does not complete before; and *Will expire* means the date the transaction will expire and be removed from the data base.
+  * For *In date range* choose from one of the options: *Today* will show matching transactions for the current date; *Yesterday* will show matching transactions from yesterday; *Last 7 days* will show matching transactions for the last 7 days; *Last 30 days* will show matching transactions for the last 30 days; *Last 90 days* will show matching transactions for the last 90 days; *Last 365 days* will show matching transactions for the last 365 days; or *Date range* will let you choose your own date range starting from the *From date* through the *To date* fields.
+
+In this example, the custom report also allows for two fields to be searched in addition to the standard search fields:
+  * *Last status* allows you to search on the last status field, which is typically a document and/or party name.
+  * *Last name* allows you to search on the last name field presumably defined in the documents defined for the transaction types listed.
+
+Click the *Find matching* button to generate the report based on matching transactions. The list of matching transactions will appear below.
+
+Assuming at least one matching transaction was found, and you have permission, two additional buttons appear. Click *Export to Excel* to copy the data listed in your report into a Microsoft Excel spreadsheet.  Click *Download CSV* to copy the data listed in your report into a standard Comma-Separated-Value text file, most of which are also easily imported in a spreadsheet, which can then be used to upload that data into other systems. Note that you can re-arrange the fields, or hide some, and they will then appear in the same way in your Excel or CSV files.
+
+Click on any transaction row to bring up details and additional controls regarding the transaction. Again, many of these capabilities are configured in the report template to be limited to only authorized users.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Report transaction details ==
+
+Below is a typical detail screen for a transaction:
+
+http://open.esignforms.com/images/HowToGuidesWiki/reportTranDetail.png
+
+  * The upper left field will either be *Test Transaction* if it's a test transaction, or *Production Transaction* if it's a production transaction. Under it is the transaction template name, or type.
+  * The *Package* field shows the name of the package defined for the transaction template.
+  * The *Brand library* field shows the name of the branding library defined for the transaction template.
+  * The *Id* field show the transaction id. It is also shown in the window's title bar.
+  * The *Status* field specifies if the transaction is in progress, completed, canceled, or suspended.
+  * The *Expires* field shows the date, if any, this transaction is set to expire and be deleted.
+  * The *Auto-cancels* field shows the date, if any, this transaction is set to cancel itself if it's not completed by then.
+  * The *Stalled* field shows the date the transaction stalled; that is, when it was detected that the transaction is still in progress, but there are no active parties to move it along.
+  * The *Started* field shows the date and time the transaction was started.
+  * The *Started by* field shows the user, if any, who started the transaction.
+  * The *Last updated* field shows the date and time the transaction was last updated.
+  * The *Last updated by* field shows the user, if any, who last updated the transaction.
+
+The *Download transaction data* button will download, as XML data, all of the data fields stored in the transaction. Typically, this is all related parameters that were posted at the time the transaction was created.
+
+The *Reason/note to log* field can be populated and then click the *Change status / Add log record* button next to it to choose from the action type to take: *Add reason/note to log (no status change)* is used to simply add a comment to the log for this transaction; *Cancel transaction* will cancel the transaction if it's currently in progress; *Suspend transaction* will suspend the transaction if it's currently in progress*; *Cancel suspended transaction* will cancel the currently suspended transaction; *Resume suspended transaction* will re-activate the suspended transaction so it's in progress again; *Re-activate canceled transaction* will re-activate a canceled transaction so it's in progress again.
+
+The *View activity log* button will popup an activity log (see below for more) that shows all actions taken with respect to the transaction, as well as any user-defined log records.
+
+The *View email* button will popup a window that lists all emails sent related to this transaction, as well as any correlated replies or bounces.
+
+The Party List shows each party to the transaction, including the status, number of documents, email address (if known), user who process as this party (if any), when the party was created, and a *More* button related to emails. If you click the *More* button, there will be an option to *View email* to see the emails for this party, and *Send email again* to send the email invitation associated with the party again, and if the party is still active, you can enter a *New email address* to transfer the party to a new email address should the original email address have been incorrect or you learned another person needs to process it.
+
+The Document List shows each document, whether the document was a Production or Test version, and the status of each party with respect to that document, including the party status, document status, last updated date and when the document and data snapshot was taken. If a snapshot exists, a *View/download snapshot* button appears and you can click to choose to *View document snapshot* to see the document at the time that party completed/signed it; *View document snapshot as PDF* to view that same document as a PDF file; *View data snapshot* to view the XML data in the document at the time the party completed it; and *Download Snapshot XML" to download the full snapshot and digitally signed data and document.
+
+Lastly, there's an option to select one or more documents (either the latest version or the version after a particular party completed it) and download them together as a PDF file. Just select which documents are of interest, then click the *Download selected as PDF* button.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 = Forgot your password http://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordLink.png =
 
 If you have forgotten your password, shame on you! But assuming you set up a useful question and answer, you should be able to choose a new password automatically.
