@@ -61,6 +61,15 @@ _You do not want to use Test mode for production transactions. If you do, your c
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+= Transaction status =
+A transaction is created as an instance of a given transaction template, which itself is tied to a given package of documents, albeit with an optional branding library to control logos and properties that alter the branding that appears. 
+
+A transaction starts off in the *In progress* state. It remains in this state as long as it is actively in use. Normally, it will enter the *Completed* state once all parties have processed all documents. It is also possible to *Cancel* a transaction so that its considered to be ended, but not successfully. Typically, a canceled transaction is done by a user who has decided that a given transaction is no longer valid, or if it fails to complete before a set auto-cancel date has arrived. Furthermore, a transaction may be *Suspended* if there's a reason to prevent further processing of the transaction, but you do not want to cancel it. You may later *Resume* a suspended transaction. While you may also *Re-activate* a canceled transaction, this is atypical as once a transaction is canceled, you usually mean for it to stay that way.
+
+You can control the transaction status from the [UserGuide#Reports Reports] or [UserGuide#General_tran_search General tran search] functions.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 = Types of users: User, All Users, External Users =
 
 In Open eSignForms, we use the term "user" to mean a user who has a login account to the application.
@@ -197,6 +206,20 @@ Use the *<<* button to jump to the previous year. Use the *>>* button to jump to
 Use the *<* button to jump to the previous month. Use the *>* button to jump to the next month.
 
 Click on any date to select that date.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Text field searching on Reports ==
+
+Fields that allow text field searching, such as [UserGuide#Reports Reports], are case insensitive. 
+
+By default it will perform a 'contains' search, meaning that data matches if what you enter is anywhere in the data. So searching for {{{cat}}} would match {{{cat}}}, {{{catamaran}}}, {{{scatter}}} and {{{fatcat}}}.
+
+Use a '`=`' prefix for exact email match. Searching for {{{=cat}}} would match {{{cat}}}, but nothing else.
+
+Use a '`^`' prefix for a starts with match. Searching for {{{^cat}}} would match {{{cat}}} and {{{catamaran}}}, but not {{{scatter}}} or {{{fatcat}}}.
+
+Generally, you can hover your mouse over such a field for a tips reminder. If it doesn't show these options, it is limited to only a default 'contains' search.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
