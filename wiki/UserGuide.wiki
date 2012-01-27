@@ -141,6 +141,20 @@ Click on any transaction row to bring up details and additional controls regardi
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+=== Text field searching tip ===
+
+Fields that allow text field searching are case insensitive. 
+
+By default it will perform a 'contains' search, meaning that data matches if what you enter is anywhere in the data. So searching for {{{cat}}} would match {{{cat}}}, {{{catamaran}}}, {{{scatter}}} and {{{fatcat}}}.
+
+Use a '`=`' prefix for exact email match. Searching for {{{=cat}}} would match {{{cat}}}, but nothing else.
+
+Use a '`^`' prefix for a starts with match. Searching for {{{^cat}}} would match {{{cat}}} and {{{catamaran}}}, but not {{{scatter}}} or {{{fatcat}}}.
+
+Generally, you can hover your mouse over such a field for a tips reminder. If it doesn't show these options, it is limited to only a default 'contains' search.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 == Report transaction details ==
 
 Below is a typical detail screen for a transaction:
