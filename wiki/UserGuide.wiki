@@ -1,4 +1,4 @@
-#summary User's Guides for Open eSignForms
+#summary User's Guide for Open eSignForms
 
 <table width="100%"><tr>
 <td width="50%">http://open.esignforms.com/images/OpenESignFormsLogo.gif</td>
