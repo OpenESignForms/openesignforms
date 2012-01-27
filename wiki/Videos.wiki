@@ -2,4 +2,6 @@
 #labels Phase-Deploy,Featured
 = Introduction =
 
-Check out the various [http://www.youtube.com/user/YozonsHTV#g/a How-To Videos on YozonsHTV], our YouTube channel for such videos. 
+Check out the various [http://www.youtube.com/user/YozonsHTV#g/a How-To Videos on YozonsHTV], our `YouTube` channel for such videos. 
+
+You may also find our [HowToGuides online How-To Guides] to be useful references, too.
