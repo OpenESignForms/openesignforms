@@ -1,4 +1,4 @@
-#summary System Administrator Guide for Open eSignForms
+#summary System Administrator's Guide for Open eSignForms
 
 <table width="100%"><tr>
 <td width="50%">http://open.esignforms.com/images/OpenESignFormsLogo.gif</td>
@@ -15,7 +15,7 @@
 <wiki:toc max_depth="3" />
 
 ----
-<h1>System Administrator Guide</h1>
+<h1>System Administrator's Guide</h1>
 ----
 
 Every deployment should have at least one user assigned to the *System/Administrator* group. The system administrator can delegate powers to other groups, including creating partner/department administrator groups who have similar capabilities, but over only a subset of all users.
