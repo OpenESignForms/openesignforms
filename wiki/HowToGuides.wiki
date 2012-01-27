@@ -10,7 +10,7 @@
   * *[HowToGuides Concepts, Tips & Tricks]* (this guide)
   * [UserGuide User's Guide]
   * [SystemAdminGuide System Administrator's Guide]
-  * [ProgrammingGuide Point & Click Programmer's Guide]
+  * [ProgrammingGuide Point & Click Programming Guide]
 
 ==== Table of contents ====
 <wiki:toc max_depth="3" />
