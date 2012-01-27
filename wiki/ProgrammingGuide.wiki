@@ -1,4 +1,4 @@
-#summary Point & Click Programmer's Guide for Open eSignForms
+#summary Point & Click Programming Guide for Open eSignForms
 
 <table width="100%"><tr>
 <td width="50%">http://open.esignforms.com/images/OpenESignFormsLogo.gif</td>
@@ -9,7 +9,7 @@
   * [HowToGuides Concepts, Tips & Tricks] (Read first)
   * [UserGuide User's Guide] (Read first)
   * [SystemAdminGuide System Administrator's Guide]
-  * *[ProgrammingGuide Point & Click Programmer's Guide]* (this guide)
+  * *[ProgrammingGuide Point & Click Programming Guide]* (this guide)
 
 ==== Table of contents ====
 <wiki:toc max_depth="3" />
