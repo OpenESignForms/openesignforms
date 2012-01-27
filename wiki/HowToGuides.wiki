@@ -33,12 +33,12 @@ Our users have streamlined their processes with sales agreements, HR and employe
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 = License =
-As open source software under the [http://open.esignforms.com/agpl.txt GNU Affero GPL (AGPL)], you are free to download and install and use as you see fit so long as the forms you program are made available along with our source code to your users. 
+As *open source* software under the [http://open.esignforms.com/agpl.txt GNU Affero GPL (AGPL)], you are free to download and install and use as you see fit so long as the forms you program are made available along with our source code to your users. _A *commercial license* is also available for those who prefer it._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 = Hosting services =
-Hosting services are available on a shared server, or a private web server using your domain name, or we can install it on your own Linux server in your data center. These all come with a commercial license and technical support services and are _only available from Yozons_ with [http://www.yozons.com/Open-eSignForms/pricing.jsp pricing shown here].
+Hosting services are available on a shared server, or a private web server using your domain name, or we can install it on your own Linux server in your data center. These all come with a traditional commercial license, technical support services, priority enhancements, and are _only available from Yozons_ with [http://www.yozons.com/Open-eSignForms/pricing.jsp pricing shown on the Yozons electronic signature web site].
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
