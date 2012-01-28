@@ -30,4 +30,30 @@ Even Yozons found it hard to keep a large group of dedicated, talented software 
 
 = Programming overview http://open.esignforms.com/images/HowToGuidesWiki/programmingIcon.png =
 
+All programming is done by opening the Programming menu item, which includes links to the [#Libraries Libraries], [#Packages Packages], [#Transaction_Templates Transaction Templates] and [#Report_Templates Report Templates].
+
+The general idea is that you create a library to hold all of your documents, images/logos, email templates, configurable properties and the like. If you have multiple independent companies or departments sharing the same system, you may want to have each work in their own libraries.
+
+Then, once you have your documents ready, you create a package template that defines one or more documents that you want to process together. The package also specifies custom processing rules as well as defines the data fields from your documents that you allow to be included in custom reports.
+
+Then, once your package is ready, you can create one or more transaction templates that will use the package. This gives you the opportunity to create multiple transactions using the same package, but with each specifying a distinct "branding library" that can override images/logos and property values, and each with distinct permissions.
+
+And finally, you can build custom reports that specify which data fields to include for easy tracking, searching and control of transactions, as well as make available for download in Excel or CSV format.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Libraries =
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Packages =
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Transaction Templates =
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Report Templates =
+
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
