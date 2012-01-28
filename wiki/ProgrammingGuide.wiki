@@ -44,7 +44,11 @@ And finally, you can build custom reports that specify which data fields to incl
 
 = Libraries http://open.esignforms.com/images/HowToGuidesWiki/librariesIcon.png =
 
-When you click on *Programming->Libraries* from the menu, you will see a list of libraries that are available to you. Click on a library to view or configure it.
+When you click on *Programming->Libraries* from the menu, you will see a list of libraries that are available to you. 
+
+Click on a library to view or configure it.
+
+(_Note: To program the *contents* of a library, open the *[#Library_programming Programming->Libraries]* arrow to reveal each library you are allowed to view or program and then click on the desired library to access its components._)
 
 There is one special library, *ESF/Library/Template*, that provides a minimal, common set of documents, logos, emails and properties for a working system "out of the box." It includes platform-specific emails, too, such as those related to password issues and the default notification to a party to access a transaction. In general, you will not make any changes to this library. 
 
@@ -76,12 +80,12 @@ http://open.esignforms.com/images/HowToGuidesWiki/libraryExport.png
 By default, no components are automatically selected for export.
 
   * Select *Production only* to list only those components that are configured at the Production level.  Or select *Test version if present* to include components that may also be at the Test level, so that if you export, you will get the latest version regardless of it being at the Production or Test level.
-  * Click on any number of *[#Document Documents]* to select the documents to export, including all configured fields, parties and images.
-  * Click on any number of *[#Document_style Document styles]* to select the document styles to export.
-  * Click on any number of *[#Drop_down Drop downs]* to select the drop down lists to export.
-  * Click on any number of *[#Email_template Email templates]* to select the email templates to export.
-  * Click on any number of *[#Image_and_Logos Image/logo]* to select the image files to export.
-  * Click on any number of *[#Property_set Property sets]* to select the property sets to export.
+  * Click on any number of *[#Documents Documents]* to select the documents to export, including all configured fields, parties and images.
+  * Click on any number of *[#Document_styles Document styles]* to select the document styles to export.
+  * Click on any number of *[#Drop_downs Drop downs]* to select the drop down lists to export.
+  * Click on any number of *[#Email_templates Email templates]* to select the email templates to export.
+  * Click on any number of *[#Images_and_Logos Image/logo]* to select the image files to export.
+  * Click on any number of *[#Property_sets Property sets]* to select the property sets to export.
 
 Once you have selected the items to include in the exported file, click on the *Download/export selected configuration* button to save the XML data file containing the specified configuration to your computer.
 
@@ -106,6 +110,26 @@ Check the *Overwrite existing Test versions?* box to allow any existing test ver
 Note that all components will automatically be at the Test level (nothing is imported as Production-ready). If you already have a Production component with the same name, a new Test version will be created. Use the *Overwrite existing Test versions?* checkbox to control the behavior should your library already have a Test version of the same component.
 
 Click the *Import selected objects into library* button once you are ready to import the configuration into your library.  
+
+= Library programming http://open.esignforms.com/images/HowToGuidesWiki/programmingLibraryIcon.png =
+
+Click on one of the libraries listed when you open the *Programming->Libraries* arrow to access the contents of that library.
+
+You will be presented with a page that lists all of the component types available:
+
+http://open.esignforms.com/images/HowToGuidesWiki/programmingLibrary.png
+
+Click on one of the following to program that type of component:
+
+  * *[#Documents Documents]* defines all documents (forms) and package+disclosure pages. 
+  * *[#Document_styles Document styles]* defines any special document styles you want to use besides the *ESF/Library/Template*'s default *ESF_DefaultDocumentStyle*.
+  * *[#Drop_downs Drop downs]* define drop down lists, also known as select boxes, so your forms can allow a user to choose from a set of options. You can override drop downs in a branding library to change the values available.
+  * *[#Emails Emails]* define the emails that will be sent, such as emails inviting parties to complete documents or notifications sent to others when transactions are completed, customers have signed, etc. You can define both a regular text email as well as an optional HTML-version of that email should the recipient's email client allow the display of HTML email. You can override emails in a branding library to change the contents of emails.
+  * *[#Images_and_logos Images/Logos]* define the images and logos that you display in your documents. You may also define images that are document-specific in the document editor. While you may reference images from anywhere on the Web in your documents, it is not recommended as the URL for such images may change over time, or the image at that URL may change and cause layout or content issues in the future.  You can override images/logos in a branding library to use alternative images and logos.
+  * *[#Property_sets Property sets]* define small data elements that you can externalize from a document, such as company name, address, contact phone, fax numbers, etc. If you externalize these values, you can just change the property sets if their values change. You can override property sets in a branding library to change such values.
+  * *[#Fields Fields]* define commonly used fields in multiple documents so that you can choose them when creating a new field in a document and avoid having to reconfigure its options. It also helps keep common fields consistently named to lessen confusion (was it first_name or FirstName or Name_First?). This is not commonly used.
+  * *[#Parties Parties]* define commonly used parties in multiple documents so that your party names are consistent across documents. Also, if a given party name belongs to a group of users (like "Accounting" or "Payroll"), you can specify a *To Do Group* name that associates a [SystemAdminGuide#Groups Group] of users who will be allowed to act in the party's role. You can override parties in a branding library to specify a different group of users to act as this party.
+  * *Tips* just displays the programming tips page that is displayed when you first open a library for programming.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
