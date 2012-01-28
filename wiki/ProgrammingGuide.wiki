@@ -42,7 +42,70 @@ And finally, you can build custom reports that specify which data fields to incl
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Libraries =
+= Libraries http://open.esignforms.com/images/HowToGuidesWiki/librariesIcon.png =
+
+When you click on *Programming->Libraries* from the menu, you will see a list of libraries that are available to you. Click on a library to view or configure it.
+
+There is one special library, *ESF/Library/Template*, that provides a minimal, common set of documents, logos, emails and properties for a working system "out of the box." It includes platform-specific emails, too, such as those related to password issues and the default notification to a party to access a transaction. In general, you will not make any changes to this library. 
+
+Configuring a library is straightforward:
+
+http://open.esignforms.com/images/HowToGuidesWiki/libraryEdit.png
+
+  * For an actively used library, ensure it is *Enabled*. You can mark it as *Disabled* if the library is no longer going to be used.
+  * The *PathName* should identify the purpose or group that will control its contents.
+  * The *Description* is a short phrase that describes the purpose of the library.
+  * The *Default document style* is the style sheet that new documents you create in the library will use. This helps ensure your documents have a common look. The *ESF/Library/Template* contains a default *ESF_DefaultDocumentStyle* that can be used for a modern, fresh, easy to read look.
+  * The *Comments* can be used to maintain notes regarding the library.
+  * The *Permissions to access this library* are the standard List, View Details, Create, Update and Delete. Just select which groups should be allowed to do those operations. Note that this also applies to all of the components defined in the library, as they do not have independent permissions.  That is, all components in a library share the permissions defined for the library itself.
+
+Click the *Create new empty library* to create a new, empty library. Currently, there is no "create like" for a library as we do not want to encourage putting the same documents in multiple libraries to avoid confusion.
+
+Click the *[#Library_export_config Export config]* button to download the configuration for one or more components defined in the library as an XML file. This file is suitable to be imported in another library, whether in the same deployment or in another.
+
+Click the *[#Library_import_config Import config]* button to upload the configuration previously exported and then select which components to add to the library.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Library export config ==
+
+Click on the *Export config* button in a library to select which components you'd like to export (download to your computer):
+
+http://open.esignforms.com/images/HowToGuidesWiki/libraryExport.png
+
+By default, no components are automatically selected for export.
+
+  * Select *Production only* to list only those components that are configured at the Production level.  Or select *Test version if present* to include components that may also be at the Test level, so that if you export, you will get the latest version regardless of it being at the Production or Test level.
+  * Click on any number of *[#Document Documents]* to select the documents to export, including all configured fields, parties and images.
+  * Click on any number of *[#Document_style Document styles]* to select the document styles to export.
+  * Click on any number of *[#Drop_down Drop downs]* to select the drop down lists to export.
+  * Click on any number of *[#Email_template Email templates]* to select the email templates to export.
+  * Click on any number of *[#Image_and_Logos Image/logo]* to select the image files to export.
+  * Click on any number of *[#Property_set Property sets]* to select the property sets to export.
+
+Once you have selected the items to include in the exported file, click on the *Download/export selected configuration* button to save the XML data file containing the specified configuration to your computer.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Library import config ==
+
+Click on the *Import config* button in a library to select a previously exported file to upload:
+
+http://open.esignforms.com/images/HowToGuidesWiki/libraryImportUploadFile.png
+
+Once you have selected the file, click on the *Upload to import library configuration* button to upload the configuration from a previous export. Note that nothing is actually added to the library at this step.
+
+You will be presented with the components that were contained in the file:
+
+http://open.esignforms.com/images/HowToGuidesWiki/libraryImportSelectComponents.png
+
+By default, all components are automatically selected for import. Unselect any components you do not want to import into the library at this time.
+
+Check the *Overwrite existing Test versions?* box to allow any existing test versions of components with the same name to be overwritten. If you uncheck this box and your library already has a Test version component of the same name, the imported version will be skipped and not loaded into your library.
+
+Note that all components will automatically be at the Test level (nothing is imported as Production-ready). If you already have a Production component with the same name, a new Test version will be created. Use the *Overwrite existing Test versions?* checkbox to control the behavior should your library already have a Test version of the same component.
+
+Click the *Import selected objects into library* button once you are ready to import the configuration into your library.  
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
