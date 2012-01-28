@@ -19,11 +19,27 @@
 
 = Introduction =
 
-Thank you for using [http://open.esignforms.com Open eSignForms]^TM^ by [http://www.yozons.com Yozons]^TM^. We hope this guide will make it easy to learn how to use the various features this powerful, web-based electronic contracting software provides -- all at your fingertips through our point & click programming interface. No programmers are needed, yet you get a fully branded and customized solution! 
+Thank you for using [http://open.esignforms.com Open eSignForms]^TM^ by [http://www.yozons.com Yozons]^TM^. We hope this and related guides will make it easy to learn how to use the various features this powerful, web-based electronic contracting software provides -- all at your fingertips through our point & click programming interface. No programmers are needed, yet you get a fully branded and customized solution! 
 
-See our [http://www.youtube.com/watch?v=Au6FMeautUI&hd=1 YouTube video] for a 15-minute overview tour.
+See our [http://www.youtube.com/watch?v=Au6FMeautUI&hd=1 YouTube video] for a 15-minute overview tour. Or check out our selection of [http://www.youtube.com/user/YozonsHTV#g/a How-To Videos on YozonsHTV].
 
-Or check out our selection of [http://www.youtube.com/user/YozonsHTV#g/a How-To Videos on YozonsHTV].
+With Open eSignForms:
+  * Free forms to get you started
+  * You stay in control
+  * Conduct business using your brand with your documents and your data
+  * No vendor lock-in to protect your investment
+  * Standard, universal formats for long-term viability: HTML documents, XML Digital Signatures, with XML, CSV and Excel data
+  * No long-term commitments
+  * No pressure sales
+  * Easy to budget: no variable per-user or per-transaction charges
+  * No crippled or limited versions to avoid free-bait-then-pricy-upgrade schemes
+  * Freedom of choice: free open source or our fair, uniform, commercial subscription pricing with our hosting or on your own server
+  * Privacy is built-in: SSL/TLS over the Internet, AES on disk, RSA+SHA XML digital signatures
+  * Remain independent: no mixing of your users and your data with other customers
+  * Do-it-yourself or hire a professional partner to help
+  * Package one or more documents to be processed by one or more parties
+  * Reselling opportunity with multi-company branding across your documents and easy grouping of users at no extra charge
+  * Easy integration: add a link to your existing web site or emails; post the data from existing applications; have your users start it directly from the application
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
