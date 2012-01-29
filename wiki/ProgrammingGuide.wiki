@@ -159,7 +159,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/documentVersionEdit.png
 *On the left side* is information about the document, regardless of version:
   * Click *Enabled* for the document to be actively available, or click *Disabled* to keep that document from appearing in other lists of active documents.
   * The *Description* is a short description the document.
-  * The *EsfName* is the document's unique name in the library. Once you create a production version, you will no longer be able to change this name. 
+  * The *[HowToGuides#EsfNames_and_PathNames EsfName]* is the document's unique name in the library. Once you create a production version, you will no longer be able to change this name. 
   * The *Display name* is the name shown to parties when they view this document.
   * Use *Comments* to track any information you want regarding this document.
 
@@ -192,7 +192,7 @@ We use the [http://docs.cksource.com/CKEditor_3.x/Users_Guide CKEditor] componen
 _We recommend that you layout only line-by-line, and run the *Test* button to see how it renders frequently when you are learning the system. This will help you understand just what is happening and make it easier to detect problems as you add the next line._
 
 On the left side editor:
-  * The *Page EsfName* is the unique page name in this document.
+  * The *Page [HowToGuides#EsfNames_and_PathNames EsfName]* is the unique page name in this document.
   * The *Assign new fields so party can update* drop down lists all defined parties for the document, or "-none-", so that as you are building a new document, if you select the party who will fill out the respective fields, when you click *Save*, all new fields will automatically be associated with that party. Don't worry if you forget as you can assign which fields each party can update by clicking on the Party in the right side list.
   * The *View default CSS* list may be useful to more advanced programmers who understand CSS (cascading style sheets). The styles shown when you click on the link are provided for all pages, so you can use these style class names as necessary. It may also be useful if you need to override any in your document (just redefine via the 'Source' mode and add {{{!important}}} to ensure your style class is used).
   * The (i) info button has various tips and useful information (cheatsheet) for defining fields in your document.
@@ -264,7 +264,7 @@ Click on a field to change its configuration:
 http://open.esignforms.com/images/HowToGuidesWiki/fieldEditorGeneral.png
 
 By default, new fields are given the *General* type, meaning they are standard text input fields:
-  * *EsfName* specifies the field's name, which must be unique in the document.
+  * *[HowToGuides#EsfNames_and_PathNames EsfName]* specifies the field's name, which must be unique in the document.
   * Use the *Set from library* drop down to select any pre-defined fields from the library. Note that using this will update all fields on the form.
   * Use the *Type* drop down to choose the correct type for this field:
     * *General* is a text input field for entering a single value, like a name.
@@ -328,7 +328,7 @@ Click on a party to change its configuration:
 
 http://open.esignforms.com/images/HowToGuidesWiki/partyEditor.png
 
-  * *EsfName* is the unique name of a party to this document who is expected to enter data or sign.
+  * *[HowToGuides#EsfNames_and_PathNames EsfName]* is the unique name of a party to this document who is expected to enter data or sign.
   * Choose from the *Set name from library* drop down to select a pre-defined party in your library. This only changes the EsfName and Display name fields, but keeps them consistent across your documents. Consistent names will make it easier to configure packages when you add multiple documents in.
   * The *Display name* is the name of this party when displayed on a document or otherwise describing the party's step or role.
   * Select fields from *Fields party can view* and click the *>>* button to convert them into *Fields party can update*.  The fields listed on the right side are the fields the party will be allowed to type into.  Use the *<<* button to remove the selected fields from the update column if the party should not be allowed to update them.
@@ -356,7 +356,7 @@ Click on an image to change its configuration:
 
 http://open.esignforms.com/images/HowToGuidesWiki/imageEditor.png
 
-  * *EsfName* is the unique name of an image in this document.
+  * *[HowToGuides#EsfNames_and_PathNames EsfName]* is the unique name of an image in this document.
   * *Description* is a short description of the image.
   * *Comments* is any other information you want to maintain about the image.
   
