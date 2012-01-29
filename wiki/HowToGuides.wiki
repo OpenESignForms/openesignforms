@@ -159,7 +159,7 @@ Popup windows can be moved by clicking on the title bar and dragging it.  Popup 
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== EsfNames and PathNames ==
+== `EsfNames and PathNames` ==
 *EsfName* and the related *PathName* are used throughout to name objects in Open eSignForms. An EsfName is 1-50 upper and lowercase letters, starting with a letter, having no spaces, but allowing an underbar. The names must be unique for each object type, and names are not case sensitive, so ESFNAME and EsfName and esfname would be considered duplicates. Examples of valid EsfNames are: ExampleName, example_name and Example_1.  
 
 Some objects support a PathName, which is a series of one or more EsfNames separate by the slash character: */*  Examples of valid path names are: Simple_pathname, Company1/ExampleName, This/Is/Also/Valid.
