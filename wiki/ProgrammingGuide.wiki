@@ -20,11 +20,13 @@
 
 All customization and programming of documents, workflows and emails is done through the web-based interface. *No programmers are needed.* For those who prefer to have professional help, though, Yozons has partnered with other companies that offer professional services to handle all of your needs, or perhaps to get you started so that you can then just make new versions as necessary going forward.
 
-The joy, power and control of Open eSignForm's Point & Click Programming is unique. Those who have outgrown the limitations of mass-marketed, one-size-fits-all alternatives will be favorably impressed by our alternative. 
+The joy, power and control of Open eSignForm's Point & Click Programming is unique. Those who have outgrown the limitations of mass-marketed, one-size-fits-all alternatives will be favorably impressed by our alternative. The most "tricky" part when building a document is to use notation like {{{'${firstName}'}}} in your document where you want an input field to enter someone's first name.
 
 Open eSignForms is based on over 10 years of developing hand-coded (in Java and JSP), custom electronic signature and electronic contracting solutions for thousands of customers across a wide range of verticals. It all started with GE Capital, then Schwab, Enterprise, Citrix, Pitney Bowes, several colleges and universities, and eventually a large number of financing companies, sales departments, HR departments, consulting and other small businesses. 
 
 Even Yozons found it hard to keep a large group of dedicated, talented software professionals who could meet the growing demand for our custom-built solutions, and we charge $125 to $250 per hour. The only solution was to stop training yet another programmer, and instead focus on making customized solutions a do-it-yourself option, with no programming experience required.
+
+_Programming is much easier if you have a Full HD or better monitor to give you adequate "screen real estate" to edit the document, fields, etc._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
@@ -32,7 +34,7 @@ Even Yozons found it hard to keep a large group of dedicated, talented software 
 
 All programming is done by opening the Programming menu item, which includes links to the [#Libraries Libraries], [#Packages Packages], [#Transaction_Templates Transaction Templates] and [#Report_Templates Report Templates].
 
-The general idea is that you create a library to hold all of your documents, images/logos, email templates, configurable properties and the like. If you have multiple independent companies or departments sharing the same system, you may want to have each work in their own libraries.
+The general idea is that you create a library to hold all of your documents, images/logos, email templates, configurable properties and the like. If you have multiple independent companies or departments sharing the same system, you may want to have each work in their own libraries. 
 
 Then, once you have your documents ready, you create a package template that defines one or more documents that you want to process together. The package also specifies custom processing rules as well as defines the data fields from your documents that you allow to be included in custom reports.
 
@@ -130,6 +132,379 @@ Click on one of the following to program that type of component:
   * *[#Fields Fields]* define commonly used fields in multiple documents so that you can choose them when creating a new field in a document and avoid having to reconfigure its options. It also helps keep common fields consistently named to lessen confusion (was it first_name or FirstName or Name_First?). This is not commonly used.
   * *[#Parties Parties]* define commonly used parties in multiple documents so that your party names are consistent across documents. Also, if a given party name belongs to a group of users (like "Accounting" or "Payroll"), you can specify a *To Do Group* name that associates a [SystemAdminGuide#Groups Group] of users who will be allowed to act in the party's role. You can override parties in a branding library to specify a different group of users to act as this party.
   * *Tips* just displays the programming tips page that is displayed when you first open a library for programming.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Documents http://open.esignforms.com/images/HowToGuidesWiki/documentsIcon.png ==
+
+Click on *Documents* to show all documents in the selected library.
+
+Creating documents is the focus of programming on Open eSignForms. Everything begins with a document.  Here's a document list along with the versions associated with the selected document (Selected document CustomDocumentForSignature, Version 2 in Test mode):
+
+http://open.esignforms.com/images/HowToGuidesWiki/documentVersionList.png
+
+In the left side list are all of the documents, showing the current Production and Test versions, when present.  To filter the list of documents:
+  * Enter part of the *Document EsfName* to search by name. It defaults to a "contains" search, but you can prefix with "^" for a "starts with" search. You can also specify to see only *Enabled* or *Disabled* documents.  Click the *Filtered* button to get a filtered list, or click *Show all* to list all documents.
+
+Click on a document to view it along with all of its versions.
+
+On the right side list are all of the versions of the selected document. Document versions are either Test (most recent if present), Production (most recent if no test version), or Old (prior Production versions).  By default, when you select a document, the most recent version will be selected. Only a Test version is available to be changed.
+
+To create a new document and test version from scratch, click the *Create new* button.
+
+When a document is selected, the document and version forms are displayed below:
+
+http://open.esignforms.com/images/HowToGuidesWiki/documentVersionEdit.png
+
+*On the left side* is information about the document, regardless of version:
+  * Click *Enabled* for the document to be actively available, or click *Disabled* to keep that document from appearing in other lists of active documents.
+  * The *Description* is a short description the document.
+  * The *EsfName* is the document's unique name in the library. Once you create a production version, you will no longer be able to change this name. 
+  * The *Display name* is the name shown to parties when they view this document.
+  * Use *Comments* to track any information you want regarding this document.
+
+Click the *Save* button to save any changes to the document and currently selected version.
+
+Click the *Cancel* button to discard any changes made and revert to view-only mode. You can click the *Edit* button to return to edit mode.
+
+Click the *Create new like* button to create a new document, like the currently selected document and version. In general, you want to create a new VERSION of a document when you are making changes to an existing document such that the new version will be used in place of the older versions going forward.  You may want to create a new document LIKE an existing one if BOTH documents will be used at the same time, such as creating a state-specific version of an otherwise standard document.
+
+*On the right side* is information about the selected version:
+  * It includes a list of pages in the document. Currently, we only support 1-page documents, but they are "web pages" meaning that the document can be very long with simple scrolling.  Click on a page to bring up the page editor.
+  * The *Document style* is the document style to be used for this document. We recommend you use as few different document styles as possible to keep a consistent look, and the built-in *ESF_DefaultDocumentStyle* is a nice, modern look.
+
+If you are working on a Test version, click the *Make Test version Production* after you have tested the document and shown that it works as expected. You must make it Production in order to use it in production-level transactions. Click the *Delete* button to delete the Test version. If there is no Production version, this will also delete the Document definition as well as the version.
+
+If you have selected a Production version and there is no existing Test version, click on the *Create next Test version* to create the next version of the document. While generally not recommended, if you need to make a quick tweak to a Production version (and no Test version exists), click on the *Revert to Test* button to put the current Production version back to Test mode, and if there is a previous Old version, it will become the Production version again. This should only be done if you are sure there are no users as they could receive run-time errors (if on reverting there is no new Production version) or version mismatches (since the prior Old version will be used as the new Production version). If you must revert, make your changes quickly and then put it back into production to reduce the chance of such errors occurring.
+
+Click the *Test* button to view the document in the standalone document tester.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Document page editor ===
+
+From the document version form, if you click on a page, the document page editor is displayed:
+
+http://open.esignforms.com/images/HowToGuidesWiki/documentPageEditor.png
+
+We use the [http://docs.cksource.com/CKEditor_3.x/Users_Guide CKEditor] component for WYSIWYG document layout, which is shown on the left side.  The right side contains the list of Fields, Parties and Images defined within the document page.
+
+_We recommend that you layout only line-by-line, and run the *Test* button to see how it renders frequently when you are learning the system. This will help you understand just what is happening and make it easier to detect problems as you add the next line._
+
+On the left side editor:
+  * The *Page EsfName* is the unique page name in this document.
+  * The *Assign new fields so party can update* drop down lists all defined parties for the document, or "-none-", so that as you are building a new document, if you select the party who will fill out the respective fields, when you click *Save*, all new fields will automatically be associated with that party. Don't worry if you forget as you can assign which fields each party can update by clicking on the Party in the right side list.
+  * The *View default CSS* list may be useful to more advanced programmers who understand CSS (cascading style sheets). The styles shown when you click on the link are provided for all pages, so you can use these style class names as necessary. It may also be useful if you need to override any in your document (just redefine via the 'Source' mode and add {{{!important}}} to ensure your style class is used).
+  * The (i) info button has various tips and useful information (cheatsheet) for defining fields in your document.
+
+See below for [#CKEditor_tips CKEditor tips].
+
+Click the *Save* button to save changes to the page, fields, parties or images.
+
+Click the *Close* button to close the page editor.
+
+Click the *Test*  button to test the page in the document-only tester, which shows you your document as it will appear for any of the defined parties.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== CKEditor tips ===
+
+To use one of the editor's styles, highlight existing text to change, then click the *Styles* drop down and choose a new style.
+
+To use one of the editor's text styles, highlight existing text to change, then click the second drop down and choose the appropriate look as shown in the drop down.
+
+Most of the editor icons have a tooltip if you hover over it.
+
+Select bold, italics, underlined, colored text or colored background for text (like a highlighting marker).
+
+Click the *Font* drop down to change the font on the selected text.
+
+Click the *Size* drop down to change the font size on the selected text.
+
+Click one of the text alignment buttons for: left justified, centered, right justified, fully justified (both left and right justified).
+
+Click the cut, copy, paste, paste as plain text or paste as Word to paste whatever is in your clipboard. If you are copying from a Word document, we recommend using the 'past as Word' button.
+
+Click the Find or Find & Replace to look for text in the editor.
+
+Click the arrows to undo or redo changes.
+
+Click the numbered/ordered list or unordered list to make the highlighted text into a list.
+
+Click the Outdent or Indent buttons to decrease or increase the paragraph indentation, and use the DIV button to add a <div> tag.
+
+Click the Table icon to add a table. This is a common tool for dealing with column data in your forms. If you drag the size of the table or its columns, the sizes will be fixed as you specify it in the editor.  But you can also set their sizes to percentage widths and the layout will expand and contract with the browser size.
+
+Click the Insert Horizontal Line button to add a line across the page.
+
+Click the Insert Page Break button to force a page break when the user prints the document from their browser.
+
+Click the Insert Special Character button to add one of the listed characters.
+
+Click the Image button to insert an image defined in the document, the document's library or from the ESF/Library/Template.
+
+Click the Link button to make a hyperlink. 
+
+Click the Source button, for advanced users, who want to see the HTML generated. You may enter HTML directly in this mode and then click it again to return to the WYSIWYG mode. In Source mode, you can also add javascript or style sections as necessary.
+
+Click the Show Blocks button to display the page in terms of blocks, indicating the type of tags used to create them.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Fields in document ===
+
+On the right side is the *Fields in document* list:
+
+http://open.esignforms.com/images/HowToGuidesWiki/fieldsInDocumentList.png
+
+This shows all fields defined in the document using the `${ }` notation. It shows the number of references as well as the field's type.  
+
+Click on a field to change its configuration:
+
+http://open.esignforms.com/images/HowToGuidesWiki/fieldEditorGeneral.png
+
+By default, new fields are given the *General* type, meaning they are standard text input fields:
+  * *EsfName* specifies the field's name, which must be unique in the document.
+  * Use the *Set from library* drop down to select any pre-defined fields from the library. Note that using this will update all fields on the form.
+  * Use the *Type* drop down to choose the correct type for this field:
+    * *General* is a text input field for entering a single value, like a name.
+    * *Checkbox* is a traditional checkbox field, either checked or not.
+    * *Credit card #* is a text input field that expects a legal credit card number. This type currently supports Visa, MasterCard, American Express, Discover numbers.
+    * *Date* is a text input field that includes a calendar selector or lets the user enter the date directly.
+    * *Decimal* is a text input field that expects a valid decimal number, like 123.4. It differs from the Money type only in that it doesn't show a currency symbol.
+    * *Drop down list* lets you choose a drop down list defined in your library so that parties can select a valid value from the list.
+    * *Email address* is a text input field that expects a valid email address.
+    * *File upload* is a special field that allows files to be attached (or removed) when in edit mode, or listed and viewed when in display mode.
+    * *HTML editor* puts a CKEditor field in your document, allowing the party to enter rich text, or paste from Word, etc. We recommend you only provide this feature to parties who are part of your company.
+    * *Integer* is a text field that expects an integer/counting number value, such as -5 or 20. Decimal points are not allowed. 
+    * *Money* is a text input field that expects a valid amount of money to be entered, like 15.25 or $20. It differs from the Decimal type in that it displays a currency symbol rather than just the number.
+    * *Phone (US/Canada)* is a text input field that expects a valid 10-digit phone number.
+    * *Radio button* is a traditional radio button that is typically defined with other values and are put in a group so that only one of the radio buttons in the group can be selected at a time.
+    * *Radio button group* is a non-visual field type that actually holds the value of the selected radio button defined as part of the group.
+    * *Signature* is a text field stylized for the purpose of having the party type their name to indicate they are signing. It will also trigger the additional of the electronic signature process record for the party who signs.
+    * *SignatureDate* is a non-entry field associated with a Signature field by having the same name as the Signature field, but with "Date" added. So if you define a signature field as "CustomerSignature" you can have a date field added and automatically assigned with the actual signing date by defining a SignatureDate field named "CustomerSignatureDate" ("CustomerSignature" with "Date" added at the end).
+    * *SSN* is a text field suitable for the entry of US-based social security numbers.
+    * *Text area* is a multi-line text field that allows for greater input by a user. It is generally used to enter plain text comments, additional contract terms, descriptions, free form mailing addresses, etc.
+    * *Zip code* is a text field suitable for the entry of US-based zip codes, either 5 or 9 digits.
+  * Use the *Align* drop down to change the alignment of the field. "Inherit" is commoly used.
+  * Check the *Required* checkbox if the field is required.
+  * Click the *Security options* list to add special options such as whether the field should support "Auto complete" or not (meaning that if the user has entered similar data elsewhere, the browser will offer up alternative choices, and if not checked, the browser will not offer suggestions); "Mask in data snapshot" is for sensitive data that you may store in your forms, but if the data is exported it must be masked; and "Copy value on tran clone" specifying whether this field's value can be copied if a new transaction is created from an existing transaction (for example, signature fields generally should not be copied since the new transaction should not assume they have typed to sign).
+  * Enter the *Minimum length* this field may have in number of characters.
+  * Enter the *Maximum length* this may have in number of characters.
+  * Enter the *Width* and *Units* to specify how big the field should be. If your fields are defined in a table column, you may want to choose 100% to have it fill the available space. Or choose "Auto" in the Units (Width value is ignored) to have the field sized according to its natural size, which is useful for fields like checkboxes, drop downs, radio buttons, etc.
+  * Check the *Resize display* field if you want the field to display in its natural size when in view/display mode (not in input/edit mode).
+  * Check *Top*, *Bottom*, *Left* and/or *Right* to include borders around the field.
+  * The *Initial value* specifies a fixed value or a field specification, like `${transaction:firstName}`, which is used to set the field's initial value when the transaction is started. You generally cannot reference other fields in the document (since the order they are initialized is not defined), but you can set it to values posted when the transaction was started by an external process.
+  * The *User tooltip* allows you to enter a tooltip that will display when the party hovers the mouse over the field on the document.
+  * The *Input format* specifies the expected format for input into the field.
+  * The *Display format* specifies the format to use when displaying the field (not in input/edit mode).
+
+Each field can also be displayed with its label, automatically. By defining the label that goes with the field, when there is a data validation error, the field and label can be highlighted to help the party know what is wrong.  We recommend laying out your forms with the label in the "Above left" position to create a professional, consistent look that is clear to your users (although for checkbox and radio buttons, we recommend "Right").
+
+  * Select the *Label position* to use when allowing the label to be automatically shown with the field.  Select "None" to prevent the label from automatically appearing with the field. We recommend you do put the label somewhere nearby, though, using the syntax `${label:fieldName}`.
+  * For *Label to show* enter the value to show as the field's label.
+  * Choose the *Separator* drop down to define the separation of the label and the field as "None" (no separator), "Colon :" (put a colon and space between), or "Space" (put a space between).
+  * Choose the *Size* of the label as "Small" (use a smaller font, which is typical when using a label position of "Above Left") or "Normal" (use the same font size for the label).
+
+Click the *Ok* button to save your changes to the field template.
+
+Click the *Cancel* button to discard the changes made to the field template.
+
+Click the *Create new like* button to create a new field like this one. Note that you will want to update your document to reference the new field using `${ }` notation.
+
+Click the *Delete* button to delete the field. Note that you must also remove the associated `${ }` specification in the document because when you save the document page, all undefined fields will be re-created as a General type field.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Parties to document ===
+
+On the right side is the *Parties to document* list:
+
+http://open.esignforms.com/images/HowToGuidesWiki/partyInDocumentList.png
+
+This shows all parties defined in the document. You only need to define parties who are expected to fill out portions of the document.  You do not need to specify any parties who will only view the document.  You can drag to reorder the parties listed so that they appear in the expected order that the document will be completed.
+
+Click on a party to change its configuration:
+
+http://open.esignforms.com/images/HowToGuidesWiki/partyEditor.png
+
+  * *EsfName* is the unique name of a party to this document who is expected to enter data or sign.
+  * Choose from the *Set name from library* drop down to select a pre-defined party in your library. This only changes the EsfName and Display name fields, but keeps them consistent across your documents. Consistent names will make it easier to configure packages when you add multiple documents in.
+  * The *Display name* is the name of this party when displayed on a document or otherwise describing the party's step or role.
+  * Select fields from *Fields party can view* and click the *>>* button to convert them into *Fields party can update*.  The fields listed on the right side are the fields the party will be allowed to type into.  Use the *<<* button to remove the selected fields from the update column if the party should not be allowed to update them.
+  * Select fields from *Required fields party can update* and click the *>>* button to make those fields defined with the *Required* checkbox optional for this party. Often a required field may not be known by an early party (like the person who starts the transaction and then sends it along for processing by another party), so while the field truly is required, it may be considered optional for another party.  Use the *<<* button to remove the optional nature of that field for the party so it's required as defined in the field template.
+
+Click the *Ok* button to save your changes to the party.
+
+Click the *Cancel* button to discard the changes made to the party.
+
+Click the *Create new like* button to create a new party like this one.
+
+Click the *Delete* button to delete the party. 
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Images in document ===
+
+On the right side is the *Images in document* list:
+
+http://open.esignforms.com/images/HowToGuidesWiki/imageInDocumentList.png
+
+This shows all images defined in the document. For images like logos that will likely appear in more than one document, we recommend you define those in the library. But some images are tied specifically to a single document, and this is the place to add those images.
+
+Click on an image to change its configuration:
+
+http://open.esignforms.com/images/HowToGuidesWiki/imageEditor.png
+
+  * *EsfName* is the unique name of an image in this document.
+  * *Description* is a short description of the image.
+  * *Comments* is any other information you want to maintain about the image.
+  
+If the image has already been specified, click the *Replace image file* button to select a different image to use. When you first create a new image, use the *Set image file* button to select the image to upload.
+
+Click on the *View full image* link to display the image "as is".
+
+_Note that the thumbnail image may appear to have a black background when the original images uses a transparent background._
+
+Click the *Ok* button to save your changes to the image.
+
+Click the *Cancel* button to discard the changes made to the image.
+
+Click the *Delete* button to delete the image. 
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Add new field party or image to the document http://open.esignforms.com/images/HowToGuidesWiki/addNewOptionButton.png ===
+
+On the right side, click the *Add new* button and then choose the type of new object to create: 
+
+http://open.esignforms.com/images/HowToGuidesWiki/addNewButtonOptions.png
+
+Click on whichever type of object to create.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Document page editor cheatsheet ===
+
+We recommend that when you want to build a new document, start from the top, lay out the first line, test, then lay out the second line, test, etc. This will make it easier to spot layout errors before too much is built.
+
+Next, add in your fields using the generic `${fieldName}` syntax inside the document. For each such `${ }` specified, a general purpose field will automatically be created for you. Just lay out all of the fields and do not worry about which party will manipulate which field.
+
+Once your testing shows the document layout working as expected, with general fields, you can then use the 'Fields in document' tab to update their types as necessary. At this stage, you can also define the parties who will fill out the document and assign the fields to the respective parties.
+
+==== Coding conventions ====
+`${fieldName}` specifies a document field called 'fieldName'. Examples include `${firstName}`, `${streetAddres}`, `${SSN}` etc.  We recommend that each document have a field for each variable element so it will work more easily when packaged with other documents.  However, a document may reference a field (display-only value) from another document using the notation: `${documentName.fieldName}`.  `${fieldName}` is equivalent to `${fieldlabel:fieldName}`, with the former preferred as it's easier to type.
+
+The names are used as programming variables and thus have are limited to 50 characters in length, must begin with a letter, and then can contain numbers, uppercase or lowercase letters and the underscore (`_`).  So `firstName` and `First_Name` are valid, while `First name` and `1stName` and `first-name` are not.
+
+If a given field appears in multiple locations in a document, only one should be used for input with the standard field notation.  The other references to the field, where it's only displayed, should use:
+  * `${out:fieldName}` will show the field 'fieldName' for display-only.
+
+While fields are often shown together with a label, you can specify these be shown individually using the notation:
+  * `${label:fieldName}` will show the label configured for the field 'fieldName'.
+  * `${field:fieldName}` will show just the field 'fieldName' without any configured label.
+
+If you select an image using the Editor's image feature, the image will appear in the document while editing. However, you may also use this notation to specify a configured image:
+  * `${image:ImageName}` will insert the image named 'ImageName' in that location.
+
+To insert the value of a configured property, you may use this notation:
+  * `${property:PropertySetName.PropertyName}` will insert the value of 'PropertyName' as configured in the property set named 'PropertySetName'.
+  * `${htmlproperty:PropertySetName.PropertyName}` will insert the value of 'PropertyName' as configured in the property set named 'PropertySetName' as if the value were valid HTML (no escaping special characters to HTML entities).
+
+==== Built-in fields used in documents ====
+  * `${document:esfname}` is replaced by the document's configured name.
+  * `${document:displayname}` is replaced by the document's display name.
+  * `${document:id}` is replaced by the document's unique id.
+  * `${document:version}` is replaced by the document's version number.
+  * `${document:version.id}` is replaced by the document version's unique id.
+  * `${document:page.esfname}` is replaced by the document version page's name.
+  * `${document:page.id}` is replaced by the document version page's unique id.
+  * `${document:page.number}` is replaced by the document versions page's number.
+  * `${document:party.esfname}` is replaced by the party's name.
+  * `${document:party.displayname}` is replaced by the party's display name.
+  * `${document:package.pathname}` is replaced by the package's path name.
+  * `${document:package.version}` is replaced by the package's version number.
+  * `${document:package.id}` is replaced by the package's unique id.
+  * `${document:package.version.id}` is replaced by the package version's unique id.
+
+==== Built-in fields to reference from the transaction and startup data ====
+  * `${transaction:id}` is replaced by the transaction's unique id.
+  * `${transaction:ESF_Start_Timestamp}` is replaced by the date-time it was created.
+  * `${transaction:ESF_Started_By_User_Id}` is replaced by the user id of the person who started this transaction if it was started by a logged in user.
+  * `${transaction:ESF_Started_By_User_Email}` is replaced by the email address of the person who started this transaction if it was started by a logged in user.
+  * `${transaction:ESF_Started_By_User_Email_Address}` is replaced by the full email display name and email address of the person who started this transaction if it was started by a logged in user.
+  * `${transaction:ESF_Started_By_User_Personal_Name}` is replaced by the first/personal name of the person who started this transaction if it was started by a logged in user.
+  * `${transaction:ESF_Started_By_User_Family_Name}` is replaced by the last/family name of the person who started this transaction if it was started by a logged in user.
+  * `${transaction:paramName}` is replaced by the value of the named parameter passed at startup (X prefix is needed if original param started with a number; '-', '/' or '.' replaced by '`_`').
+  * `${transaction:ESF_Request_Header_headerName}` is replaced by the value of the named header passed at startup ('-', '/' or '.' replaced by '`_`').
+  * `${transaction:ESF_Request_Method}` is replaced by 'GET' or 'POST' based on type of original startup HTTP request.
+  * `${transaction:ESF_Request_ContentType}` is replaced by HTTP request's mime-type/content-type when specified.
+  * `${transaction:ESF_Request_RequestURL}` is replaced by HTTP request's original URL.
+  * `${transaction:ESF_Request_QueryString}` is replaced by HTTP request's query string portion of the URL.
+  * `${transaction:ESF_Request_RemoteAddr}` is replaced by HTTP request's remote address (typically an IP address).
+
+==== Built-in fields used in Package documents ====
+  * `${transaction:documents.todo}` specifies where the generated list of documents the specified party has access to are listed.
+
+==== Built-in fields used in Email notifications configuration ====
+  * `${LINK}` specifies where the generated HTTP Link or URL will be placed in the email notification.
+  * `${EMAIL}` specifies where the party's address will be placed in the email notification, TO/CC/BCC, and/or subject.
+
+==== Built-in fields used in password-related e-mail configuration for users ====
+  * `${LINK}` specifies where the generated HTTP Link or URL will be placed in the email notification.
+  * `${NAME}` specifies where the user's display name will be placed in the email notification and/or subject.
+  * `${EMAIL}` specifies where the user's address will be placed in the email notification, TO/CC/BCC, and/or subject.
+
+==== Links to advanced configuration options ====
+There are a few data types that allow for customization using Java's built in capabilities, but they are a bit technical. For advanced folks who need them, here are some useful links to documentation that describe these more.
+
+For Date, use [http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html SimpleDateFormat] specifications
+
+For Decimal and Money and even Integer, use [http://docs.oracle.com/javase/6/docs/api/java/text/DecimalFormat.html DecimalFormat] specifications
+
+For General, use regular expression [http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html Pattern] specifications
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Document styles http://open.esignforms.com/images/HowToGuidesWiki/documentStylesIcon.png ==
+
+Click on *Document styles* to show all document styles in the selected library.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Drop downs http://open.esignforms.com/images/HowToGuidesWiki/dropDownsIcon.png ==
+
+Click on *Drop downs* to show all drop downs (selection boxes) in the selected library.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Emails http://open.esignforms.com/images/HowToGuidesWiki/emailsIcon.png ==
+
+Click on *Emails* to show all email templates in the selected library.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Images/Logos http://open.esignforms.com/images/HowToGuidesWiki/imagesLogosIcon.png ==
+
+Click on *Images/Logos* to show all images in the selected library.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Property sets http://open.esignforms.com/images/HowToGuidesWiki/propertySetsIcon.png ==
+
+Click on *Property sets* to show all property sets in the selected library.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Fields http://open.esignforms.com/images/HowToGuidesWiki/fieldsIcon.png ==
+
+Click on *Fields* to show all field templates in the selected library.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Parties http://open.esignforms.com/images/HowToGuidesWiki/partiesIcon.png ==
+
+Click on *Parties* to show all party templates in the selected library.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
