@@ -478,13 +478,13 @@ Click on *Drop downs* to show all drop downs (selection boxes) in the selected l
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Emails http://open.esignforms.com/images/HowToGuidesWiki/emailsIcon.png ==
+== Email templates http://open.esignforms.com/images/HowToGuidesWiki/emailsIcon.png ==
 
 Click on *Emails* to show all email templates in the selected library.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Images/Logos http://open.esignforms.com/images/HowToGuidesWiki/imagesLogosIcon.png ==
+== Images and Logos http://open.esignforms.com/images/HowToGuidesWiki/imagesLogosIcon.png ==
 
 Click on *Images/Logos* to show all images in the selected library.
 
