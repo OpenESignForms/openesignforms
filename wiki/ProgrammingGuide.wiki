@@ -59,7 +59,7 @@ Configuring a library is straightforward:
 http://open.esignforms.com/images/HowToGuidesWiki/libraryEdit.png
 
   * For an actively used library, ensure it is *Enabled*. You can mark it as *Disabled* if the library is no longer going to be used.
-  * The *PathName* should identify the purpose or group that will control its contents.
+  * The *[HowToGuides#EsfNames_and_PathNames PathName]* should identify the purpose or group that will control its contents.
   * The *Description* is a short phrase that describes the purpose of the library.
   * The *Default document style* is the style sheet that new documents you create in the library will use. This helps ensure your documents have a common look. The *ESF/Library/Template* contains a default *ESF_DefaultDocumentStyle* that can be used for a modern, fresh, easy to read look.
   * The *Comments* can be used to maintain notes regarding the library.
