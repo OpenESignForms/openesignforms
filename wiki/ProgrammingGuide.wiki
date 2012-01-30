@@ -12,6 +12,7 @@
   * [UserGuide User's Guide] (Read first)
   * [SystemAdminGuide System Administrator's Guide]
   * *[ProgrammingGuide Point & Click Programming Guide]* (this guide)
+  * [ProgrammingTutorial Programming Tutorial]
 
 ==== Table of contents ====
 <wiki:toc max_depth="3" />
@@ -20,7 +21,7 @@
 
 All customization and programming of documents, workflows and emails is done through the web-based interface. *No programmers are needed.* For those who prefer to have professional help, though, Yozons has partnered with other companies that offer professional services to handle all of your needs, or perhaps to get you started so that you can then just make new versions as necessary going forward.
 
-The joy, power and control of Open eSignForm's Point & Click Programming is unique. Those who have outgrown the limitations of mass-marketed, one-size-fits-all alternatives will be favorably impressed by our alternative. The most "tricky" part when building a document is to use notation like {{{'${firstName}'}}} in your document where you want an input field to enter someone's first name.
+The joy, power and control of Open eSignForm's Point & Click Programming is unique. Those who have outgrown the limitations of mass-marketed, one-size-fits-all alternatives will be favorably impressed by our alternative. The most "tricky" part when building a document is to use notation like {{{'${firstName}'}}} in your document where you want an input field to enter someone's first name. Check out our [ProgrammingTutorial Programming Tutorial] for a step-by-step learning approach.
 
 Open eSignForms is based on over 10 years of developing hand-coded (in Java and JSP), custom electronic signature and electronic contracting solutions for thousands of customers across a wide range of verticals. It all started with GE Capital, then Schwab, Enterprise, Citrix, Pitney Bowes, several colleges and universities, and eventually a large number of financing companies, sales departments, HR departments, consulting and other small businesses. 
 
