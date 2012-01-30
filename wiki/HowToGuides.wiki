@@ -13,6 +13,7 @@
   * [UserGuide User's Guide]
   * [SystemAdminGuide System Administrator's Guide]
   * [ProgrammingGuide Point & Click Programming Guide]
+  * [ProgrammingTutorial Programming Tutorial]
 
 ==== Table of contents ====
 <wiki:toc max_depth="3" />
@@ -21,7 +22,7 @@
 
 Thank you for using [http://open.esignforms.com Open eSignForms]^TM^ by [http://www.yozons.com Yozons]^TM^. We hope this and related guides will make it easy to learn how to use the various features this powerful, web-based electronic contracting software provides -- all at your fingertips through our point & click programming interface. No programmers are needed, yet you get a fully branded and customized solution! 
 
-See our [http://www.youtube.com/watch?v=Au6FMeautUI&hd=1 YouTube video] for a 15-minute overview tour. Or check out our selection of [http://www.youtube.com/user/YozonsHTV#g/a How-To Videos on YozonsHTV].
+See our [http://www.youtube.com/watch?v=Au6FMeautUI&hd=1 YouTube video] for a 15-minute overview tour. Or check out our selection of [http://www.youtube.com/user/YozonsHTV#g/a How-To Videos on YozonsHTV].  Check out our [ProgrammingTutorial Programming Tutorial] for a step-by-step learning approach.
 
 With Open eSignForms:
   * Free forms to get you started
