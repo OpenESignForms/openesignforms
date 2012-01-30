@@ -5,6 +5,8 @@
 <td width="50%" align="right">http://www.yozons.com/images/logoSmall.gif</td>
 </tr></table>
 
+<h1>User's Guide</h1> 
+
 ==== How-To Guides ====
   * [HowToGuides Concepts, Tips & Tricks] (Read first)
   * *[UserGuide User's Guide]* (this guide)
@@ -14,9 +16,7 @@
 ==== Table of contents ====
 <wiki:toc max_depth="3" />
 
-----
-<h1>User's Guide</h1> 
-----
+= Introduction =
 
 This guide describes common functions performed by all users. See the [SystemAdminGuide System Administrator Guide] for details on setting up users and configuring the system, or the [ProgrammingGuide Point & Click Programming Guide] for programming documents, packages, transactions and reports.
 
