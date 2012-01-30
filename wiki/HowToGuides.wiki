@@ -6,6 +6,8 @@
 <td width="50%" align="right">http://www.yozons.com/images/logoSmall.gif</td>
 </tr></table>
 
+<h1>How-To Guide: Concepts, Tips & Tricks</h1>
+
 ==== How-To Guides ====
   * *[HowToGuides Concepts, Tips & Tricks]* (this guide)
   * [UserGuide User's Guide]
@@ -14,8 +16,6 @@
 
 ==== Table of contents ====
 <wiki:toc max_depth="3" />
-
-<h1>How-To Guide: Concepts, Tips & Tricks</h1>
 
 = Introduction =
 
