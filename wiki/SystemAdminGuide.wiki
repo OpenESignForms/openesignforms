@@ -5,6 +5,8 @@
 <td width="50%" align="right">http://www.yozons.com/images/logoSmall.gif</td>
 </tr></table>
 
+<h1>System Administrator's Guide</h1>
+
 ==== How-To Guides ====
   * [HowToGuides Concepts, Tips & Tricks] (Read first)
   * [UserGuide User's Guide] (Read first)
@@ -14,9 +16,7 @@
 ==== Table of contents ====
 <wiki:toc max_depth="3" />
 
-----
-<h1>System Administrator's Guide</h1>
-----
+= Introduction =
 
 Every deployment should have at least one user assigned to the *System/Administrator* group. The system administrator can delegate powers to other groups, including creating partner/department administrator groups who have similar capabilities, but over only a subset of all users.
 
