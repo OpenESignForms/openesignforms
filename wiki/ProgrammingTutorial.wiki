@@ -114,7 +114,7 @@ If so, click the *Ok* button to save your changes.
 
 Click on *emailTo* in the *Fields in document* list on the right side.
 
-Change the *Type* from "General" to "Email address" since we want to specify the customer's email address. The email address is required, so we'll check the *Required* box. We'll change the *Width* to 20 and *Units* to "Em" so it doesn't go across the page.  We'll also tweak the *Label to show* to read "Customer email". It should look like this before you click the *Ok* button:
+Change the *Type* from "General" to "Email address" since we want to specify the customer's email address. The email address is required, so we'll check the *Required* box. We'll change the *Width* to "20" and *Units* to "Em" so it doesn't go across the page.  We'll also tweak the *Label to show* to read "Customer email". It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/emailToField.png
 
@@ -124,12 +124,59 @@ If so, click the *Ok* button to save your changes.
 
 Click on *note* in the *Fields in document* list on the right side.
 
-Change the *Type* from "General" to "HTML editor" since we want to be able to enter our contract terms here, perhaps even pasting the terms from a Word document. The note is required, so we'll check the *Required* box. We'll change the *Maximum length* to 20000 so it can hold a lot of contract language should we need it.  Well also add a border on top to separate it from the customer email and subject. We don't want a label for this field, so we'll change *Label position* to "None". It should look like this before you click the *Ok* button:
+Change the *Type* from "General" to "HTML editor" since we want to be able to enter our contract terms here, perhaps even pasting the terms from a Word document. The note is required, so we'll check the *Required* box. We'll change the *Maximum length* to "20000" so it can hold a lot of contract language should we need it.  We'll also check *Show border* "Top" to separate it from the customer email and subject. We don't want a label for this field, so we'll change *Label position* to "None". It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/noteField.png
 
 If so, click the *Ok* button to save your changes.
 
+== Update 'prepareDate' field ==
+
+Click on *prepareDate* in the *Fields in document* list on the right side.
+
+Change the *Type* from "General" to "Date". We change the *Units* to "Auto" since it should size "naturally" (as big as the date field is).  We set the *Initial value* to "now" (or you can use "+0") so it will show today's date. We change the *Date selector input format* to "mm/dd/yyyy" and set the *Date display format* to a full date and day.  We then change our *Label position* to "Left", set the *Label to show* to just read "Date" and set the *Size* to "Normal". It should look like this before you click the *Ok* button:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/prepareDateField.png
+
+If so, click the *Ok* button to save your changes.
+
+== Update 'recipientSignature' field ==
+
+Click on *recipientSignature* in the *Fields in document* list on the right side.
+
+Change the *Type* from "General" to "Signature" since we want the customer to put type their signature here. Check *Required* since we require the customer to sign. Set the *Width* to "30" and *Units* to "Em" so it has a fixed size in the document. We also *Show border* as "Bottom" to create a signature line, and add a tooltip for the customer. We change the *Label to show* to just read "Signature" with a *Size* of "Normal". It should look like this before you click the *Ok* button:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/recipientSignatureField.png
+
+If so, click the *Ok* button to save your changes.
+
+== Update 'recipientSignatureDate' field ==
+
+Click on *recipientSignatureDate* in the *Fields in document* list on the right side.
+
+Change the *Type* from "General" to "SignatureDate" since we want the date the customer signs to appear next to the signature.  Set the *Width* to "10" and *Units* to "Em" so it has a fixed size in the document. We also *Show border* as "Bottom" to create a signature date line. We set the *Date display format* to show a full date. We change the *Label to show* to just read "Date" with a *Size* of "Normal". It should look like this before you click the *Ok* button:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/recipientSignatureDateField.png
+
+If so, click the *Ok* button to save your changes.
+
+_Tip: The signature date is associated with its corresponding signature field by naming convention, adding "Date" to the name of the signature field. So in our case, "recipientSignatureDate" is tied to the field "recipientSignature"._
+
+== Update 'subject' field, our last one ==
+
+Click on *subject* in the *Fields in document* list on the right side.
+
+Set the *Width* to "20" and *Units* to "Em" so it has a fixed size in the document. Check *Required* since we'll use this subject in the email notification sent to the customer. It should look like this before you click the *Ok* button:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/subjectField.png
+
+If so, click the *Ok* button to save your changes.
+
+== Save your changes ==
+
+Click the *Save* button to save all your changes and it should look like this:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/documentSecondSave.png
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
