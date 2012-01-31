@@ -218,7 +218,7 @@ Click on *Programming->Packages* and select the package template from the list s
 
 == Create a new package like the template ==
 
-But we don't want to change the template, so first click the *Create new like* button http://open.esignforms.com/images/ProgrammingTutorialWiki/createNewLikeButton.png to create a new package like the template.
+We don't want to change the template, so first click the *Create new like* button http://open.esignforms.com/images/ProgrammingTutorialWiki/createNewLikeButton.png to create a new package like the template.
 
 Change the *PathName* to "Tutorial", ensure the *Enabled* radio button is selected and click the *Save* button. It should look like this:
 
@@ -246,7 +246,7 @@ _Tip: If the user starts a transaction, doesn't delete it and fails to send it o
 
 == Configure the Customer package party ==
 
-Click on the *Customer* party in the *Parties involved with this package of documents* list. Set the *Notify email address spec (${EMAIL})* to the form field that contains the customer's email address, in our case "${emailTo}". If you want, you can set up automatic email renotifications if the customer does not complete it, so we'll select *Renotify* values of "1 Day" and "5 Days". It should look like this before you click the *Ok* button:
+Click on the *Customer* party in the *Parties involved with this package of documents* list. Set the *Notify email address spec (${EMAIL})* to the form field that contains the customer's email address, in our case this was the "emailTo" field, so we enter "${emailTo}". If you want, you can set up automatic email renotifications if the customer does not complete it, so we'll select *Renotify* values of "1 Day" and "5 Days". It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/customerPackageParty.png
 
@@ -298,11 +298,103 @@ Click the *Save* button to save your changes to the package.  Next, we'll create
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Step 4: Create a transaction template =
+= Step 4: Create a transaction template http://open.esignforms.com/images/ProgrammingTutorialWiki/programmingTranIcon.png =
+
+Click on *Programming->Tran templates* and select the transaction template from the list so it appears in the form below. The transaction template has no package or branding library defined, but the permissions are set for your company or group, so we always start with a template.
+
+== Create a new transaction template like the template ==
+
+We don't want to change the template, so first click the *Create like* button http://open.esignforms.com/images/ProgrammingTutorialWiki/createLikeButton.png to create a new transaction template like the template.
+
+Change the *PathName* to "Tutorial", ensure the *Test enabled* radio button is selected, choose your "Tutorial" package for *Package to use*, choose your library for *Branding library to use*, and click the *Save* button. It should look like this:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/tranTemplateFirstSave.png
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Step 5: Run a Test transaction =
+= Step 5: Run a Test transaction http://open.esignforms.com/images/ProgrammingTutorialWiki/startTransactionIcon.png =
+
+You should now see your tutorial transaction listed under the *Start transaction* menu.
+
+If you just click on *Tutorial*, you should see a *Start error* message like the following:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/startError.png
+
+This is because a regular click starts a production transaction, and we are still testing. Instead, you want to right-click on *Tutorial* and then click *Start TEST transaction* to run a test transaction.  A Test transaction will not get mixed up with  your Production transactions, and it will also use any components (document, image, property set, drop down, etc.) that are marked at the Test level. 
+
+_Tip: If you do not see a new popup window, most likely your browser is blocking popups, so look for such errors or warnings and then tell your browser to allow popups from your web site domain._
+
+== Complete test transaction as the CustomerRep party ==
+
+If your configuration was done as specified, you will see your document ready for initial input by the customer representative party (our first party) like this:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/testTranFirstPartyInitial.png
+
+Enter your email address into the *Customer email* field, and enter "First test" into the *Subject field.
+
+_Tip: We recommend you use an email address that differs from the one you login with to reduce any confusion since you will be playing both parties while testing. It's easy to create free web-based email accounts for your testing purposes, like [http://mail.google.com GMail], [http://www.hotmail.com HotMail] or [http://mail.yahoo.com Yahoo Mail].  We also recommend having at least two different browsers installed so that you can use one browser when you are acting as an Open eSignForms user, and the other browser when you are playing the other party. Fortunately, all browsers are free to install. We recommend [https://www.google.com/chrome Chrome] and [http://www.mozilla.org/en-US/firefox/new/ Firefox], but [http://www.apple.com/safari/download/ Safari], [http://windows.microsoft.com/en-us/internet-explorer/products/ie/home IE] and [http://www.opera.com/ Opera] all work well, too._
+
+You can copy and paste the following pseudo-agreement into the editor window:
+
+----
+This non-disclosure agreement is made and entered into today by and between, MyCompany, Inc. (Company, we, our) and YourCompany, LLC (you, your). 
+
+This agreement is entered into so that our companies can exchange information, often confidential, in order to pursue a business relationship. *This agreement is not legally binding on any parties as it is being used solely for the purpose of an Open eSignForms tutorial.*
+
+1) You agree to keep all materials secure and confidential. You agree not to share our materials with any party who is not covered by this non-disclosure agreement.
+
+2) You agree that the only purpose of reviewing our materials is to evaluate a business relationship.
+
+3) You agree you will not use our materials to reverse engineer or use it as the basis for any other business purpose.
+
+4) You agree to destroy all copies, in any format, stored on any media, whether original or transcribed, in whole or in part, once your evaluation is complete.
+
+By signing below, you acknowledge that you have read, understand and agree to the terms above.
+----
+
+If you want, feel free to upload a file, but this is not required for our testing.
+
+Click the *Continue to review* button.
+
+Assuming it looks fine, click *Submit completed document* to complete the first party step. You can close the popup window when you are done.
+
+An email should have been sent to the email address you provided in *Customer email*.
+
+== Customer email received ==
+
+The actual text of your email will vary some, but the key point is that it should have been sent to the customer with a unique link that allows them to complete the contract.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/customerEmail.png
+
+If you are logged in using your default browser, copy the URL from the email and paste it into the other browser so you can act as the Customer role. If you are logged in using the other browser, then you can just click on the *Click here to view and/or process this document* link in the email and it will automatically launch your default browser to that URL.
+
+== Customer E-Sign Disclosures and Package page ==
+
+When the customer clicks on the link, the E-Sign Disclosures and Package Listing page will be displayed first. This page is designed to give a welcome message, but most importantly, to include an E-Sign Disclosure statement, which is required by law for consumers, and is recommended for all parties outside of your company.  It also lists all documents the party is expected to complete.
+
+The E-Sign Disclosure and Package page is defined when you set up the Package. Note that you can create your own disclosure+package pages to read however you want.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/customerDisclosurePage.png
+
+Click the *Continue* button to see the contract you prepared earlier.
+
+_Tip: Test transactions have the *TEST TRANSACTION* banner at the top to make them obviously distinct from Production transactions you'll use with your customers._
+
+== Customer signs your custom contract ==
+
+The customer will see the custom contract you prepared, will read it, and then will sign by typing their name into the *Signature* field at the bottom:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/customerSignContract.png
+
+Click the *Continue to review* button.
+
+== Customer reviews and submits the contract ==
+
+The customer will see the finalized contract with the signature and electronic signature process record. The customer can click the *Go Back and Make Changes* button to make any corrections, or if all is good, the signed agreement can be submitted by clicking the *Submit signed document* button.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/customerSubmitContract.png
+
+_Tip: The customer can use the link in the original email received at any time to return and see the signed agreement._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
