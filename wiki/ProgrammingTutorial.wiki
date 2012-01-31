@@ -55,7 +55,7 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/newEmptyDocument.png
 
 == Insert initial document text ==
 
-To get you started, just copy the following document text and paste it into your HTML page editor:
+To get you started, just copy the following 5-line document text and paste it into your HTML page editor:
 
 ----
 ${prepareDate}
@@ -124,7 +124,7 @@ If so, click the *Ok* button to save your changes.
 
 Click on *note* in the *Fields in document* list on the right side.
 
-Change the *Type* from "General" to "HTML editor" since we want to be able to enter our contract terms here, perhaps even pasting the terms from a Word document. The note is required, so we'll check the *Required* box. We'll change the *Maximum length* to "20000" so it can hold a lot of contract language should we need it.  We'll also check *Show border* "Top" to separate it from the customer email and subject. We don't want a label for this field, so we'll change *Label position* to "None". It should look like this before you click the *Ok* button:
+Change the *Type* from "General" to "HTML editor" since we want to be able to enter our contract terms here, perhaps even pasting the terms from a Word document. The note is required, so we'll check the *Required* box. We'll change the *Maximum length* to "20000" so it can hold a lot of contract language should we need it.  We'll also check *Show border* "Top" to separate it from the customer email and subject. Set the *Number of rows to show* to "15" to give us a good sized editor window when we are filling out the contract. We don't want a label for this field, so we'll change *Label position* to "None". It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/noteField.png
 
@@ -180,6 +180,156 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/documentSecondSave.png
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Step 2: ?? =
+= Step 2: Basic Testing =
+
+When you are creating your own document, we recommend you do this basic testing step repeatedly as you change your fields and document so that you can see the changes right away. For example, the reason we know to change the label sizes, widths, etc. is that when you test, you'll see the results are not quite right and need those values to be tweaked.
+
+== Test button ==
+
+Click the *Test* button at the bottom of the left side editor area. The *Test* button will also do a *Save* first, but will then show you your document, set to the first party defined so it shows you how the document will look at the first step.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/testCompanyRep.png
+
+Note that the document ends at the red dotted line, and you may need to scroll to see it all.  Below the red dotted line is a *Close* button that will close the testing windows, and a *View as party* drop down to let you see how the document will look for either party.
+
+The fields in yellow background are required. Note that for the CompanyRep (first party), all fields are open except for the signature and date fields.
+
+Feel free to play with the document, including uploading an attachment, setting values, click the *Continue to review* button, etc. 
+
+== Switch to Customer testing view ==
+
+At the bottom of the test window, select "Customer" from the *View as party* drop down.  It should now appear like this:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/testCustomer.png
+
+Note that only the customer signature field is open for editing. If you type a name and click *Continue to review* you will see the signature date and electronic signature process record automatically appear.
+
+== Close the document editing ==
+
+Click the *Close* button at the bottom to exit the document test view.
+
+Then click the *Close* button on the page editor since we are happy that the document appears to be working as expected. Next, we'll create a package that holds this document for processing.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Step 3: Create a package http://open.esignforms.com/images/ProgrammingTutorialWiki/programmingPackageIcon.png =
+
+Click on *Programming->Packages* and select the package template from the list so it appears in the form below. The package template has no documents or parties defined, but the permissions are set for your company or group, so we always start with a template.
+
+== Create a new package like the template ==
+
+But we don't want to change the template, so first click the *Create new like* button http://open.esignforms.com/images/ProgrammingTutorialWiki/createNewLikeButton.png to create a new package like the template.
+
+Change the *PathName* to "Tutorial", ensure the *Enabled* radio button is selected and click the *Save* button. It should look like this:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/packageFirstSave.png
+
+== Add the document into the package ==
+
+On the lower right side, under *Choose documents:* open the library where you build your document. In our case, we open the library *A/Tutorial* and it shows our *Tutorial* document. Drag *Tutorial* and drop into the *Documents in this package* list. Note that two parties defined in the document are pre-populated in the package.
+
+Click *Save* and it the package should look something like this:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/packageSecondSave.png
+
+== Configure the CompanyRep package party ==
+
+Package parties are similar to document parties, but they have more configuration associated with them. 
+
+Click on the *CompanyRep* party in the *Parties involved with this package of documents* list. Since this party is a user in your company, we'll make the following types of changes. First, let's change the *Landing page* to "First document" since your employees don't need to see the E-Sign Disclosures (required by law for consumers) and package list and can just jump straight into the first (and only in this case) document. Check *Must be logged in* so that the person who starts the transaction is logged in. Also, check *Allow delete tran if no signatures* so that if you start a transaction using this package and decide not to send it out, you can delete the transaction entirely.  It should look like this before you click the *Ok* button:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/companyRepPackageParty.png
+
+If so, click the *Ok* button to save your changes.
+
+_Tip: If the user starts a transaction and doesn't delete it, it will appear in that user's *To Do* listing so they can resume from there._
+
+== Configure the Customer package party ==
+
+Click on the *Customer* party in the *Parties involved with this package of documents* list. Set the *Notify email address spec (${EMAIL})* to the form field that contains the customer's email address, in our case "${emailTo}". If you want, you can set up automatic email renotifications if the customer does not complete it, so we'll select *Renotify* values of "1 Day" and "5 Days". It should look like this before you click the *Ok* button:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/customerPackageParty.png
+
+If so, click the *Ok* button to save your changes.
+
+== Map report fields ==
+
+Because we know we'll create a custom report later that can show details about our transactions, we'll go ahead and map fields in our document so that they are available for reporting later.
+
+Click on the *Map report fields* button http://open.esignforms.com/images/ProgrammingTutorialWiki/mapReportFieldsButton.png on the lower right side. You will see an empty list:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/mapReportFieldsEmpty.png
+
+Click the *Map new report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/mapNewReportFieldButton.png in the upper right corner.
+
+=== Map 'emailTo' field ===
+
+Select the *Field* "emailTo" and check *Show To Do* (so that if you start a transaction, but don't send it out, when you return via the To Do listing you will know who it was to). It should look like this before you click the *Ok* button:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/mapEmailToField.png
+
+If so, click the *Ok* button to save your changes.
+
+=== Map 'emailTo' field ===
+
+Click the *Map new report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/mapNewReportFieldButton.png in the upper right corner again.
+
+Select the *Field* "subject" and check *Show To Do*. It should look like this before you click the *Ok* button:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/mapSubjectField.png
+
+If so, click the *Ok* button to save your changes.
+
+=== Map 'recipientSignature' field ===
+
+And finally, click the *Map new report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/mapNewReportFieldButton.png in the upper right corner once again.
+
+Select the *Field* "recipientSignature". There is no need to check *Show To Do* since in our case, since this field will not be set by the time it leaves the user's To Do list. But it will be useful to see in our reports for completed transactions. It should look like this before you click the *Ok* button:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/mapRecipientSignatureField.png
+
+If so, click the *Ok* button to save your changes.
+
+== Save the package ==
+
+Click the *Save* button to save your changes to the package.  Next, we'll create a transaction template that uses this package.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Step 4: Create a transaction template =
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Step 5: Run a Test transaction =
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Step 6: Create a report =
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Step 7: Promote from Test to Production =
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Step 8: Run a Test Like Production transaction =
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Step 9: Run a Production transaction =
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Step 10: Run your report =
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Extra credit: Create your next version =
+
+== Add a client name field ==
+
+== Add your logo ==
+
+== Create a customized email template for the customer ==
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
