@@ -75,7 +75,7 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/documentFirstSave.png
 
 _Tip: When building a document yourself, do it line-by-line and test every step of of the way. It makes it easier to determine where a problem was introduced so it can be fixed. Also, if you know which party will enter the data in the fields you are defining, you can select that party in the *Assign new fields so party can update* drop down so when you click *Save*, all new fields will automatically be associated to that party._
 
-== Update the first party ==
+== Configure the first party ==
 
 In this tutorial, we will fill out the contract and send it to another party to read and sign. 
 
@@ -100,7 +100,7 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/customerParty.png
 
 If so, click the *Ok* button to save your changes.  Next we'll update all of the fields to have the types and labels we'd like.
 
-== Update 'attachments' field ==
+== Configure 'attachments' field ==
 
 Click on *attachments* in the *Fields in document* list on the right side.
 
@@ -110,7 +110,7 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/attachmentField.png
 
 If so, click the *Ok* button to save your changes.
 
-== Update 'emailTo' field ==
+== Configure 'emailTo' field ==
 
 Click on *emailTo* in the *Fields in document* list on the right side.
 
@@ -120,7 +120,7 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/emailToField.png
 
 If so, click the *Ok* button to save your changes.
 
-== Update 'note' field ==
+== Configure 'note' field ==
 
 Click on *note* in the *Fields in document* list on the right side.
 
@@ -130,7 +130,7 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/noteField.png
 
 If so, click the *Ok* button to save your changes.
 
-== Update 'prepareDate' field ==
+== Configure 'prepareDate' field ==
 
 Click on *prepareDate* in the *Fields in document* list on the right side.
 
@@ -140,7 +140,7 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/prepareDateField.png
 
 If so, click the *Ok* button to save your changes.
 
-== Update 'recipientSignature' field ==
+== Configure 'recipientSignature' field ==
 
 Click on *recipientSignature* in the *Fields in document* list on the right side.
 
@@ -150,7 +150,7 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/recipientSignatureFiel
 
 If so, click the *Ok* button to save your changes.
 
-== Update 'recipientSignatureDate' field ==
+== Configure 'recipientSignatureDate' field ==
 
 Click on *recipientSignatureDate* in the *Fields in document* list on the right side.
 
@@ -162,7 +162,7 @@ If so, click the *Ok* button to save your changes.
 
 _Tip: The signature date is associated with its corresponding signature field by naming convention, adding "Date" to the name of the signature field. So in our case, "recipientSignatureDate" is linked to the field "recipientSignature"._
 
-== Update 'subject' field, our last one ==
+== Configure 'subject' field, our last one ==
 
 Click on *subject* in the *Fields in document* list on the right side.
 
