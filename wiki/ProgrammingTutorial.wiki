@@ -23,7 +23,7 @@ This tutorial assumes you have "programmer" access to Open eSignForms, so you ha
 
 Of course, if you do not, this is also a useful guide to just read and see how it's done step-by-step.
 
-We are going to build a simple, custom text contract that allows supporting documentation to be uploaded and attached. We'll show you how to build the document through seeing it in a custom report and then moving it from Test mode to Production.
+We are going to build a simple, custom contract that allows supporting documentation to be uploaded and attached. We'll show you how to build the document through seeing it in a custom report and then moving it from Test mode to Production.
 
 Please login now and we'll get started. It's all pretty easy.
 
@@ -49,13 +49,13 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/newDocumentSaved.png
 
 == Edit the document page ==
 
-Click on *Page1* in the lower right hand document version form to edit the page and see the initial editor looking like the following. There are no fields or images defined yet, but a "FirstParty" party was created for you.
+Click on *Page1* in the lower right hand side to edit the page. There are no fields or images defined yet, but a "FirstParty" party was automatically created for you.
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/newEmptyDocument.png
 
 == Insert initial document text ==
 
-To get you started, just copy the following 5-line document text and paste it into your HTML page editor:
+To get you started, just copy the following 5-line document text between the lines below and paste it into your HTML page editor:
 
 ----
 ${prepareDate}
@@ -81,7 +81,7 @@ In this tutorial, we will fill out the contract and send it to another party to 
 
 First, let's change the party "FirstParty" and call it "CompanyRep", then add a second party called "Customer". We'll also set which party updates which fields.
 
-Click on *FirstParty* on the right side under "Parties to document" to bring up the party editor. Change the *EsfName* (this name must not have spaces) and *Display name* fields, and select all fields listed in _Fields party can view_ except for the "recipientSignature" and "recipientSignatureDate" and click the *>>* button to move them to the *Fields party can update* column.  It should look like this before you click the *Ok* button:
+Click on *FirstParty* on the right side under "Parties to document" to bring up the party editor. Change the *EsfName* (this name must not have spaces) to "CompanyRep" and *Display name* to "Representative".  Select all fields listed in _Fields party can view_ except for the "recipientSignature" and "recipientSignatureDate" fields and click the *>>* button to move them to the *Fields party can update* column.  It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/companyRepParty.png
 
@@ -94,7 +94,7 @@ Let's now create a second party as follows, to represent the customer who will s
 Click on the *Add new* button, then *Add new party*
 http://open.esignforms.com/images/ProgrammingTutorialWiki/addNewButton.png  
 
-Change the *EsfName* and *Display name* fields, and select the two recipient fields from the _Fields party can view_ and click the *>>* button to move them to the *Fields party can update* column. It should look like this before you click the *Ok* button:
+Change both the *EsfName* and *Display name* to "Customer".  Select the two recipient fields from the _Fields party can view_ and click the *>>* button to move them to the *Fields party can update* column. It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/customerParty.png
 
@@ -114,7 +114,7 @@ If so, click the *Ok* button to save your changes.
 
 Click on *emailTo* in the *Fields in document* list on the right side.
 
-Change the *Type* from "General" to "Email address" since we want to specify the customer's email address. The email address is required, so we'll check the *Required* box. We'll change the *Width* to "20" and *Units* to "Em" so it doesn't go across the page.  We'll also tweak the *Label to show* to read "Customer email". It should look like this before you click the *Ok* button:
+Change the *Type* from "General" to "Email address" since we want to specify the customer's email address. We need an email address to send the invitation to sign, so check the *Required* box. Change the *Width* to "20" and *Units* to "Em" so it doesn't go across the page.  We'll also tweak the *Label to show* to read "Customer email". It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/emailToField.png
 
@@ -124,7 +124,7 @@ If so, click the *Ok* button to save your changes.
 
 Click on *note* in the *Fields in document* list on the right side.
 
-Change the *Type* from "General" to "HTML editor" since we want to be able to enter our contract terms here, perhaps even pasting the terms from a Word document. The note is required, so we'll check the *Required* box. We'll change the *Maximum length* to "20000" so it can hold a lot of contract language should we need it.  We'll also check *Show border* "Top" to separate it from the customer email and subject. Set the *Number of rows to show* to "15" to give us a good sized editor window when we are filling out the contract. We don't want a label for this field, so we'll change *Label position* to "None". It should look like this before you click the *Ok* button:
+Change the *Type* from "General" to "HTML editor" since we want to be able to enter our contract terms here, perhaps even pasting the terms from a Word document. Some contract terms are required, so check the *Required* box. Change the *Maximum length* to "20000" so it can hold a lot of contract language should we need it.  Also check *Show border* "Top" to separate the contract terms from the customer email and subject. Set the *Number of rows to show* to "15" to give us a good sized editor window when we are filling out the contract. We don't want a label for this field, so we'll change *Label position* to "None". It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/noteField.png
 
@@ -134,7 +134,7 @@ If so, click the *Ok* button to save your changes.
 
 Click on *prepareDate* in the *Fields in document* list on the right side.
 
-Change the *Type* from "General" to "Date". We change the *Units* to "Auto" since it should size "naturally" (as big as the date field is).  We set the *Initial value* to "now" (or you can use "+0") so it will show today's date. We change the *Date selector input format* to "mm/dd/yyyy" and set the *Date display format* to a full date and day.  We then change our *Label position* to "Left", set the *Label to show* to just read "Date" and set the *Size* to "Normal". It should look like this before you click the *Ok* button:
+Change the *Type* from "General" to "Date". Change the *Units* to "Auto" since it should size "naturally" (as big as the date field is).  We set the *Initial value* to "now" (or you can use "+0") so it will show today's date. (If you hover over most fields, a tooltip will give you hints like thisone about a date's initial value.) Change the *Date selector input format* to "mm/dd/yyyy" and set the *Date display format* to a full date and day.  We then change our *Label position* to "Left", set the *Label to show* to just read "Date" and set the *Size* to "Normal". It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/prepareDateField.png
 
@@ -154,13 +154,13 @@ If so, click the *Ok* button to save your changes.
 
 Click on *recipientSignatureDate* in the *Fields in document* list on the right side.
 
-Change the *Type* from "General" to "SignatureDate" since we want the date the customer signs to appear next to the signature.  Set the *Width* to "10" and *Units* to "Em" so it has a fixed size in the document. We also *Show border* as "Bottom" to create a signature date line. We set the *Date display format* to show a full date. We change the *Label to show* to just read "Date" with a *Size* of "Normal". It should look like this before you click the *Ok* button:
+Change the *Type* from "General" to "SignatureDate" since we want the date the customer signs to appear next to the signature.  Set the *Width* to "10" and *Units* to "Em" so it has a fixed size in the document. We also *Show border* as "Bottom" to create a signature date line. We set the *Date display format* to show a full date. Change the *Label to show* to just read "Date" with a *Size* of "Normal". It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/recipientSignatureDateField.png
 
 If so, click the *Ok* button to save your changes.
 
-_Tip: The signature date is associated with its corresponding signature field by naming convention, adding "Date" to the name of the signature field. So in our case, "recipientSignatureDate" is tied to the field "recipientSignature"._
+_Tip: The signature date is associated with its corresponding signature field by naming convention, adding "Date" to the name of the signature field. So in our case, "recipientSignatureDate" is linked to the field "recipientSignature"._
 
 == Update 'subject' field, our last one ==
 
@@ -182,17 +182,17 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/documentSecondSave.png
 
 = Step 2: Basic Testing =
 
-When you are creating your own document, we recommend you do this basic testing step repeatedly as you change your fields and document so that you can see the changes right away. For example, the reason we know to change the label sizes, widths, etc. is that when you test, you'll see the results are not quite right and need those values to be tweaked.
+When you are creating your own document, we recommend you do this basic testing step repeatedly as you change your fields and document so that you can see the changes right away. For example, the reason we knew to change the label sizes, widths, etc. above is that when we tested, the results are not quite right and need those values to be tweaked.
 
 == Test button ==
 
-Click the *Test* button at the bottom of the left side editor area. The *Test* button will also do a *Save* first, but will then show you your document, set to the first party defined so it shows you how the document will look at the first step.
+Click the *Test* button at the bottom left of the editor area. The *Test* button will also do a *Save* first, then show you your document in action, set to the first party defined so it shows you how the document will look at the first step.
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/testCompanyRep.png
 
-Note that the document ends at the red dotted line, and you may need to scroll to see it all.  Below the red dotted line is a *Close* button that will close the testing windows, and a *View as party* drop down to let you see how the document will look for either party.
+Note that the document ends at the red dotted line, and you may need to scroll to see it all.  Below the red dotted line is a *Close* button that will close the testing window, and a *View as party* drop down to let you see how the document will look for either party.
 
-The fields in yellow background are required. Note that for the CompanyRep (first party), all fields are open except for the signature and date fields.
+The document input fields with a yellow background are required. Note that for the CompanyRep (first party), all fields are open for input except for the signature and signature date fields.
 
 Feel free to play with the document, including uploading an attachment, setting values, click the *Continue to review* button, etc. 
 
@@ -224,9 +224,9 @@ Change the *PathName* to "Tutorial", ensure the *Enabled* radio button is select
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/packageFirstSave.png
 
-== Add the document into the package ==
+== Add our document into the package ==
 
-On the lower right side, under *Choose documents:* open the library where you build your document. In our case, we open the library *A/Tutorial* and it shows our *Tutorial* document. Drag *Tutorial* and drop into the *Documents in this package* list. Note that two parties defined in the document are pre-populated in the package.
+On the lower right side, under *Choose documents:* open the library where you created your document. In our case, we open the library *A/Tutorial* and it shows our *Tutorial* document. Drag *Tutorial* and drop it into the *Documents in this package* list. Note that the two parties defined in the document are pre-populated in the package.
 
 Click *Save* and it the package should look something like this:
 
@@ -234,7 +234,7 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/packageSecondSave.png
 
 == Configure the CompanyRep package party ==
 
-Package parties are similar to document parties, but they have more configuration associated with them. 
+Package parties are similar to document parties, but they have more configuration associated with them. This allows a document to be as simple as possible, and then tweaked in various packages to be useful in different scenarios.
 
 Click on the *CompanyRep* party in the *Parties involved with this package of documents* list. Since this party is a user in your company, we'll make the following types of changes. First, let's change the *Landing page* to "First document" since your employees don't need to see the E-Sign Disclosures (required by law for consumers) and package list and can just jump straight into the first (and only in this case) document. Check *Must be logged in* so that the person who starts the transaction is logged in. Also, check *Allow delete tran if no signatures* so that if you start a transaction using this package and decide not to send it out, you can delete the transaction entirely.  It should look like this before you click the *Ok* button:
 
