@@ -1,4 +1,5 @@
 #summary Programming Tutorial for Open eSignForms
+#labels Featured
 
 <table width="100%"><tr>
 <td width="50%">http://open.esignforms.com/images/OpenESignFormsLogo.gif</td>
@@ -18,8 +19,120 @@
 
 = Introduction =
 
-This tutorial assumes you have "programmer" access to Open eSignForms, so you have permission to update a library, create a package, transaction and report.
+This tutorial assumes you have "programmer" access to Open eSignForms, so you have permission to update a library, create a package, transaction template and report.
 
 Of course, if you do not, this is also a useful guide to just read and see how it's done step-by-step.
+
+We are going to build a simple, custom text contract that allows supporting documentation to be uploaded and attached. We'll show you how to build the document through seeing it in a custom report and then moving it from Test mode to Production.
+
+Please login now and we'll get started. It's all pretty easy.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Step 1: Create the document in your library http://open.esignforms.com/images/ProgrammingTutorialWiki/programmingLibraryIcon.png =
+
+Click on *Programming->Libraries->YourLibrary* where 'YourLibrary' is the name of the library you can program in. For most initial setups, a library was created for your company using your company's name. 
+
+== Go to your document templates ==
+
+Click on *Documents* since we are first going to build the document. Note that our library is currently empty, but you may already have documents in your library.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/documentListEmpty.png
+
+== Create a new document ==
+
+Click on the *Create new* button http://open.esignforms.com/images/ProgrammingTutorialWiki/createNewButton.png since we are going to create a new document from scratch.
+
+In our case, we'll call this document *Tutorial*, give it a display name of "Contract" and our short description is "Our tutorial document", then we click the *Save* button and note that the document now appears in our document list, along with our first version:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/newDocumentSaved.png
+
+== Edit the document page ==
+
+Click on *Page1* in the lower right hand document version form to edit the page and see the initial editor looking like the following. There are no fields or images defined yet, but a "FirstParty" party was created for you.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/newEmptyDocument.png
+
+== Insert initial document text ==
+
+To get you started, just copy the following document text and paste it into your HTML page editor:
+
+----
+${prepareDate}
+
+${emailTo}   ${subject}
+
+${note}
+
+${recipientSignature}    ${recipientSignatureDate}
+
+${attachments}
+----
+
+Click the *Save* button. Note that fields where parties can enter data are defined within `${ }` notation, so this document is made up entirely of such fields. When you click the *Save* button, all new fields are detected and then populated in the right side panel. It should look like this now:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/documentFirstSave.png
+
+_Tip: When building a document yourself, do it line-by-line and test every step of of the way. It makes it easier to determine where a problem was introduced so it can be fixed. Also, if you know which party will enter the data in the fields you are defining, you can select that party in the *Assign new fields so party can update* drop down so when you click *Save*, all new fields will automatically be associated to that party._
+
+== Update the first party ==
+
+In this tutorial, we will fill out the contract and send it to another party to read and sign. 
+
+First, let's change the party "FirstParty" and call it "CompanyRep", then add a second party called "Customer". We'll also set which party updates which fields.
+
+Click on *FirstParty* on the right side under "Parties to document" to bring up the party editor. Change the *EsfName* (this name must not have spaces) and *Display name* fields, and select all fields listed in _Fields party can view_ except for the "recipientSignature" and "recipientSignatureDate" and click the *>>* button to move them to the *Fields party can update* column.  It should look like this before you click the *Ok* button:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/companyRepParty.png
+
+If so, click the *Ok* button to save your changes.
+
+== Create a second party who will sign ==
+
+Let's now create a second party as follows, to represent the customer who will sign our agreement. The customer will just update the recipient signature fields. 
+
+Click on the *Add new* button, then *Add new party*
+http://open.esignforms.com/images/ProgrammingTutorialWiki/addNewButton.png  
+
+Change the *EsfName* and *Display name* fields, and select the two recipient fields from the _Fields party can view_ and click the *>>* button to move them to the *Fields party can update* column. It should look like this before you click the *Ok* button:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/customerParty.png
+
+If so, click the *Ok* button to save your changes.  Next we'll update all of the fields to have the types and labels we'd like.
+
+== Update 'attachments' field ==
+
+Click on *attachments* in the *Fields in document* list on the right side.
+
+Change the *Type* from "General" to "File upload" since we want the attachments to be a place where we can attach supporting documentation when needed. We'll also tweak the *Label to show* a bit. Note that the default label is created from the field name. It should look like this before you click the *Ok* button:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/attachmentField.png
+
+If so, click the *Ok* button to save your changes.
+
+== Update 'emailTo' field ==
+
+Click on *emailTo* in the *Fields in document* list on the right side.
+
+Change the *Type* from "General" to "Email address" since we want to specify the customer's email address. The email address is required, so we'll check the *Required* box. We'll change the *Width* to 20 and *Units* to "Em" so it doesn't go across the page.  We'll also tweak the *Label to show* to read "Customer email". It should look like this before you click the *Ok* button:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/emailToField.png
+
+If so, click the *Ok* button to save your changes.
+
+== Update 'note' field ==
+
+Click on *note* in the *Fields in document* list on the right side.
+
+Change the *Type* from "General" to "HTML editor" since we want to be able to enter our contract terms here, perhaps even pasting the terms from a Word document. The note is required, so we'll check the *Required* box. We'll change the *Maximum length* to 20000 so it can hold a lot of contract language should we need it.  Well also add a border on top to separate it from the customer email and subject. We don't want a label for this field, so we'll change *Label position* to "None". It should look like this before you click the *Ok* button:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/noteField.png
+
+If so, click the *Ok* button to save your changes.
+
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Step 2: ?? =
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
