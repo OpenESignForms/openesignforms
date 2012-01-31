@@ -236,13 +236,13 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/packageSecondSave.png
 
 Package parties are similar to document parties, but they have more configuration associated with them. This allows a document to be as simple as possible, and then tweaked in various packages to be useful in different scenarios.
 
-Click on the *CompanyRep* party in the *Parties involved with this package of documents* list. Since this party is a user in your company, we'll make the following types of changes. First, let's change the *Landing page* to "First document" since your employees don't need to see the E-Sign Disclosures (required by law for consumers) and package list and can just jump straight into the first (and only in this case) document. Check *Must be logged in* so that the person who starts the transaction is logged in. Also, check *Allow delete tran if no signatures* so that if you start a transaction using this package and decide not to send it out, you can delete the transaction entirely.  It should look like this before you click the *Ok* button:
+Click on the *CompanyRep* party in the *Parties involved with this package of documents* list. Since this party is a user in your company, we'll make the following types of changes. First, let's change the *Landing page* to "First document" since your employees don't need to see the E-Sign Disclosures (required by law for consumers) and package list and can go straight to the first (and only, in this case) document. Check *Must be logged in* so that the person who starts the transaction is logged in. Also, check *Allow delete tran if no signatures* so that if you start a transaction using this package and decide not to send it out, you can delete the transaction entirely.  It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/companyRepPackageParty.png
 
 If so, click the *Ok* button to save your changes.
 
-_Tip: If the user starts a transaction and doesn't delete it, it will appear in that user's *To Do* listing so they can resume from there._
+_Tip: If the user starts a transaction, doesn't delete it and fails to send it one to the customer, it will appear in that user's *To Do* listing so he or she can resume from there._
 
 == Configure the Customer package party ==
 
@@ -260,9 +260,9 @@ Click on the *Map report fields* button http://open.esignforms.com/images/Progra
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/mapReportFieldsEmpty.png
 
-Click the *Map new report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/mapNewReportFieldButton.png in the upper right corner.
-
 === Map 'emailTo' field ===
+
+Click the *Map new report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/mapNewReportFieldButton.png in the upper right corner.
 
 Select the *Field* "emailTo" and check *Show To Do* (so that if you start a transaction, but don't send it out, when you return via the To Do listing you will know who it was to). It should look like this before you click the *Ok* button:
 
@@ -270,7 +270,9 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/mapEmailToField.png
 
 If so, click the *Ok* button to save your changes.
 
-=== Map 'emailTo' field ===
+_Tip: If you have other packages already built, you may want to check the *Save value as report field* drop down list to see if an appropriate field already exists to use in reports. If not, use the "+Create new report field" value._
+
+=== Map 'subject' field ===
 
 Click the *Map new report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/mapNewReportFieldButton.png in the upper right corner again.
 
@@ -284,7 +286,7 @@ If so, click the *Ok* button to save your changes.
 
 And finally, click the *Map new report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/mapNewReportFieldButton.png in the upper right corner once again.
 
-Select the *Field* "recipientSignature". There is no need to check *Show To Do* since in our case, since this field will not be set by the time it leaves the user's To Do list. But it will be useful to see in our reports for completed transactions. It should look like this before you click the *Ok* button:
+Select the *Field* "recipientSignature". There is no need to check *Show To Do* since in this case since this field will not be set by the time it leaves the user's To Do list (it leaves when the user completes it and the customer is notified to sign). However, it will be useful to see in our reports for completed transactions. It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/mapRecipientSignatureField.png
 
