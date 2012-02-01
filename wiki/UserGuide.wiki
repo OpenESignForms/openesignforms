@@ -1,8 +1,8 @@
 #summary User's Guide for Open eSignForms
 
 <table width="100%"><tr>
-<td width="50%">http://open.esignforms.com/images/OpenESignFormsLogo.gif</td>
-<td width="50%" align="right">http://www.yozons.com/images/logoSmall.gif</td>
+<td width="50%">[http://open.esignforms.com http://open.esignforms.com/images/OpenESignFormsLogo.gif]</td>
+<td width="50%" align="right">[http://www.yozons.com http://www.yozons.com/images/logoSmall.gif]</td>
 </tr></table>
 
 <h1>User's Guide</h1> 
@@ -12,7 +12,7 @@
   * *[UserGuide User's Guide]* (this guide)
   * [SystemAdminGuide System Administrator's Guide]
   * [ProgrammingGuide Point & Click Programming Guide]
-  * [ProgrammingTutorial Programming Tutorial]
+  * [ProgrammingTutorial Point & Click Programming Tutorial]
 
 ==== Table of contents ====
 <wiki:toc max_depth="3" />
