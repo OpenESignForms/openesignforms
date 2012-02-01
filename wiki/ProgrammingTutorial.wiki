@@ -232,7 +232,7 @@ Click *Save* and it the package should look something like this:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/packageSecondSave.png
 
-== Configure the CompanyRep package party ==
+== Configure the Company Representative package party ==
 
 Package parties are similar to document parties, but they have more configuration associated with them. This allows a document to be as simple as possible, and then tweaked in various packages to be useful in different scenarios.
 
@@ -312,7 +312,7 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/tranTemplateFirstSave.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Step 5: Run a Test transaction http://open.esignforms.com/images/ProgrammingTutorialWiki/startTransactionIcon.png =
+= Step 5: Run a Test transaction http://open.esignforms.com/images/ProgrammingTutorialWiki/startTransactionTutorialIcon.png =
 
 You should now see your tutorial transaction listed under the *Start transaction* menu.
 
@@ -486,22 +486,211 @@ You should see your record, including the three data fields that were otherwise 
 
 = Step 8: Promote from Test to Production =
 
+If everything looks good and you are ready to use the new document for Production transactions with your real customers, you need to promote the various components at the Test version to Production.
+
+== Promote the document to Production ==
+
+Click on *Programming->Libraries->YOURLIB* to select the library where you created the tutorial document.
+
+Click on the *Documents* item.
+
+Click on the *Tutorial* document listed.
+
+Click on the *Make Test version Production* button.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/programmingDocumentToProduction.png
+
+== Promote the package to Production ==
+
+Click on *Programming->Packages* to select the *Tutorial* package.
+
+Click on the *Make Test version Production* button.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/programmingPackageToProduction.png
+
+== Enable Production transactions in the transaction template ==
+
+Click on *Programming->Tran templates* to select the *Tutorial* transaction template.
+
+Click *Production enabled* radio button.
+
+Click the *Save* button.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/programmingTransactionToProduction.png
+
+_Tip: Note that there is a document retention value for Production transactions and one for Test transactions. By default, Test transactions are kept for 3 months, which allows you to accumulate test data for reports, etc., and Production transactions are kept forever. You are certainly free to select values that make sense for your needs._
+
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 = Step 9: Run a Test Like Production transaction =
+
+At this point, your Tutorial transaction is ready to run in Production mode. However, since we just updated the components, we recommend running one more *Test Like Production* transaction, which is a Test mode transaction, but using only Production-level components, just like a real Production transaction would.  If you were to find any problems, you would correct them and try again.  After a successful "Test Like Production" run, you would then be free to run real Production transactions with your customers.
+
+Right click on *Start transaction->Tutorial* and then click *Start TEST like Production*. Because the transaction template allows production now, you get that added option under the test start mode when you right-click on it.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/startTestLikeProductionButton.png
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 = Step 10: Run a Production transaction =
 
+Assuming that the "test like production" worked as desired, you are now ready to run real production-level transactions with your customers.
+
+Just click on *Start transaction->Tutorial" to start a regular, production-level transaction.  
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/startTransactionTutorialIcon.png
+
+Note that the document no longer will show the "*** TEST TRANSACTION ***" banner at the top.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/startProductionRepresentativeStep.png
+
+Congratulations!
+
+_Tip: If you don't want to run an actual production transaction, click the *Return to the document list* button, then click the *Delete this transaction* button. Remember, we set that up when we [#Configure_the_Company_Representative_package_party configured the company rep party in the package]._
+
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 = Extra credit: Create your next version =
 
+We will go a bit faster now since you should be somewhat familiar with programming the document.
+
+Click on *Programming->Libraries->XXXXX* to select your library.
+
+Click on *Documents* to select the documents.
+
+Click on the "Tutorial" document, which is currently at the Production level.
+
+Click on the *Create next Test version* button to create our next version, which will be in Test mode. Note that this will not affect Production-level transactions which will continue to use the previous version until this latest version is promoted back to Production. 
+
+Click the *Save* button to save the new Test version.
+
 == Add a client name field ==
+
+Click on the "Page1" page under the *Click to view/edit a page* list to bring up the document editor.
+
+In this scenario, we want to add a client name field between the email address and the subject. This will allow us to track transactions by our client's name.
+
+Since this field will be done by the "CompanyRep" party, select that in the *Assign new fields so party can update* drop down.
+
+Then, before the ${emailTo} line, add: ${clientName} and hit SHIFT-RETURN to put a it on its own line, but without extra line spacing so the lines read: 
+
+{{{
+${clientName} 
+${emailTo} ${subject}
+}}}
+
+Click the *Save* button to auto-create the new "clientName" field, as well as assign that field to the "CompanyRep" party for update. (You can click on the "CompanyRep" party in the listing on the right to confirm that the new field is listed in the right-hand *Fields party can update* list.)
+
+Click on the "clientName" field from the *Fields in document* list and change the *Width* to "20", the *Units* to "Em" and the *Label to show* to "Client". Then click the *Ok* button. (Feel free to adjust the layout as you see fit. Normally, you might put these fields in a table, or stack them, or even put the `clientName` and `emailTo` on one line, and the `subject` on the next.)
+
+Click the *Test* button to see how it looks. If you want, you can also make the clientName field required.
 
 == Add your logo ==
 
+You may want your logo to appear at the top of your contract. To do so, put your cursor at the top of the document before the `${prepareDate}` specification. Click on the *Image* button of the editor (hover over the buttons to see what they all are).
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/ckeditorButtonImage.png
+
+This will pop up an image properties dialog. Click on the *Browse Server* button to view images already uploaded to your system. Normally, a logo has already been uploaded, so click on it. Then click the *OK* button in the dialog.
+
+Click the *Test* button to see if it looks how you want it.
+
+== Upload a logo ==
+
+If you need a logo or other image that is not already there, you have two choices. 
+
+=== Image is for the document only ===
+If the image is really only for this particular document, we recommend you click the *Add new* button and then click the *Add new image* link. You can then give the image a name, click the *Set the image file* button to choose an image from your computer and upload it:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/uploadImage.png
+
+If you upload the wrong image, you can click the *Replace image file* button to change it.  Click the *Ok* button.  Then to save the uploaded image, click the *Save* button. You should then be able to select that new image.
+
+=== Image will be used in other documents ===
+If the image, like a logo, will be used in other documents, save your document and close it. Then click on the *Images/Logos* item in your library. The process to upload an image for the library is the same.
+
+Once it's in your library, you can return to your document and select that new image. When in the document editor, you can double-click on the image to bring up the image properties dialog to browser the server and select a new image. Alternatively, you can right-click on the image in your document editor, then click on "Image Properties".
+
 == Create a customized email template for the customer ==
+
+In the tutorial document, we created a "subject" field, but it only appears in the document. It is not used as the email subject. If we'd like to do that, we need to create an email template in our library where the "subject" field is used as the email subject.
+
+=== Create a new Email template in your library ===
+
+Click on the *Emails* item in your library to list your email templates.
+
+Click on the *Create new* button and name it "ClientTutorial" so we know this is the email to be sent to the client for the tutorial.
+
+Using the "DefaultPickupNotification" email template defined in the *ESF/Library/Template* as a guide, we'll make the following changes. You can make other changes to meet your needs when it matters, but these are good values to use for the tutorial.
+
+In *Send email FROM:* put: `${property:ESF.SendEmailFrom}`
+
+In *Send email TO:* put: `${EMAIL}`
+
+In *Subject:* put our field from our tutorial document: `${subject}`
+
+In *Text version:* copy from below and paste in it:
+
+----
+An electronic document has been created for you to process on the Open eSignForms system for ${property:MyCompany.InformalName}.
+
+To view and/or process this document, please click:
+
+${LINK}
+
+Our system will guide you through this process so it will only take a few minutes.
+
+If the above link is not active (e.g. nothing happens when you click on it), please copy it exactly as shown into your web browser's address or location field.
+
+Thank you.
+${property:MyCompany.FormalName}
+${property:MyCompany.MailingAddressStreetAddress}
+${property:MyCompany.MailingAddressCity}, ${property:MyCompany.MailingAddressState} ${property:MyCompany.MailingAddressZipCode}
+${property:MyCompany.UserSupportEmail}
+----
+
+In *HTML version:* copy the HTML code fro below and paste it in. However, because this already is in HTML, you'll want to click the *Source* button in the editor (it will highlight when in Source mode) first and then paste the HTML in.
+
+{{{
+<p>An electronic document has been created for you to process on the Open eSignForms system for ${property:MyCompany.InformalName}.<br />
+<br />
+<a href="${LINK}">Click here to view and/or process this document</a></p>
+<p>Our system will guide you through this process so it will only take a few minutes.</p>
+<p>Thank you.<br />
+${property:MyCompany.FormalName}<br />
+${property:MyCompany.MailingAddressStreetAddress}<br />
+${property:MyCompany.MailingAddressCity}, ${property:MyCompany.MailingAddressState} ${property:MyCompany.MailingAddressZipCode}<br />
+<a href="mailto:${property:MyCompany.UserSupportEmail}">${property:MyCompany.UserSupportEmail}</a></p>
+<p><span style="font-size: 10px;">If the above link is not active (e.g. nothing happens when you click on it), please copy the link below exactly as shown into your web browser&#39;s address or location field:</span></p>
+<p><span style="font-size: 10px;">${LINK}</span></p>
+}}}
+
+Click the *Save* button to save the new email template.
+
+=== Update the customer package party to use the new email template ===
+
+Now click on the *Programming->Packages* and select the Tutorial package. Click the *Create next Test version* to create a new test package. Click *Save*. 
+
+Click the "Customer" party from the party list. Click on the *Notify Email EsfName* drop down and choose your new "ClientTutorial" email. Click the *Ok* button.  Click *Save*.
+
+=== Run a new test transaction to see it all in action ===
+
+Now, if you run a test "tutorial" transaction, you should see the new document with the clientName field and logo.  When you complete it, the new email should arrive with the subject you specified in the form.
+
+=== Put this all into production ===
+
+Assuming all worked as expected, you'll need to promote your components back to production.
+
+In your library, click on your tutorial document and click the *Make Test version Production*.
+
+If you uploaded an image in your library, click on that image and make it production too.
+
+Do the same for the email template we created in the library.
+
+Then return to the package and make it production.
+
+You are ready to run a *Start TEST like Production* to ensure it's all good, and if so, then the next version is ready to be used in production.
+
+Congratulations again!
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
