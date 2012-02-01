@@ -23,7 +23,7 @@ This tutorial assumes you have "programmer" access to Open eSignForms, so you ha
 
 Of course, if you do not, this is also a useful guide to just read and see how it's done step-by-step.
 
-We are going to build a simple, custom contract that allows supporting documentation to be uploaded and attached. We'll show you how to build the document through seeing it in a custom report and then moving it from Test mode to Production.
+You are going to build a simple, custom contract that allows supporting documentation to be uploaded and attached. You'll learn how to build the document all the way through seeing it in a custom report and then moving it from Test mode to Production.
 
 Please login now and we'll get started. It's all pretty easy.
 
@@ -35,15 +35,15 @@ Click on *Programming->Libraries->YourLibrary* where 'YourLibrary' is the name o
 
 == Go to your document templates ==
 
-Click on *Documents* since we are first going to build the document. Note that our library is currently empty, but you may already have documents in your library.
+Click on *Documents* since you are first going to build the document. Note that our library is currently empty, but you may already have documents in your library.
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/documentListEmpty.png
 
 == Create a new document ==
 
-Click on the *Create new* button http://open.esignforms.com/images/ProgrammingTutorialWiki/createNewButton.png since we are going to create a new document from scratch.
+Click on the *Create new* button http://open.esignforms.com/images/ProgrammingTutorialWiki/createNewButton.png since you are going to create a new document from scratch.
 
-In our case, we'll call this document *Tutorial*, give it a display name of "Contract" and our short description is "Our tutorial document", then we click the *Save* button and note that the document now appears in our document list, along with our first version:
+In your case, call this document *Tutorial*, give it a display name of "Contract" and set the short description to "Our tutorial document", then click the *Save* button and note that the document now appears in your document list, along with your first version:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/newDocumentSaved.png
 
@@ -77,9 +77,9 @@ _Tip: When building a document yourself, do it line-by-line and test every step 
 
 == Configure the first party ==
 
-In this tutorial, we will fill out the contract and send it to another party to read and sign. 
+In this tutorial, you will fill out the contract and send it to another party to read and sign. 
 
-First, let's change the party "FirstParty" and call it "CompanyRep", then add a second party called "Customer". We'll also set which party updates which fields.
+First, change the party "FirstParty" and call it "CompanyRep", then add a second party called "Customer". Also set which party updates which fields.
 
 Click on *FirstParty* on the right side under "Parties to document" to bring up the party editor. Change the *EsfName* (this name must not have spaces) to "CompanyRep" and *Display name* to "Representative".  Select all fields listed in _Fields party can view_ except for the "recipientSignature" and "recipientSignatureDate" fields and click the *>>* button to move them to the *Fields party can update* column.  It should look like this before you click the *Ok* button:
 
@@ -89,7 +89,7 @@ If so, click the *Ok* button to save your changes.
 
 == Create a second party who will sign ==
 
-Let's now create a second party as follows, to represent the customer who will sign our agreement. The customer will just update the recipient signature fields. 
+Let's now create a second party as follows, to represent the customer who will sign your agreement. The customer will just update the recipient signature fields. 
 
 Click on the *Add new* button, then *Add new party*
 http://open.esignforms.com/images/ProgrammingTutorialWiki/addNewButton.png  
@@ -104,7 +104,7 @@ If so, click the *Ok* button to save your changes.  Next we'll update all of the
 
 Click on *attachments* in the *Fields in document* list on the right side.
 
-Change the *Type* from "General" to "File upload" since we want the attachments to be a place where we can attach supporting documentation when needed. We'll also tweak the *Label to show* a bit. Note that the default label is created from the field name. It should look like this before you click the *Ok* button:
+Change the *Type* from "General" to "File upload" since you want the attachments to be a place where you can attach supporting documentation when needed. Also tweak the *Label to show* a bit by putting parentheses around the plural 's'. Note that the default label is created from the field name. It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/attachmentField.png
 
@@ -114,7 +114,7 @@ If so, click the *Ok* button to save your changes.
 
 Click on *emailTo* in the *Fields in document* list on the right side.
 
-Change the *Type* from "General" to "Email address" since we want to specify the customer's email address. We need an email address to send the invitation to sign, so check the *Required* box. Change the *Width* to "20" and *Units* to "Em" so it doesn't go across the page.  We'll also tweak the *Label to show* to read "Customer email". It should look like this before you click the *Ok* button:
+Change the *Type* from "General" to "Email address" since you want to specify the customer's email address. You need an email address to send the invitation to sign to the customer, so check the *Required* box. Change the *Width* to "20" and *Units* to "Em" so it doesn't go across the page.  We'll also tweak the *Label to show* to read "Customer email". It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/emailToField.png
 
@@ -124,7 +124,7 @@ If so, click the *Ok* button to save your changes.
 
 Click on *note* in the *Fields in document* list on the right side.
 
-Change the *Type* from "General" to "HTML editor" since we want to be able to enter our contract terms here, perhaps even pasting the terms from a Word document. Some contract terms are required, so check the *Required* box. Change the *Maximum length* to "20000" so it can hold a lot of contract language should we need it.  Also check *Show border* "Top" to separate the contract terms from the customer email and subject. Set the *Number of rows to show* to "15" to give us a good sized editor window when we are filling out the contract. We don't want a label for this field, so we'll change *Label position* to "None". It should look like this before you click the *Ok* button:
+Change the *Type* from "General" to "HTML editor" since you want to be able to enter your contract terms here, perhaps even pasting the terms from a Word document. Some contract terms are required, so check the *Required* box. Change the *Maximum length* to "20000" so it can hold a lot of contract language should you need it.  Also check *Show border* "Top" to separate the contract terms from the customer email and subject. Set the *Number of rows to show* to "15" to give a good sized editor window when filling out the contract. You don't want a label for this field, so change *Label position* to "None". It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/noteField.png
 
@@ -134,7 +134,7 @@ If so, click the *Ok* button to save your changes.
 
 Click on *prepareDate* in the *Fields in document* list on the right side.
 
-Change the *Type* from "General" to "Date". Change the *Units* to "Auto" since it should size "naturally" (as big as the date field is).  We set the *Initial value* to "now" (or you can use "+0") so it will show today's date. (If you hover over most fields, a tooltip will give you hints like thisone about a date's initial value.) Change the *Date selector input format* to "mm/dd/yyyy" and set the *Date display format* to a full date and day.  We then change our *Label position* to "Left", set the *Label to show* to just read "Date" and set the *Size* to "Normal". It should look like this before you click the *Ok* button:
+Change the *Type* from "General" to "Date". Change the *Units* to "Auto" since it should size "naturally" (as big as the date field is).  Set the *Initial value* to "now" (or you can use "+0") so it will show today's date. (If you hover over most fields, a tooltip will give you hints like thisone about a date's initial value.) Change the *Date selector input format* to "mm/dd/yyyy" and set the *Date display format* to a full date and day.  Then change the *Label position* to "Left", set the *Label to show* to just read "Date" and set the *Size* to "Normal". It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/prepareDateField.png
 
@@ -144,7 +144,7 @@ If so, click the *Ok* button to save your changes.
 
 Click on *recipientSignature* in the *Fields in document* list on the right side.
 
-Change the *Type* from "General" to "Signature" since we want the customer to put type their signature here. Check *Required* since we require the customer to sign. Set the *Width* to "30" and *Units* to "Em" so it has a fixed size in the document. We also *Show border* as "Bottom" to create a signature line, and add a tooltip for the customer. We change the *Label to show* to just read "Signature" with a *Size* of "Normal". It should look like this before you click the *Ok* button:
+Change the *Type* from "General" to "Signature" since you want the customer to put type their signature here. Check *Required* since you'll require the customer to sign. Set the *Width* to "30" and *Units* to "Em" so it has a fixed size in the document. Set *Show border* as "Bottom" to create a signature line, and add a tooltip for the customer. Change the *Label to show* to just read "Signature" with a *Size* of "Normal". It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/recipientSignatureField.png
 
@@ -154,15 +154,15 @@ If so, click the *Ok* button to save your changes.
 
 Click on *recipientSignatureDate* in the *Fields in document* list on the right side.
 
-Change the *Type* from "General" to "SignatureDate" since we want the date the customer signs to appear next to the signature.  Set the *Width* to "10" and *Units* to "Em" so it has a fixed size in the document. We also *Show border* as "Bottom" to create a signature date line. We set the *Date display format* to show a full date. Change the *Label to show* to just read "Date" with a *Size* of "Normal". It should look like this before you click the *Ok* button:
+Change the *Type* from "General" to "SignatureDate" since you want the date the customer signs to appear next to the signature.  Set the *Width* to "10" and *Units* to "Em" so it has a fixed size in the document. Set *Show border* as "Bottom" to create a signature date line. Set the *Date display format* to show a full date. Change the *Label to show* to just read "Date" with a *Size* of "Normal". It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/recipientSignatureDateField.png
 
 If so, click the *Ok* button to save your changes.
 
-_Tip: The signature date is associated with its corresponding signature field by naming convention, adding "Date" to the name of the signature field. So in our case, "recipientSignatureDate" is linked to the field "recipientSignature"._
+_Tip: The signature date is associated with its corresponding signature field by naming convention, adding "Date" to the name of the signature field. So in this case, "recipientSignatureDate" is linked to the field "recipientSignature"._
 
-== Configure 'subject' field, our last one ==
+== Configure 'subject' field, your last one ==
 
 Click on *subject* in the *Fields in document* list on the right side.
 
@@ -208,25 +208,25 @@ Note that only the customer signature field is open for editing. If you type a n
 
 Click the *Close* button at the bottom to exit the document test view.
 
-Then click the *Close* button on the page editor since we are happy that the document appears to be working as expected. Next, we'll create a package that holds this document for processing.
+Then click the *Close* button on the page editor since you are happy that the document appears to be working as expected. Next, you'll create a package that holds this document for processing.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 = Step 3: Create a package http://open.esignforms.com/images/ProgrammingTutorialWiki/programmingPackageIcon.png =
 
-Click on *Programming->Packages* and select the package template from the list so it appears in the form below. The package template has no documents or parties defined, but the permissions are set for your company or group, so we always start with a template.
+Click on *Programming->Packages* and select the package template from the list so it appears in the form below. The package template has no documents or parties defined, but the permissions are set for your company or group, so you always start with a template and then "create new."
 
 == Create a new package like the template ==
 
-We don't want to change the template, so first click the *Create new like* button http://open.esignforms.com/images/ProgrammingTutorialWiki/createNewLikeButton.png to create a new package like the template.
+You don't want to change the template, so first click the *Create new like* button http://open.esignforms.com/images/ProgrammingTutorialWiki/createNewLikeButton.png to create a new package like the template.
 
 Change the *PathName* to "Tutorial", ensure the *Enabled* radio button is selected and click the *Save* button. It should look like this:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/packageFirstSave.png
 
-== Add our document into the package ==
+== Add your document into the package ==
 
-On the lower right side, under *Choose documents:* open the library where you created your document. In our case, we open the library *A/Tutorial* and it shows our *Tutorial* document. Drag *Tutorial* and drop it into the *Documents in this package* list. Note that the two parties defined in the document are pre-populated in the package.
+On the lower right side, under *Choose documents:* open the library where you created your document. In our case, we opened the library *A/Tutorial* and it showed the *Tutorial* document. Drag *Tutorial* and drop it into the *Documents in this package* list. Note that the two parties defined in the document are pre-populated in the package.
 
 Click *Save* and it the package should look something like this:
 
@@ -246,7 +246,7 @@ _Tip: If the user starts a transaction, doesn't delete it and fails to send it o
 
 == Configure the Customer package party ==
 
-Click on the *Customer* party in the *Parties involved with this package of documents* list. Set the *Notify email address spec (${EMAIL})* to the form field that contains the customer's email address, in our case this was the "emailTo" field, so we enter "${emailTo}". If you want, you can set up automatic email renotifications if the customer does not complete it, so we'll select *Renotify* values of "1 Day" and "5 Days". It should look like this before you click the *Ok* button:
+Click on the *Customer* party in the *Parties involved with this package of documents* list. Set the *Notify email address spec (${EMAIL})* to the form field that contains the customer's email address, in this case this was the "emailTo" field, so enter "${emailTo}". If you want, you can set up automatic email renotifications if the customer does not complete it, so select *Renotify* values of "1 Day" and "5 Days". It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/customerPackageParty.png
 
@@ -254,7 +254,7 @@ If so, click the *Ok* button to save your changes.
 
 == Map report fields ==
 
-Because we know we'll create a custom report later that can show details about our transactions, we'll go ahead and map fields in our document so that they are available for reporting later.
+Because you know you'll create a custom report later that can show details about your transactions, go ahead and map fields in your document so that they are available for reporting later.
 
 Click on the *Map report fields* button http://open.esignforms.com/images/ProgrammingTutorialWiki/mapReportFieldsButton.png on the lower right side. You will see an empty list:
 
@@ -286,7 +286,7 @@ If so, click the *Ok* button to save your changes.
 
 And finally, click the *Map new report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/mapNewReportFieldButton.png in the upper right corner once again.
 
-Select the *Field* "recipientSignature". There is no need to check *Show To Do* since in this case since this field will not be set by the time it leaves the user's To Do list (it leaves when the user completes it and the customer is notified to sign). However, it will be useful to see in our reports for completed transactions. It should look like this before you click the *Ok* button:
+Select the *Field* "recipientSignature". There is no need to check *Show To Do* since in this case since this field will not be set by the time it leaves the user's To Do list (it leaves when the user completes it and the customer is notified to sign). However, it will be useful to see in your reports for completed transactions. It should look like this before you click the *Ok* button:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/mapRecipientSignatureField.png
 
@@ -300,11 +300,11 @@ Click the *Save* button to save your changes to the package.  Next, we'll create
 
 = Step 4: Create a transaction template http://open.esignforms.com/images/ProgrammingTutorialWiki/programmingTranIcon.png =
 
-Click on *Programming->Tran templates* and select the transaction template from the list so it appears in the form below. The transaction template has no package or branding library defined, but the permissions are set for your company or group, so we always start with a template.
+Click on *Programming->Tran templates* and select the transaction template from the list so it appears in the form below. The transaction template has no package or branding library defined, but the permissions are set for your company or group, so always start with a template and then "create like."
 
 == Create a new transaction template like the template ==
 
-We don't want to change the template, so first click the *Create like* button http://open.esignforms.com/images/ProgrammingTutorialWiki/createLikeButton.png to create a new transaction template like the template.
+You don't want to change the template, so first click the *Create like* button http://open.esignforms.com/images/ProgrammingTutorialWiki/createLikeButton.png to create a new transaction template like the template.
 
 Change the *PathName* to "Tutorial", ensure the *Test enabled* radio button is selected, choose your "Tutorial" package for *Package to use*, choose your library for *Branding library to use*, and click the *Save* button. It should look like this:
 
@@ -320,7 +320,7 @@ If you just click on *Tutorial*, you should see a *Start error* message like the
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/startError.png
 
-This is because a regular click starts a production transaction, and we are still testing. Instead, you want to right-click on *Tutorial* and then click *Start TEST transaction* to run a test transaction.  A Test transaction will not get mixed up with  your Production transactions, and it will also use any components (document, image, property set, drop down, etc.) that are marked at the Test level. 
+This is because a regular click starts a production transaction, and you are still testing. Instead, you want to right-click on *Tutorial* and then click *Start TEST transaction* to run a test transaction.  A Test transaction will not get mixed up with your Production transactions, and it will also use any components (document, image, property set, drop down, etc.) that are marked at the Test level. 
 
 _Tip: If you do not see a new popup window, most likely your browser is blocking popups, so look for such errors or warnings and then tell your browser to allow popups from your web site domain._
 
@@ -352,7 +352,7 @@ This agreement is entered into so that our companies can exchange information, o
 By signing below, you acknowledge that you have read, understand and agree to the terms above.
 ----
 
-If you want, feel free to upload a file, but this is not required for our testing.
+If you want, feel free to upload a file, but this is not required for your testing.
 
 Click the *Continue to review* button.
 
@@ -400,13 +400,13 @@ _Tip: The customer can use the link in the original email received at any time t
 
 = Step 6: Create a report http://open.esignforms.com/images/ProgrammingTutorialWiki/programmingReportsIcon.png =
 
-To see the status of all of your tutorial transactions, we need to create a report. Of course, the *General tran search* function can be used to search for any transaction, it lacks the ability to show field values right from your documents.
+To see the status of all of your tutorial transactions, you need to create a report. Of course, the *General tran search* function can be used to search for any transaction, but it lacks the ability to show field values right from your documents.
 
-Click on *Programming->Report templates* and select the report template from the list so it appears in the form below. The report template has no transactions associated with it and no report fields defined, but the permissions are set for your company or group, so we always start with a template.
+Click on *Programming->Report templates* and select the report template from the list so it appears in the form below. The report template has no transactions associated with it and no report fields defined, but the permissions are set for your company or group, so always start with a template and click "create like."
 
 == Create a new report template like the template ==
 
-We don't want to change the template, so first click the *Create like* button http://open.esignforms.com/images/ProgrammingTutorialWiki/createLikeButton.png to create a new report template like the template.
+You don't want to change the template, so first click the *Create like* button http://open.esignforms.com/images/ProgrammingTutorialWiki/createLikeButton.png to create a new report template like the template.
 
 Change the *PathName* to "Tutorial", ensure the *Enabled* radio button is selected, choose your "Tutorial" transaction template for *Tran templates*, and click the *Save* button. It should look like this:
 
@@ -446,19 +446,19 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/reportFieldLastUpdated
 
 === Add report field: emailTo ===
 
-Click on the *Add report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/addReportFieldButton.png.  Select "emailTo" from the *Report fields* drop down, set the *Output format* to "Standard", check the *Allow search* box and click the *Ok* button. This will show the customer email address from our document, and allow you to search on it.
+Click on the *Add report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/addReportFieldButton.png.  Select "emailTo" from the *Report fields* drop down, set the *Output format* to "Standard", check the *Allow search* box and click the *Ok* button. This will show the customer email address from your document, and allow you to search on it.
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/reportFieldEmailTo.png
 
 === Add report field: subject ===
 
-Click on the *Add report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/addReportFieldButton.png.  Select "subject" from the *Report fields* drop down, set the *Output format* to "Standard", check the *Allow search* box and click the *Ok* button. This will show the subject from our document, and allow you to search on it.
+Click on the *Add report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/addReportFieldButton.png.  Select "subject" from the *Report fields* drop down, set the *Output format* to "Standard", check the *Allow search* box and click the *Ok* button. This will show the subject from your document, and allow you to search on it.
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/reportFieldSubject.png
 
 === Add report field: recipientSignature ===
 
-Finally, click on the *Add report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/addReportFieldButton.png on more time.  Select "recipientSignature" from the *Report fields* drop down, set the *Output format* to "Standard", check the *Allow search* box and click the *Ok* button. This will show the signature entered by our customer from our document, as well as allow you to search on it.
+Finally, click on the *Add report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/addReportFieldButton.png on more time.  Select "recipientSignature" from the *Report fields* drop down, set the *Output format* to "Standard", check the *Allow search* box and click the *Ok* button. This will show the signature entered by your customer in your document, as well as allow you to search on it.
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/reportFieldSignature.png
 
@@ -524,7 +524,7 @@ _Tip: Note that there is a document retention value for Production transactions 
 
 = Step 9: Run a Test Like Production transaction =
 
-At this point, your Tutorial transaction is ready to run in Production mode. However, since we just updated the components, we recommend running one more *Test Like Production* transaction, which is a Test mode transaction, but using only Production-level components, just like a real Production transaction would.  If you were to find any problems, you would correct them and try again.  After a successful "Test Like Production" run, you would then be free to run real Production transactions with your customers.
+At this point, your Tutorial transaction is ready to run in Production mode. However, since you just updated the components, you should run one more *Test Like Production* transaction, which is a Test mode transaction, but using only Production-level components, just like a real Production transaction would.  If you were to find any problems, you would correct them and try again.  After a successful "Test Like Production" run, you would then be free to run real Production transactions with your customers.
 
 Right click on *Start transaction->Tutorial* and then click *Start TEST like Production*. Because the transaction template allows production now, you get that added option under the test start mode when you right-click on it.
 
@@ -546,7 +546,7 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/startProductionReprese
 
 Congratulations!
 
-_Tip: If you don't want to run an actual production transaction, click the *Return to the document list* button, then click the *Delete this transaction* button. Remember, we set that up when we [#Configure_the_Company_Representative_package_party configured the company rep party in the package]._
+_Tip: If you don't want to run an actual production transaction, click the *Return to the document list* button, then click the *Delete this transaction* button. Remember, you set that up when you [#Configure_the_Company_Representative_package_party configured the company rep party in the package]._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
@@ -560,7 +560,7 @@ Click on *Documents* to select the documents.
 
 Click on the "Tutorial" document, which is currently at the Production level.
 
-Click on the *Create next Test version* button to create our next version, which will be in Test mode. Note that this will not affect Production-level transactions which will continue to use the previous version until this latest version is promoted back to Production. 
+Click on the *Create next Test version* button to create your next version, which will be in Test mode. Note that this will not affect Production-level transactions which will continue to use the previous version until this latest version is promoted back to Production. 
 
 Click the *Save* button to save the new Test version.
 
@@ -568,7 +568,7 @@ Click the *Save* button to save the new Test version.
 
 Click on the "Page1" page under the *Click to view/edit a page* list to bring up the document editor.
 
-In this scenario, we want to add a client name field between the email address and the subject. This will allow us to track transactions by our client's name.
+In this scenario, you want to add a client name field between the email address and the subject. This will allow you to track transactions by your client's name.
 
 Since this field will be done by the "CompanyRep" party, select that in the *Assign new fields so party can update* drop down.
 
@@ -600,7 +600,7 @@ Click the *Test* button to see if it looks how you want it.
 If you need a logo or other image that is not already there, you have two choices. 
 
 === Image is for the document only ===
-If the image is really only for this particular document, we recommend you click the *Add new* button and then click the *Add new image* link. You can then give the image a name, click the *Set the image file* button to choose an image from your computer and upload it:
+If the image is really only for this particular document, click the *Add new* button on the right side of the document editor and then click the *Add new image* link. You can then give the image a name, click the *Set the image file* button to choose an image from your computer and upload it:
 
 http://open.esignforms.com/images/ProgrammingTutorialWiki/uploadImage.png
 
@@ -613,13 +613,13 @@ Once it's in your library, you can return to your document and select that new i
 
 == Create a customized email template for the customer ==
 
-In the tutorial document, we created a "subject" field, but it only appears in the document. It is not used as the email subject. If we'd like to do that, we need to create an email template in our library where the "subject" field is used as the email subject.
+In the tutorial document, you created a "subject" field, but it only appears in the document. It is not used as the email subject. If you'd like to do that, you need to create an email template in your library and specify the `${subject}` field is used as the email subject.
 
 === Create a new Email template in your library ===
 
 Click on the *Emails* item in your library to list your email templates.
 
-Click on the *Create new* button and name it "ClientTutorial" so we know this is the email to be sent to the client for the tutorial.
+Click on the *Create new* button and name it "ClientTutorial" so you know this is the email to be sent to the client for the tutorial.
 
 Using the "DefaultPickupNotification" email template defined in the *ESF/Library/Template* as a guide, we'll make the following changes. You can make other changes to meet your needs when it matters, but these are good values to use for the tutorial.
 
@@ -627,7 +627,7 @@ In *Send email FROM:* put: `${property:ESF.SendEmailFrom}`
 
 In *Send email TO:* put: `${EMAIL}`
 
-In *Subject:* put our field from our tutorial document: `${subject}`
+In *Subject:* put your field from your tutorial document: `${subject}`
 
 In *Text version:* copy from below and paste in it:
 
@@ -685,7 +685,7 @@ In your library, click on your tutorial document and click the *Make Test versio
 
 If you uploaded an image in your library, click on that image and make it production too.
 
-Do the same for the email template we created in the library.
+Do the same for the email template you created in the library.
 
 Then return to the package and make it production.
 
