@@ -324,7 +324,7 @@ This is because a regular click starts a production transaction, and we are stil
 
 _Tip: If you do not see a new popup window, most likely your browser is blocking popups, so look for such errors or warnings and then tell your browser to allow popups from your web site domain._
 
-== Complete test transaction as the CustomerRep party ==
+== Fill out test transaction document as the customer representative party ==
 
 If your configuration was done as specified, you will see your document ready for initial input by the customer representative party (our first party) like this:
 
@@ -398,23 +398,101 @@ _Tip: The customer can use the link in the original email received at any time t
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Step 6: Create a report =
+= Step 6: Create a report http://open.esignforms.com/images/ProgrammingTutorialWiki/programmingReportsIcon.png =
+
+To see the status of all of your tutorial transactions, we need to create a report. Of course, the *General tran search* function can be used to search for any transaction, it lacks the ability to show field values right from your documents.
+
+Click on *Programming->Report templates* and select the report template from the list so it appears in the form below. The report template has no transactions associated with it and no report fields defined, but the permissions are set for your company or group, so we always start with a template.
+
+== Create a new report template like the template ==
+
+We don't want to change the template, so first click the *Create like* button http://open.esignforms.com/images/ProgrammingTutorialWiki/createLikeButton.png to create a new report template like the template.
+
+Change the *PathName* to "Tutorial", ensure the *Enabled* radio button is selected, choose your "Tutorial" transaction template for *Tran templates*, and click the *Save* button. It should look like this:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/programmingReportsFirstSave.png
+
+== Configure report fields ==
+
+Click on the *Report fields* button http://open.esignforms.com/images/ProgrammingTutorialWiki/reportFieldsButton.png to select which fields should be in this report, and in what order.  Initially there will be no report fields:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/reportFieldEmpty.png
+
+=== Add report field: esf_status ===
+
+Click on the *Add report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/addReportFieldButton.png.  Select "esf_status" from the *Report fields* drop down and click the *Ok* button.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/reportFieldStatus.png
+
+The esf_status built-in field is one of: In progress, Completed, Canceled, Suspended.
+
+=== Add report field: esf_status_text ===
+
+Click on the *Add report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/addReportFieldButton.png.  Select "esf_status_text" from the *Report fields* drop down and click the *Ok* button. This last status built-in field shows the current party and document working on the transaction, until completed.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/reportFieldStatusText.png
+
+=== Add report field: esf_created_by_user ===
+
+Click on the *Add report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/addReportFieldButton.png.  Select "esf_created_by_user" from the *Report fields* drop down, set the *Output format* to "Display name with email" and click the *Ok* button. This will show the user who started the transaction.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/reportFieldCreatedByUser.png
+
+=== Add report field: esf_last_updated_timestamp ===
+
+Click on the *Add report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/addReportFieldButton.png.  Select "esf_last_updated_timestamp" from the *Report fields* drop down, set the *Date/time display format* to "MM/DD/YY HH:MM TZ" and click the *Ok* button. This will show the date and time the transaction was last updated.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/reportFieldLastUpdated.png
+
+=== Add report field: emailTo ===
+
+Click on the *Add report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/addReportFieldButton.png.  Select "emailTo" from the *Report fields* drop down, set the *Output format* to "Standard", check the *Allow search* box and click the *Ok* button. This will show the customer email address from our document, and allow you to search on it.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/reportFieldEmailTo.png
+
+=== Add report field: subject ===
+
+Click on the *Add report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/addReportFieldButton.png.  Select "subject" from the *Report fields* drop down, set the *Output format* to "Standard", check the *Allow search* box and click the *Ok* button. This will show the subject from our document, and allow you to search on it.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/reportFieldSubject.png
+
+=== Add report field: recipientSignature ===
+
+Finally, click on the *Add report field* button http://open.esignforms.com/images/ProgrammingTutorialWiki/addReportFieldButton.png on more time.  Select "recipientSignature" from the *Report fields* drop down, set the *Output format* to "Standard", check the *Allow search* box and click the *Ok* button. This will show the signature entered by our customer from our document, as well as allow you to search on it.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/reportFieldSignature.png
+
+Click the *Close* button when done.
+
+=== Save the report ===
+
+Click the *Save* button back on the report page to save your changes.
+
+_Tip: You can drag and drop the report fields to change the order they will appear in the report._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Step 7: Promote from Test to Production =
+= Step 7: Run your report http://open.esignforms.com/images/ProgrammingTutorialWiki/reportsIcon.png =
+
+Select *Reports->Tutorial* to run your new report.
+
+Click the *Test* radio button to search for Test transactions. Then click the *Find matching* button http://open.esignforms.com/images/ProgrammingTutorialWiki/findMatchingButton.png to show your transactions.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/reportTestTransactions.png
+
+You should see your record, including the three data fields that were otherwise embedded in the document.  After you run a search and there are matching transactions, you can click the *Export to Excel* button to download that data for an Excel spreadsheet, or you can click the *Download CSV* button to download it as CSV (comma-separated-value) data.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Step 8: Run a Test Like Production transaction =
+= Step 8: Promote from Test to Production =
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Step 9: Run a Production transaction =
+= Step 9: Run a Test Like Production transaction =
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Step 10: Run your report =
+= Step 10: Run a Production transaction =
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
