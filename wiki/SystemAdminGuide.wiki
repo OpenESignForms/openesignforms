@@ -81,6 +81,7 @@ Each user who can start transactions, run reports, or process work via the To Do
 Configuring a user involves setting up the user's email address, name and what groups he or she belongs to:
 
 http://open.esignforms.com/images/HowToGuidesWiki/userEdit.png
+  * *Time zone* specifies the user's preferred time zone for dates and times shown in forms, logs, reports, etc. 
   * *Email address* must uniquely identify this user, and it should be a valid, working email address in order for the user to set a password, get email notifications, etc.
   * *Email display name* is the name shown that goes with the email address to create a "fully qualified" email address. Most people use their full name or role, such as "Support" or "David Jones", which results in an email address of "Support <support@example.com>" or "David Jones <djones@example.com>".
   * *First name* is the user's first, or personal, name.
