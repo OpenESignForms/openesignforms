@@ -469,7 +469,33 @@ For General, use regular expression [http://docs.oracle.com/javase/6/docs/api/ja
 
 == Document styles http://open.esignforms.com/images/HowToGuidesWiki/documentStylesIcon.png ==
 
+Document styles provides basic control of the look of your documents. They specify CSS (Cascading Style Sheets) rules. By using a common set of styles, documents will have a consistent look. Open eSignForms comes with a built-in default style in the *ESF/Library/Template* library called *ESF_DefaultDocumentStyle*. It is a clean, modern look.
+
+The values associated with the styles can be seen in the *ESF/Library/Template's* drop downs.
+
 Click on *Document styles* to show all document styles in the selected library.
+
+http://open.esignforms.com/images/HowToGuidesWiki/documentStyles.png
+
+  * Choose *Enabled* to allow the document style to be used. If a document style is no longer needed, click *Disable*.
+  * *[HowToGuides#EsfNames_and_PathNames EsfName]* is the unique name for this document style.
+  * *Description* is a short description of the document style.
+  * *Comments* is any other information you want to maintain about the styles.
+
+The style is composed of various aspects that are used to override the hard-coded default CSS that ensure basic document functionality. It can be viewed from the [#Document_page_editor document page editor's] *View default CSS* link. Values that are specified as "Inherit" generally mean to use the values defined in default CSS.
+
+  * *General document contents* sets the font styles for the regular text you put on the page.
+  * *Signatures* sets the font styles to use for signatures and signature dates, to give a styled look that makes the typed name electronic signature stand out from the general document contents.
+  * *Field data on review* sets font styles to be applied to all fields when in review mode (display mode, compared to edit mode when the field can be entered). This can be useful if you would like all "variable data" in your documents to stand out from the boilerplate text.
+  * *Required data in input fields* specifies the styles for input fields that are required. 
+  * *Optional data in input fields* specifies the styles for input fields that are not required.
+  * *Invalid data in input fields* specifies the style for input fields when they contain invalid data and an error has been reported. It helps identify fields that need to be corrected.
+  * *Normal label* specifies the style of normal-sized field label.
+  * *Normal error label* specifies the style of the normal-sized field label when that field has been flagged as invalid.
+  * *Small label* specifies the style of small-sized field label.
+  * *Small error label* specifies the style of the small-sized field label when that field has been flagged as invalid.
+
+_Note: You can always specify the fonts for your text directly in the document page editor. But to control labels, error looks, signatures, etc. you need to use the document style._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
@@ -477,11 +503,51 @@ Click on *Document styles* to show all document styles in the selected library.
 
 Click on *Drop downs* to show all drop downs (selection boxes) in the selected library.
 
+http://open.esignforms.com/images/HowToGuidesWiki/dropDown.png
+
+  * Choose *Enabled* to allow the drop down to be used. If a drop down is no longer needed, click *Disable*.
+  * *[HowToGuides#EsfNames_and_PathNames EsfName]* is the unique name for this drop down.
+  * *Description* is a short description of the drop down.
+  * *Comments* is any other information you want to maintain about the drop down.
+
+  * Check *Allow Multi-Selections* if the drop down should allow the user to select more than one value from the list.
+  * The *Label* is the text the user will select from when viewing the drop down list.  The *Value* is the data value that will be stored in the drop down field. The label and value can be set to same.
+  * If "no selected value" is allowed, consider creating the first *Label* as "--SELECT--" with an empty *Value*.
+
+Click the *Add option* once for each label+value you want to appear in your drop down. It will create a new entry that you can then update.
+
+Select an option by clicking a row so it is highlighted (such as clicking in the *Order* field or the narrow space between the label and value) and then click the *Remove selected option* to remove that option.
+
+Drag a row to another location to rearrange the order that the drop down displays its options.
+
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 == Email templates http://open.esignforms.com/images/HowToGuidesWiki/emailsIcon.png ==
 
+Email templates are used to define any email that needs to be sent from the system. Like a document, they can have variable data substituted to customize them for individual parties.
+
 Click on *Emails* to show all email templates in the selected library.
+
+http://open.esignforms.com/images/HowToGuidesWiki/emailTemplate.png
+
+  * Choose *Enabled* to allow the email template to be used. If an email template is no longer needed, click *Disable*.
+  * *[HowToGuides#EsfNames_and_PathNames EsfName]* is the unique name for this email template.
+  * *Description* is a short description.
+  * *Comments* is any other information you want to maintain.
+
+  * *Send email FROM:* specifies the FROM email address that will be used. Often, this is a NO-REPLY@example.com address to indicate that the email is an automated email and not a personal email. However, you can use any email address. The default is a property set value `${property:ESF.SendEmailFrom}`. You can use any field from the documents that are used when the email is sent, or you can use the user who started the transaction with a value like `${transaction:ESF_Started_By_User_Email_Address}`.
+  * *Send email TO:* specifies who the email will be sent to. For most party-based emails, we recommend using the value `${EMAIL}` since that variable can be set in various configuration options. Multiple emails can be specified (use a semicolon to separate them).
+  * *CC:* specifies any CC recipients.
+  * *BCC:* specifies any BCC recipients (blind-copy so will not appear to other recipients).
+  * *Subject* is the subject of the email.
+  * *Text version* is the email text to show for clients who cannot or will not allow HTML-based emails. A text version is required as it's guaranteed to be used by all email clients.  You may specify the field ${LINK} anywhere the party's pickup link should appear.
+  * *HTML version* is the HTML version of the email for clients that support HTML. Generally, it should be similar to the text version, but you can use various stylings to make the email more attractive.  You may put ${LINK} anywhere you need the party's unique pickup link to appear. If the actual URL of the link is not shown in your HTML version, we recommend showing the full link at the bottom, in a smaller font, with something like this:
+
+{{{
+If the above link is not active (e.g. nothing happens when you click on it), please copy the link below exactly as shown into your web browser's address or location field:
+
+${LINK}
+}}}
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
