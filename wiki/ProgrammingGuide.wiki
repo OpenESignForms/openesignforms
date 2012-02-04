@@ -576,11 +576,39 @@ Click the *Replace image file* button to select a new image file to replace the 
 
 Click the *Save* button to save the new image.
 
+_Tip: In a document, while you can reference an image using the `${image:imageName}` syntax, you will probably find it easier to use the editor's image button to insert the image so it's visible in the editor._
+
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 == Property sets http://open.esignforms.com/images/HowToGuidesWiki/propertySetsIcon.png ==
 
+Property sets are a bundle of related name-value pairs. This allows you to create more flexible and re-usable documents because certain key information, like company name, address, phone, contact email, etc. can be externalized with the values stored in property sets. Changes can then be made simply by updating the property set, and all documents that reference that property set will automatically begin using the new values without having to update each document.
+
+Properties are referenced first by which property set is being used, and then which property in that set is being referenced: `PropertySetName.PropertyName`.
+
+Also, if you support multiple brands, you can create the property set (with the same name) in a branding library so that multiple companies can use the same document, yet each gets their company name, address, phone, etc. in their documents.
+
 Click on *Property sets* to show all property sets in the selected library.
+
+http://open.esignforms.com/images/HowToGuidesWiki/propertySet.png
+
+  * Choose *Enabled* to allow the property set to be used. If a property set is no longer needed, click *Disable*.
+  * *[HowToGuides#EsfNames_and_PathNames EsfName]* is the unique name for this property set.
+  * *Description* is a short description.
+  * *Comments* is any other information you want to maintain.
+
+In the table of name-value pairs on the right side, the fields are:
+  * The *EsfName* is the name of the property (must be unique within this property set).
+  * The *Value* is the value to show when this property is referenced. It can be more than one line.
+  * The *Comment* is any information you'd like to maintain about the property.
+
+Click the *Add property* button one or more times to add one more new properties. Just replace the name and value as needed.
+
+To remove properties, click on one or more rows so they are highlighted, then click the *Remove selected properties* button. It can be tricky to select a row, but if you click in the row, but not inside a input field, it should highlight to show the row been selected.
+
+Property sets can be referenced in your documents, email templates and the like using `${property:propertySetName.propertyName}` notation. The `propertySetName` is the name of the property set, and `propertyName` is the name of the individual property defined in that property set.
+
+_Tips: Normally, property values are encoded to be HTML-safe when displayed in your documents, but if you have taken care to create a property value containing valid HTML, you can include that in your document using `${htmlproperty:propertySetName.propertyName}` notation. You can use this as a simple, flexible way to insert variable or common HTML in your documents, including custom styles you frequently use in your documents._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
