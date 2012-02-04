@@ -616,11 +616,25 @@ _Tips: Normally, property values are encoded to be HTML-safe when displayed in y
 
 Click on *Fields* to show all field templates in the selected library.
 
+http://open.esignforms.com/images/HowToGuidesWiki/fieldTemplate.png
+
+Most fields, of course, are [#Fields_in_document defined in the document], which you can reference for details on configuring them. The process is the same.
+
+The main purpose for a field template defined in a library is to create "standardized" field names and configuration. When creating documents, you can create fields based on those defined in the library so that their values take on the standard definition. Of course, any value can be overridden in the specific document's definition.
+
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 == Parties http://open.esignforms.com/images/HowToGuidesWiki/partiesIcon.png ==
 
 Click on *Parties* to show all party templates in the selected library.
+
+http://open.esignforms.com/images/HowToGuidesWiki/partyTemplate.png
+
+Most parties, of course, are [#Parties_to_document defined in the document].
+
+The main purposes for a party template defined in a library are 1) to create a "standardized" name for your parties so that as you create multiple documents, you tend use the same name for the same roles across those documents; and 2) if you configure a party in a package as a [UserGuide#To_Do 'To Do'] party, then you can define the [SystemAdminGuide#Groups group] that represents members of the party so that any member in the group can process transactions when the party is active.
+
+If the package party is defined for To Do purposes, specify the *To Do Group* that represents the users who will be able to place this role. Also, if you support multiple companies, each branding library is able to set their own group to play the given role. So if you have an "Approver" role, you can set it to be one group for one company, but another group for the other company.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
