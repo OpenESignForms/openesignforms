@@ -467,6 +467,35 @@ For General, use regular expression [http://docs.oracle.com/javase/6/docs/api/ja
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+=== Package+disclosure documents ===
+
+There is a special type of document that plays the role of a welcome message, the E-Sign Disclosure (required by law for consumers) and often contains the list of documents contained in the package for a given party. 
+
+Since the list of documents for a given party are variable, you can include `${transaction:documents.todo}` in the package+disclosure document and it will automatically show the correct list of documents and their status for the party.
+
+The *ESF/Library/Template* contains a document just for this purpose called *StandardPackageDisclosures*.
+
+It's contents is some like the following:
+
+{{{
+${image:Logo}
+
+Welcome to our electronic signature service.
+
+Please note that your continued use of this service constitutes your agreement to use electronic signatures in lieu of a paper document with a traditional hand-written signature. Electronic signatures are legally recognized throughout the United States. Your electronic signature will take place when you type your name and/or initials into the marked areas on the subsequent document(s) and then you click both the Review and Submit buttons on each document to indicate your agreement and/or authorization.
+
+You also certify that these documents are intended for you and that you are authorized to sign the documents. If you have received these by mistake, please do not continue and email us or call ${property:MyCompany.CustomerSupportPhone} to report our error.
+
+If you do not wish to sign these documents electronically, please contact us and do not continue with this process. However, we expect that you will prefer this free, easy-to-use, fast and environmentally sound option.
+
+Document(s) for your review:
+${transaction:documents.todo}
+}}}
+
+You are free to create your own documents with alternative welcome messages, E-Sign Disclosures and/or layout for this purpose. Just specify your package+disclosure document in the [#Packages Package configuration].
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 == Document styles http://open.esignforms.com/images/HowToGuidesWiki/documentStylesIcon.png ==
 
 Document styles provides basic control of the look of your documents. They specify CSS (Cascading Style Sheets) rules. By using a common set of styles, documents will have a consistent look. Open eSignForms comes with a built-in default style in the *ESF/Library/Template* library called *ESF_DefaultDocumentStyle*. It is a clean, modern look.
