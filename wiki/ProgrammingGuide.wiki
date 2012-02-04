@@ -553,7 +553,28 @@ ${LINK}
 
 == Images and Logos http://open.esignforms.com/images/HowToGuidesWiki/imagesLogosIcon.png ==
 
+Images/Logos are used to upload and save images and logos used across your various documents. When an image or logo is only needed for a particular document, you should consider defining the [#Images_in_document image inside the document version]. Buy by defining the images in the library, they are available for other documents, and of course you can easily override them using a Branding Library should the image change depending on who is using the document.
+
 Click on *Images/Logos* to show all images in the selected library.
+
+http://open.esignforms.com/images/HowToGuidesWiki/imageNewUpload.png
+
+  * Choose *Enabled* to allow the image to be used. If an image is no longer needed, click *Disable*.
+  * *[HowToGuides#EsfNames_and_PathNames EsfName]* is the unique name for this image.
+  * *Description* is a short description.
+  * *Comments* is any other information you want to maintain.
+
+If it's a new image, click the *Set the image file* button. You can then choose an image file (GIF, JPEG or PNG should be used for online documents). A thumbnail image will be generated, along with a link to view the full-sized image. Note that images that have transparent backgrounds will show a black background in the thumbnail, but the original image will remain transparent.
+
+Click the *Save* button to save the image.
+
+If you are replacing an existing image:
+
+http://open.esignforms.com/images/HowToGuidesWiki/imageUpdate.png
+
+Click the *Replace image file* button to select a new image file to replace the one shown.
+
+Click the *Save* button to save the new image.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
