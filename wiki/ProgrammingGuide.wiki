@@ -678,3 +678,65 @@ If the package party is defined for To Do purposes, specify the *To Do Group* th
 = Report Templates =
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Integration Interface (API) =
+
+There are various ways to integrate other applications and web sites with Open eSignForms.
+
+Each transaction template shows the "Start URL" which is used to start a new transaction of its type.  There are two standard options you can include on the URL (or as HTTPS POST parameters):
+
+  * `ESFTEST=Yes` means that you want to start a Test transaction. We recommend using this during all integration testing.  If you omit this parameter, it will be assume to be a Production transaction, but you can send it as `ESFTEST=No` to make it explicit.
+  * `ESFLIKEPRODUCTION=Yes` is only examined if `ESFTEST=Yes` is also included and controls whether the Test transaction should run using any Test versions found or not. When set to `Yes` it means even though it is a Test transaction, it will only select Production-level versions. We recommend setting this to `Yes` on your final integration tests to ensure it is working as expected using only Production-level versions. If this param is not present, it is assumed to have a `No` value.
+
+== From an email you send out, inline process ==
+
+If you already have an email generating system, or you manually send them out, you can start a new transaction by embedding the transaction template's "Start URL" in the email you send out.  When external users click on your link, it will take them to your Open eSignForms site where they can complete and sign as necessary.
+
+The external user will start the transaction and act as the first party defined for the package of document(s).
+
+Note that the transaction template must allow for "External users" to have "Start" permission on the transaction.
+
+We call this "inline process" because the external user works on the document directly after clicking on the link.
+
+== From your web site, inline process ==
+
+If you already have a web site, you can start a new transaction by embedding the transaction template's "Start URL" in your web site.  When external users click on your link, it will take them to your Open eSignForms site where they can complete and sign as necessary. 
+
+The external user will start the transaction and act as the first party defined for the package of document(s).
+
+Note that the transaction template must allow for "External users" to have "Start" permission on the transaction.
+
+We call this "inline process" because the external user works on the document directly after clicking on the link.
+
+== From another web site or web-accessible application, inline process == 
+
+Like above, this processing allows you to start the transaction as a specific user of Open eSignForms rather than an external user. This is often done from other web portals and applications where the user is authenticated in that system, and now you want to tie that user together with the Open eSignForms user.
+
+To do this, you must include the following two additional HTTPS POST params (we do not recommend you ever including username and passwords in the URL as those values will be recorded in web server logs as well as the user's browser cache):
+
+  * `ESFLOGINUSER=useremail@example.com` specifies the user's login email address to authenticate the user who will start the transaction.
+  * `ESFLOGINPASSWORD=user+password` specifies the user's login password to authenticate the user who will start the transaction.
+
+You must include both params as the system will not attempt authentication without both. That is, it will be treated just the same as an "external user" starting the transaction.
+
+Note that the transaction template must allow for a group that the user belongs to to have "Start" permission on the transaction. You generally would not allow "external users" to start this type of transaction as the purpose is to run only user-authenticated transactions that are tied to the specified user.
+
+We call this "inline process" because the user works on the document directly after clicking on the link.
+
+== From another web site or web-accessible application, email process (API) == 
+
+Unlike the process above, this is suitable for full-API integration where your other application will start a new transaction without any user interactions.  Generally, the first party is fully processed and then the second party is notified by email for external users (or perhaps via the To Do queue for an internal user) to process the transaction.
+
+Unlike the previous "inline process" versions, no web page is returned because it is assumed that the user is not present to handle the documents immediately.
+
+Add the following additional HTTPS POST param for API-processing:
+  * `ESFAUTOCOMPLETEFIRSTPARTY=Yes` means that the first party, as defined by the required `ESFLOGINUSER` and `ESFLOGINPASSWORD` params, will be completed as a result of this request, with any second party then notified.
+
+Since no user is present, no web page is returned. Instead of a `text/html` (content/mime type) response, a `text/plain` response is sent as follows:
+  * If the request is not even processed due to an error, an HTTP 404 response code is sent to indicate the error.
+  * `OK:transaction-id` is returned if the transaction was successfully started and includes the transaction id after the colon.
+  * `ERROR:error-mesage` is returned if there was an error in user authentication or other transaction processing error, such as data validation errors. The error message may span more than one line with embedded newlines if more than one error was detected.
+
+We call this "email process" because the next user will only gain access to the transaction after receiving an email containing their unique link. The link the user receives will not be the "Start URL" at all, but will be a pickup-link to retrieve an existing transaction.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
