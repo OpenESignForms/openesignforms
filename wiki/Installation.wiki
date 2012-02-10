@@ -1,9 +1,14 @@
 #summary Basic installation instructions for developers.
 #labels Featured,Phase-Implementation
 
+==== Table of contents ====
+<wiki:toc max_depth="3" />
+
 = Introduction =
 
 These instructions are pretty high level right now, so we'll want to nail it down to a more easily repeatable set of instructions, but we had to start somewhere! 
+
+[http://www.yozons.com/Open-eSignForms/pricing.jsp Yozons offers low-cost hosted solutions] for those who prefer to just get up-and-running. Yozons also offers private web servers for those who want their own domain name (and SSL cert).
 
 = Details =
 
@@ -240,3 +245,15 @@ While not needed for this particular effort, we recommend PasswordSafe (sourcefo
 We also like OpenOffice for our office productivity.
 
 For Windows, we use WinSCP and Putty for SSH/SCP access to our Linux servers.
+
+= Linux setup =
+
+For Linux deployment servers, we use a layout like this in the home directory for the application. For scripts and such, you may want to run `dos2unix` on them. 
+
+  * `bashrc` and `profile` are here; tweak as necessary for your setup.
+  * `bin` contains our shell scripts
+  * `deployments` contains the `template` folder hierarchy and is used to store the PostgreSQL database per web app deployment (via PostgreSQL's tablespace directive).
+  * `java` is where we install our Java 6 Runtime Environment, such as jre1.6.0_26, and we create a softlink of that to 'jdk1.6' which is referenced in the `profile`. This allows updates to Java by changing where the softlink points. (i.e. `ln -s jre1.6.0_26 jdk1.6`)
+  * `postgresql` contains the location where PostgreSQL is installed. It has folders like `bin`, `data84` (where the main db is stored, but each web app's tablespace puts those databases in the `deployments` folder), `ddl`, `logs`, `pg84` (where PostgreSQL installs to) and `postgresql-8.4.8` (were we unzipped PostgreSQL and compiled it).
+  * `tomcat` where we unzipped Tomcat into a folder like apache-tomcat-7.0.20, and then we create a softlink from that version to `tomcat7.0` which is referenced in the `profile` script. (i.e. `ln -s apache-tomcat-7.0.20 tomcat7.0`)
+  * `wkhtmltopdf_0.11.0` which contains the code to [wkhtmltopdf generate PDFs from HTML]. We then create a softlink of the executable to our `bin` with something like `ln -s ../wkhtmltopdf_0.11.0/wkhtmltopdf-i386 wkhtmltopdf-i386` (run from the `bin` directory).
