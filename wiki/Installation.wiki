@@ -58,13 +58,13 @@ If you have edit/commit permission, you'll need a user account and password with
 
 {{{:extssh:USERNAME@open.esignforms.com:/home/cvs}}}
 
-It seems from a fresh install that you'll want to right click on the open-eSignFormsVaadin project, click on Properties, click on Vaadin, and even though it may show the current Vaadin JAR (6.6.6 at this time), you should do a download and APPLY to get it put into the Eclipse area where the GWT JARs are also stored.
+It seems from a fresh install that you'll want to right click on the open-eSignFormsVaadin project, click on Properties, click on Vaadin, and even though it may show the current Vaadin JAR (6.7.5 at this time), you should do a download and APPLY to get it put into the Eclipse area where the GWT JARs are also stored.
 
 (If you plan to do any VaadinCKEditor project work, not necessary for Open eSignForms itself, you'll need to install a subversion plugin -- we use Subversive SVN Team Provider from the Eclipse installation location and we selected the SVN Kit 1.3.5. This related project is hosted on Google Code.)
 
-You will need to compile the Vaadin widgets before testing.
+You will need to compile the Vaadin widgets before testing. Vaadin widgets compile to GWT-based javascript and are stored in the `WebContent/VAADIN/widgetsets` folder.
 
-Eclipse should automatically compile all of the regular code into the 'WebContent/WEB-INF/classes' folder.
+Eclipse should automatically compile all of the regular Java source code into the `WebContent/WEB-INF/classes` folder. If not, right-click on the project in Eclipse and select Properties, then click on the "Java Build Path", click on the Source tab, the "Default output folder" should be something like: `open-eSignFormsVaadin/WebContent/WEB-INF/classes` but this normally should be set automatically if you are using checked-in code or a source code snapshot release.
 
 ==Passwords==
 
