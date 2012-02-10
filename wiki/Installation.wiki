@@ -27,6 +27,8 @@ We like to modify the shortcut properties Options to increase the command histor
 
 Of course, those on Linux/Unix don't need to worry about this.
 
+If you find that scripts won't run on Linux or via Cygwin's shell, you may need to do a `dos2unix *` on the text files and scripts to ensure they are in encoded correctly.
+
 ==Apache Tomcat==
 
 For testing, we generally run Tomcat from Eclipse, so it's best to download and install Tomcat next. If you plan on running Tomcat as a Windows service, there's a special installer for it. But we just download the ZIP file and really only run it via Eclipse, extracting to C:\. The version tested here was 7.0.21. (There is a bug in Tomcat prior to this release that caused errors in the import of esf.js file because of the new javascript mime type standard that changed from text/javascript to application/javascript.)
@@ -47,6 +49,8 @@ Overview->Timeouts: Change 'Start' to be 600 to give you more time if you plan o
 
 Overview->Generation Information->Open launch configuration: 
 Add to Arguments tab, VM arguments: -Xmx512m -Desf.deploybase=C:\deployments
+
+_Tip: For production deployments, you will not use Eclipse and you won't run Tomcat inside. These are just for software developers, not for those who will run/use the system._
 
 ==Building Open eSignForms Using Eclipse==
 
