@@ -431,6 +431,7 @@ To insert the value of a configured property, you may use this notation:
 ==== Built-in fields to reference from the transaction and startup data ====
   * `${transaction:id}` is replaced by the transaction's unique id.
   * `${transaction:ESF_Start_Timestamp}` is replaced by the date-time it was created.
+  * `${transaction:ESF_Started_API_Mode}` is true if the transaction was started using the API mode (from an automated start rather than a user). It is false otherwise.
   * `${transaction:ESF_Started_By_User_Id}` is replaced by the user id of the person who started this transaction if it was started by a logged in user.
   * `${transaction:ESF_Started_By_User_Email}` is replaced by the email address of the person who started this transaction if it was started by a logged in user.
   * `${transaction:ESF_Started_By_User_Email_Address}` is replaced by the full email display name and email address of the person who started this transaction if it was started by a logged in user.
@@ -729,14 +730,18 @@ Unlike the process above, this is suitable for full-API integration where your o
 
 Unlike the previous "inline process" versions, no web page is returned because it is assumed that the user is not present to handle the documents immediately.
 
-Add the following additional HTTPS POST param for API-processing:
-  * `ESFAUTOCOMPLETEFIRSTPARTY=Yes` means that the first party, as defined by the required `ESFLOGINUSER` and `ESFLOGINPASSWORD` params, will be completed as a result of this request, with any second party then notified.
+Add the following additional HTTPS POST params for API-processing:
+  * `ESFLOGINUSER=useremail@example.com` specifies the user's login email address to authenticate the user who will start the transaction in API mode.
+  * `ESFLOGINPASSWORD=user+password` specifies the user's login password to authenticate the user who will start the transaction in API mode.
+  * `ESFAUTOCOMPLETEFIRSTPARTY=Yes` means that the first party, as defined by the required `ESFLOGINUSER` and `ESFLOGINPASSWORD` params, will be completed as a result of this API request, with any second party then notified.
 
-Since no user is present, no web page is returned. Instead of a `text/html` (content/mime type) response, a `text/plain` response is sent as follows:
+Since no user is actually present, a standard web page response is not returned. Instead of a `text/html` (content/mime type) response, a `text/plain` response is sent as follows:
   * If the request is not even processed due to an error, an HTTP 404 response code is sent to indicate the error.
   * `OK:transaction-id` is returned if the transaction was successfully started and includes the transaction id after the colon.
   * `ERROR:error-mesage` is returned if there was an error in user authentication or other transaction processing error, such as data validation errors. The error message may span more than one line with embedded newlines if more than one error was detected.
 
-We call this "email process" because the next user will only gain access to the transaction after receiving an email containing their unique link. The link the user receives will not be the "Start URL" at all, but will be a pickup-link to retrieve an existing transaction.
+We call this "email process" because the next user will only gain access to the transaction after receiving an email containing their unique link. The link the user receives will not be the "Start URL" at all, but will be a pickup-link to retrieve an existing transaction. Of course, if there is no second party, the transaction will complete as expected.
+
+_Note that no document snapshots will exist for the first party since the documents were not, in fact, presented in Review mode. Data snapshots still are done._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
