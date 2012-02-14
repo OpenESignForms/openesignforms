@@ -684,7 +684,7 @@ If the package party is defined for To Do purposes, specify the *To Do Group* th
 
 = Integration Interface (API) =
 
-There are various ways to integrate other applications and web sites with Open eSignForms.
+There are various ways to integrate other applications and web sites with Open eSignForms. They all assume the ability to access HTTPS links to the web site.
 
 Each transaction template shows the "Start URL" which is used to start a new transaction of its type.  There are two standard options you can include on the URL (or as HTTPS POST parameters):
 
@@ -703,7 +703,7 @@ We call this "inline process" because the external user works on the document di
 
 == From your web site, inline process ==
 
-If you already have a web site, you can start a new transaction by embedding the transaction template's "Start URL" in your web site.  When external users click on your link, it will take them to your Open eSignForms site where they can complete and sign as necessary. 
+If you already have a web site, you can start a new transaction by embedding the transaction template's "Start URL" in your web site.  When external users click on your link, it will take them to your Open eSignForms site where they can complete and sign as necessary. The link may also be embedded in an IFRAME or FORM, with the FORM allowing you to post some initial data collected from your form or provided by your web site.
 
 The external user will start the transaction and act as the first party defined for the package of document(s).
 
@@ -713,7 +713,7 @@ We call this "inline process" because the external user works on the document di
 
 == From another web site or web-accessible application, inline process == 
 
-Like above, this processing allows you to start the transaction as a specific user of Open eSignForms rather than an external user. This is often done from other web portals and applications where the user is authenticated in that system, and now you want to tie that user together with the Open eSignForms user.
+Like above, this processing allows you to start the transaction as a specific user of Open eSignForms rather than an external user. This is often done from other web portals and applications where the user is authenticated in that system, and now you want to tie that user together with the Open eSignForms user. The link may also be embedded in an IFRAME or FORM, with the FORM allowing you to post some initial data collected from your form or provided by your web site.
 
 To do this, you must include the following two additional HTTPS POST params (we do not recommend you ever including username and passwords in the URL as those values will be recorded in web server logs as well as the user's browser cache):
 
@@ -728,7 +728,7 @@ We call this "inline process" because the user works on the document directly af
 
 == From another web site or web-accessible application, email process (API) == 
 
-Unlike the process above, this is suitable for full-API integration where your other application will start a new transaction without any user interactions.  Generally, the first party is fully processed and then the second party is notified by email for external users (or perhaps via the To Do queue for an internal user) to process the transaction.
+Unlike the process above, this is suitable for full-API integration where your other application will start a new transaction without any user interactions. This API uses web-standard HTTPS POST of name-value pairs and will receive a simple text response for easy parsing of success or failure. Generally, the first party is fully processed and then the second party is notified by email for external users (or perhaps via the To Do queue for an internal user) to process the transaction.
 
 Unlike the previous "inline process" versions, no web page is returned because it is assumed that the user is not present to handle the documents immediately.
 
