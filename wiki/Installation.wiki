@@ -16,7 +16,7 @@ These instructions are pretty high level right now, so we'll want to nail it dow
 
 We start by installing the latest version of [http://www.oracle.com/technetwork/java/javase/downloads/ Java 6 SE] available. It appears that these days you just need the JRE. The version tested here was 6.0.26.
 
-Because of the sophisticated encryption we use, you'll need the Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files installed in your jre/lib/security folder. Note that encryption entails issues with the U.S. government's misguided and impractical export rules. For Windows, be careful you may have 32-bit and 64-bit JREs installed and you'll want to update both as much depends on which Eclipse uses when it starts Tomcat, of if you run Tomcat directly yourself.
+Because of the sophisticated encryption we use, you'll need the Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files installed in your jre/lib/security folder. Note that encryption entails issues with the U.S. government's misguided and impractical export rules. For Windows, be careful you may have 32-bit and 64-bit JREs installed and you'll want to update both as much depends on which Eclipse uses when it starts Tomcat, of if you run Tomcat directly yourself.  You can download these files from the Java download site (often at the bottom of the page).
 
 ==Browsers==
 
