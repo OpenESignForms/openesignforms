@@ -670,7 +670,73 @@ If the package party is defined for To Do purposes, specify the *To Do Group* th
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Packages =
+= Packages http://open.esignforms.com/images/HowToGuidesWiki/packageIcon.png =
+
+Packages allow you to bundle one or more documents so that they are processed as a group. Each party will be able to process one or more of the documents in the package. It is possible to have some parties only see a subset of documents.
+
+You also configure the package parties who will process the documents. The initial list of parties come from the names defined in the documents you add. But you may find that you need to rename or group the parties; for example, one document may say call the party who fills in the document as "FirstParty" while another document may have called that party "Customer". In the package, if these are really the same person, you can bundle them together.
+
+Click on *Programming->Packages* to show all packages of documents that are available to you. 
+
+Click on a package to view or configure it.
+
+http://open.esignforms.com/images/HowToGuidesWiki/package.png
+
+  * Choose *Enabled* to allow the package to be used. If a package is no longer needed, click *Disable*.
+  * *[HowToGuides#EsfNames_and_PathNames PathName]* is the unique path name for this package.
+  * *Description* is a short description.
+  * *Comments* is any other information you want to maintain.
+  * *Permissions to access this package* contain the standard List, View Details, Create Like, Update and Delete permission lists. Just choose which groups are allowed to do each of these operations on a package. Normally, the "programming" group has permission to this as it's not a general user task.
+
+For the list of documents and parties on the right side, the fields are:
+  * The *Choose documents* shows each Library that is available to you. If you open the arrow, it will show the documents defined in each. Just click and drag a document from this list into the *Documents in this package* table. If other documents are already in the list, note the insertion bar when you drag the document over to choose to place it at the top (first), between documents, or at the bottom (last). Of course, you can re-order at any time.
+  * The *Documents in this package* table lists each [#Package_document_configuration document in the package] and the order they will be presented. If you drag a document from the table back to the *Choose documents* tree and drop it anywhere there, the document will be removed from the package and will automatically be returned to the correct library where it came from.
+  * The *Parties involved with this package of documents* table lists all [#Package_party_configuration parties defined in the package], as well as the order in which they should process the package of documents. The first party is the "initiator" who starts the transaction and can be a normal user or an [#From_another_web_site_or_web-accessible_application,_email_proce automated API party].
+  * The *Package+disclosure view* drop down list lets you choose the [#Package+disclosure_documents special document] that plays the role of welcoming the parties, showing E-Sign disclosures, as well as the list of documents the party is expected to process. By default, this is the *ESF/Library/Template/StandardPackageDisclosures* document.
+
+Click the *Make Test version Production* button to move a Test version package to Production. 
+
+If the package is already a Production version, use the *Create next Test version* button to create the next package that you can test until you are ready to make it production. You can also use the *Revert to Test* button to temporarily take the package out of production for a quick fix before you make it production again (do this with caution since a production transaction will get an error, or use the prior production version if one exists, while you are making this update).
+
+Click the *[#Customize_logic Customize logic]* button to add special processing rules to this package of documents.
+
+Click the *[#Map_report_fields Map report fields]* to define the fields in the documents you have selected that you would like to include in reports or To Do lists for your internal parties.
+
+Note that after any change to the package, including any changes made in other screens related to the package, you will have to click the *Save* button keep those changes.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Package document configuration ==
+
+Note that you can drag to re-order the documents, or drag it back to the *Choose documents* list of libraries to remove it.
+
+Click on a document from the *Documents in this package* table to configure the parties who will process that document. 
+
+http://open.esignforms.com/images/HowToGuidesWiki/packageDocument.png
+
+Since package parties are defined initially from the parties defined in the various documents, it is possible that the names used in various documents are not consistent. This allows you to specify which package party will play the role for a given document party. Select the package party or parties who will be allowed to play the specified document party.  
+
+Click *Ok* to remember the changes. Click *Cancel* to discard any changes.
+
+_Tip: To save your changes, remember to click the *Save* button for the package._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Package party configuration ==
+
+Note that you can drag a party to re-order the processing flow. If after you are done you have parties defined that do not reference any documents, you can remove them using the *Remove X unused package parties* button http://open.esignforms.com/images/HowToGuidesWiki/removeUnusedPackagePartiesButton.png that appears below the list of parties.
+
+Click on a party in the *Parties involved with this package of documents* to configure the package party.
+
+http://open.esignforms.com/images/HowToGuidesWiki/packageParty.png
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Customize logic ==
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Map report fields ==
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
