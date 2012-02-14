@@ -527,6 +527,8 @@ The style is composed of various aspects that are used to override the hard-code
 
 _Note: You can always specify the fonts for your text directly in the document page editor. But to control labels, error looks, signatures, etc. you need to use the document style._
 
+_Default CSS print style note: The default CSS file includes a brief print style: div.newPage will insert an actual page break; fonts are set to 90% of their screen size; and link tags (A HREF) with the "showURL" class will display the value of the link's URL since a printed link would otherwise lose that information._
+
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 == Drop downs http://open.esignforms.com/images/HowToGuidesWiki/dropDownsIcon.png ==
