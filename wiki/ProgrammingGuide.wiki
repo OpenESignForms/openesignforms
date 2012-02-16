@@ -752,7 +752,7 @@ _Tip: To save your changes, remember to click the *Save* button for the package.
 
 It is often necessary to add additional processing logic to fine tune the process flow. You can set up special custom rules based on when in the process flow you want it, whether it's limited to a given set of documents or parties, and then add various actions you'd like to take place then.
 
-Click on the *Customize logic* button on the package version to configuration additional logic.
+Click on the *Customize logic* button on the package version to configure additional logic.
 
 Click on the *Create new custom logic* button http://open.esignforms.com/images/HowToGuidesWiki/createNewCustomLogicButton.png to add new processing logic rule. Or you can click on a previously created rule to update it.
 
@@ -864,9 +864,59 @@ _Tip: To save your changes, you will want to click the *Ok* button on the custom
 
 == Map report fields ==
 
+By default, all fields in your documents are fully encrypted and can only be accessed by a given package party in a transaction. However, often you may want some fields to be available for [UserGuide#Reports reports] or shown in the [UserGuide#To_Do To Do queue]. For these reasons, you can map fields from the package to report fields. 
+
+Each time a transaction is saved (updated by a package party), all of the field mappings are applied so that reports will have the latest field values. 
+
+This also lets you map various fields that may be named "SSN", "SocialSecurityNumber", "soc_sec_num" or "Tax_ID" to a single report field name so that you can create a report that essentially merges all such fields into a single report field. Use care when mapping such fields so that you map them to a common set of report fields and don't create multiple report fields that really have the same meaning.
+
+Click the *Map report fields* button on the package version to set up mappings to report fields.
+
+Click on the *Map new report field* button http://open.esignforms.com/images/HowToGuidesWiki/mapNewReportFieldButton.png to add map a new report field. Or you can click on a previously created mapping to update it.
+
+http://open.esignforms.com/images/HowToGuidesWiki/packageMapReportFields.png
+
+You can drag to re-order existing field mappings to control the order they will appear in the To Do listing. Otherwise, the order does not matter.
+
+  * In the *Document* drop down select the document from the package where the field to be mapped resides.
+  * In the *Field* drop down select the field in the selected document to map to a report field.
+  * In the *Save value as report field* drop down, select an existing report field that applies. If no such report field exists, select the "+Create new report field" option and a new report field of the same name and appropriate type will be created.
+  * Check *Show To Do* to have this field appear in the To Do queue for internal users who will process transactions this way.
+
+Click the *Ok* button to keep your changes (you will need to do this if you re-order fields, too). Otherwise click *Cancel* to discard them.
+
+Click *Close* to close the data field mapping window.
+
+Click *Delete* to delete the selected field mapping.
+
+You can also click the *Reload tran report fields* button http://open.esignforms.com/images/HowToGuidesWiki/reloadTranReportFieldsButton.png to [#Reload_transaction_report_fields reload existing transactions] should you have created new mappings after previous transactions were completed. Since report fields are only mapped when a transaction is updated, newly mapped fields won't be available to the reports for older transactions (or in progress transactions until a party next accesses it) unless you manually reload them here.
+
 _Tip: To save your changes, remember to click the *Save* button for the package._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Reload transaction report fields ===
+
+To manually reload report fields for existing transactions using the current field mappings, click the *Reload tran report fields* button from the [#Map_report_fields package's map report fields] window.
+
+http://open.esignforms.com/images/HowToGuidesWiki/reloadTranReportFields.png
+
+  * Select which transaction type(s) should be reloaded. Only those transactions you have access to and which use this package are listed.
+  * Select *Production* to reload production transactions, or *Test* to reload test transactions.
+  * Select the type of date and date range to limit which transactions are reloaded.
+  * In *Tran id only reload* enter a single transaction id to reload only that one specific transaction. Otherwise leave it blank.
+  * In *Party email* enter the email address of a party to limit the reload to just those transactions. Otherwise leave it blank.
+  * Check *In progress* to reload transactions that are in progress.
+  * Check *Completed* to reload transactions that are already completed.
+  * Check *Canceled* to reload transactions that are canceled.
+  * Check *Suspended* to reload transactions that are suspended.
+
+Click the *Reload report fields for matching transactions* button to begin the reload. 
+
+_Note that this process can take a long time based on the number of transactions that will match your selection criteria. (This process includes first finding all matching transactions, then loading each one, decrypting all of its data, parsing its XML structure, and then running the field mapping specifications.) Whenever possible, define all report field mappings before you start transactions, and if you do create new mappings later, attempt to limit the number of transactions that must be reloaded. You only need to reload them if you have reports or To Do transactions that otherwise show a blank field because the mapping was not in place when those transactions were last updated._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 
 = Transaction Templates =
 
