@@ -730,13 +730,82 @@ Click on a party in the *Parties involved with this package of documents* to con
 
 http://open.esignforms.com/images/HowToGuidesWiki/packageParty.png
 
+  * *Package Party EsfName* is the name of the party as used in the package. Remember, package parties initially default to the names they were given in the documents, but the names may not (most likely will not) be consistent across all of the documents, so this allows you to specify the name as it makes sense for this package.
+  * *Display name* is the name this party will use whenever it is shown to a user.
+  * *Landing page* defines the page the party will see when they first access the package of documents. The default is "Package (disclosures)" which shows the welcome message, E-Sign Disclosures and list of documents to be processed as specifed on the package's "Package+disclosure view". You may also select "First document" to land on the first document in the package that the party is allowed access to. Select "First To Do or First document" to land on the first document the party must work on, or the first document if all documents have been processed; this is used when a party may come back over time to complete the package so they resume on the first document that needs their action. Select "First To Do or Package" to land on the first document the party must work on, or the package document if all documents have been processed.
+  * Check *Must be logged in* if this party is supposed to be an internal user. This ensures that step is taken only by authenticated users.
+  * Check *Allow delete tran if no signatures* to allow the party to delete the transaction, if no signatures have been applied, from the package document. This is generally used only on the first party since they may start the transaction, and then decide not to continue. If the user does not complete it, or delete it, it will be in that user's To Do queue so they can resume later. If they are external users, the transaction will not progress unless the user comes back with the unique pickup link for it (like if they bookmarked the page or your process sent them an email with the link).
+  * For *Select document parties for this package party* select all document+party combinations that apply. You can use the special "View only" party to allow this party to view the document, but otherwise not be able to change it (or sign it).
+  * Select a *To Do Party EsfName* if this party actually belongs to a group of users. In a Library, you can define a Party template that is associated with a To Do Group so that anybody who belongs to the group can process the transaction via the To Do work queue. Select that Party name defined in a Library and be sure it has a group associated with. Note that by creating transaction templates with separate branding libraries, it is easy to set up a package where such a party belongs to different groups, such as when running the service for multiple companies or departments.
+  * In *Renotify* select the various intervals that you'd like an email re-notification to be sent to the party until the party step is completed (and the transaction is in progress). It is good to be able to remind a user to complete a document, but you don't want to pester them either.
+  * Check *Email All To Do Parties* if you've also set a *To Do Party EsfName* if you would like all users who belong to the group associated with the party to receive an email notification.
+  * In *Notify email address spec (${EMAIL})* enter an email address or a document and field specification that contains the email address of the person to notify when this party is activated. The value will replace the ${EMAIL} specification used in the Email template.
+  * In *Notify Email EsfName* specify the Email template to use to notify this party.
+
+Click *Ok* to keep any changes, otherwise click *Cancel*.
+
+_Tip: To save your changes, remember to click the *Save* button for the package._
+
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 == Customize logic ==
 
+It is often necessary to add additional processing logic to fine tune the process flow. You can set up special custom rules based on when in the process flow you want it, whether it's limited to a given set of documents or parties, and then add various actions you'd like to take place then.
+
+Click on the *Customize logic* button on the package version to configuration additional logic.
+
+Click on the *Create new custom logic* button http://open.esignforms.com/images/HowToGuidesWiki/createNewCustomLogicButton.png to add new processing logic rule. Or you can click on a previously created rule to update it.
+
+http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
+
+  * In *When event(s) occur* select at least one type of event that describes when you'd like the associated actions to run. You can choose from:
+    * *Party created* occurs when a package party is created.
+    * *Party activated* occurs when a package party is first activated to process the package.
+    * *Party retrieved document* occurs when a package party retrieves a document.
+    * *Party review document* occurs when a package party has filled out the form or is signing and clicks the review button.
+    * *Party completed document* occurs when a package party completes a given document.
+    * *Party completed* occurs when a package party complete all documents in the package that are assigned to him or her.
+    * *Party transferred* occurs if a user transfers a given package party to another person through the transaction details page in reports and general transaction search. This occurs when a transaction is started and it turns out there was an error, such as invalid email address, or you find another person actually needs to process it.
+    * *Transaction started* occurs when the transaction is first started.
+    * *Transaction completed* occurs when the transaction is completed.
+  * In *Limit only to documents (optional)* check any documents if the actions should only fire when the selected event(s) occur, but also only when the specified document is being processed. If you do not select any, then it will not matter which document is involved.
+  * In *Limit only to parties (optional)* check any parties if the actions should only fire when the selected event(s) occur, but also only when the specified party is processing the transaction. If you do no select any, then it will not matter which party is involved.
+
+  * Click the *Add action* button to add the actions you'd like to occur when the specified event arises, possibly limited based on the documents and parties selected.  Choose *Set field action* to change any field values in your documents. Choose *Calculate field value* to calculate a value (add, subtract, multiply, divide).  Choose *Send email* to send an email.
+
+http://open.esignforms.com/images/HowToGuidesWiki/packageAddActionButton.png
+
+Click *Ok* to keep any changes, otherwise click *Cancel*.
+
+Click *Close* to close the custom logic window.
+
+Click *Delete* to delete the selected custom logic rule.
+
+_Tip: To save your changes, remember to click the *Save* button for the package._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Set field value action ===
+
+_Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Calculate field value action ===
+
+_Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Send email action ===
+
+_Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
+
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 == Map report fields ==
+
+_Tip: To save your changes, remember to click the *Save* button for the package._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
