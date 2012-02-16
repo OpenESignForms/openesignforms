@@ -1,5 +1,5 @@
 #summary Point & Click Programming Tutorial for Open eSignForms
-#labels Featured
+#labels Featured,Phase-Support,Phase-Implementation
 
 <table width="100%"><tr>
 <td width="50%">[http://open.esignforms.com http://open.esignforms.com/images/OpenESignFormsLogo.gif]</td>
