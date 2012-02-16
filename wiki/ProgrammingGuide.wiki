@@ -838,7 +838,7 @@ _Tip: To save your changes, you will want to click the *Ok* button on the custom
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Send email action ===
+=== Send email action ===
 
 When you need to send an email other than the party activation email (which is set in the [#Package_party_configuration package party view]), use the *Send email* action. Click the *Add email to send* button http://open.esignforms.com/images/HowToGuidesWiki/addEmailToSendButton.png to add a new email to send. Or you can click on a previously created rule to update it.
 
