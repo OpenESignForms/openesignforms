@@ -1,4 +1,5 @@
 #summary User's Guide for Open eSignForms
+#labels Phase-Support
 
 <table width="100%"><tr>
 <td width="50%">[http://open.esignforms.com http://open.esignforms.com/images/OpenESignFormsLogo.gif]</td>
