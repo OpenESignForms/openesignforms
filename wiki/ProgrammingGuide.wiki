@@ -49,7 +49,7 @@ And finally, you can build custom reports that specify which data fields to incl
 
 When you click on *Programming->Libraries* from the menu, you will see a list of libraries that are available to you. 
 
-Click on a library to view or configure it.
+Click on a library to view or configure it. To create a new library, you must select a template library or an existing library you have permission to access and click the *Create new empty library* button.
 
 (_Note: To program the *contents* of a library, open the *[#Library_programming Programming->Libraries]* arrow to reveal each library you are allowed to view or program and then click on the desired library to access its components._)
 
@@ -678,7 +678,7 @@ You also configure the package parties who will process the documents. The initi
 
 Click on *Programming->Packages* to show all packages of documents that are available to you. 
 
-Click on a package to view or configure it.
+Click on a package to view or configure it. To create a new package, select a template or similar existing package you have permission to access and click the *Create new like* button.
 
 http://open.esignforms.com/images/HowToGuidesWiki/package.png
 
