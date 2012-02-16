@@ -770,7 +770,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
     * *Transaction completed* occurs when the transaction is completed.
   * In *Limit only to documents (optional)* check any documents if the actions should only fire when the selected event(s) occur, but also only when the specified document is being processed. If you do not select any, then it will not matter which document is involved.
   * In *Limit only to parties (optional)* check any parties if the actions should only fire when the selected event(s) occur, but also only when the specified party is processing the transaction. If you do no select any, then it will not matter which party is involved.
-
+  * In *Actions* you can drag to re-order existing actions or click the *Delete* button to remove it.
   * Click the *Add action* button to add the actions you'd like to occur when the specified event arises, possibly limited based on the documents and parties selected.  Choose *Set field action* to change any field values in your documents. Choose *Calculate field value* to calculate a value (add, subtract, multiply, divide).  Choose *Send email* to send an email.
 
 http://open.esignforms.com/images/HowToGuidesWiki/packageAddActionButton.png
@@ -787,17 +787,76 @@ _Tip: To save your changes, remember to click the *Save* button for the package.
 
 === Set field value action ===
 
+When you need to change (or clear) a value, use the *Set field value* action. Click the *Add field to set* button http://open.esignforms.com/images/HowToGuidesWiki/addFieldToSetButton.png to add a new field to set. Or you can click on a previously created rule to update it.
+
+http://open.esignforms.com/images/HowToGuidesWiki/setFieldValueAction.png
+
+  * For *In document* select the document where the field exists that will be set.
+  * For *Set field* select the field in the selected document that will be set.
+  * For *New value or field spec to use* enter a literal value (or leave blank to blank out the field) or `${ }` notation to specify the new value for the field.
+
+Click the *Ok* button to keep your changes, or click *Cancel*.
+
+Click the *Close* button to close the set field value actions window.
+
+Click the *Delete* button to delete the selected action.
+
+Note that you can set multiple fields at the same time using this view.
+
 _Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 === Calculate field value action ===
 
+When you need to calculate a value (add, subtract, multiple or divide), use the *Calculate field value* action. Click the *Add field to calculate* button http://open.esignforms.com/images/HowToGuidesWiki/addFieldToCalculateButton.png to add a new field to calculate. Or you can click on a previously created rule to update it.
+
+This is only available for Integer, Decimal and Money fields.
+
+http://open.esignforms.com/images/HowToGuidesWiki/calculateFieldValueAction.png
+
+You can think of this as doing the following in code:
+`InDocument.SetField = FromDocument.Field OPERATOR FromDocument.Field`
+
+  * For *In document* select the document where the field exists that will be set to the calculated value.
+  * For *Set field* select the field in the selected "in document" that will be used set by the calculation. This is the field that is changed.
+  * For *From document* (left side of operator) select the document where the first field can be found. 
+  * For *Field* (left side of operator) select the field in the selected "from document" that will be used in the calculation. This field is not changed.
+  * For *Operator* select the operation to be applied to the left and right hand fields. `+` means addition; `-` means subtraction; `*` means multiplication; and `/` means division.
+  * For *From document* (right side of operator) select the document where the second field can be found. 
+  * For *Field* (right side of operator) select the field in the selected "from document" that will be used in the calculation. This field is not changed.
+
+Click the *Ok* button to keep your changes, or click *Cancel*.
+
+Click the *Close* button to close the calculate field value actions window.
+
+Click the *Delete* button to delete the selected action.
+
+Note that you can calculate multiple fields at the same time using this view. Also, if you have a multi-step calculation, you can set the field to the first party of the calculation, and then in the next calculation reference that field in the left or right side to perform more operations on it.
+
 _Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 == Send email action ===
+
+When you need to send an email other than the party activation email (which is set in the [#Package_party_configuration package party view]), use the *Send email* action. Click the *Add email to send* button http://open.esignforms.com/images/HowToGuidesWiki/addEmailToSendButton.png to add a new email to send. Or you can click on a previously created rule to update it.
+
+http://open.esignforms.com/images/HowToGuidesWiki/sendEmailAction.png
+
+  * For *Email template* choose the email template to send.
+  * For *For party (${LINK})* select the party whose unique link will be used anywhere `${LINK}` is specified in the selected email template. Note that whoever receives such a link will be able to act as that party.
+  * For *Email address spec (${EMAIL})* enter an email address or `${ }` field specification that will resolve to the email address to send to. This will replace the `${EMAIL}` wherever used in the selected email template.
+  * For *Attach document(s)* select one or more documents from the package to send with the email. This will be the document snapshot that exists for the selected document and party. Of course, you can also choose the "Latest" party for a document to send whatever is the latest snapshot of that document at the time the email is being sent.
+  * Check *Attach as PDF* to combine the document snapshots into a single PDF file rather than sending them as attached HTML files.
+
+Click the *Ok* button to keep your changes, or click *Cancel*.
+
+Click the *Close* button to close the send email actions window.
+
+Click the *Delete* button to delete the selected action.
+
+Note that you can send multiple emails at the same time using this view.
 
 _Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
 
