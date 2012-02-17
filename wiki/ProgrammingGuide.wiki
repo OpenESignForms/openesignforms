@@ -890,7 +890,7 @@ Click *Close* to close the data field mapping window.
 
 Click *Delete* to delete the selected field mapping.
 
-You can also click the *Reload tran report fields* button http://open.esignforms.com/images/HowToGuidesWiki/reloadTranReportFieldsButton.png to [#Reload_transaction_report_fields reload existing transactions] should you have created new mappings after previous transactions were completed. Since report fields are only mapped when a transaction is updated, newly mapped fields won't be available to the reports for older transactions (or in progress transactions until a party next accesses it) unless you manually reload them here.
+You can also click the *[#Reload_transaction_report_fields Reload tran report fields]* button http://open.esignforms.com/images/HowToGuidesWiki/reloadTranReportFieldsButton.png to reload existing transactions should you have created new mappings after previous transactions were completed. Since report fields are only mapped when a transaction is updated, newly mapped fields won't be available to the reports for older transactions (or in progress transactions until a party next accesses it) unless you manually reload them here.
 
 _Tip: To save your changes, remember to click the *Save* button for the package._
 
