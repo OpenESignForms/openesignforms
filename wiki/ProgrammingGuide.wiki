@@ -63,7 +63,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/libraryEdit.png
   * For an actively used library, ensure it is *Enabled*. You can mark it as *Disabled* if the library is no longer going to be used.
   * The *[HowToGuides#EsfNames_and_PathNames PathName]* should identify the purpose or group that will control its contents.
   * The *Description* is a short phrase that describes the purpose of the library.
-  * The *Default document style* is the style sheet that new documents you create in the library will use. This helps ensure your documents have a common look. The *ESF/Library/Template* contains a default *ESF_DefaultDocumentStyle* that can be used for a modern, fresh, easy to read look.
+  * The *Default document style* is the [#Document_styles document style] that new documents you create in the library will use. This helps ensure your documents have a common look. The *ESF/Library/Template* contains a default *ESF_DefaultDocumentStyle* that can be used for a modern, fresh, easy to read look.
   * The *Comments* can be used to maintain notes regarding the library.
   * The *Permissions to access this library* are the standard List, View Details, Create, Update and Delete. Just select which groups should be allowed to do those operations. Note that this also applies to all of the components defined in the library, as they do not have independent permissions.  That is, all components in a library share the permissions defined for the library itself.
 
@@ -173,7 +173,7 @@ Click the *Create new like* button to create a new document, like the currently 
 
 *On the right side* is information about the selected version:
   * It includes a list of pages in the document. Currently, we only support 1-page documents, but they are "web pages" meaning that the document can be very long with simple scrolling.  Click on a page to bring up the page editor.
-  * The *Document style* is the document style to be used for this document. We recommend you use as few different document styles as possible to keep a consistent look, and the built-in *ESF_DefaultDocumentStyle* is a nice, modern look.
+  * The *Document style* is the [#Document_styles document style] to be used for this document. We recommend you use as few different document styles as possible to keep a consistent look, and the built-in *ESF_DefaultDocumentStyle* is a nice, modern look.
 
 If you are working on a Test version, click the *Make Test version Production* after you have tested the document and shown that it works as expected. You must make it Production in order to use it in production-level transactions. Click the *Delete* button to delete the Test version. If there is no Production version, this will also delete the Document definition as well as the version.
 
@@ -504,7 +504,7 @@ Document styles provides basic control of the look of your documents. They speci
 
 The values associated with the styles can be seen in the *ESF/Library/Template's* drop downs.
 
-To use the style, you must set it as the document version's style. You can also set your document style as your library's default value to use when creating new documents.
+To use the style, you must set it as the [#Documents document version's style]. You can also set your document style as your [#Libraries library's default value] to use when creating new documents.
 
 Click on *Document styles* to show all document styles in the selected library.
 
