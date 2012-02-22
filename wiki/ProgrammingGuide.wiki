@@ -504,6 +504,8 @@ Document styles provides basic control of the look of your documents. They speci
 
 The values associated with the styles can be seen in the *ESF/Library/Template's* drop downs.
 
+To use the style, you must set it as the document version's style. You can also set your document style as your library's default value to use when creating new documents.
+
 Click on *Document styles* to show all document styles in the selected library.
 
 http://open.esignforms.com/images/HowToGuidesWiki/documentStyles.png
