@@ -73,7 +73,7 @@ All work is shown grouped by the type of transaction. Several column headers are
   * *Last updated* is the last updated date-time for the transaction.
   * *Role* is the party's display name for the current processing step of the transaction.
 
-If other columns are shown to help you understand the work To Do (such as the *Email to* and *Subject* in this example), those values are defined in the Package's *Map report fields*, in which the fields are shown in the order specified provided the *Show To Do* box is checked.
+Other columns are available to help describe the work in your To Do (such as the *Email to* and *Subject*).  These customizable columns are defined in the Package's *Map report fields*.  Check the *Show To Do* box to show the fields in the order specified.
 
 To process a transaction, just click on it. This will open a new window for you to process the transaction. Close that window when you are done.
 
