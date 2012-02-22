@@ -103,7 +103,7 @@ The term "external users" means all parties who fill out and process the documen
 
 Always remember to click the *Save* button after you are done making any changes. If you are configuring a complex record that has popup windows, you will need to click *Ok* on those windows, then close them, and still click *Save* on the main record.
 
-Click on an object to select it. Often, if you it again, it will unselect it.
+Click on an object to select it. Often, if you do it again, it will unselect it.
 
 To select multiple items when allowed, click the first item, then CTRL-click to add additional items, or CTRL-click a selected item to unselect it.  You can also click the first item, then SHIFT-click another item to select all items in the range between those two clicks.
 
@@ -152,7 +152,7 @@ If there are no elements (or at least no elements you have *List* permission to)
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 == Resizing display areas ==
-For programmers and power users, we recommend your run this application with your browser maximized on a Full HD monitor/screen (1080 height) or greater.
+For programmers and power users, we recommend you run this application with your browser maximized on a Full HD monitor/screen (1080 height) or greater.
 
 The application has various horizontal and vertical bars that allow for fields to be resized.  Just put your cursor over them, and if it is allowed, the cursor appearance will change to indicate that you can resize the areas with a click and drag to move it left and right, or up and down. This is true for the columns listed in table headers as well as various panels on the main application window.
 
@@ -186,7 +186,7 @@ In this case, note that the *Partners* group record is selected in the upper lis
 
 All records show an *[#IDs_or_UIDs Id]* that uniquely identifies this record. There is usually a *Created* date and user that shows when the record was created, as well as a *Last updated* date and user that shows when the record was last modified.
 
-*Enabled* records are actively used and listed. When it is *Disabled*, it is not used by the system, just as if it were deleted. We recommend you only delete records that were newly created and then you decide to abandon it. Once the record has been used in your operations, we recommend you just disable it if you no longer want it so that any references to that record can be maintained.
+*Enabled* records are actively used and listed. When it is *Disabled*, it is not used by the system, just as if it were deleted. We recommend you only delete unused records. Once the record has been used in your operations, we recommend you just disable it if you no longer want it so that any references to that record can be maintained.
 
 Most records have either an [#EsfNames_and_PathNames EsfName or a PathName] that uniquely names the record of its type. When path names are allowed, we generally recommend that you prefix the name with the company, department or group that it belongs to, such as Company1/W4 and Company2/W4 to distinguish between the W4 transaction for Company1 verses the one for Company2. Note that the path name prefix has no real distinction (it does not enforce grouping, for example) other than to help you identify it's purpose and organization. 
 
