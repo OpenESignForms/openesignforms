@@ -278,7 +278,7 @@ By default, new fields are given the *General* type, meaning they are standard t
     * *Email address* is a text input field that expects a valid email address.
     * *File upload* is a special field that allows files to be attached (or removed) when in edit mode, or listed and viewed when in display mode.
     * *HTML editor* puts a CKEditor field in your document, allowing the party to enter rich text, or paste from Word, etc. We recommend you only provide this feature to parties who are part of your company.
-    * *Integer* is a text field that expects an integer/counting number value, such as -5 or 20. Decimal points are not allowed. 
+    * *Integer* is a text field that expects an integer/counting number value, such as -5 or 20. Decimal points are not allowed. This type also supposed an *Extra options* value to specify whether to show normal integers like 1, 2, 3, or to show the value as an ordinal number, like 1st, 2nd, 3rd.
     * *Money* is a text input field that expects a valid amount of money to be entered, like 15.25 or $20. It differs from the Decimal type in that it displays a currency symbol rather than just the number.
     * *Phone (US/Canada)* is a text input field that expects a valid 10-digit phone number.
     * *Radio button* is a traditional radio button that is typically defined with other values and are put in a group so that only one of the radio buttons in the group can be selected at a time.
@@ -296,7 +296,8 @@ By default, new fields are given the *General* type, meaning they are standard t
   * Enter the *Width* and *Units* to specify how big the field should be. If your fields are defined in a table column, you may want to choose 100% to have it fill the available space. Or choose "Auto" in the Units (Width value is ignored) to have the field sized according to its natural size, which is useful for fields like checkboxes, drop downs, radio buttons, etc.
   * Check the *Resize display* field if you want the field to display in its natural size when in view/display mode (not in input/edit mode).
   * Check *Top*, *Bottom*, *Left* and/or *Right* to include borders around the field.
-  * The *Initial value* specifies a fixed value or a field specification, like `${transaction:firstName}`, which is used to set the field's initial value when the transaction is started. You generally cannot reference other fields in the document (since the order they are initialized is not defined), but you can set it to values posted when the transaction was started by an external process.
+  * The *Initial value* specifies a fixed value or a field specification, like `${transaction:firstName}`, which is used to set the field's initial value when the transaction is started. You generally cannot reference other fields in the document (since the order they are initialized is not defined), but you can set it to values posted when the transaction was started by an external process. If the initial value field specification cannot be found and the *Display if empty value* option is enabled, then the field will be left blank rather than set to the missing field name.
+  * The *Display if empty value* specifies a fixed value or a field specification, which is displayed for this field when the value is blank (null, spaces, empty string, etc.) To activate this, you need to check the box to its left.
   * The *User tooltip* allows you to enter a tooltip that will display when the party hovers the mouse over the field on the document.
   * The *Input format* specifies the expected format for input into the field.
   * The *Display format* specifies the format to use when displaying the field (not in input/edit mode).
@@ -304,6 +305,7 @@ By default, new fields are given the *General* type, meaning they are standard t
 Each field can also be displayed with its label, automatically. By defining the label that goes with the field, when there is a data validation error, the field and label can be highlighted to help the party know what is wrong.  We recommend laying out your forms with the label in the "Above left" position to create a professional, consistent look that is clear to your users (although for checkbox and radio buttons, we recommend "Right").
 
   * Select the *Label position* to use when allowing the label to be automatically shown with the field.  Select "None" to prevent the label from automatically appearing with the field. We recommend you do put the label somewhere nearby, though, using the syntax `${label:fieldName}`.
+  * Check *Show input only* if the label should only be shown when the field is open for input (edit mode). This is mostly useful for a field inside a paragraph of text where the label is useful as a field prompt, but once populated the label no longer is necessary.
   * For *Label to show* enter the value to show as the field's label.
   * Choose the *Separator* drop down to define the separation of the label and the field as "None" (no separator), "Colon :" (put a colon and space between), or "Space" (put a space between).
   * Choose the *Size* of the label as "Small" (use a smaller font, which is typical when using a label position of "Above Left") or "Normal" (use the same font size for the label).
