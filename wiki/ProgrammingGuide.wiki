@@ -517,7 +517,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/documentStyles.png
   * *Description* is a short description of the document style.
   * *Comments* is any other information you want to maintain about the styles.
 
-The style is composed of various aspects that are used to override the hard-coded default CSS that ensure basic document functionality. It can be viewed from the [#Document_page_editor document page editor's] *View default CSS* link. Values that are specified as "Inherit" generally mean to use the values defined in default CSS.
+The style is composed of various aspects that are used to override the hard-coded default CSS that ensure basic document functionality. It can be viewed from the [#Document_page_editor document page editor's] *View default CSS* link. Values that are specified as "(Default)" will use the values defined in default CSS. Values that are specified as "Inherit" use the setting of its parent element.
 
   * *General document contents* sets the font styles for the regular text you put on the page.
   * *Signatures* sets the font styles to use for signatures and signature dates, to give a styled look that makes the typed name electronic signature stand out from the general document contents.
