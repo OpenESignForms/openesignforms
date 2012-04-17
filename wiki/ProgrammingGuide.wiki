@@ -790,6 +790,77 @@ _Tip: To save your changes, remember to click the *Save* button for the package.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+=== Conditional actions ===
+
+After you configure an action, you can specify a condition that will be checked before running your action. Conditions can be arbitrarily complex, but in practice few are.  
+
+By default, the initial condition associated with an action is called *AND* and by itself does nothing more than ensure all sub-conditions added to it must all be true to pass the test. You can convert it to an *OR* condition so that only one of the sub-conditions added to it must be true to pass the test. 
+
+Or you can *negate* any condition which basically evaluates to the opposite (also known as *NOT*), so if your condition is true, negating it means it will not pass, but if your condition is false, then negating it means it will pass.
+
+http://open.esignforms.com/images/HowToGuidesWiki/ConditionsOnPackageActions.png
+
+Click on the *IF condition* button to show any conditions that apply to that action.
+
+http://open.esignforms.com/images/HowToGuidesWiki/ConditionsOnPackageActionsNoConditions.png
+
+Initially, when there are no conditions yet set, it prompts you to Right-Click to add a new condition to the default *AND* condition. The top level condition must be an *AND* or *OR* condition. You cannot delete this top level condition, but you can convert the default AND to an OR condition, and you can of course negate whichever you choose.
+
+Right-click on *(Right-click to add conditions to AND)* to add new conditions to the top level AND condition:
+
+http://open.esignforms.com/images/HowToGuidesWiki/ConditionsOnPackageActionsList.png
+
+  * Click *Negate condition* to convert the selected condition to do the opposite of what it normally would be, also known as *NOT* the condition.
+  * Click *Convert to OR condition* to change a selected AND condition (all conditions added to it must be true) to an OR condition (one condition added to it must be true). When the condition is an OR condition already, this option will let you convert it to an AND condition.
+  * Click *Add OR condition* if you need to add a condition that itself is true only if one of the sub-conditions you add to it is true.
+  * Click *Add AND condition* if you need to add a condition that itself is true only if all of the sub-conditions you add to it are true.
+  * Click *Add ALL FIELDS BLANK check* to add a condition in which all fields you specify must be blank (have no value). If you negate this check, it means "ANY FIELD is NON-BLANK," that is, it's true if any of the list fields has a value. You can just specify a single field to check.
+  * Click *Add ANY FIELD BLANK check* to add a condition in which any (at least one) of the fields you specify must be blank. If you negate this check, it means "ALL FIELDS are NON-BLANK," that is, it's true if all of the list of fields have a value. You can just specify a single field to check.
+  * Click *Add SOME BUT NOT ALL FIELDS BLANK check* to add a condition in which at least one field is blank and at least one field has a value. To work as expected, you must specify at least two fields.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+==== All blank condition ====
+
+After you have added or changed a condition, just click on the condition to configure it further. 
+
+AND and OR conditions have no specific condition editors, so for these special types of conditions, you just right-click on them to negate them, convert them from one type to the other, delete it (and all of its sub-conditions), or to add further sub-conditions to them.
+
+http://open.esignforms.com/images/HowToGuidesWiki/ConditionsOnPackageActionsAllBlank.png
+
+Click on the *All blank:* condition to change which fields are checked to be blank. You can specify one or more fields to check. A popup editor will appear.
+
+http://open.esignforms.com/images/HowToGuidesWiki/ConditionsOnPackageActionsAllBlankList.png
+
+Click the *Add field to check if blank* button to specify a new field to check that it's blank (has no value).
+
+http://open.esignforms.com/images/HowToGuidesWiki/ConditionsOnPackageActionsAllBlankForm.png
+
+  * Choose from *In document* the name of the document where the field to check resides.
+  * Choose from *Field* the name of the field in the selected document to check.
+ 
+You can specify one or more fields to check. In this case, all specified fields must be blank to pass the test.
+
+If you negate this condition (NOT ALL BLANK), it passes if any of the fields specified has a value (ANY NON-BLANK).
+
+Like always, click *Ok* to save your changes. Click *Cancel* to abandon the change. Click *Close* to close the popup window. Click *Delete* to delete a selected field check.
+
+_Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package. Once you do, when  you click on the *IF condition* button, your conditions will be updated._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+==== Any blank condition ====
+
+Like the [#All_blank_condition All blank condition], *Any blank* works the same way except that it is true if any of the fields you specify is blank. At least one blank field must be present to be true.
+
+If you negate this condition (NOT ANY BLANK), it passes if all of the fields specified have a value (ALL NON-BLANK).
+
+==== Some but not all fields blank condition ====
+
+Like the [#All_blank_condition All blank condition], *Some but not all blank* works the same way except that it is true if at least one field is blank and at least one field is non-blank (has a value). This condition only makes sense if at least two fields have been specified.
+
+You rarely will negate this condition, but if you do it will be true if all of the fields are blank, or if all of the fields have a value.
+
 === Set field value action ===
 
 When you need to change (or clear) a value, use the *Set field value* action. Click the *Add field to set* button http://open.esignforms.com/images/HowToGuidesWiki/addFieldToSetButton.png to add a new field to set. Or you can click on a previously created rule to update it.
