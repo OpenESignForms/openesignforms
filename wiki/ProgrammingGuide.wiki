@@ -841,7 +841,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
   * In *Limit only to documents (optional)* check any documents if the actions should only fire when the selected event(s) occur, but also only when the specified document is being processed. If you do not select any, then it will not matter which document is involved.
   * In *Limit only to parties (optional)* check any parties if the actions should only fire when the selected event(s) occur, but also only when the specified party is processing the transaction. If you do no select any, then it will not matter which party is involved.
   * In *Actions* you can drag to re-order existing actions or click the *Delete* button to remove it.
-  * Click the *Add action* button to add the actions you'd like to occur when the specified event arises, possibly limited based on the documents and parties selected.  Choose *Set field action* to change any field values in your documents. Choose *Calculate field value* to calculate a value (add, subtract, multiply, divide).  Choose *Send email* to send an email.
+  * Click the *Add action* button to add the actions you'd like to occur when the specified event arises, possibly limited based on the documents and parties selected.  Choose *Set field action* to change any field values in your documents. Choose *Calculate field value* to calculate a value (add, subtract, multiply, divide).  Choose *Send email* to send an email. Choose *Change tran/party status...* to cancel the transaction to skip a party step.
 
 http://open.esignforms.com/images/HowToGuidesWiki/packageAddActionButton.png
 
@@ -998,6 +998,41 @@ Click the *Close* button to close the send email actions window.
 Click the *Delete* button to delete the selected action.
 
 Note that you can send multiple emails at the same time using this view.
+
+_Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Change tran/party status action ===
+
+When you need to cancel a transaction or skip a party step in your workflow, use the *Change tran/party status* action. Click the *Add status change* button http://open.esignforms.com/images/HowToGuidesWiki/addStatusChangeButton.png to add a new status change. Or you can click on a previously created rule to update it.
+
+==== Cancel transaction action ====
+
+Change the *Status change type* to 'Cancel transaction':
+
+http://open.esignforms.com/images/HowToGuidesWiki/cancelTransactionAction.png
+
+  * For *Status change type* choose 'Cancel transaction'.
+  * For *Reason* provide a reason (it can include field specifications `${ }` for variable substitution) why the transaction is being canceled.
+
+==== Skip party action ====
+
+Change the *Status change type* to 'Skip party':
+
+http://open.esignforms.com/images/HowToGuidesWiki/skipPartyAction.png
+
+  * For *Status change type* choose 'Skip party'.
+  * For *Reason* provide a reason (it can include field specifications `${ }` for variable substitution) why the party is being skipped.
+  * For *Parties to skip* select one or more parties to skip.
+
+Click the *Ok* button to keep your changes, or click *Cancel*.
+
+Click the *Close* button to close the transaction/party status change window.
+
+Click the *Delete* button to delete the selected action.
+
+Note that you can do multiple status change actions using this view.
 
 _Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
 
