@@ -409,6 +409,9 @@ While fields are often shown together with a label, you can specify these be sho
   * `${label:fieldName}` will show the label configured for the field 'fieldName'.
   * `${field:fieldName}` will show just the field 'fieldName' without any configured label.
 
+If you select a file using the Editor's link feature, the file link will appear in the document while editing. However, you may also use this notation to specify a configured file:
+  * `${file:FileName}` will insert a link to the file named 'FileName' in that location.
+
 If you select an image using the Editor's image feature, the image will appear in the document while editing. However, you may also use this notation to specify a configured image:
   * `${image:ImageName}` will insert the image named 'ImageName' in that location.
 
