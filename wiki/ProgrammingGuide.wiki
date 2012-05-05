@@ -837,6 +837,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
     * *Party transferred* occurs if a user transfers a given package party to another person through the transaction details page in reports and general transaction search. This occurs when a transaction is started and it turns out there was an error, such as invalid email address, or you find another person actually needs to process it.
     * *Transaction started* occurs when the transaction is first started.
     * *Transaction completed* occurs when the transaction is completed.
+    * *Transaction canceled* occurs when the transaction is canceled.
   * In *Limit only to documents (optional)* check any documents if the actions should only fire when the selected event(s) occur, but also only when the specified document is being processed. If you do not select any, then it will not matter which document is involved.
   * In *Limit only to parties (optional)* check any parties if the actions should only fire when the selected event(s) occur, but also only when the specified party is processing the transaction. If you do no select any, then it will not matter which party is involved.
   * In *Actions* you can drag to re-order existing actions or click the *Delete* button to remove it.
