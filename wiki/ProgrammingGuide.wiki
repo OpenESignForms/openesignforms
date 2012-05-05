@@ -648,7 +648,7 @@ Click the *Replace file...* button to select a new file to replace the one shown
 
 Click the *Save* button to save the new file.
 
-_Tip: In a document, while you can reference a file using the `${filee:FileName}` syntax, you will probably find it easier to use the editor's link button to insert a link to the file so it's visible in the editor._
+_Tip: In a document, while you can reference a file using the `${file:FileName}` syntax, you will probably find it easier to use the editor's link button to insert a link to the file so it's visible in the editor._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
