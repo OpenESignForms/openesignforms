@@ -987,9 +987,9 @@ http://open.esignforms.com/images/HowToGuidesWiki/sendEmailAction.png
 
   * For *Email template* choose the email template to send.
   * For *For party (${LINK})* select the party whose unique link will be used anywhere `${LINK}` is specified in the selected email template. Note that whoever receives such a link will be able to act as that party.
-  * For *Email address spec (${EMAIL})* enter an email address or `${ }` field specification that will resolve to the email address to send to. This will replace the `${EMAIL}` wherever used in the selected email template.
+  * For *Email address spec (${EMAIL})* enter an email address or `${ }` field specification that will resolve to the email address to send to. This will replace the `${EMAIL}` wherever used in the selected email template. If the *For party* above is selected and this email address specification is blank (or set to `${EMAIL}` -- better to leave blank), the system will attempt to use the configured package party's email notification specification.
   * For *Attach document(s)* select one or more documents from the package to send with the email. This will be the document snapshot that exists for the selected document and party. Of course, you can also choose the "Latest" party for a document to send whatever is the latest snapshot of that document at the time the email is being sent.
-  * Check *Attach as PDF* to combine the document snapshots into a single PDF file rather than sending them as attached HTML files.
+  * Check *Attach as PDF* to combine the document snapshots into a single PDF file rather than sending them as attached HTML files. If any of the selected documents is configured for 'Landscape' orientation then all documents will be rendered as landscape in the PDF.
 
 Click the *Ok* button to keep your changes, or click *Cancel*.
 
