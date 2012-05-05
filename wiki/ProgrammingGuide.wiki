@@ -409,7 +409,7 @@ Click the *Delete* button to delete the image.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Add new field party or image to the document http://open.esignforms.com/images/HowToGuidesWiki/addNewOptionButton.png ===
+=== Add new field or party or file or image to the document http://open.esignforms.com/images/HowToGuidesWiki/addNewOptionButton.png ===
 
 On the right side, click the *Add new* button and then choose the type of new object to create: 
 
