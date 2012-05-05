@@ -129,6 +129,7 @@ Click on one of the following to program that type of component:
   * *[#Document_styles Document styles]* defines any special document styles you want to use besides the *ESF/Library/Template*'s default *ESF_DefaultDocumentStyle*.
   * *[#Drop_downs Drop downs]* define drop down lists, also known as select boxes, so your forms can allow a user to choose from a set of options. You can override drop downs in a branding library to change the values available.
   * *[#Email_templates Emails]* define the emails that will be sent, such as emails inviting parties to complete documents or notifications sent to others when transactions are completed, customers have signed, etc. You can define both a regular text email as well as an optional HTML-version of that email should the recipient's email client allow the display of HTML email. You can override emails in a branding library to change the contents of emails.
+  * *[#Files Files]* define PDF, Word, HTML or other files that are linked in your documents for users to download "as is."
   * *[#Images_and_Logos Images/Logos]* define the images and logos that you display in your documents. You may also define images that are document-specific in the document editor. While you may reference images from anywhere on the Web in your documents, it is not recommended as the URL for such images may change over time, or the image at that URL may change and cause layout or content issues in the future.  You can override images/logos in a branding library to use alternative images and logos.
   * *[#Property_sets Property sets]* define small data elements that you can externalize from a document, such as company name, address, contact phone, fax numbers, etc. If you externalize these values, you can just change the property sets if their values change. You can override property sets in a branding library to change such values.
   * *[#Fields Fields]* define commonly used fields in multiple documents so that you can choose them when creating a new field in a document and avoid having to reconfigure its options. It also helps keep common fields consistently named to lessen confusion (was it first_name or FirstName or Name_First?). This is not commonly used.
@@ -346,6 +347,35 @@ Click the *Cancel* button to discard the changes made to the party.
 Click the *Create new like* button to create a new party like this one.
 
 Click the *Delete* button to delete the party. 
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Files linked in document ===
+
+On the right side is the *Files linked in document* list:
+
+http://open.esignforms.com/images/HowToGuidesWiki/fileInDocumentList.png
+
+This shows all files defined in the document. For files like HR policies that will likely appear in more than one document, we recommend you define those in the library. But many files are tied specifically to a single document, and this is the place to add those files.
+
+Click on a file to change its configuration:
+
+http://open.esignforms.com/images/HowToGuidesWiki/fileEditor.png
+
+  * *[HowToGuides#EsfNames_and_PathNames EsfName]* is the unique name of an file in this document.
+  * *Display name* is the auto-generated text shown in the link to this file.
+  * *Description* is a short description of the file.
+  * *Comments* is any other information you want to maintain about the file.
+  
+If the file has already been specified, click the *Replace file...* button to select a different file to use. When you first create a new file, use the *Set file* button to select the file to upload.
+
+Click on the *File link (view/download)* link to download the file.
+
+Click the *Ok* button to save your changes to the file.
+
+Click the *Cancel* button to discard the changes made to the file.
+
+Click the *Delete* button to delete the file. 
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
@@ -592,9 +622,39 @@ ${LINK}
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+== Files http://open.esignforms.com/images/HowToGuidesWiki/filesIcon.png ==
+
+Files are used to upload and save files (generally not images, though) linked to by your various documents. When a file is only needed for a particular document, you should consider defining the [#Files_linked_in_document Files linked in a document version]. But by defining the files in the library, they are available for other documents, and of course you can easily override them using a Branding Library should the file change depending on who is using the document.
+
+Click on *Files* to show all files in the selected library.
+
+http://open.esignforms.com/images/HowToGuidesWiki/fileNewUpload.png
+
+  * Choose *Enabled* to allow the file to be used. If a file is no longer needed, click *Disable*.
+  * *[HowToGuides#EsfNames_and_PathNames EsfName]* is the unique name for this file.
+  * *Display name* is the name shown in the link to this file.
+  * *Description* is a short description.
+  * *Comments* is any other information you want to maintain.
+
+If it's a new file, click the *Set the file...* button. You can then choose a file (GIF, JPEG or PNG should generally be [#Images_and_Logos uploaded as an image], not a file). A link to download the file will be created.
+
+Click the *Save* button to save the file.
+
+If you are replacing an existing file:
+
+http://open.esignforms.com/images/HowToGuidesWiki/fileUpdate.png
+
+Click the *Replace file...* button to select a new file to replace the one shown.
+
+Click the *Save* button to save the new file.
+
+_Tip: In a document, while you can reference a file using the `${filee:FileName}` syntax, you will probably find it easier to use the editor's link button to insert a link to the file so it's visible in the editor._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 == Images and Logos http://open.esignforms.com/images/HowToGuidesWiki/imagesLogosIcon.png ==
 
-Images/Logos are used to upload and save images and logos used across your various documents. When an image or logo is only needed for a particular document, you should consider defining the [#Images_in_document image inside the document version]. Buy by defining the images in the library, they are available for other documents, and of course you can easily override them using a Branding Library should the image change depending on who is using the document.
+Images/Logos are used to upload and save images and logos used across your various documents. When an image or logo is only needed for a particular document, you should consider defining the [#Images_in_document image inside the document version]. But by defining the images in the library, they are available for other documents, and of course you can easily override them using a Branding Library should the image change depending on who is using the document.
 
 Click on *Images/Logos* to show all images in the selected library.
 
