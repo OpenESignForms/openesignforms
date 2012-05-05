@@ -88,6 +88,7 @@ By default, no components are automatically selected for export.
   * Click on any number of *[#Document_styles Document styles]* to select the document styles to export.
   * Click on any number of *[#Drop_downs Drop downs]* to select the drop down lists to export.
   * Click on any number of *[#Email_templates Email templates]* to select the email templates to export.
+  * Click on any number of *[#Files Files]* to select the files to export.
   * Click on any number of *[#Images_and_Logos Image/logo]* to select the image files to export.
   * Click on any number of *[#Property_sets Property sets]* to select the property sets to export.
 
