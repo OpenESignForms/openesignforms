@@ -109,6 +109,16 @@ To select multiple items when allowed, click the first item, then CTRL-click to 
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+== Default buttons ==
+
+Buttons that are blue are called "default buttons" in that if you press enter when your focus is on that page, it will be as if you clicked that button. 
+
+http://open.esignforms.com/images/HowToGuidesWiki/defaultVersusNormalButtons.png
+
+Generally, default buttons are the Save, Find and Refresh buttons.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 == Menu items ==
 You can open any menu item feature by clicking on it, and it will replace the tab in the main part of the application screen. If you right click a menu item and bring up a context menu:
 
