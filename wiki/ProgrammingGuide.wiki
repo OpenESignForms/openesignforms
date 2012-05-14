@@ -1105,9 +1105,9 @@ Click on a transaction template to view or configure it. To create a new transac
 http://open.esignforms.com/images/HowToGuidesWiki/transactionTemplate.png
 
   * Select *Production enabled* if you are ready to run production-level transactions. Your package must be at the production level, and you should also ensure all components used by the package are also at the production level. When you first enable production transactions, please run a "Test Like Production" transaction to see how it works using only production-level components.  Select *Production disabled* to prevent production transactions from starting.
-  * Enter a *#* number and *Production retention* value to specify how long to keep production transactions. If you select "Forever", you can just use the number 1.
+  * Enter a *#* number and *Production retention* value to specify how long to keep production transactions. If you select "Forever" or "Now", the number field will not be necessary. Use of "Now" makes little sense in this context.
   * Select *Test enabled* if you are ready to run testing-only transactions. You will then be able to run test transactions. Select *Test disabled* to prevent test transactions from starting.
-  * Enter a *#* number and *Test retention* value to specify how long to keep test transactions. If you select "Forever", you can just use the number 1, but we recommend shorter retention values for test transactions, such as keeping them for 1-3 months.
+  * Enter a *#* number and *Test retention* value to specify how long to keep test transactions. If you select "Forever" or "Now", the number field will not be necessary. Use of "Now" makes little sense in this context. We recommend shorter retention values for test transactions, such as keeping them for 3 to 6 months.
   * In *PathName* enter the name of this transaction template. It will be displayed under the *[UserGuide#Start_a_transaction Start transaction]* menu item.
   * In *Description* give a brief overview of what this transaction is.
   * In *Package to use* select the package that will be run.
