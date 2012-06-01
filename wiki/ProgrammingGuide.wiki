@@ -468,6 +468,8 @@ To insert the value of a configured property, you may use this notation:
 
 ==== Built-in fields to reference from the transaction and startup data ====
   * `${transaction:id}` is replaced by the transaction's unique id.
+  * `${transaction:pathname}` is replaced by the transaction template's path name.
+  * `${transaction:displayname}` is replaced by the transaction template's display name.
   * `${transaction:ESF_Start_Timestamp}` is replaced by the date-time it was created.
   * `${transaction:ESF_Started_API_Mode}` is true if the transaction was started using the API mode (from an automated start rather than a user). It is false otherwise.
   * `${transaction:ESF_Started_By_User_Id}` is replaced by the user id of the person who started this transaction if it was started by a logged in user.
@@ -489,6 +491,7 @@ To insert the value of a configured property, you may use this notation:
 ==== Built-in fields used in Email notifications configuration ====
   * `${LINK}` specifies where the generated HTTP Link or URL will be placed in the email notification.
   * `${EMAIL}` specifies where the party's address will be placed in the email notification, TO/CC/BCC, and/or subject.
+  * Tip: Use `${out:DocumentName.FieldName}` instead of just `${DocumentName.FieldName}` in email text if you need the output formatting specification for the field as defined in that document.
 
 ==== Built-in fields used in password-related e-mail configuration for users ====
   * `${LINK}` specifies where the generated HTTP Link or URL will be placed in the email notification.
@@ -834,6 +837,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
     * *Party retrieved document* occurs when a package party retrieves a document.
     * *Party review document* occurs when a package party has filled out the form or is signing and clicks the review button.
     * *Party completed document* occurs when a package party completes a given document.
+    * *Party view completed document* occurs when a package party views a document that has already been completed.
     * *Party completed* occurs when a package party complete all documents in the package that are assigned to him or her.
     * *Party transferred* occurs if a user transfers a given package party to another person through the transaction details page in reports and general transaction search. This occurs when a transaction is started and it turns out there was an error, such as invalid email address, or you find another person actually needs to process it.
     * *Transaction started* occurs when the transaction is first started.
@@ -842,7 +846,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
   * In *Limit only to documents (optional)* check any documents if the actions should only fire when the selected event(s) occur, but also only when the specified document is being processed. If you do not select any, then it will not matter which document is involved.
   * In *Limit only to parties (optional)* check any parties if the actions should only fire when the selected event(s) occur, but also only when the specified party is processing the transaction. If you do no select any, then it will not matter which party is involved.
   * In *Actions* you can drag to re-order existing actions or click the *Delete* button to remove it.
-  * Click the *Add action* button to add the actions you'd like to occur when the specified event arises, possibly limited based on the documents and parties selected.  Choose *Set field action* to change any field values in your documents. Choose *Calculate field value* to calculate a value (add, subtract, multiply, divide).  Choose *Send email* to send an email. Choose *Change tran/party status...* to cancel the transaction to skip a party step.
+  * Click the *Add action* button to add the actions you'd like to occur when the specified event arises, possibly limited based on the documents and parties selected.  Choose *Set field action* to change any field values in your documents. Choose *Calculate field value* to calculate a value (add, subtract, multiply, divide). Choose *Send email* to send an email. Choose *Change tran/party status* to cancel the transaction now or in the future, clear a future auto-cancel, skip a party step or skip an entire document. Choose *Show error/message* to display a message or report an error to the user (mostly used during the *Party review document* event).
 
 http://open.esignforms.com/images/HowToGuidesWiki/packageAddActionButton.png
 
@@ -1109,6 +1113,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/transactionTemplate.png
   * Select *Test enabled* if you are ready to run testing-only transactions. You will then be able to run test transactions. Select *Test disabled* to prevent test transactions from starting.
   * Enter a *#* number and *Test retention* value to specify how long to keep test transactions. If you select "Forever" or "Now", the number field will not be necessary. Use of "Now" makes little sense in this context. We recommend shorter retention values for test transactions, such as keeping them for 3 to 6 months.
   * In *PathName* enter the name of this transaction template. It will be displayed under the *[UserGuide#Start_a_transaction Start transaction]* menu item.
+  * In *Display name* put a friendly name to display for this transaction type. This name will be used in the menu display under the *Start transaction* option.
   * In *Description* give a brief overview of what this transaction is.
   * In *Package to use* select the package that will be run.
   * In *Branding library to use* select the library to be searched first to resolve components like images/logos, property sets, To Do parties, email templates, etc. If those items are not found in the branding library, it will look in the library where the current  document is defined, and then *ESF/Library/Template* last.
