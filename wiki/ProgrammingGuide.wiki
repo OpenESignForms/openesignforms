@@ -1233,6 +1233,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/reportTemplate.png
 
   * Click *Enabled* to allow this report to be run. Click *Disabled* to prevent it from running.
   * In *PathName* give this report template a name. The name will appear under *[UserGuide#Reports Reports]* menu item.
+  * In *Display name* enter a friendly name for this report. It will be shown in the menu under *Reports*.
   * In *Description* enter a short description of this report.
   * In *Comments* enter any information you want to remember about this report.
   * In *Tran templates* select one or more transaction types to be included this report. Of course, for the report to run as expected, the report fields must make sense across the various transaction types. Any report field that is not mapped by the transaction's package will be blank in the report.
