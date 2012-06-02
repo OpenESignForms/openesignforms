@@ -210,6 +210,8 @@ Click the *Close* button to close the page editor.
 
 Click the *Test*  button to test the page in the document-only tester, which shows you your document as it will appear for any of the defined parties.
 
+Click the *Customize logic* button to add document-specific actions and data validations. It is very similar to the [#Customize_logic customize logic configuration for a package] except that it only operates on the specified document and thus should generally only contain rules that are always true when using the document regardless of how it's packaged.
+
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 === CKEditor tips ===
@@ -506,6 +508,18 @@ For Date, use [http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateForm
 For Decimal and Money and even Integer, use [http://docs.oracle.com/javase/6/docs/api/java/text/DecimalFormat.html DecimalFormat] specifications
 
 For General, use regular expression [http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html Pattern] specifications
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Customize logic on a document ===
+
+Customizing logic for a given document is very similar to customizing logic in a package except that it only applies to the document. It also operates on a restricted set of events and actions.
+
+http://open.esignforms.com/images/HowToGuidesWiki/documentPageEditorCustomLogic.png
+
+This is the best place to put document-specific extra data validations. Just select the *Party review document* event and use *Show error/message* actions with appropriate conditions to detect invalid form data.
+
+See [#Customize_logic custom logic in a package] for details on conditions and actions.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
@@ -862,7 +876,7 @@ _Tip: To save your changes, remember to click the *Save* button for the package.
 
 === Conditional actions ===
 
-After you configure an action, you can specify a condition that will be checked before running your action. Conditions can be arbitrarily complex, but in practice few are.  
+When you configure an action, you can specify a condition that will be checked before running your action. Conditions can be arbitrarily complex, but in practice few are.  
 
 By default, the initial condition associated with an action is called *AND* and by itself does nothing more than ensure all sub-conditions added to it must all be true to pass the test. You can convert it to an *OR* condition so that only one of the sub-conditions added to it must be true to pass the test. 
 
@@ -870,11 +884,13 @@ Or you can *negate* any condition which basically evaluates to the opposite (als
 
 http://open.esignforms.com/images/HowToGuidesWiki/ConditionsOnPackageActions.png
 
-Click on the *IF condition* button to show any conditions that apply to that action.
+On the left side of the action configuration shows the condition editor.
 
 http://open.esignforms.com/images/HowToGuidesWiki/ConditionsOnPackageActionsNoConditions.png
 
 Initially, when there are no conditions yet set, it prompts you to Right-Click to add a new condition to the default *AND* condition. The top level condition must be an *AND* or *OR* condition. You cannot delete this top level condition, but you can convert the default AND to an OR condition, and you can of course negate whichever you choose.
+
+You may also click and drag a condition to a new location, but you cannot put any condition above or below the top level AND or OR condition. There can only be one top level condition and it must be an AND or an OR condition.
 
 Right-click on *(Right-click to add conditions to AND)* to add new conditions to the top level AND condition:
 
@@ -884,6 +900,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/ConditionsOnPackageActionsList
   * Click *Convert to OR condition* to change a selected AND condition (all conditions added to it must be true) to an OR condition (one condition added to it must be true). When the condition is an OR condition already, this option will let you convert it to an AND condition.
   * Click *Add OR condition* if you need to add a condition that itself is true only if one of the sub-conditions you add to it is true.
   * Click *Add AND condition* if you need to add a condition that itself is true only if all of the sub-conditions you add to it are true.
+  * Click *Add COMPARISON check* to a condition with tests if a field equals, starts with, ends with or contains another value.
   * Click *Add ALL FIELDS BLANK check* to add a condition in which all fields you specify must be blank (have no value). If you negate this check, it means "ANY FIELD is NON-BLANK," that is, it's true if any of the list fields has a value. You can just specify a single field to check.
   * Click *Add ANY FIELD BLANK check* to add a condition in which any (at least one) of the fields you specify must be blank. If you negate this check, it means "ALL FIELDS are NON-BLANK," that is, it's true if all of the list of fields have a value. You can just specify a single field to check.
   * Click *Add SOME BUT NOT ALL FIELDS BLANK check* to add a condition in which at least one field is blank and at least one field has a value. To work as expected, you must specify at least two fields.
@@ -930,6 +947,28 @@ If you negate this condition (NOT ANY BLANK), it passes if all of the fields spe
 Like the [#All_blank_condition All blank condition], *Some but not all blank* works the same way except that it is true if at least one field is blank and at least one field is non-blank (has a value). This condition only makes sense if at least two fields have been specified.
 
 You rarely will negate this condition, but if you do it will be true if all of the fields are blank, or if all of the fields have a value.
+
+==== Comparison condition ====
+
+You can use a comparison condition to check if a field matches another value.
+
+Click on the *Compare:* condition to change which fields are to be compared. Only a single field comparison can be configured. A popup editor will appear.
+
+http://open.esignforms.com/images/HowToGuidesWiki/ConditionsOnPackageActionsComparison.png
+
+  * Choose from *In document* the name of the document where the field to check resides.
+  * Choose from *Field* the name of the field in the selected document to check.
+  * Choose from *Comparator* the type of comparison to perform. *Equals* will match if  the two string values are the same. *Starts with* will match if the field starts with a given value. *Ends with* will match if the field ends with a given value. *Contains* will match if the field contains the other value anywhere within its value.
+  * Set the *Literal or field spec (${})* to the value to check against the specified field. It can be a simple string literal, or it can contains a field specification like ${DocumentName.FieldName} to compare against another field value.
+  * Check the *Case sensitive?* box if you want the comparison to be case sensitive (uppercase and lowercase letters must match exactly). The default (unchecked) allows a match regardless, so "Bob" would be equal to "BOB".
+ 
+If you negate this condition (NOT COMPARISON), it passes if the field does not match the specified value.
+
+Like always, click *Ok* to save your changes. Click *Cancel* to abandon the change. Click *Close* to close the popup window. 
+
+_Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 === Set field value action ===
 
@@ -1010,7 +1049,7 @@ _Tip: To save your changes, you will want to click the *Ok* button on the custom
 
 === Change tran/party status action ===
 
-When you need to cancel a transaction or skip a party step in your workflow, use the *Change tran/party status* action. Click the *Add status change* button http://open.esignforms.com/images/HowToGuidesWiki/addStatusChangeButton.png to add a new status change. Or you can click on a previously created rule to update it.
+When you need to cancel a transaction (now or in the future), skip a document, or skip a party step in your workflow, use the *Change tran/party status* action. Click the *Add status change* button http://open.esignforms.com/images/HowToGuidesWiki/addStatusChangeButton.png to add a new status change. Or you can click on a previously created rule to update it.
 
 ==== Cancel transaction action ====
 
@@ -1019,7 +1058,36 @@ Change the *Status change type* to 'Cancel transaction':
 http://open.esignforms.com/images/HowToGuidesWiki/cancelTransactionAction.png
 
   * For *Status change type* choose 'Cancel transaction'.
-  * For *Reason* provide a reason (it can include field specifications `${ }` for variable substitution) why the transaction is being canceled.
+  * For *#* specify the number of *Cancel time* units before the transaction is canceled. This has no meaning for Now or Forever cancel times.
+  * For *Cancel time* choose when the transaction should be canceled. If you select Now, the transaction will be canceled when this action takes place. You can specify a future date so it will cancel automatically in the future if it's not completed or the cancel transaction is turned off later.
+  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the transaction is being canceled.
+
+==== Clear cancel transaction action ====
+
+If you set a future date for a transaction to auto-cancel if it has not yet completed, you can clear the auto-cancel requested earlier. This is often done when you want a transaction to auto-cancel if the first party does not complete the documents in a specified amount of time, but if they do complete it, then you want it to go forward normally and no longer need to complete within the original timeframe.
+
+http://open.esignforms.com/images/HowToGuidesWiki/clearCancelTransactionAction.png
+
+  * For *Status change type* choose 'Clear cancel transaction'.
+  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the transaction is no longer going to be canceled.
+
+==== Skip document action ====
+
+Change the *Status change type* to 'Skip document':
+
+http://open.esignforms.com/images/HowToGuidesWiki/skipDocumentAction.png
+
+  * For *Status change type* choose 'Skip document'.
+  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the document is being skipped.
+  * For *Documents to skip* select one or more documents to skip.
+
+Click the *Ok* button to keep your changes, or click *Cancel*.
+
+Click the *Close* button to close the transaction/party status change window.
+
+Click the *Delete* button to delete the selected action.
+
+Note that you can do multiple status change actions using this view.
 
 ==== Skip party action ====
 
@@ -1028,7 +1096,7 @@ Change the *Status change type* to 'Skip party':
 http://open.esignforms.com/images/HowToGuidesWiki/skipPartyAction.png
 
   * For *Status change type* choose 'Skip party'.
-  * For *Reason* provide a reason (it can include field specifications `${ }` for variable substitution) why the party is being skipped.
+  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the party is being skipped.
   * For *Parties to skip* select one or more parties to skip.
 
 Click the *Ok* button to keep your changes, or click *Cancel*.
@@ -1038,6 +1106,26 @@ Click the *Close* button to close the transaction/party status change window.
 Click the *Delete* button to delete the selected action.
 
 Note that you can do multiple status change actions using this view.
+
+_Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
+
+=== Show error/message action ===
+
+When you need to display a message or report a custom data validation error, the show error/message action can be used. For data validations, you should use this action in a rule that specifies the *Party review document* event. If you report an error or warning on the review step, the user will not be able to complete the document until it is fixed so it no longer matches the condition specified with this action.
+
+http://open.esignforms.com/images/HowToGuidesWiki/showErrorAction.png
+
+  * For *Error/message spec* enter the message or error to show the user. It may contain field specifications (${}).
+  * Choose the message type: *Error*, *Warning*, *Success* or *Info*.
+  * Check *HTML?* if the error/message is in HTML format already (contains HTML tags). Leave it blank normally.
+
+Click the *Ok* button to keep your changes, or click *Cancel*.
+
+Click the *Close* button to close the send email actions window.
+
+Click the *Delete* button to delete the selected action.
+
+Note that you can show multiple messages at the same time using this view.
 
 _Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
 
