@@ -250,7 +250,7 @@ Click the Insert Special Character button to add one of the listed characters.
 
 Click the Image button to insert an image defined in the document, the document's library or from the ESF/Library/Template.
 
-Click the Link button to make a hyperlink. 
+Click the Link button to make a hyperlink. Click on the Browse button to make a link to a file you have uploaded in the document's library.
 
 Click the Source button, for advanced users, who want to see the HTML generated. You may enter HTML directly in this mode and then click it again to return to the WYSIWYG mode. In Source mode, you can also add javascript or style sections as necessary.
 
@@ -278,6 +278,7 @@ By default, new fields are given the *General* type, meaning they are standard t
     * *Checkbox* is a traditional checkbox field, either checked or not.
     * *Credit card #* is a text input field that expects a legal credit card number. This type currently supports Visa, MasterCard, American Express, Discover numbers.
     * *Date* is a text input field that includes a calendar selector or lets the user enter the date directly.
+    * *Date+time* is a text input field that includes a calendar selector or lets the user enter the date directly, followed by drop downs to select the hour, minute, seconds and timezone.
     * *Decimal* is a text input field that expects a valid decimal number, like 123.4. It differs from the Money type only in that it doesn't show a currency symbol.
     * *Drop down list* lets you choose a drop down list defined in your library so that parties can select a valid value from the list.
     * *Email address* is a text input field that expects a valid email address.
@@ -298,7 +299,7 @@ By default, new fields are given the *General* type, meaning they are standard t
   * Click the *Security options* list to add special options such as whether the field should support "Auto complete" or not (meaning that if the user has entered similar data elsewhere, the browser will offer up alternative choices, and if not checked, the browser will not offer suggestions); "Mask in data snapshot" is for sensitive data that you may store in your forms, but if the data is exported it must be masked; and "Copy value on tran clone" specifying whether this field's value can be copied if a new transaction is created from an existing transaction (for example, signature fields generally should not be copied since the new transaction should not assume they have typed to sign).
   * Enter the *Minimum length* this field may have in number of characters.
   * Enter the *Maximum length* this may have in number of characters.
-  * Enter the *Width* and *Units* to specify how big the field should be. If your fields are defined in a table column, you may want to choose 100% to have it fill the available space. Or choose "Auto" in the Units (Width value is ignored) to have the field sized according to its natural size, which is useful for fields like checkboxes, drop downs, radio buttons, etc.
+  * Enter the *Width* and *Units* to specify how big the field should be. If your fields are defined in a table column, you may want to choose 100% to have it fill the available space. Or choose "Auto" in the Units (Width value is hidden) to have the field sized according to its natural size, which is useful for fields like checkboxes, drop downs, radio buttons, etc.
   * Check the *Resize display* field if you want the field to display in its natural size when in view/display mode (not in input/edit mode).
   * Check *Top*, *Bottom*, *Left* and/or *Right* to include borders around the field.
   * The *Initial value* specifies a fixed value or a field specification, like `${transaction:firstName}`, which is used to set the field's initial value when the transaction is started. You generally cannot reference other fields in the document (since the order they are initialized is not defined), but you can set it to values posted when the transaction was started by an external process. If the initial value field specification cannot be found and the *Display if empty value* option is enabled, then the field will be left blank rather than set to the missing field name.
@@ -499,6 +500,9 @@ To insert the value of a configured property, you may use this notation:
   * `${LINK}` specifies where the generated HTTP Link or URL will be placed in the email notification.
   * `${NAME}` specifies where the user's display name will be placed in the email notification and/or subject.
   * `${EMAIL}` specifies where the user's address will be placed in the email notification, TO/CC/BCC, and/or subject.
+
+==== Other built-in operators ====
+  * `${serial:SerialName}` is replaced by the next serial number defined with the name 'SerialName'. Numbers for test and production transactions are maintained separately. This generally should only be used to set another field value as it will return a new value every time it is referenced (i.e. not to be used directly in your document layout).
 
 ==== Links to advanced configuration options ====
 There are a few data types that allow for customization using Java's built in capabilities, but they are a bit technical. For advanced folks who need them, here are some useful links to documentation that describe these more.
@@ -731,6 +735,28 @@ _Tips: Normally, property values are encoded to be HTML-safe when displayed in y
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+== Serial generators http://open.esignforms.com/images/HowToGuidesWiki/serialGeneratorsIcon.png ==
+
+Serial generators are used to create unique, serial numbers. They are often used to automatically assign customer numbers, purchase order numbers, etc. It manages two numbers, one for test transactions and the other for production transactions.  Like other items in the library, you can override a serial generator via the branding library defined for a transaction template.
+
+Click on *Serial generators* to show all serial number generators in the selected library.
+
+http://open.esignforms.com/images/HowToGuidesWiki/serialGenerator.png
+
+  * Choose *Enabled* to allow the serial number generator to be used. If a serial generator is no longer needed, click *Disable*.
+  * *[HowToGuides#EsfNames_and_PathNames EsfName]* is the unique name for this serial number generator.
+  * *Description* is a short description.
+  * *Comments* is any other information you want to maintain.
+  * *Next production serial* can be set when a new generator is being created. It will be the first serial number returned when used in a production transaction. Subsequently, it will just show the current production serial number generator value.
+  * *Next test serial* can be set when a new generator is being created. It will be the first serial number returned when used in a test transaction. Subsequently, it will just show the current production serial number generator value.
+
+On the right side, the version-specific field is:
+  * The *Serial number format* specifies how the serial number will appear. Use '#' for each digit where if it's a leading zero, it will be suppressed. Use '0' for each digit where it will be shown even if it's a leading zero. You can use fixed letters before (prefix) and after (suffix) the # and 0 pattern. A typical pattern is ###000000000 or with a prefix like ACCT000000000. If the number is bigger than the pattern, the additional digits will be shown.
+
+Serial number generators can be referenced in your documents using `${serial:serialName}` notation. The `serialName` is the name of the serial generator. Once a serial number is issued, it will not be issued again. To reduce gaps, we recommend you set your serial number field (such as a purchase order number) to a value like '#PENDING' and use a custom logic rule to set that field to the serial number when the order is submitted (or at the very least on review).
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 == Fields http://open.esignforms.com/images/HowToGuidesWiki/fieldsIcon.png ==
 
 Click on *Fields* to show all field templates in the selected library.
@@ -913,7 +939,7 @@ After you have added or changed a condition, just click on the condition to conf
 
 AND and OR conditions have no specific condition editors, so for these special types of conditions, you just right-click on them to negate them, convert them from one type to the other, delete it (and all of its sub-conditions), or to add further sub-conditions to them.
 
-http://open.esignforms.com/images/HowToGuidesWiki/ConditionsOnPackageActionsAllBlank.png
+You can also negate this condition by checking the *Negate condition (NOT)* box. Note this applies to the entire condition, not any given field specification.
 
 Click on the *All blank:* condition to change which fields are checked to be blank. You can specify one or more fields to check. A popup editor will appear.
 
@@ -956,9 +982,24 @@ Click on the *Compare:* condition to change which fields are to be compared. Onl
 
 http://open.esignforms.com/images/HowToGuidesWiki/ConditionsOnPackageActionsComparison.png
 
+You can negate this condition by checking the *Negate condition (NOT)* box.
+
   * Choose from *In document* the name of the document where the field to check resides.
   * Choose from *Field* the name of the field in the selected document to check.
-  * Choose from *Comparator* the type of comparison to perform. *Equals* will match if  the two string values are the same. *Starts with* will match if the field starts with a given value. *Ends with* will match if the field ends with a given value. *Contains* will match if the field contains the other value anywhere within its value.
+  * Choose from *Comparator* the type of comparison to perform. Fields that are integers, decimals, money, dates or date+time, you generally want to limit the comparator to the equals, less than and greater than as the others will treat these types as if there were strings.
+    * *Equals* will match if  the two string values are the same. 
+    * *Starts with* will match if the field starts with a given value. 
+    * *Ends with* will match if the field ends with a given value. 
+    * *Contains* will match if the field contains the other value anywhere within its value.
+    * *Less than* will match if the field's value is less than the other value.
+    * *Less than or equals* will match if the field's value is less than or equals the other value.
+    * *Greater than* will match if the field's value is greater than the other value.
+    * *Greater than or equals* will match if the field's value is greater than or equals the other value.
+    * *Same length* will match if the field's value has the same length as the other value.
+    * *Shorter than* will match if the field's value is shorter than the length of the other value.
+    * *Shorter than or same length* will match if the field's value is shorter than or the same length as the other value.
+    * *Longer than* will match if the field's value is longer than the length of the other value.
+    * *Longer than or same length* will match if the field's value is longer than or the same length as the other value.
   * Set the *Literal or field spec (${})* to the value to check against the specified field. It can be a simple string literal, or it can contains a field specification like ${DocumentName.FieldName} to compare against another field value.
   * Check the *Case sensitive?* box if you want the comparison to be case sensitive (uppercase and lowercase letters must match exactly). The default (unchecked) allows a match regardless, so "Bob" would be equal to "BOB".
  
@@ -1049,7 +1090,7 @@ _Tip: To save your changes, you will want to click the *Ok* button on the custom
 
 === Change tran/party status action ===
 
-When you need to cancel a transaction (now or in the future), skip a document, or skip a party step in your workflow, use the *Change tran/party status* action. Click the *Add status change* button http://open.esignforms.com/images/HowToGuidesWiki/addStatusChangeButton.png to add a new status change. Or you can click on a previously created rule to update it.
+When you need to cancel a transaction (now or in the future), skip a document, skip a party step in your workflow, or activate a party step ahead of its normal workflow sequence, use the *Change tran/party status* action. Click the *Add status change* button http://open.esignforms.com/images/HowToGuidesWiki/addStatusChangeButton.png to add a new status change. Or you can click on a previously created rule to update it.
 
 ==== Cancel transaction action ====
 
@@ -1109,6 +1150,28 @@ Note that you can do multiple status change actions using this view.
 
 _Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
 
+==== Activate party action ====
+
+If a party needs to be activated before it normally would be activated in party sequence, you can use this action to activate a party. Generally this is used for "final step" parties who will access the transaction for review purposes only.
+
+Change the *Status change type* to 'Activate party':
+
+http://open.esignforms.com/images/HowToGuidesWiki/activatePartyAction.png
+
+  * For *Status change type* choose 'Activate party'.
+  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the party is being activated (out of the normal party order).
+  * For *Parties to skip* select one or more parties to skip.
+
+Click the *Ok* button to keep your changes, or click *Cancel*.
+
+Click the *Close* button to close the transaction/party status change window.
+
+Click the *Delete* button to delete the selected action.
+
+Note that you can do multiple status change actions using this view.
+
+_Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
+
 === Show error/message action ===
 
 When you need to display a message or report a custom data validation error, the show error/message action can be used. For data validations, you should use this action in a rule that specifies the *Party review document* event. If you report an error or warning on the review step, the user will not be able to complete the document until it is fixed so it no longer matches the condition specified with this action.
@@ -1138,6 +1201,8 @@ By default, all fields in your documents are fully encrypted and can only be acc
 Each time a transaction is saved (updated by a package party), all of the field mappings are applied so that reports will have the latest field values. 
 
 This also lets you map various fields that may be named "SSN", "SocialSecurityNumber", "so_sec_no" or "Tax_ID" to a single report field name so that you can create a report that essentially merges all such fields into a single report field. Use care when mapping such fields so that you map them to a common set of report fields and don't create multiple report fields that really have the same meaning.
+
+Click on the *Report field templates* button http://open.esignforms.com/images/HowToGuidesWiki/reportFieldTemplatesButton.png to list all [#Report_field_templates report field templates] and see where it's used, or to just change the name.
 
 Click the *Map report fields* button on the package version to set up mappings to report fields.
 
@@ -1252,17 +1317,19 @@ It also has special permissions related to the reports that are specified under 
   * *View/download data snapshots* specifies who can see and download data snapshots, which includes the data values stored in documents.
   * *Download complete transaction archives* specifies who can download a complete transaction archive. _This feature is not yet implemented._
 
-Click on the *[#Report_fields Report fields]* button http://open.esignforms.com/images/HowToGuidesWiki/reportFieldsButton.png to configure the report fields that will appear in the custom report.
+Click on the *[#Field_in_report Fields in report]* button http://open.esignforms.com/images/HowToGuidesWiki/fieldsInReportButton.png to configure the report fields that will appear in the custom report.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== Report fields ==
+== Fields in report ==
 
-Click the *Report fields* button on the report template to set up the report fields to include in the custom report.
+Click the *Fields in report* button on the report template to set up the report fields to include in the custom report.
+
+Click on the *Report field templates* button http://open.esignforms.com/images/HowToGuidesWiki/reportFieldTemplatesButton.png to list all [#Report_field_templates report field templates] and see where it's used, or to just change the name.
 
 Click on the *Add report field* button http://open.esignforms.com/images/HowToGuidesWiki/addReportFieldButton.png to add a new field. to the report. Or you can click on a previously created report field to update it.
 
-http://open.esignforms.com/images/HowToGuidesWiki/reportFields.png
+http://open.esignforms.com/images/HowToGuidesWiki/fieldsInReport.png
 
 You can drag to re-order existing fields to control the order they will appear in the report.
 
@@ -1297,6 +1364,35 @@ Click the *Close* button to close the list of fields in the report window.
 Click the *Delete* button to remove the selected report field.
 
 _Tip: To save your changes, you will want to click the *Ok* button on the list of fields window as well as click the *Save* button for the report template._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Report field templates ==
+
+Click the *Report field templates* button on the list of fields for a report template, or from the package's *Map report fields* page to modify the report field template name that is otherwise created using the same name as the document field when it is mapped to a new report field.
+
+Report fields are shared across all reports and users so that similar data can be combined from any number of documents and produce a common report.
+
+You cannot rename built-in fields that begin with the 'esf_' prefix.
+
+The type of a report field is initially set based on the type of the document field being mapped. You cannot change the type unless it's a General field type, in which case you can tweak it to be 'Numbers only' (numeric) or 'Letter/numbers only' (alphanumeric). If you have existing data already mapped and you change a General type like this, you'll need to [#Reload_transaction_report_fields reload the transaction data from the package] if you want prior report data to also have the new numbers only or letters/numbers content in your reports.
+
+http://open.esignforms.com/images/HowToGuidesWiki/reportFieldTEmplate.png
+
+  * In *Type* select the type of the field if it is a string type like General, Numbers only, or Letter/Numbers only.
+  * In *EsfName* you can change the name of the report field template if it's not a built-in type.
+  * In *Label* you can set the default column label for this report field template when it's added to a report.
+  * In *Toolip* you can set the default tooltip for this report field template when it's added to a report.
+
+You are also presented with two lists that show:
+  * In *Referenced in the following reports* you can see which reports (that you have permission to list) include the selected field.
+  * In *Package versions that map fields to this report field* you can see which package versions populate this report field.
+
+Click the *Save* button to keep your changes, or click *Cancel*. 
+
+Click the *Close* button to close the list of report field templates window.
+
+Click the *Delete* button to remove the selected report field template if it's not listed as being in use.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
