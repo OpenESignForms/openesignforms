@@ -175,6 +175,8 @@ Popup windows can be moved by clicking on the title bar and dragging it.  Popup 
 
 Some objects support a PathName, which is a series of one or more EsfNames separate by the slash character: */*  Examples of valid path names are: Simple_pathname, Company1/ExampleName, This/Is/Also/Valid.
 
+We use this format because it's a semi-universal valid naming convention for Java programming variables, JavaScript variables and functions, CSS class names, HTML names, SQL names, etc.
+
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 == IDs or UIDs ==
