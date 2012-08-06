@@ -888,8 +888,15 @@ http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
   * In *Limit only to documents (optional)* check any documents if the actions should only fire when the selected event(s) occur, but also only when the specified document is being processed. If you do not select any, then it will not matter which document is involved.
   * In *Limit only to parties (optional)* check any parties if the actions should only fire when the selected event(s) occur, but also only when the specified party is processing the transaction. If you do no select any, then it will not matter which party is involved.
   * In *Actions* you can drag to re-order existing actions or click the *Delete* button to remove it.
-  * Click the *Add action* button to add the actions you'd like to occur when the specified event arises, possibly limited based on the documents and parties selected.  Choose *Set field action* to change any field values in your documents. Choose *Calculate field value* to calculate a value (add, subtract, multiply, divide). Choose *Send email* to send an email. Choose *Change tran/party status* to cancel the transaction now or in the future, clear a future auto-cancel, skip a party step or skip an entire document. Choose *Show error/message* to display a message or report an error to the user (mostly used during the *Party review document* event).
-
+  * Click the *Add action* button to add the actions you'd like to occur when the specified event arises, possibly limited based on the documents and parties selected.  
+    * Choose *Set field action* to change any field values in your documents. 
+    * Choose *Calculate field value* to calculate a value (add, subtract, multiply, divide). 
+    * Choose *Calculate monthly payment* to calculate a monthly payment amount based on the loan amount, term in months, and interest rate (APR).
+    * Choose *Send email* to send an email. 
+    * Choose *Change tran/party status* to cancel the transaction now or in the future, clear a future auto-cancel, skip a party step or skip an entire document. 
+    * Choose *Show error/message* to display a message or report an error to the user (mostly used during the *Party review document* and *Party completed page* events).
+    * Choose *PayPal direct charge* to specify credit card fields in your document that will be submitted to the PayPal NVP API for a credit card sale.
+ 
 http://open.esignforms.com/images/HowToGuidesWiki/packageAddActionButton.png
 
 Click *Ok* to keep any changes, otherwise click *Cancel*.
@@ -1047,7 +1054,7 @@ You can think of this as doing the following in code:
 `InDocument.SetField = FromDocument.Field OPERATOR FromDocument.Field`
 
   * For *In document* select the document where the field exists that will be set to the calculated value.
-  * For *Set field* select the field in the selected "in document" that will be used set by the calculation. This is the field that is changed.
+  * For *Set field* select the field in the selected "in document" that will be set by the calculation. This is the field that is changed.
   * For *From document* (left side of operator) select the document where the first field can be found. 
   * For *Field* (left side of operator) select the field in the selected "from document" that will be used in the calculation. This field is not changed.
   * For *Operator* select the operation to be applied to the left and right hand fields. `+` means addition; `-` means subtraction; `*` means multiplication; and `/` means division.
@@ -1061,6 +1068,33 @@ Click the *Close* button to close the calculate field value actions window.
 Click the *Delete* button to delete the selected action.
 
 Note that you can calculate multiple fields at the same time using this view. Also, if you have a multi-step calculation, you can set the field to the first party of the calculation, and then in the next calculation reference that field in the left or right side to perform more operations on it.
+
+_Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Calculate monthly payment action ===
+
+When you need to calculate a monthly payment, use the *Calculate monthly payment* action. Click the *Add payment to calculate* button http://open.esignforms.com/images/HowToGuidesWiki/addPaymentToCalculateButton.png to add a new payment to calculate. Or you can click on a previously created rule to update it.
+
+http://open.esignforms.com/images/HowToGuidesWiki/calculateMonthlyPaymentAction.png
+
+  * For *In document* select the document where the field exists that will be set to the calculated monthly payment value.
+  * For *Set monthly payment field* select the "Money" field in the selected "in document" that will be set by the calculation. This is the field that is changed.
+  * For *From document* select the document where the amount financed field can be found. 
+  * For *Amount financed field* select the "Money" field in the selected "from document" that will be used in the calculation. This field is not changed.
+  * For *From document* select the document where the annual interest rate field can be found. 
+  * For *Annual interest rate field* select the "Decimal" field in the selected "from document" that will be used in the calculation. This field is not changed.
+  * For *From document* select the document where the number of monthly payments field can be found. 
+  * For *Number of monthly payments field* select the "Integer" field in the selected "from document" that will be used in the calculation. This field is not changed.
+
+Click the *Ok* button to keep your changes, or click *Cancel*.
+
+Click the *Close* button to close the calculate monthly payment value actions window.
+
+Click the *Delete* button to delete the selected action.
+
+Note that you can calculate multiple monthly payments at the same time using this view.
 
 _Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
 
@@ -1191,6 +1225,56 @@ Click the *Close* button to close the send email actions window.
 Click the *Delete* button to delete the selected action.
 
 Note that you can show multiple messages at the same time using this view.
+
+_Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Pay Pal direct charge action ===
+
+When you need to charge a credit card using your PayPal Web Site Pro account, use the *PayPal direct charge* action. Click the *Add PayPal charge* button http://open.esignforms.com/images/HowToGuidesWiki/paypalChargeButton.png to add a new payment to be charged. Or you can click on a previously created rule to update it.
+
+This action depends on you having previously configured a Property Set named *PayPal_NVP_API* with properties for LogNVP, PWD, SIGNATURE, USER and URL that are part of the PayPal NVP API service. There's a corresponding "_TEST" property that is used for test transactions and is generally pointed to the PayPal Sandbox where testing can take place without actually doing a credit card charge. _(When you order this service from PayPal so you can charge cards directly, you will be given a PWD, SIGNATURE and USER to authenticate the API calls and ensure the money is credited to your account.)_
+
+http://open.esignforms.com/images/HowToGuidesWiki/PayPalChargeAction.png
+
+  * For *Customer name spec* enter a fixed value or a field specification of the customer name (like the company name, not the billing name, though it can be the same). This sets the CUSTOM field in the PayPal NVP API. It is optional.
+  * For *Purchase description spec* enter a fixed value or a field specification of the item that has been purchased. This sets the DESC field in the PayPal NVP API. It is optional and will default to "Online sale" if not specified.
+  * For *Buyer email address spec* enter a fixed value or a field specification of the buyer's email address This sets the EMAIL field in the PayPal NVP API. It is optional.
+  * For *Invoice number spec* enter a fixed value or a field specification of your invoice/order number that goes with this sale. This sets the INVNUM field in the PayPal NVP API. It is optional and will default to the transaction id.
+
+For all of the following fields, the user should enter the billing information, not their personal information, so that it matches the names and addresses associated with their credit card. They are required unless noted otherwise.
+
+  * For *In document* and *First name* select the document and field that contains the billing first name.
+  * For *In document* and *Last name* select the document and field that contains the billing last name.
+  * For *In document* and *Street line 1* select the document and field that contains the billing street address (line 1).
+  * For *In document* and *Street line 2* select the document and field that contains the billing street address (line 2). This is optional.
+  * For *In document* and *City* select the document and field that contains the billing city.
+  * For *In document* and *State/province* select the document and field that contains the billing state or province.
+  * For *In document* and *Zip/postal code* select the document and "Zip code" field that contains the billing zip code or postal code.
+  * For *In document* and *Country* select the document and field that contains the billing country (2-letter code). It is optional and defaults to "US". You may want to use the standard drop down *ESF_Countries* or a modified version of this list.
+  * For *In document* and *Card type* select the document and field that contains the credit card type (Visa, MasterCard, Amex, Discover). It is optional and defaults to a calculated value based on the the card number. A standard drop down named *ESF_PayPal_CardTypes* has these for easy use. Note that American Express requires a separate agreement with PayPal and American Express to offer it.
+  * For *In document* and *Card number* select the document and "credit card number" field that contains the credit card number. For PCI compliance, it is recommend that this value be masked on review as well as overwritten on successful payment so that it is not stored.
+  * For *In document* and *Expiration date* select the document and "date" field that contains the credit card expiration date in MM/YYYY format. The date formats allow for this type of entry. A party can select any day of the month if using date selector.
+  * For *In document* and *Security code* select the document and field that contains the credit card security id (aka CCV or CVV), a 3-4 digit number printed on the card itself (on the front for American Express, and on the back otherwise). It is optional, but may be required to successfully do a charge to prove that the card was present for the online purchase. This field should also be masked on review and must be masked out on successful payment because PCI compliance requires that it not be stored once the payment is done.
+  * For *In document* and *Amount to charge* select the document and "money" field that contains the amount to be charged. PayPal has a default max of $10,000 that is allowed.
+  * For *On success mask* we recommend you check both the *Card number* and *Security code* since they are not needed after the charge and PCI compliance generally requires it.
+  * For *Show on success* enter a message (with field specs if desired) that will be displayed after a successful payment is made.
+  * For *Show on failure* enter an error message (with field specs if desired) that will be displayed if there's an error with the charge.
+
+On a successful payment, the PAYPAL_TRANSACTIONID field will be set with the transaction id (not to be confused with the Open eSignForms transaction id related to your completed form) returned. It will be blank on error.
+
+On error (no charge takes place), the PAYPAL_EXCEPTION field will be set with the error returned by PayPal. It will be blank on success.
+
+Additional fields set from the PayPal response include PAYPAL_ACK, PAYPAL_AMT, PAYPAL_AVSCODE and PAYPAL_CVV2MATCH. In addition, two related fields are set with more meaningful values using PAYPAL_AVSCODE_MEANING and PAPAL_CVV2MATCH_MEANING.
+
+Click the *Ok* button to keep your changes, or click *Cancel*.
+
+Click the *Close* button to close the PayPal payment actions window.
+
+Click the *Delete* button to delete the selected action.
+
+Note that you can do multiple charges at the same time using this view.
 
 _Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
 
