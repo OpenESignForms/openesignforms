@@ -876,6 +876,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
     * *Party created* occurs when a package party is created.
     * *Party activated* occurs when a package party is first activated to process the package.
     * *Party retrieved document* occurs when a package party retrieves a document.
+    * *Party completed page* occurs when a package party clicks the Continue button on a given page in a document. It is used primarily for custom validations as a user goes from page to page in a multi-page document.
     * *Party review document* occurs when a package party has filled out the form or is signing and clicks the review button.
     * *Party completed document* occurs when a package party completes a given document.
     * *Party view completed document* occurs when a package party views a document that has already been completed.
