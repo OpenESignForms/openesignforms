@@ -236,7 +236,14 @@ Our basic configuration works like this:
 
   * Set the IMAP Server to the server that will handle inbound emails, such as bounces and replies. This most certainly is the same value as the SMTP ReturnPath Hostname. The IMAP Port of 143 is standard. You will want to set the IMAP User and Password to be used to retrieve emails. We typically create a user account for each deployment, so in the example above, we'd have a user account 'deploy2' created. Note that this user account is only used for receiving email, and we do not allow it to be accessed from the Internet for login purposes.  We recommend using SSH with a setting that restricts user login accounts, and if possible, do as we do and prohibit 'root' login and only allow logins via public key authorization so password guessing cannot be used to hack your system.
 
-  * In our deployments, we use Postfix for SMTP, configured to allow only the localhost server to send out messages (external systems cannot relay through it). We then set the {{{/etc/postfix/virtual_alias}}} to use values like {{{/^deploy2_.*@open.esignforms.com$/ deploy2}}}  This basically will match that return path value and assign it to the right user account that we'll access via IMAP for correlating bounces and replies.
+  * In our deployments, we use Postfix for SMTP, configured to allow only the localhost server to send out messages (external systems cannot relay through it). We then set the {{{/etc/postfix/virtual_alias}}} to use values like {{{/^deploy2_.*@open.esignforms.com$/ deploy2}}}  This basically will match that return path value and assign it to the right user account that we'll access via IMAP for correlating bounces and replies. Typical settings changes we make to the {{{/etc/postfix/main.cf}}} is (the domain is your server's name):
+{{{
+mydomain = example.com
+home_mailbox = Maildir/
+inet_interfaces = all
+mynetworks_style = host
+virtual_alias_maps = regexp:/etc/postfix/virtual_alias
+}}}
 
   * In our deployments, we use dovecot for our IMAP server.
 
