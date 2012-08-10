@@ -38,7 +38,8 @@ In our various installs, we also did yum installs of:
   * libpng
   * libjpeg
   * a2ps (pretty sure not needed)
-  * libstdc++ (required on some x64 Linux if the i386 version is not present)
+  * libstdc++ (required on some x64 Linux if the i386/i686 version is not present for 32-bit)
+  * zlib, libzip may also be needed on x64 Linux to get the i386/i686 versions
 
 Often these did not resolve issues, but unsure if they are helpful or not.
 
