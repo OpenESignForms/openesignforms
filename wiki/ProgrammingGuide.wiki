@@ -438,7 +438,7 @@ Once your testing shows the document layout working as expected, with general fi
 The names are used as programming variables and thus have are limited to 50 characters in length, must begin with a letter, and then can contain numbers, uppercase or lowercase letters and the underscore (`_`).  So `firstName` and `First_Name` are valid, while `First name` and `1stName` and `first-name` are not.
 
 If a given field appears in multiple locations in a document, only one should be used for input with the standard field notation.  The other references to the field, where it's only displayed, should use:
-  * `${out:fieldName}` will show the field 'fieldName' for display-only.
+  * `${out:fieldName}` will show the field 'fieldName' for display-only. It also can be used to make a field use the output format specification defined in its field template rather than use its default format.
 
 While fields are often shown together with a label, you can specify these be shown individually using the notation:
   * `${label:fieldName}` will show the label configured for the field 'fieldName'.
