@@ -40,7 +40,64 @@ If you find that scripts won't run on Linux or via Cygwin's shell, you may need 
 
 ==Apache Tomcat==
 
-For testing, we generally run Tomcat from Eclipse, so it's best to download and install Tomcat next. If you plan on running Tomcat as a Windows service, there's a special installer for it. But we just download the ZIP file and really only run it via Eclipse, extracting to C:\. The version tested here was 7.0.21. (There is a bug in Tomcat prior to this release that caused errors in the import of esf.js file because of the new javascript mime type standard that changed from text/javascript to application/javascript.)
+For testing, we generally run Tomcat from Eclipse, so it's best to download and install Tomcat next. If you plan on running Tomcat as a Windows service, there's a special installer for it. But we just download the ZIP file and really only run it via Eclipse, extracting to C:\. The version tested here was 7.0.29. (There is a bug in Tomcat prior to the 7.0.21 release that caused errors in the import of esf.js file because of the new javascript mime type standard that changed from text/javascript to application/javascript.)
+
+On Tomcat version upgrades, we basically make the following changes on Linux:
+  * `bin/startup.sh` - add the following before the last 'exec' line (only include the debug info if you remotely debug your Tomcat, and your memory values will need to match your server):
+{{{
+JAVA_OPTS="-server  -Xdebug -Xrunjdwp:transport=dt_socket,address=29090,server=y,suspend=n -Xms500m -Xmx500m -XX:PermSize=200m -XX:MaxPermSize=200m -Desf.deploybase=$ESF_DEPLOYMENT_BASE"
+export JAVA_OPTS
+}}}
+
+  * `webapps` - Move all webapps except perhaps 'manager' up a subdirectory so that they are no longer deployed. Obviously, we put the Open eSignForms webapp here. You can just move them from the prior Tomcat webapps location.
+{{{
+  mkdir ../ORIG-webapps
+  mv docs examples host-manager ROOT ../ORIG-webapps
+}}}
+
+  * `webapps/manager/WEB-INF/web.xml` - If you use the manager webapp, add the following snippet to the `<security-constraint>` of the 'HTML Manager interface' and 'Status interface' to ensure it only works over SSL-protected connections.
+{{{
+    <user-data-constraint>
+          <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+}}}
+
+  * `conf/tomcat-users.xml` - If you use the manager webapp, set up the username and password to use when remoting manager your webapps:
+{{{
+  <role rolename="manager-gui"/>
+  <user username="admin" password="PUT-SECURE-PASSWORD-HERE" roles="manager-gui"/>
+}}}
+
+  * `conf/server.xml` - You can set up as you need, such as if you have an Apache HTTPD server front-end and use the APR, but for a simple stand-alone Tomcat, we make the following changes. Under the "Catalina" `<Service>` entry (of course, if you have SSL, you want to point to your keystore and its password). We also comment our the AJP Connector on port 8009, but you may need it if you put HTTP in front:
+{{{
+    <Connector port="8080" protocol="org.apache.coyote.http11.Http11NioProtocol"
+               connectionTimeout="20000" acceptorThreadCount="2" redirectPort="443" />
+
+    <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol" SSLEnabled="true"
+               connectionTimeout="20000" acceptorThreadCount="2"
+               maxThreads="100" scheme="https" secure="true"
+                keystoreFile="keys/mykeys" keystorePass="PUT-KEYSTORE-PASSWORD-HERE"
+                ciphers="TLS_DHE_DSS_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA,SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA,TLS_DHE_DSS_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA,SSL_RSA_WITH_3DES_EDE_CBC_SHA,SSL_RSA_WITH_RC4_128_SHA,SSL_RSA_WITH_RC4_128_MD5,TLS_DHE_RSA_WITH_AES_128_CBC_SHA"
+               clientAuth="false" sslProtocol="TLS" />
+
+<!--
+    <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
+-->
+}}}
+
+  * `conf/server.xml` - We also change the `<Host>` entry to turn off auto deploy:
+{{{
+      <Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="false">
+}}}
+
+  * `conf/web.xml` - Add the following to the `<servlet>` for 'jsp' since we want our JSPs to always be checked to be compiled:
+{{{
+        <init-param>
+            <param-name>development</param-name>
+            <param-value>true</param-value>
+        </init-param>
+}}}
 
 ==Eclipse==
 
@@ -48,7 +105,7 @@ Install the latest version of [http://www.eclipse.org] Eclipse IDE for Java EE] 
 
 Install the [http://vaadin.com/eclipse Vaadin Eclipse Plugin] as instructed on their site.
 
-We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Server->Servers.  If no servers appear, right-click New->Server; then choose Apache->Tomcat v7.0 Server, click Next and choose the location where you installed Tomcat (i.e. something like C:\apache-tomcat-7.0.21). Double-click your server (named Tomcat v7.0 Server at localhost or whatever version you are using) so you display the Overview and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin for us -- see below for downloading the project code first) click the Edit button to uncheck the 'Auto reloading enabled'. 
+We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Server->Servers.  If no servers appear, right-click New->Server; then choose Apache->Tomcat v7.0 Server, click Next and choose the location where you installed Tomcat (i.e. something like C:\apache-tomcat-7.0.29). Double-click your server (named Tomcat v7.0 Server at localhost or whatever version you are using) so you display the Overview and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin for us -- see below for downloading the project code first) click the Edit button to uncheck the 'Auto reloading enabled'. 
 
 Using the same Servers configuration, we make the following changes:
 
