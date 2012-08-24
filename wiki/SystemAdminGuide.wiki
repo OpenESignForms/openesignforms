@@ -327,9 +327,10 @@ http://open.esignforms.com/images/HowToGuidesWiki/deploymentProperties.png
 
   * Every deployment has a *Unique deployment ID*, which is displayed at the top.  
   * Note that the *ID* field is the related to the deployment properties record id as stored in the database. 
-  * The *Website URL Protocol+Address* is the domain name where your application runs and is used in all links sent out. Most deployments use the 'https://' protocol to ensure secure communications between the browser and the server.
   * Ensure *Allow Production transactions* is checked if your deployment can run production transactions.
   * Ensure *Allow Test transactions* is checked if your deployment can run test transactions.
+  * The *Website URL Protocol+Address* is the domain name where your application runs and is used in all links sent out. Most deployments use the 'https://' protocol to ensure secure communications between the browser and the server.
+  * The *Default country* is used to specify what country the deployment is for. It is used, for example, to aid in phone numbers being entered and interpreted correctly.
   * The *Default locale* specifies the language the application runs as. Currently, we only support US English.
   * The *Default date format* specifies how dates are displayed by default.
   * The *Default log/detailed date format* specifies how dates are displayed in various logs and other places where full dates are displayed.
