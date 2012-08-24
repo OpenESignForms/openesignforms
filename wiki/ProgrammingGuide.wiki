@@ -162,9 +162,10 @@ http://open.esignforms.com/images/HowToGuidesWiki/documentVersionEdit.png
 
 *On the left side* is information about the document, regardless of version:
   * Click *Enabled* for the document to be actively available, or click *Disabled* to keep that document from appearing in other lists of active documents.
-  * The *Description* is a short description the document.
+  * The *HTML file name spec* sets the file name for this document when it's exported or attached to an email. It can be a simple name like `Contract.html` or may contain field and property specifications so it's customized, such as `Contract for ${firstName} ${lastName}.html`.
   * The *[HowToGuides#EsfNames_and_PathNames EsfName]* is the document's unique name in the library. Once you create a production version, you will no longer be able to change this name. 
   * The *Display name* is the name shown to parties when they view this document.
+  * The *Description* is a short description the document.
   * Use *Comments* to track any information you want regarding this document.
 
 Click the *Save* button to save any changes to the document and currently selected version.
@@ -177,6 +178,7 @@ Click the *Create new like* button to create a new document, like the currently 
   * It includes a list of pages in the document. Many multi-page documents are implemented as a 1-page document because they are "web pages," meaning that the document can be very long with simple scrolling.  Click on a page to bring up the page editor. If there is more than one page, a *Delete* button will appear to allow you to delete a page. Click the *Add page* button to add a new blank page. You may drag and drop pages to re-order them. Multi-page documents are presented with all "Edit" or "Edit and review" pages first, and then once all pages are filled, a final review is shown that is composed of "Review" and "Edit and Review" pages concatenated together. Most people use multiple pages to implement a simple wizard so users can fill out a document in parts, and then review the complete document when it's all done.
   * The *Document style* is the [#Document_styles document style] to be used for this document. We recommend you use as few different document styles as possible to keep a consistent look, and the built-in *ESF_DefaultDocumentStyle* is a nice, modern look.
   * The *Orientation* specifies the intended page orientation as Portrait (taller than wide) or Landscape (wider than tall). Portrait is the default. It is currently only used for PDF generation as browsers have no such limitation/concern. If you select multiple documents to combine into a single PDF, if any document is defined as Landscape, then all documents in that PDF will be landscape.
+  * The *E-Sign record location* specifies where the electronic signature process record will appear if the document is signed. Choose "Final own page" to put it on the last page, by itself (so if printed, it will appear on its own page). Choose "End of document" to just put it at the end of the document without inserting a page break; this is useful if your last page has space to include this extra information. Choose "Do not show" to suppress it entirely (not recommended).
 
 If you are working on a Test version, click the *Make Test version Production* after you have tested the document and shown that it works as expected. You must make it Production in order to use it in production-level transactions. Click the *Delete* button to delete the Test version. If there is no Production version, this will also delete the Document definition as well as the version.
 
@@ -1111,6 +1113,8 @@ http://open.esignforms.com/images/HowToGuidesWiki/sendEmailAction.png
   * For *Email address spec (${EMAIL})* enter an email address or `${ }` field specification that will resolve to the email address to send to. This will replace the `${EMAIL}` wherever used in the selected email template. If the *For party* above is selected and this email address specification is blank (or set to `${EMAIL}` -- better to leave blank), the system will attempt to use the configured package party's email notification specification.
   * For *Attach document(s)* select one or more documents from the package to send with the email. This will be the document snapshot that exists for the selected document and party. Of course, you can also choose the "Latest" party for a document to send whatever is the latest snapshot of that document at the time the email is being sent.
   * Check *Attach as PDF* to combine the document snapshots into a single PDF file rather than sending them as attached HTML files. If any of the selected documents is configured for 'Landscape' orientation then all documents will be rendered as landscape in the PDF.
+  * If *Attach as PDF* is selected, a *PDF file name spec* is shown so you can give the file name of the attached PDF. It's can be a simple file name, such as `Agreement.pdf`, or it may include field specifications and properties for a customized name, such as `Agreement for ${firstName} ${lastName}.pdf`.
+  * If your package allows for files to be uploaded and attached to the transaction, an *Attach uploaded file(s)* selection list will appear so you can include any of those files to the email as well.
 
 Click the *Ok* button to keep your changes, or click *Cancel*.
 
