@@ -420,6 +420,26 @@ See [#Report_transaction_activity_log report transaction activity log] for detai
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+= Change my password http://open.esignforms.com/images/HowToGuidesWiki/changeMyPasswordIcon.png =
+
+To change your password, as well as the forgotten password question and answer, you will be presented with this view:
+
+http://open.esignforms.com/images/HowToGuidesWiki/changeMyPasswordStep1.png
+
+Enter your current password, then click the *Verify my current password* button to see the set password view:
+
+http://open.esignforms.com/images/HowToGuidesWiki/changeMyPasswordStep2.png
+
+Enter your new password or phrase two times to ensure you have typed the expected value. The password will be masked like a regular password field and is a phrase that can be a mix of letters, numbers, spaces and special characters. It is case sensitive. We recommend longer pass phrases, such as 10 characters or more, over shorter ones, even if the shorter one seems more cryptic.
+
+Your original question will be shown. Ensure it is a good question that the system can ask you if you ever forget your password and need to reset it and enter that in the *Question to ask you should you forget your password* field. Provide the corresponding answer in the *Answer you will have to provide to reset your password* field. Unlike a password, the answer will be displayed, so please do this in private. Answers are _not_ case sensitive and special characters are ignored. This is essentially a "second password" so make sure the question and related answer are not too easily guessed should anybody ever attempt to reset your password while they have access to your email account.
+
+Click the *Change my password* button once you have completed the form. Click the *Cancel* button to keep your current password.
+
+_Note that an email will be sent to you every time your password is changed, so if you did not just change your password, it is an indication someone may be accessing your account without authorization._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 = Forgot your password http://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordLink.png =
 
 If you have forgotten your password, shame on you! But assuming you set up a useful question and answer, you should be able to choose a new password automatically.
@@ -450,9 +470,9 @@ To set your password, as well as the forgotten password question and answer, you
 
 http://open.esignforms.com/images/HowToGuidesWiki/setMyPassword.png
 
-Enter your password two times to ensure you have typed the expected value. The password will be masked like a regular password field and is a phrase that can be a mix of letters, numbers, spaces and special characters. It is case sensitive.
+Enter your password two times to ensure you have typed the expected value. The password will be masked like a regular password field and is a phrase that can be a mix of letters, numbers, spaces and special characters. It is case sensitive. We recommend longer pass phrases, such as 10 characters or more, over shorter ones, even if the shorter one seems more cryptic.
 
-Think up a good question that the system can ask you if you ever forget your password and need to reset it and enter that in the *Question to ask you* field. Provide the corresponding answer in the *Answer you will provide to reset your password* field. Unlike a password, the answer will be displayed, so please do this in private. Answers are _not_ case sensitive and special characters are ignored. This is essentially a "second password" so make sure the question and related answer are not too easily guessed should anybody ever attempt to reset your password while they have access to your email account.
+Think up a good question that the system can ask you if you ever forget your password and need to reset it and enter that in the *Question to ask you should you forget your password* field. Provide the corresponding answer in the *Answer you will have to provide to reset your password* field. Unlike a password, the answer will be displayed, so please do this in private. Answers are _not_ case sensitive and special characters are ignored. This is essentially a "second password" so make sure the question and related answer are not too easily guessed should anybody ever attempt to reset your password while they have access to your email account.
 
 Click the *Set my password* button once you have completed the form. If successful, click on the *[#Login login now]* link displayed and you can begin to use the application.
 
