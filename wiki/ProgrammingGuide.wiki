@@ -289,7 +289,7 @@ By default, new fields are given the *General* type, meaning they are standard t
     * *HTML editor* puts a CKEditor field in your document, allowing the party to enter rich text, or paste from Word, etc. We recommend you only provide this feature to parties who are part of your company.
     * *Integer* is a text field that expects an integer/counting number value, such as -5 or 20. Decimal points are not allowed. This type also supposed an *Extra options* value to specify whether to show normal integers like 1, 2, 3, or to show the value as an ordinal number, like 1st, 2nd, 3rd.
     * *Money* is a text input field that expects a valid amount of money to be entered, like 15.25 or $20. It differs from the Decimal type in that it displays a currency symbol rather than just the number.
-    * *Phone (US/Canada)* is a text input field that expects a valid 10-digit phone number.
+    * *Phone* is a text input field that expects a valid phone number. You can specify what the default country is for phone number so it can be properly interpreted and formatted.
     * *Radio button* is a traditional radio button that is typically defined with other values and are put in a group so that only one of the radio buttons in the group can be selected at a time.
     * *Radio button group* is a non-visual field type that actually holds the value of the selected radio button defined as part of the group.
     * *Signature* is a text field stylized for the purpose of having the party type their name to indicate they are signing. It will also trigger the additional of the electronic signature process record for the party who signs.
