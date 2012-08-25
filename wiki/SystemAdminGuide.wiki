@@ -419,32 +419,32 @@ Record types:
 
 = XML Digital Signatures =
 
-Open eSignForms uses industry standard XML Digital Signatures to create reliable records of every step of a transaction. But these digital signatures use the most powerful digital signatures on the marketplace today with 4096-bit RSA keys over SHA-512 hashes.
+Open eSignForms uses industry standard XML Digital Signatures to create reliable records of every step of a transaction. Our digital signatures use the most powerful digital signatures on the marketplace today with 4096-bit RSA keys over SHA-512 hashes.
 
-Essentially, as each party completes a given document, the HTML sent to the party's web browser is captured and digitally signed along with an accurate timestamp.
+As each party completes a given document, the HTML sent to the party's web browser is captured and digitally signed along with an accurate timestamp providing an electronic record that cannot be subsequently changed without detection.
 
 == Snapshot XML ==
 
-You can see the snapshot XML from the details page of a given transaction, whether from [UserGuide#General_tran_search General Tran Search], or from one of your [UserGuide#Report_transaction_details Reports]. Just click on the *Download Snapshot XML* option for given document and party:
+You can see the snapshot XML from the details page of a given transaction, whether from [UserGuide#General_tran_search General Tran Search], or from one of your [UserGuide#Report_transaction_details Reports]. Just click on the *Download Snapshot XML* option for a given document and party:
 
 http://open.esignforms.com/images/HowToGuidesWiki/downloadSnapshotXML.png
 
 The downloaded XML file contains the digital signature that can be re-verified independently to prove it's the original. It includes both the data in the document as well as the HTML the user saw when completing the document.
 
-In that XML file is the public key that is uniquely associated with each deployment of Open eSignForms. Here's an example showing the key value (the RSA public key used) as well as the signature seal:
+The downloaded snapshot XML file contains the public key that is uniquely associated with each deployment of Open eSignForms. Here's an example showing the key value (the RSA public key used) as well as the signature seal:
 
 http://open.esignforms.com/images/HowToGuidesWiki/xmlDigitalSignatureKeys.png
 
-== How the world knows your public keys ==
+== How the world knows its your public key ==
 
 While anybody can revalidate the XML digital signature using any compliant XML digital signature verifier (we provide an example in the application code file `com.esignforms.open.crypto.XmlDigitalSignatureSimpleVerifier`), it is not obvious that the signing keys belong to you.
 
-If there is any question about whether the public key and other information in the snapshot is valid and belongs to your deployment, anybody can show your deployment's public keys where values like the KeyName, Modulus, Exponent and DeploymentId can be confirmed. 
+If there is any question about whether the public key and other information in the snapshot is valid and belongs to your deployment, anybody can compare them against your deployment's public keys where values like the KeyName, Modulus, Exponent and DeploymentId can be confirmed visually. 
 
-Just visit the showSigningKeys.jsp page for your deployment (i.e. `https://open.esignforms.com/demo/showSigningKeys.jsp` for our demo system) or whatever deployment you are checking. It will list all of the public keys used as well information like the key name and deployment id. The blue values in particular should all match between this listing and the snapshot XML's values.
+Just visit the showSigningKeys.jsp page for your deployment (i.e. `https://open.esignforms.com/demo/showSigningKeys.jsp` for our demo system) or whatever deployment you are checking. It will list all of the public keys used as well information like the key name and deployment id. The <font color="blue">blue values</font> in particular should all match between this listing and the snapshot XML's values.
 
 http://open.esignforms.com/images/HowToGuidesWiki/showSigningKeys.png
 
-This lists the deployment id, KeyName and the XML Digital Signature style RSAKeyValue Exponent and Modulus. All validly signed documents you create will match one of your keys. 
+The web page lists the deployment id, KeyName and the XML Digital Signature style RSAKeyValue Exponent and Modulus. All validly signed documents created using your system will match one of your keys. 
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
