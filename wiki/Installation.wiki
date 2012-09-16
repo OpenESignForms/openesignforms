@@ -338,32 +338,32 @@ For Linux deployment servers, we use a layout like this in the home directory fo
 == General Linux X64 server setup information ==
 
 As `root` do the following on your new Linux instance:
-  * useradd esignforms
-  * passwd root
-  * passwd esignforms
-  * yum install iptables ntp logwatch dos2unix gpg bind-utils jwhois telnet traceroute make gcc libgcc gcc-c++ glibc-devel readline readline-devel ncurses ncurses-devel zlib zlib-devel pam pam-devel postfix screen lynx dovecot
-  * yum update
-  * Put `ALL: ALL` in /etc/hosts.deny
-  * Put `sshd: ALL` in /etc/hosts.allow
-  * hostname esign.example.com
-  * Set HOSTNAME=esign.example.com in /etc/sysconfig/network
-  * Change /etc/ssh/sshd_config 
+  * `useradd esignforms`
+  * `passwd root`
+  * `passwd esignforms`
+  * `yum install iptables ntp logwatch dos2unix gpg bind-utils jwhois telnet traceroute make gcc libgcc gcc-c++ glibc-devel readline readline-devel ncurses ncurses-devel zlib zlib-devel pam pam-devel postfix screen lynx dovecot`
+  * `yum update`
+  * Put `ALL: ALL` in `/etc/hosts.deny`
+  * Put `sshd: ALL` in `/etc/hosts.allow`
+  * `hostname esign.example.com`
+  * Set `HOSTNAME=esign.example.com` in `/etc/sysconfig/network`
+  * Change `/etc/ssh/sshd_config` to use:
     * `PermitRootLogin no`
     * `PasswordAuthentication no`
     * `AllowUsers esignforms`
     
 As `esignforms` do:
-  * mkdir .ssh
-  * chmod 700 .ssh
-  * cd .ssh
-  * Install your authorized_keys file so you can SSH in
-  * chmod 600 authorized_keys
+  * `mkdir .ssh`
+  * `chmod 700 .ssh`
+  * `cd .ssh`
+  * Install your `authorized_keys` file so you can SSH in
+  * `chmod 600 authorized_keys`
 
 As `root` again do:
-  * service sshd restart
-  * service ntpd start
-  * chkconfig ntpd on
-  * Setup /etc/sysconfig/iptables something like:
+  * `service sshd restart`
+  * `service ntpd start`
+  * `chkconfig ntpd on`
+  * Setup `/etc/sysconfig/iptables` something like:
 {{{
 # We do simple NAT here to map HTTP/HTTPS to the safer unprivileged ports Tomcat listens on.
 *nat
@@ -399,14 +399,15 @@ COMMIT
 COMMIT
 }}}
   * Make changes to [#SMTP_and_IMAP /etc/postfix/main.cf] as above.
-  * Set up /etc/postfix/virtual_alias something like with the first being how to map individual deployments (named 'demo' in this example) as well as creating forwarding rules for the esignforms, postmaster and root users:
+  * Set up `/etc/postfix/virtual_alias` something like with the first being how to map individual deployments (named 'demo' in this example) as well as creating forwarding rules for the esignforms, postmaster and root users:
 {{{
 /^demo_.*@esign.example.com$/ demo
 /^esignforms@esign.example.com$/ support@example.com
 /^postmaster@esign.example.com$/ support@example.com
 /^root@esign.example.com$/ support@example.com
 }}}
-  * service postfix start
-  * chkconfig postfix on
-  * service dovecot start
-  * chkconfig dovecot on
+  * Add `MailTo = support@example.com` to `/etc/logwatch/conf/logwatch.conf`
+  * `service postfix start`
+  * `chkconfig postfix on`
+  * `service dovecot start`
+  * `chkconfig dovecot on`
