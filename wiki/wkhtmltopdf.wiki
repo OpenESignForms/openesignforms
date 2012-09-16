@@ -27,7 +27,7 @@ These are just some quick notes on setting up *wkhtmltopdf* on our CentOS Linux 
 
     Try running the command `wkhtmltopdf.i386` to ensure it can be found in your PATH and that it shows no missing components.
 
-  * For the 32-bit static builds, assuming you are on 64-bit Linux, you'll want to make sure you have these components with .386 architecture. If you have the 64-bit versions, you can use `yum whatprovides fontconfig` to discover the component details for the 32-bit version (in this case, fontconfig-2.4.1-7.el5.i386)
+  * For the 32-bit static builds, assuming you are on 64-bit Linux, you'll want to make sure you have these components with i386/i686 architecture. If you have the 64-bit versions, you can use `yum whatprovides fontconfig` to discover the component details for the 32-bit version (in this case, fontconfig-2.4.1-7.el5.i386 or fontconfig-2.8.0-3.el6.i686).  This includes fontconfig, libXrender, libzip, libXext and libstdc++.
 
 = Questionable =
 
