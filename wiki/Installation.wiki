@@ -345,8 +345,8 @@ As `root` do the following on your new Linux instance:
   * yum update
   * Put `ALL: ALL` in /etc/hosts.deny
   * Put `sshd: ALL` in /etc/hosts.allow
-  * hostname your.esign.example.com
-  * Set HOSTNAME=your.esign.example.com in /etc/sysconfig/network
+  * hostname esign.example.com
+  * Set HOSTNAME=esign.example.com in /etc/sysconfig/network
   * Change /etc/ssh/sshd_config 
     * `PermitRootLogin no`
     * `PasswordAuthentication no`
@@ -373,8 +373,8 @@ As `root` again do:
 -A PREROUTING -p tcp -m tcp --dport 443 -j REDIRECT --to-ports 8443
 -A PREROUTING -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 8080
 # causes outbound connections on my public IP to also redirect like above
--A OUTPUT -p tcp -m tcp -d 204.232.207.238 --dport 443 -j REDIRECT --to-ports 8443
--A OUTPUT -p tcp -m tcp -d 204.232.207.238 --dport 80 -j REDIRECT --to-ports 8080
+-A OUTPUT -p tcp -m tcp -d esign.example.com --dport 443 -j REDIRECT --to-ports 8443
+-A OUTPUT -p tcp -m tcp -d esign.example.com --dport 80 -j REDIRECT --to-ports 8080
 COMMIT
 *filter
 :INPUT ACCEPT [0:0]
@@ -398,9 +398,13 @@ COMMIT
 -A RH-Firewall-1-INPUT -j REJECT --reject-with icmp-host-prohibited
 COMMIT
 }}}
-  * Set up /etc/postfix/virtual_alias something like:
+  * Make changes to [#SMTP_and_IMAP /etc/postfix/main.cf] as above.
+  * Set up /etc/postfix/virtual_alias something like with the first being how to map individual deployments (named 'demo' in this example) as well as creating forwarding rules for the esignforms, postmaster and root users:
 {{{
-xxx
+/^demo_.*@esign.example.com$/ demo
+/^esignforms@esign.example.com$/ support@example.com
+/^postmaster@esign.example.com$/ support@example.com
+/^root@esign.example.com$/ support@example.com
 }}}
   * service postfix start
   * chkconfig postfix on
