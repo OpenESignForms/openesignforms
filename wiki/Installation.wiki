@@ -338,11 +338,12 @@ For Linux deployment servers, we use a layout like this in the home directory fo
 == General Linux X64 server setup information ==
 
 As `root` do the following on your new Linux instance:
-  * `useradd esignforms`
-  * `passwd root`
-  * `passwd esignforms`
-  * `yum install iptables ntp logwatch dos2unix gpg bind-utils jwhois telnet traceroute make gcc libgcc gcc-c++ glibc-devel readline readline-devel ncurses ncurses-devel zlib zlib-devel pam pam-devel postfix screen lynx dovecot`
-  * `yum update`
+  * `useradd esignforms` (assuming you install the code under this username)
+  * `passwd root`  (be sure to set good passwords)
+  * `passwd esignforms`  (be sure to set good passwords)
+  * `yum install iptables ntp logwatch dos2unix gpg bind-utils jwhois telnet traceroute make gcc libgcc gcc-c++ glibc-devel readline readline-devel ncurses ncurses-devel zlib zlib-devel zip unzip pam pam-devel postfix screen lynx dovecot`
+  * See the [wkhtmltopdf wkhtmltopdf wiki] for other components you need, including using the 32-bit versions of some libraries.
+  * `yum update`  (to ensure you are up-to-date with everything)
   * Put `ALL: ALL` in `/etc/hosts.deny`
   * Put `sshd: ALL` in `/etc/hosts.allow`
   * `hostname esign.example.com`
@@ -411,3 +412,77 @@ COMMIT
   * `chkconfig postfix on`
   * `service dovecot start`
   * `chkconfig dovecot on`
+  * Here is a sample init script for auto-starting/stopping the application on boot and shutdown (so you can use `service esignforms start` and `service esignforms stop` for example). The latest Red Hat and CentOS has programs named `start` and `stop` so our start/stop scripts are often renamed to `yostart` and `yostop` along with similar changes in their contents in the `bin` subdirectory:
+{{{
+#!/bin/bash
+#
+# Copyright (c) 2012 Yozons Inc.  All rights reserved worldwide.
+#
+# Start in runlevels 3, 4, 5, with start at the end and stop at the beginning
+# chkconfig: 345 99 3
+# description: Init file for Yozons Open eSignForms web applications
+#
+INITFILE=/etc/rc.d/init.d/esignforms
+LOCK=/var/lock/subsys/esignforms
+
+# source in the function library
+. /etc/rc.d/init.d/functions
+
+start()
+{
+        echo -n "Starting Open eSignForms:"
+        su - esignforms -c "bin/yostart all" && success || failure
+        RETVAL=$?
+        [ "$RETVAL" = 0 ] && touch $LOCK
+        echo
+}
+
+stop()
+{
+        echo -n "Stopping Open eSignForms:"
+        su - esignforms -c "bin/yostop all"
+        RETVAL=$?
+        [ "$RETVAL" = 0 ] && rm -f $LOCK
+        echo
+}
+
+case "$1" in
+        start)
+                start
+                ;;
+        stop)
+                stop
+                ;;
+        restart)
+                stop
+                sleep 5
+                start
+                ;;
+        status)
+                        echo Status of ntpd:
+                /usr/local/bin/sp ntpd
+                        echo Status of sshd:
+                /usr/local/bin/sp sshd
+                        echo Status of postfix:
+                /usr/local/bin/sp postfix
+                echo
+                su - esignforms -c "bin/checkall"
+                RETVAL=$?
+                ;;
+        install)
+                echo Adding esignforms to runlevel system for auto start and stop
+                cp $0 $INITFILE
+                chmod 755 $INITFILE
+                /sbin/chkconfig --add esignforms
+                ;;
+        uninstall)
+                echo Removing esignforms from runlevel system for auto start and stop
+                /sbin/chkconfig --del esignforms
+                rm -f $INITFILE
+                ;;
+        *)
+                echo $"Usage: $0 {start|stop|restart|status|install|uninstall}"
+                RETVAL=1
+esac
+exit $RETVAL
+}}}
