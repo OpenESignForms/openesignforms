@@ -784,6 +784,13 @@ The main purposes for a party template defined in a library are 1) to create a "
 
 If the package party is defined for To Do purposes, specify the *To Do Group* that represents the users who will be able to place this role. Also, if you support multiple companies, each branding library is able to set their own group to play the given role. So if you have an "Approver" role, you can set it to be one group for one company, but another group for the other company.
 
+===To Do configuration===
+To use To Do, do the following:
+
+  # Check if there there is an existing Group of users (listed under Access control) defined that represents the people who will play the role of the party? If not, create one like the most similar existing group and update the users who belong in it.
+  # Inside the Library, under the Parties, create a new Party and set the "To Do Group" to the group determined in step 1.
+  # In the Package, select the party listed in the package that needs access to the To Do. Then set its "To Do Party EsfName" to be the party created in step 2.
+
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 = Packages http://open.esignforms.com/images/HowToGuidesWiki/packageIcon.png =
