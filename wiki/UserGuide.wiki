@@ -79,6 +79,13 @@ To process a transaction, just click on it. This will open a new window for you 
 
 Click the *Refresh* button to update the list, such as after processing some work or to check for new work.
 
+==To Do configuration==
+To use To Do, do the following:
+
+  # Check if there there is an existing Group of users (listed under Access control) defined that represents the people who will play the role of the party? If not, create one like the most similar existing group and update the users who belong in it.
+  # Inside the Library, under the Parties, create a new Party and set the "To Do Group" to the group determined in step 1.
+  # In the Package, select the party listed in the package that needs access to the To Do. Then set its "To Do Party EsfName" to be the party created in step 2.
+
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 = Start a transaction http://open.esignforms.com/images/HowToGuidesWiki/startTransactionIcon.png =
