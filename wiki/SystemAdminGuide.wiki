@@ -439,12 +439,14 @@ http://open.esignforms.com/images/HowToGuidesWiki/xmlDigitalSignatureKeys.png
 
 While anybody can revalidate the XML digital signature using any compliant XML digital signature verifier (we provide an example in the application code file `com.esignforms.open.crypto.XmlDigitalSignatureSimpleVerifier`), it is not obvious that the signing keys belong to you.
 
-If there is any question about whether the public key and other information in the snapshot is valid and belongs to your deployment, anybody can compare them against your deployment's public keys where values like the KeyName, Modulus, Exponent and DeploymentId can be confirmed visually. 
+If there is any question about whether the public key and other information in the snapshot is valid and belongs to your deployment, anybody can compare them against your deployment's public keys where values like the KeyName, Modulus, Exponent and DeploymentId can be confirmed visually.
 
 Just visit the showSigningKeys.jsp page for your deployment (i.e. `https://open.esignforms.com/demo/showSigningKeys.jsp` for our demo system) or whatever deployment you are checking. It will list all of the public keys used as well information like the key name and deployment id. The <font color="blue">blue values</font> in particular should all match between this listing and the snapshot XML's values.
 
 http://open.esignforms.com/images/HowToGuidesWiki/showSigningKeys.png
 
 The web page lists the deployment id, KeyName and the XML Digital Signature style RSAKeyValue Exponent and Modulus. All validly signed documents created using your system will match one of your keys. 
+
+Furthermore, the self-sign X.509 Certificate, including the Subject Distinguished Name (DN) is shown to prove your deployment credentials. This is mostly used for PDF digital signature validations.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
