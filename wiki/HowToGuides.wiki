@@ -254,6 +254,46 @@ Generally, you can hover your mouse over such a field for a tips reminder. If it
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+= PDF Digital Signatures =
+
+PDF is a document format used by many legacy applications. While it has nice traits, the files are substantially larger than the native, HTML standard documents.
+
+To support legacy applications and provide an easy independent copy for users to download and keep for themselves, agreements can be exported in PDF format. All PDF files are digitally signed using the Open eSignForms deployment's self-signed X.509 digital certificate that represents the same public key as used for [SystemAdminGuide#XML_Digital_Signatures XML digital signatures] on the original HTML documents.
+
+== Instructing Adobe Reader to trust your signature keys ==
+
+Because the PDFs are digitally signed using your deployment's public key, Adobe Reader will not automatically trust your signing keys. 
+
+=== PDF Signature "Problems" ===
+
+The first time you view a digitally signed PDF from your deployment, Adobe PDF will reports a "problem" with the digital signature. This is just because PDF doesn't know about your signing keys yet.
+
+http://open.esignforms.com/images/HowToGuidesWiki/pdfSignatureProblems.png
+
+=== PDF Signature Panel ===
+
+If you click on the PDF Signature Panel and display the signing keys, you will see that the PDF is shown to be the original (not tampered with), but the key simply hasn't been added to your trusted list:
+
+http://open.esignforms.com/images/HowToGuidesWiki/pdfSignatureProblemDetails.png
+
+=== Added the signing keys to PDF's trust store ===
+
+Click on the "Certificate Details..." link under "Signature Details" section to open up the PDF Certificate Viewer:
+
+http://open.esignforms.com/images/HowToGuidesWiki/pdfSignatureCertificateViewer.png
+
+Note that it shows that the intended usage for the keys is to "Sign transaction, Sign document" which is precisely what Open eSignForms is using it for.  
+
+Feel free to examine the other tabs on the Certificate Viewer, but to add the certificate to your PDF trust store, click on the *Trust* tab and then click the *Add to Trusted Identities...* button, then the *OK* button to import the certificate:
+
+http://open.esignforms.com/images/HowToGuidesWiki/pdfSignatureImportContactSettings.png
+
+Click the *OK* button twice and either re-open the PDF or click the button to revalidate the signatures.  It will now show this document, as well as all future PDFs exported from the system to be valid (unless of course the PDF has been tampered with or your deployment has a new signing key in the future in which case you need to import that key as well). 
+
+http://open.esignforms.com/images/HowToGuidesWiki/pdfSignatureValid.png
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 = How-To Videos on `YouTube` =
 
 Come and see our list of How-To Videos on `YouTube` on our [http://www.youtube.com/user/YozonsHTV#g/a YozonsHTV Channel].
