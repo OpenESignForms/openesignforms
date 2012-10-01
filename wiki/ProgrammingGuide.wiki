@@ -864,6 +864,8 @@ http://open.esignforms.com/images/HowToGuidesWiki/packageParty.png
   * Check *Email All To Do Parties* if you've also set a *To Do Party EsfName* if you would like all users who belong to the group associated with the party to receive an email notification.
   * In *Notify email address spec (${EMAIL})* enter an email address or a document and field specification that contains the email address of the person to notify when this party is activated. The value will replace the ${EMAIL} specification used in the Email template.
   * In *Notify Email EsfName* specify the Email template to use to notify this party.
+  * In *On completed redirect link/URL spec* you can put in a literal URL or any combination of field and property specifications. If specified, when the party completes all documents in the package, the party will be redirected this URL rather than be shown the completed package page.
+  * In *Not completed redirect link/URL spec* you can put in a literal URL or any combination of field and property specifications. If specified, when the party has not yet completed the package of documents, the package will show a "Go back (not completing now)" button that will redirect the user back to this URL to indicate that they have chosen not to complete the package at this time.
 
 Click *Ok* to keep any changes, otherwise click *Cancel*.
 
