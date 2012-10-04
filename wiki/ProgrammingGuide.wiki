@@ -520,13 +520,28 @@ For General, use regular expression [http://docs.oracle.com/javase/6/docs/api/ja
 
 === Customize logic on a document ===
 
-Customizing logic for a given document is very similar to customizing logic in a package except that it only applies to the document. It also operates on a restricted set of events and actions.
+Customizing logic for a given document is very similar to customizing logic in a package except that it only applies to the document. It also operates on a restricted set of events and actions, though it can operate on page-level events which are not available to the package.
 
 http://open.esignforms.com/images/HowToGuidesWiki/documentPageEditorCustomLogic.png
 
 This is the best place to put document-specific extra data validations. Just select the *Party review document* event and use *Show error/message* actions with appropriate conditions to detect invalid form data.
 
-See [#Customize_logic custom logic in a package] for details on conditions and actions.
+  * In *When event(s) occur* select at least one type of event that describes when you'd like the associated actions to run. You can choose from:
+    * *Party retrieved document* occurs when a party first retrieves a document.
+    * *Party completed page* occurs when a party clicks the Continue button on a given page in a document. It is used primarily for custom validations as a user goes from page to page in a multi-page document. The party cannot continue to the next page if any action produces an error or warning message.
+    * *Party review document* occurs when a party has filled out the form or is signing and clicks the review button. The party cannot continue to review the completed document if any action produces an error or warning message.
+    * *Party completed document* occurs when a party completes a given document. The party cannot complete the document if any action produces an error or warning message.
+    * *Party view completed document* occurs when a party views a document that has already been completed.
+  * In *Limit only to pages (optional)* check any pages where the actions should only fire when the selected event(s) occur, but also only when the specified page is being processed. If you do not select any, then it will not matter which page is involved.
+  * In *Limit only to parties (optional)* check any parties if the actions should only fire when the selected event(s) occur, but also only when the specified party is processing the document. If you do no select any, then it will not matter which party is involved.
+  * In *Actions* you can drag to re-order existing actions or click the *Delete* button to remove it.
+  * Click the *Add action* button to add the actions you'd like to occur when the specified event arises, possibly limited based on the documents and parties selected.  
+    * Choose *Set field action* to change any field values in your documents. 
+    * Choose *Calculate field value* to calculate a value (add, subtract, multiply, divide). 
+    * Choose *Calculate monthly payment* to calculate a monthly payment amount based on the loan amount, term in months, and interest rate (APR).
+    * Choose *Show error/message* to display a message or report an error to the user (mostly used during the *Party review document* and *Party completed page* events).
+
+See [#Customize_logic custom logic in a package] for details on conditions which are the same for package-level and document-level custom logic.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
@@ -887,9 +902,8 @@ http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
     * *Party created* occurs when a package party is created.
     * *Party activated* occurs when a package party is first activated to process the package.
     * *Party retrieved document* occurs when a package party retrieves a document.
-    * *Party completed page* occurs when a package party clicks the Continue button on a given page in a document. It is used primarily for custom validations as a user goes from page to page in a multi-page document.
-    * *Party review document* occurs when a package party has filled out the form or is signing and clicks the review button.
-    * *Party completed document* occurs when a package party completes a given document.
+    * *Party review document* occurs when a package party has filled out the form or is signing and clicks the review button. The party cannot continue to review the completed document if any action produces an error or warning message.
+    * *Party completed document* occurs when a package party completes a given document. The party cannot complete the document if any action produces an error or warning message.
     * *Party view completed document* occurs when a package party views a document that has already been completed.
     * *Party completed* occurs when a package party complete all documents in the package that are assigned to him or her.
     * *Party transferred* occurs if a user transfers a given package party to another person through the transaction details page in reports and general transaction search. This occurs when a transaction is started and it turns out there was an error, such as invalid email address, or you find another person actually needs to process it.
