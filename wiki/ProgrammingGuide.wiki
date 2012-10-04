@@ -541,7 +541,7 @@ This is the best place to put document-specific extra data validations. Just sel
     * Choose *Calculate monthly payment* to calculate a monthly payment amount based on the loan amount, term in months, and interest rate (APR).
     * Choose *Show error/message* to display a message or report an error to the user (mostly used during the *Party review document* and *Party completed page* events).
 
-See [#Customize_logic custom logic in a package] for details on conditions which are the same for package-level and document-level custom logic.
+See [#Conditional_actions conditional actions in a package] for details on conditions which are the same for package-level and document-level custom logic.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
