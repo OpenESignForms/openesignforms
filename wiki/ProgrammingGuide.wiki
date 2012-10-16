@@ -1509,6 +1509,61 @@ Click the *Delete* button to remove the selected report field template if it's n
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+= Live Transactions =
+
+While a transaction exists, parties can use their unique links (and users can access their work via the [UserGuide#To_Do To Do queue]).
+
+== Buttons ==
+
+When parties access a transaction, they are presented with a combination of the package page, which lists all documents that party has access to, as well as the page(s) defined for each of those documents.
+
+The party has options based on the buttons provided.  This section discusses those buttons and when they are accessible.
+
+The labels for buttons are defined in the Template Library's property set `ESF_Buttons`.
+
+=== Package+disclosures buttons ===
+
+When a party is on the package+disclosures page that lists all documents the party has access to, the following buttons are used:
+
+  * Party has work to do (at least one document yet to be reviewed, filled out, and/or signed):
+    * `PackageButtonContinueToDo` defaults to *Continue*.
+    * 'Allow delete tran if no signatures' is checked in the package party configuration, and no documents have been signed: `PackageButtonDelete` defaults to *Delete this transaction*.
+    * 'Not completed redirect link/URL spec' in the package party configuration is set: `PackageButtonNotCompleting` defaults to *Go back (not completing now)*.
+
+  * Party has reviewed/completed all documents:
+    * `PackageButtonContinueDone` defaults to *View first document*.
+    * `PackageDownloadMyDocsAsPdf` defaults to *Download my documents as a PDF*
+
+=== Document buttons ===
+
+When a party is processing a given document, the following buttons are used:
+
+  * Party is editing (filling out, signing) a document:
+    * If there's a next page: `DocumentEditButtonContinueNextPage' defaults to *Continue*.
+    * If there's no next page (on last/only page): `DocumentEditButtonContinueToReview` defaults to *Continue to review*. Puts the user in review mode.
+    * If there's a previous page: `DocumentEditButtonPreviousPage` defaults to *Go back to previous page*.
+    * `DocumentButtonGoToPackage` defaults to *Return to the document list*.
+
+  * Party is reviewing a document filled out or signed:
+    * If the party can sign: `DocumentReviewButtonCompleteSigner` defaults to *Submit signed document*.
+    * If the party cannot sign: `DocumentReviewButtonCompleteNotSigner` defaults to *Submit completed document*.
+    * `DocumentReviewButtonReturnToEdit` defaults to *Go back to make changes*. Puts the user back in edit mode.
+
+  * Party is reviewing a document with no fields to fill in or sign:
+    * If there's a next page: `DocumentReviewViewOnlyButtonContinueNextPage` defaults to *Continue*.
+    * If there's no next page (on last/only page): `DocumentReviewViewOnlyButtonComplete` defaults to *Continue*.
+    * If there's a previous page: `DocumentReviewViewOnlyButtonPreviousPage` defaults to *Go back to previous page*.
+    * `DocumentButtonGoToPackage` defaults to *Return to the document list*.
+
+  * Party is in view only mode (such as after completing the document and returning to view it again):
+    * If there's a next page: `DocumentViewOnlyButtonNextPage` defaults to *Continue*.
+    * If there's no next page, but there is another document: `DocumentViewOnlyButtonNextDocument` defaults to *Go to next document*.
+    * If there's a previous page: `DocumentViewOnlyButtonPreviousPage` defaults to *Go back to previous page*.
+    * If there's no previous page, but there is a previous document: `DocumentViewOnlyButtonPreviousDocument` defaults to *Go to previous document*.
+    * `DocumentButtonGoToPackage` defaults to *Return to the document list*.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 = Integration Interface (API) =
 
 There are various ways to integrate other applications and web sites with Open eSignForms. They all assume the ability to access HTTPS links to the web site.
