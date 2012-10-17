@@ -1511,15 +1511,26 @@ Click the *Delete* button to remove the selected report field template if it's n
 
 = Live Transactions =
 
-While a transaction exists, parties can use their unique links (and users can access their work via the [UserGuide#To_Do To Do queue]).
+While a transaction exists, parties can use their unique links (and users can access their work via the [UserGuide#To_Do To Do queue]) to access the package of documents.
+
+If a transaction is canceled or suspended, no access is given to any party.
 
 == Buttons ==
 
-When parties access a transaction, they are presented with a combination of the package page, which lists all documents that party has access to, as well as the page(s) defined for each of those documents.
+When parties access a transaction, they are presented with a combination of the package+disclosures page, which lists all documents that party has access to, as well as the page(s) defined for each of the documents in the package that are defined for the party.
 
-The party has options based on the buttons provided.  This section discusses those buttons and when they are accessible.
+Each party has options based on the buttons provided. This section discusses those buttons and when they are accessible.
 
-The labels for buttons are defined in the Template Library's property set `ESF_Buttons`.
+The default labels for buttons are defined in the Template Library's property set `ESF_Buttons`.  
+
+You can override the button labels by creating alternative property sets as follows (we do not recommend using this too much as we expect to have a more straightforward mechanism for customizing buttons in the future). The exact ESF_Buttons property set that is used follows this search algorithm to allow for overriding values for given party on a given document, for any party on a given document, for all documents based on the package party, or for everyone on all documents:
+
+  # Check for a propertyset named `ESF_Buttons_DocumentEsfName_DocPartyEsfName` where `DocumentEsfName` is replaced by the current document's name, and `DocPartyEsfName` is replaced by the party name defined in that document. (Will use `DocPartyEsfName` 'ViewOnly' for a view only party to the document.)
+  # Check for a propertyset named `ESF_Buttons_DocumentEsfName` where `DocumentEsfName` is replaced by the current document's name.
+  # Check for a propertyset named `ESF_Buttons_PickupPartyEsfName` where `PickupPartyEsfName` is replaced by the package party EsfName.
+  # Lastly, check for a propertyset named `ESF_Buttons` (one should always be found in the template library).
+
+And of course, being a property set, you can override them with branding libraries and the like, searching for the above 4 alternatives by first checking the transaction's branding library, next the document's library, then finally in the template library.
 
 === Package+disclosures buttons ===
 
