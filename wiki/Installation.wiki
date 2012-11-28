@@ -40,7 +40,7 @@ If you find that scripts won't run on Linux or via Cygwin's shell, you may need 
 
 ==Apache Tomcat==
 
-For testing, we generally run Tomcat from Eclipse, so it's best to download and install Tomcat next. If you plan on running Tomcat as a Windows service, there's a special installer for it. But we just download the ZIP file and really only run it via Eclipse, extracting to C:\. The version tested here was 7.0.29. (There is a bug in Tomcat prior to the 7.0.21 release that caused errors in the import of esf.js file because of the new javascript mime type standard that changed from text/javascript to application/javascript.)
+For testing, we generally run Tomcat from Eclipse, so it's best to download and install Tomcat next. If you plan on running Tomcat as a Windows service, there's a special installer for it. But we just download the ZIP file and really only run it via Eclipse, extracting to C:\. The version tested here was 7.0.32. (There is a bug in Tomcat prior to the 7.0.21 release that caused errors in the import of esf.js file because of the new javascript mime type standard that changed from text/javascript to application/javascript.)
 
 On Tomcat version upgrades, we basically make the following changes on Linux:
   * `bin/startup.sh` - add the following before the last 'exec' line (only include the debug info if you remotely debug your Tomcat, and your memory values will need to match your server):
@@ -107,7 +107,7 @@ Install the latest version of [http://www.eclipse.org] Eclipse IDE for Java EE] 
 
 Install the [http://vaadin.com/eclipse Vaadin Eclipse Plugin] as instructed on their site.
 
-We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Server->Servers.  If no servers appear, right-click New->Server; then choose Apache->Tomcat v7.0 Server, click Next and choose the location where you installed Tomcat (i.e. something like C:\apache-tomcat-7.0.29). Double-click your server (named Tomcat v7.0 Server at localhost or whatever version you are using) so you display the Overview and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin for us -- see below for downloading the project code first) click the Edit button to uncheck the 'Auto reloading enabled'. 
+We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Server->Servers.  If no servers appear, right-click New->Server; then choose Apache->Tomcat v7.0 Server, click Next and choose the location where you installed Tomcat (i.e. something like C:\apache-tomcat-7.0.32). Double-click your server (named Tomcat v7.0 Server at localhost or whatever version you are using) so you display the Overview and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin for us -- see below for downloading the project code first) click the Edit button to uncheck the 'Auto reloading enabled'. 
 
 Using the same Servers configuration, we make the following changes:
 
@@ -130,7 +130,7 @@ If you have edit/commit permission, you'll need a user account and password with
 
 {{{:extssh:USERNAME@open.esignforms.com:/home/cvs}}}
 
-It seems from a fresh install that you'll want to right click on the open-eSignFormsVaadin project, click on Properties, click on Vaadin, and even though it may show the current Vaadin JAR (6.7.5 at this time), you should do a download and APPLY to get it put into the Eclipse area where the GWT JARs are also stored.
+It seems from a fresh install that you'll want to right click on the open-eSignFormsVaadin project, click on Properties, click on Vaadin, and even though it may show the current Vaadin JAR (6.8.5 at this time), you should do a download and APPLY to get it put into the Eclipse area where the GWT JARs are also stored.
 
 (If you plan to do any VaadinCKEditor project work, not necessary for Open eSignForms itself, you'll need to install a subversion plugin -- we use Subversive SVN Team Provider from the Eclipse installation location and we selected the SVN Kit 1.3.5. This related project is hosted on Google Code.)
 
@@ -154,7 +154,7 @@ In Linux, often the IP address 127.0.0.1 is mapped to {{{localhost.localdomain}}
 
 ==Database using PostgreSQL==
 
-Install PostgreSQL 9 per its usual mechanisms. The version tested here was 9.0.4.
+Install PostgreSQL 9 per its usual mechanisms. The version tested here was 9.2.1.
 
 It's just a convention, but we use the DB user 'esignforms' for our admin account, and each 'deployment' (a customer system that has its own webapp and database on the server) uses a 5 character unique name that is used as that application's DB user.  The name is also the base name in the deployment folder for its database tables, log files, etc.
 
@@ -324,9 +324,9 @@ For Linux deployment servers, we use a layout like this in the home directory fo
   * `~/bin` contains our shell scripts
   * `~/deployments` contains the `template` folder hierarchy and is used to store the PostgreSQL database per web app deployment (via PostgreSQL's tablespace directive).
   * `~/java` is where we install our Java 6 Runtime Environment, such as jre1.6.0_26, and we create a softlink of that to 'jdk1.6' which is referenced in the `profile`. This allows updates to Java by changing where the softlink points. (i.e. `ln -s jre1.6.0_26 jdk1.6`)
-  * `~/postgresql` contains the location where PostgreSQL is installed. It has folders like `bin`, `data84` (where the main db is stored, but each web app's tablespace puts those databases in the `deployments` folder), `ddl`, `logs`, `pg84` (where PostgreSQL installs to) and `postgresql-8.4.8` (were we unzipped PostgreSQL and compiled it).
-  * `~/tomcat` where we unzipped Tomcat into a folder like apache-tomcat-7.0.20, and then we create a softlink from that version to `tomcat7.0` which is referenced in the `profile` script. (i.e. `ln -s apache-tomcat-7.0.20 tomcat7.0`)
-  * `~/wkhtmltopdf_0.11.0` which contains the code to [wkhtmltopdf generate PDFs from HTML]. We then create a softlink of the executable to our `bin` with something like `ln -s ../wkhtmltopdf_0.11.0/wkhtmltopdf-i386 wkhtmltopdf-i386` (run from the `bin` directory).
+  * `~/postgresql` contains the location where PostgreSQL is installed. It has folders like `bin`, `data92` (where the main db is stored, but each web app's tablespace puts those databases in the `deployments` folder), `ddl`, `logs`, `pg92` (where PostgreSQL installs to) and `postgresql-9.2.1` (were we unzipped PostgreSQL and compiled it).
+  * `~/tomcat` where we unzipped Tomcat into a folder like apache-tomcat-7.0.32, and then we create a softlink from that version to `tomcat7.0` which is referenced in the `profile` script. (i.e. `ln -s apache-tomcat-7.0.32 tomcat7.0`)
+  * `~/wkhtmltopdf_0.11.0` which contains the code to [wkhtmltopdf generate PDFs from HTML]. We then create a softlink of the executable to our `bin` with something like `ln -s ../wkhtmltopdf_0.11.0/wkhtmltopdf-i386 wkhtmltopdf` (command run from the `bin` directory).
 
 == Mapping code from the Eclipse project to Linux paths ==
 
