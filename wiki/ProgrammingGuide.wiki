@@ -85,6 +85,7 @@ By default, no components are automatically selected for export.
 
   * Select *Production only* to list only those components that are configured at the Production level.  Or select *Test version if present* to include components that may also be at the Test level, so that if you export, you will get the latest version regardless of it being at the Production or Test level.
   * Click on any number of *[#Documents Documents]* to select the documents to export, including all configured fields, parties and images.
+  * Click on any number of *[#Button_message_sets Button message sets]* to select the button message sets to export.
   * Click on any number of *[#Document_styles Document styles]* to select the document styles to export.
   * Click on any number of *[#Drop_downs Drop downs]* to select the drop down lists to export.
   * Click on any number of *[#Email_templates Email templates]* to select the email templates to export.
@@ -127,6 +128,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/programmingLibrary.png
 Click on one of the following to program that type of component:
 
   * *[#Documents Documents]* defines all documents (forms) and package+disclosure pages. 
+  * *[#Button_message_sets Button message sets]* defines the button labels and related messages you want to use. The default button message set is defined in the *ESF/Library/Template*'s *ESF_DefaultButtonMessage*.
   * *[#Document_styles Document styles]* defines any special document styles you want to use besides the *ESF/Library/Template*'s default *ESF_DefaultDocumentStyle*.
   * *[#Drop_downs Drop downs]* define drop down lists, also known as select boxes, so your forms can allow a user to choose from a set of options. You can override drop downs in a branding library to change the values available.
   * *[#Email_templates Emails]* define the emails that will be sent, such as emails inviting parties to complete documents or notifications sent to others when transactions are completed, customers have signed, etc. You can define both a regular text email as well as an optional HTML-version of that email should the recipient's email client allow the display of HTML email. You can override emails in a branding library to change the contents of emails.
@@ -574,6 +576,77 @@ You are free to create your own documents with alternative welcome messages, E-S
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+== Button message sets http://open.esignforms.com/images/HowToGuidesWiki/buttonMessageSetIcon.png ==
+
+Button messages provides a way to customize the button labels, tooltips on the buttons, messages shown to the party about how to use the button as well as other common messages shown to parties when processing a document. Open eSignForms comes with a built-in default button messages in the *ESF/Library/Template* library called *ESF_DefaultButtonMessage*.
+
+The button message set is configured in each package. Note that a transaction template can specify a branding library such that if the same button message set name is defined in that library, then it will be selected at run time.
+
+Click on *Button message sets* to show all document styles in the selected library.
+
+http://open.esignforms.com/images/HowToGuidesWiki/buttonMessageSet.png
+
+  * Choose *Enabled* to allow the button message set to be used. If a button message set is no longer needed, click *Disable*.
+  * *[HowToGuides#EsfNames_and_PathNames EsfName]* is the unique name for this button message set.
+  * *Description* is a short description of the button message set.
+  * *Comments* is any other information you want to maintain about the button message set.
+
+The button message set specifies optional package and document footers, the button labels and tooltips (shown if the mouse is over the button) as well as various status messages shown to the party when processing a document.
+
+=== Package and document footer ===
+  * *Package footer* is optional HTML to show at the bottom of the package that lists the documents for the party to process. By default, we include a note to the party to bookmark the link to return at a later time.
+  * *Document footer* is optional HTML to show at the bottom of each document. By default nothing is shown.
+
+=== Package buttons ===
+Under the *Package buttons* section:
+  * *Continue button label (has documents to do)* and *Tooltip to show the party* define the continue button when a party has a list of documents that need to be processed.
+  * *Continue button label (all documents completed)* and *Tooltip to show the party* define the continue button when a party has completed all documents and can be used to show the first document.
+  * *Delete button label (only if no signatures and party authorized)* and *Tooltip to show the party* define the transaction delete button that only appears if no signature have been applied and the party defined in the package has been enabled to delete it.
+  * *Return/not-completing button label (only if a not-completing URL is defined)* and *Tooltip to show the party* define the button label the party can press if they elect not to complete the documents at this time. It is only present if the party in the package has such an URL defined. It can be used when integrating a document process flow so that if they decide not to sign they can be returned to a page where you'll know they did not complete the documents.
+  * *Download PDF button label (only when party completed)* and *Tooltip to show the party* define the download button that bundles all completed documents in a PDF.
+
+=== Document buttons (common) ===
+Under the *Document buttons* section is a common button shown to a parties:
+  * *Go to package button label*, *Tooltip to show the party* and *Message to show the party* define the button on a document that will return the party back to the package list. The message is shown at the top to help the party know what it means.
+
+=== Document buttons (party can fill/edit) ===
+Under the *Document buttons (party can fill/edit)* section are the buttons shown to a party when they can fill, edit and/or sign a document:
+  * *Next page button label* and *Tooltip to show the party* define the next page button to go to the next page in a multi-page document.
+  * *Previous page button label* and *Tooltip to show the party* define the previous page button to go to the previous page in a multi-page document.
+  * *Continue to review button label*, *Tooltip to show the party* and *Message to show the party* define the button when the next step is to review the finalized document that contains all their updates.
+
+=== Document buttons (party review after fill/edit) ===
+Under the *Document buttons (party review after fill/edit)* section are the buttons shown to a party in review mode after they have filled out the form, signed, etc.:
+  * *Submit button label (signature added), *Tooltip to show the party* and *Message to show the party* define the final submit button if the party signed the document.
+  * *Submit button label (no signature added), *Tooltip to show the party* and *Message to show the party* define the final submit button if the party did not sign but otherwise filled in form fields.
+  * *Return to edit button label*, *Tooltip to show the party* and *Message to show the party* define the button to allow the party to return to edit mode so changes can be made before being submitted.
+
+=== Document buttons (view-only party initial review) ===
+Under the *Document buttons (view-only party initial review)* section are the buttons shown to a view-only party when processing a document they have not yet read/reviewed:
+  * *Next page button label*, *Tooltip to show the party* and *Message to show the party* define the button shown to go to the next page on a multi-page document.
+  * *Previous page button label* and *Tooltip to show the party* define the button shown to go to the previous page on a multi-page document.
+  *  *Complete review button label*, *Tooltip to show the party* and *Message to show the party* define the button to submit indicating that they have completely read the document.
+
+=== Document buttons (return completed parties) ===
+Under the *Document buttons (returning completed parties)* section defines the buttons shown to parties who have already completed the document but have returned to review/re-read it:
+  * *Next page button label* and *Tooltip to show the party* define the button to go to the next page in a multi-page document.
+  * *Previous page button label* and *Tooltip to show the party* define the button to go to the previous page in a multi-page document.
+  * *Next document button label* and *Tooltip to show the party* define the button to go to the next document in a multi-document package.
+  * *Previous document button label* and *Tooltip to show the party* define the button to go to the previous document in a multi-document package.
+
+=== General messages shown to parties ===
+Under the *General messages shown to parties* section are the messages shown to users based on where they are in the process flow:
+  * *Party retrieves a document that is already completed* is shown when a party returns to a document that they have already completed.
+  * *Warning message shown to a party if attempts to work on completed document* is a warning message shown to a party if they use the BACK/FORWARD browser buttons and try to edit or submit a document that has already been completed.
+  * *View-only party views a document* is shown when a view-only party views a document
+  * *Non-signing party reviewing a document before submitting* is for a non-signing party who has filled out some of the document when reviewing their updates, but before being submitted.
+  * *Signing party reviewing a document before submitting* is for a signing party who is reviewing the final document, but before being submitted.
+  * *Party retrieves a document that needs to be filled out* is for a party who retrieves a document that needs to be filled out or signed.
+  * *Party has completed all documents* is shown when a party completes all documents in the package. It is shown on the package page. If a "completed URL" is defined in the party in the package, this message will not be shown as the party will be redirected to that URL when all documents are completed.
+  * *Party has deleted the transaction* is shown if the party was able to delete the transaction and all related documents.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 == Document styles http://open.esignforms.com/images/HowToGuidesWiki/documentStylesIcon.png ==
 
 Document styles provides basic control of the look of your documents. They specify CSS (Cascading Style Sheets) rules. By using a common set of styles, documents will have a consistent look. Open eSignForms comes with a built-in default style in the *ESF/Library/Template* library called *ESF_DefaultDocumentStyle*. It is a clean, modern look.
@@ -831,7 +904,7 @@ For the list of documents and parties on the right side, the fields are:
   * The *Documents in this package* table lists each [#Package_document_configuration document in the package] and the order they will be presented. If you drag a document from the table back to the *Choose documents* tree and drop it anywhere there, the document will be removed from the package and will automatically be returned to the correct library where it came from.
   * The *Parties involved with this package of documents* table lists all [#Package_party_configuration parties defined in the package], as well as the order in which they should process the package of documents. The first party is the "initiator" who starts the transaction and can be a normal user or an [#From_another_web_site_or_web-accessible_application,_email_proce automated API party]. If for any reason your package needs more parties than are defined in the documents, such as adding a party who may need to see the completed documents when done, you can use the *Add View-Only party* button to add a party that will be given 'View only' access to all documents in the package. You can then modify that party as needed.
   * The *Package+disclosure view* drop down list lets you choose the [#Package+disclosure_documents special document] that plays the role of welcoming the parties, showing E-Sign disclosures, as well as the list of documents the party is expected to process. By default, this is the *ESF/Library/Template/StandardPackageDisclosures* document.
-  * The *Button message set* drop down list lets you choose the [#ButtonMessageSet button message set] to use for this package. By default, this is the *Esf/Library/Template/ESF_DefaultButtonMessage* set.
+  * The *Button message set* drop down list lets you choose the [#Button_message_sets button message set] to use for this package. By default, this is the *Esf/Library/Template/ESF_DefaultButtonMessage* set.
 
 Click the *Make Test version Production* button to move a Test version package to Production. 
 
@@ -1515,64 +1588,6 @@ Click the *Delete* button to remove the selected report field template if it's n
 While a transaction exists, parties can use their unique links (and users can access their work via the [UserGuide#To_Do To Do queue]) to access the package of documents.
 
 If a transaction is canceled or suspended, no access is given to any party.
-
-== Buttons ==
-
-When parties access a transaction, they are presented with a combination of the package+disclosures page, which lists all documents that party has access to, as well as the page(s) defined for each of the documents in the package that are defined for the party.
-
-Each party has options based on the buttons provided. This section discusses those buttons and when they are accessible.
-
-The default labels for buttons are defined in the Template Library's property set `ESF_Buttons`.  
-
-You can override the button labels by creating alternative property sets as follows (we do not recommend using this too much as we expect to have a more straightforward mechanism for customizing buttons in the future). The exact ESF_Buttons property set that is used follows this search algorithm to allow for overriding values for given party on a given document, for any party on a given document, for all documents based on the package party, or for everyone on all documents:
-
-  # Check for a propertyset named `ESF_Buttons_DocumentEsfName_DocPartyEsfName` where `DocumentEsfName` is replaced by the current document's name, and `DocPartyEsfName` is replaced by the party name defined in that document. (Will use `DocPartyEsfName` 'ViewOnly' for a view only party to the document.)
-  # Check for a propertyset named `ESF_Buttons_DocumentEsfName` where `DocumentEsfName` is replaced by the current document's name.
-  # Check for a propertyset named `ESF_Buttons_PickupPartyEsfName` where `PickupPartyEsfName` is replaced by the package party EsfName.
-  # Lastly, check for a propertyset named `ESF_Buttons` (one should always be found in the template library).
-
-And of course, being a property set, you can override them with branding libraries and the like, searching for the above 4 alternatives by first checking the transaction's branding library, next the document's library, then finally in the template library.
-
-=== Package+disclosures buttons ===
-
-When a party is on the package+disclosures page that lists all documents the party has access to, the following buttons are used:
-
-  * Party has work to do (at least one document yet to be reviewed, filled out, and/or signed):
-    * `PackageButtonContinueToDo` defaults to *Continue*.
-    * 'Allow delete tran if no signatures' is checked in the package party configuration, and no documents have been signed: `PackageButtonDelete` defaults to *Delete this transaction*.
-    * 'Not completed redirect link/URL spec' in the package party configuration is set: `PackageButtonNotCompleting` defaults to *Go back (not completing now)*.
-
-  * Party has reviewed/completed all documents:
-    * `PackageButtonContinueDone` defaults to *View first document*.
-    * `PackageDownloadMyDocsAsPdf` defaults to *Download my documents as a PDF*
-
-=== Document buttons ===
-
-When a party is processing a given document, the following buttons are used:
-
-  * Party is editing (filling out, signing) a document:
-    * If there's a next page: `DocumentEditButtonContinueNextPage' defaults to *Continue*.
-    * If there's no next page (on last/only page): `DocumentEditButtonContinueToReview` defaults to *Continue to review*. Puts the user in review mode.
-    * If there's a previous page: `DocumentEditButtonPreviousPage` defaults to *Go back to previous page*.
-    * `DocumentButtonGoToPackage` defaults to *Return to the document list*.
-
-  * Party is reviewing a document filled out or signed:
-    * If the party can sign: `DocumentReviewButtonCompleteSigner` defaults to *Submit signed document*.
-    * If the party cannot sign: `DocumentReviewButtonCompleteNotSigner` defaults to *Submit completed document*.
-    * `DocumentReviewButtonReturnToEdit` defaults to *Go back to make changes*. Puts the user back in edit mode.
-
-  * Party is reviewing a document with no fields to fill in or sign:
-    * If there's a next page: `DocumentReviewViewOnlyButtonContinueNextPage` defaults to *Continue*.
-    * If there's no next page (on last/only page): `DocumentReviewViewOnlyButtonComplete` defaults to *Continue*.
-    * If there's a previous page: `DocumentReviewViewOnlyButtonPreviousPage` defaults to *Go back to previous page*.
-    * `DocumentButtonGoToPackage` defaults to *Return to the document list*.
-
-  * Party is in view only mode (such as after completing the document and returning to view it again):
-    * If there's a next page: `DocumentViewOnlyButtonNextPage` defaults to *Continue*.
-    * If there's no next page, but there is another document: `DocumentViewOnlyButtonNextDocument` defaults to *Go to next document*.
-    * If there's a previous page: `DocumentViewOnlyButtonPreviousPage` defaults to *Go back to previous page*.
-    * If there's no previous page, but there is a previous document: `DocumentViewOnlyButtonPreviousDocument` defaults to *Go to previous document*.
-    * `DocumentButtonGoToPackage` defaults to *Return to the document list*.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
