@@ -227,7 +227,9 @@ To use one of the editor's text styles, highlight existing text to change, then 
 
 Most of the editor icons have a tooltip if you hover over it.
 
-Select bold, italics, underlined, colored text or colored background for text (like a highlighting marker).
+Select bold, italics, underlined, strike-through, subscript, superscript or remove formatting.
+
+Select colored text or colored background for text (like a highlighting marker).
 
 Click the *Font* drop down to change the font on the selected text.
 
@@ -235,7 +237,7 @@ Click the *Size* drop down to change the font size on the selected text.
 
 Click one of the text alignment buttons for: left justified, centered, right justified, fully justified (both left and right justified).
 
-Click the cut, copy, paste, paste as plain text or paste as Word to paste whatever is in your clipboard. If you are copying from a Word document, we recommend using the 'past as Word' button.
+Click the cut, copy, paste, paste as plain text or paste as Word to paste whatever is in your clipboard. If you are copying from a Word document, we recommend using the 'Paste as Word' button.
 
 Click the Find or Find & Replace to look for text in the editor.
 
@@ -255,7 +257,7 @@ Click the Insert Special Character button to add one of the listed characters.
 
 Click the Image button to insert an image defined in the document, the document's library or from the ESF/Library/Template.
 
-Click the Link button to make a hyperlink. Click on the Browse button to make a link to a file you have uploaded in the document's library.
+Click the Link button to make a hyperlink. Click on the Browse button to make a link to a file you have uploaded in the document's library. Click the Unlink button to remove a hyperlink from selected text.
 
 Click the Source button, for advanced users, who want to see the HTML generated. You may enter HTML directly in this mode and then click it again to return to the WYSIWYG mode. In Source mode, you can also add javascript or style sections as necessary.
 
@@ -309,6 +311,8 @@ By default, new fields are given the *General* type, meaning they are standard t
   * Check *Top*, *Bottom*, *Left* and/or *Right* to include borders around the field.
   * The *Initial value* specifies a fixed value or a field specification, like `${transaction:firstName}`, which is used to set the field's initial value when the transaction is started. You generally cannot reference other fields in the document (since the order they are initialized is not defined), but you can set it to values posted when the transaction was started by an external process. If the initial value field specification cannot be found and the *Display if empty value* option is enabled, then the field will be left blank rather than set to the missing field name.
   * The *Display if empty value* specifies a fixed value or a field specification, which is displayed for this field when the value is blank (null, spaces, empty string, etc.) To activate this, you need to check the box to its left.
+  * The *Auto POST* checkbox allows you to submit all data on the form to the server when it's value changes. This is generally only done when linking two drop boxes such that the second drop box list is set dynamically based on the value of the first drop down list.
+  * The *Dynamic drop down list name spec* appears for drop down list fields so that the actual drop down list used can be based on the value of other fields.
   * The *User tooltip* allows you to enter a tooltip that will display when the party hovers the mouse over the field on the document.
   * The *Input format* specifies the expected format for input into the field.
   * The *Display format* specifies the format to use when displaying the field (not in input/edit mode).
@@ -573,6 +577,70 @@ ${transaction:documents.todo}
 }}}
 
 You are free to create your own documents with alternative welcome messages, E-Sign Disclosures and/or layout for this purpose. Just specify your package+disclosure document in the [#Packages Package configuration].
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Advanced programming of a document ===
+
+Not everything can be done with point & click programming. Here are a few tips that can be used when CKEditor is in *Source* mode.
+
+==== Style sheets ====
+You can add your own styles just by including a standard HTML style tag at the top of your document:
+
+{{{<style type="text/css">}}}
+
+_put your custom styles here_
+
+{{{</style>}}}
+
+==== JavaScript ====
+You can add your own javascript just by including a standard HTML script tag at the top of your document:
+
+{{{<script type="text/javascript">}}}
+
+_put your custom JavaScript here_
+
+{{{</script>}}}
+
+Such scripts run entirely in the user's browser and are only in effect if their browser is set to support JavaScript. We do not recommend using JavaScript to generate the document layout so that the captured HTML document on signing can be rendered correctly and consistently in the future. JavaScript generally should not be required for the document to work or render correctly.
+
+==== Java code snippets ====
+You can add your custom Java programming to your document using JSP code syntax such as:
+
+`<%` _put your custom java code here_ `%>`
+
+Unlike JavaScript, this code runs on the server before the page is rendered to the user's browser.  Note that it is important to get the syntax right, especially with respect to open and close brackets for conditions and loops.
+
+This is particularly useful for optional HTML to display in a document. The variable *docPage* can be used to access the server-side document page object (programmers can see the details in the source code for `com.esignforms.open.jsp.libdocsgen.DocumentPageBean` and its superclass `com.esignforms.open.jsp.PageBean`.
+
+For example, to conditionally show some HTML based on whether the current page is in EDIT, REVIEW or VIEW ONLY modes, you can use code like this:
+
+{{{ <% if ( docPage.isPageEdit() ) { %>}}}
+
+_put the optional HTML here to show only if the document is being filled out and/or signed_
+
+{{{ <% } %> }}}
+
+Or
+
+{{{ <% if ( docPage.isPageReview() ) { %>}}}
+
+_put the optional HTML here to show only if the document is being reviewed before submitting_
+
+{{{ <% } %> }}}
+
+or 
+
+{{{ <% if ( docPage.isPageViewOnly() ) { %>}}}
+
+_put the optional HTML here to show only if the document is being viewed and is not part of the typical EDIT/REVIEW cycle, such as a view-only party or a party who has already completed the document_
+
+{{{ <% } %> }}}
+
+Other perhaps useful condition checks:
+  * *{{{docPage.isViewOnlyParty()}}}* returns true if the party defined is view-only, meaning that the party is defined but has no fields that can be edited in the document.
+  * *{{{docPage.isViewOnlyNonParty()}}}* returns true if the current party is view-only because the document does not define the specified party.
+  * *{{{docPage.isParty("FirstParty")}}}* returns true if the current document party is defined with the name "FirstParty". Clearly you can pass in any document party name to test for that particular party.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
