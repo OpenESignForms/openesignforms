@@ -641,6 +641,7 @@ Other perhaps useful condition checks:
   * *{{{docPage.isViewOnlyParty()}}}* returns true if the party defined is view-only, meaning that the party is defined but has no fields that can be edited in the document.
   * *{{{docPage.isViewOnlyNonParty()}}}* returns true if the current party is view-only because the document does not define the specified party.
   * *{{{docPage.isParty("FirstParty")}}}* returns true if the current document party is defined with the name "FirstParty". Clearly you can pass in any document party name to test for that particular party.
+  * *{{{docPage.getFieldSpecWithSubstitutions("firstName")}}}* returns a String that represents the value of "firstName" field. Clearly you can pass in any document field name or field specification. This is typically used to then compare the returned value to some other value to show/hide some HTML based on how it is set.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
