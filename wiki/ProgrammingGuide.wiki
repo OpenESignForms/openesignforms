@@ -611,11 +611,60 @@ You can add your custom Java programming to your document using JSP code syntax 
 
 Unlike JavaScript, this code runs on the server before the page is rendered to the user's browser.  Note that it is important to get the syntax right, especially with respect to open and close brackets for conditions and loops.
 
-This is particularly useful for optional HTML to display in a document. The variable *docPage* can be used to access the server-side document page object (programmers can see the details in the source code for `com.esignforms.open.jsp.libdocsgen.DocumentPageBean` and its superclass `com.esignforms.open.jsp.PageBean`.
+This is particularly useful for optional HTML to display in a document. The variable *esf* can be used in your document custom Java code to access the server-side state. The Java interface for this object is shown below:
 
-For example, to conditionally show some HTML based on whether the current page is in EDIT, REVIEW or VIEW ONLY modes, you can use code like this:
+{{{
+public interface EsfDocumentPageInterface 
+{
+	/**
+	 * @return true if the page is currently in EDIT mode, meaning the party is authorized to fill out fields on the form, the 
+	 * stage before going into REVIEW mode.
+	 */
+    public boolean isEditMode();
 
-{{{ <% if ( docPage.isPageEdit() ) { %>}}}
+	/**
+	 * @return true if the page is currently in REVIEW mode, meaning the party is authorized to fill out fields on the form while in EDIT
+	 * mode but now is reviewing the page before submitting it.
+	 */
+    public boolean isReviewMode();
+    
+	/**
+	 * @return true if the page is currently in VIEW-ONLY mode, meaning the party is not authorized to fill out any fields, or is
+	 * returning after completing the document so no further changes can be made.
+	 */
+    public boolean isViewMode();
+
+	/**
+	 * @return true if the current party can only view the document and has no fields that can be updated/filled out on any
+	 * page in the document.
+	 */
+	public boolean isViewOnlyParty();
+	
+	/**
+	 * @return true if the current party is a view-only party that is not even defined as a party to the document. 
+	 * This party cannot make any changes and is generally defined in the package but is not mapped to a specific document party.
+	 */
+	public boolean isViewOnlyNonParty();
+	
+	/**
+	 * @param docPartyName the String document party name to check (should be one of the document party names defined for the document)
+	 * @return true if the current party is the specified document party
+	 */
+	public boolean isParty(String docPartyName);
+	
+	/**
+	 * @param fieldSpec the String field specification, such as ${firstName} to get the field firstName from the document
+	 * @return the String value associated with the field spec. If the field spec is invalid (no such field can be found)
+	 * the field spec is returned without any values replacing it.
+	 */
+	public String getFieldSpecValue(String fieldSpec);
+
+}
+}}}
+
+For example, to conditionally show some HTML based on whether the current page is in EDIT or REVIEW mode, you can use code like this:
+
+{{{ <% if ( esf.isEditMode() ) { %>}}}
 
 _put the optional HTML here to show only if the document is being filled out and/or signed_
 
@@ -623,25 +672,11 @@ _put the optional HTML here to show only if the document is being filled out and
 
 Or
 
-{{{ <% if ( docPage.isPageReview() ) { %>}}}
+{{{ <% if ( esf.isReviewMode() ) { %>}}}
 
 _put the optional HTML here to show only if the document is being reviewed before submitting_
 
 {{{ <% } %> }}}
-
-or 
-
-{{{ <% if ( docPage.isPageViewOnly() ) { %>}}}
-
-_put the optional HTML here to show only if the document is being viewed and is not part of the typical EDIT/REVIEW cycle, such as a view-only party or a party who has already completed the document_
-
-{{{ <% } %> }}}
-
-Other perhaps useful condition checks:
-  * *{{{docPage.isViewOnlyParty()}}}* returns true if the party defined is view-only, meaning that the party is defined but has no fields that can be edited in the document.
-  * *{{{docPage.isViewOnlyNonParty()}}}* returns true if the current party is view-only because the document does not define the specified party.
-  * *{{{docPage.isParty("FirstParty")}}}* returns true if the current document party is defined with the name "FirstParty". Clearly you can pass in any document party name to test for that particular party.
-  * *{{{docPage.getFieldSpecWithSubstitutions("firstName")}}}* returns a String that represents the value of "firstName" field. Clearly you can pass in any document field name or field specification. This is typically used to then compare the returned value to some other value to show/hide some HTML based on how it is set.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
