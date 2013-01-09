@@ -500,6 +500,11 @@ To insert the value of a configured property, you may use this notation:
   * `${transaction:ESF_Request_RequestURL}` is replaced by HTTP request's original URL.
   * `${transaction:ESF_Request_QueryString}` is replaced by HTTP request's query string portion of the URL.
   * `${transaction:ESF_Request_RemoteAddr}` is replaced by HTTP request's remote address (typically an IP address).
+  * `${transaction:user.id}` is replaced by the user id of the logged in user who is acting as the current party if it's a logged in user.
+  * `${transaction:user.email}` is replaced by the email address of the logged in user who is acting as the current party if it's a logged in user.
+  * `${transaction:user.email_address}` is replaced by the full email display name and email address of the logged in user who is acting as the current party if it's a logged in user.
+  * `${transaction:user.personal_name}` is replaced by the first/personal name of the logged in user who is acting as the current party if it's a logged in user.
+  * `${transaction:user.family_name}` is replaced by the last/family name of the logged in user who is acting as the current party if it's a logged in user.
   * `${transaction:user.employee_id}` is replaced by the employee id of the logged in user who is acting as the current party if it's a logged in user and this optional field has been set.
   * `${transaction:user.job_title}` is replaced by the job title of the logged in user who is acting as the current party if it's a logged in user and this optional field has been set.
   * `${transaction:user.department}` is replaced by the department of the logged in user who is acting as the current party if it's a logged in user and this optional field has been set.
