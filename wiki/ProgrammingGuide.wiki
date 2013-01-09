@@ -489,6 +489,10 @@ To insert the value of a configured property, you may use this notation:
   * `${transaction:ESF_Started_By_User_Email_Address}` is replaced by the full email display name and email address of the person who started this transaction if it was started by a logged in user.
   * `${transaction:ESF_Started_By_User_Personal_Name}` is replaced by the first/personal name of the person who started this transaction if it was started by a logged in user.
   * `${transaction:ESF_Started_By_User_Family_Name}` is replaced by the last/family name of the person who started this transaction if it was started by a logged in user.
+  * `${transaction:ESF_Started_By_User_Employee_ID}` is replaced by the employee id of the person who started this transaction if it was started by a logged in user and this optional field has been set.
+  * `${transaction:ESF_Started_By_User_Job_Title}` is replaced by the job title of the person who started this transaction if it was started by a logged in user and this optional field has been set.
+  * `${transaction:ESF_Started_By_User_Department}` is replaced by the department of the person who started this transaction if it was started by a logged in user and this optional field has been set.
+  * `${transaction:ESF_Started_By_User_Phone_Number}` is replaced by the phone number of the person who started this transaction if it was started by a logged in user and this optional field has been set.
   * `${transaction:paramName}` is replaced by the value of the named parameter passed at startup (X prefix is needed if original param started with a number; '-', '/' or '.' replaced by '`_`').
   * `${transaction:ESF_Request_Header_headerName}` is replaced by the value of the named header passed at startup ('-', '/' or '.' replaced by '`_`').
   * `${transaction:ESF_Request_Method}` is replaced by 'GET' or 'POST' based on type of original startup HTTP request.
@@ -496,6 +500,10 @@ To insert the value of a configured property, you may use this notation:
   * `${transaction:ESF_Request_RequestURL}` is replaced by HTTP request's original URL.
   * `${transaction:ESF_Request_QueryString}` is replaced by HTTP request's query string portion of the URL.
   * `${transaction:ESF_Request_RemoteAddr}` is replaced by HTTP request's remote address (typically an IP address).
+  * `${transaction:user.employee_id}` is replaced by the employee id of the logged in user who is acting as the current party if it's a logged in user and this optional field has been set.
+  * `${transaction:user.job_title}` is replaced by the job title of the logged in user who is acting as the current party if it's a logged in user and this optional field has been set.
+  * `${transaction:user.department}` is replaced by the department of the logged in user who is acting as the current party if it's a logged in user and this optional field has been set.
+  * `${transaction:user.phone_number}` is replaced by the phone number of the logged in user who is acting as the current party if it's a logged in user and this optional field has been set.
 
 ==== Built-in fields used in Package documents ====
   * `${transaction:documents.todo}` specifies where the generated list of documents the specified party has access to are listed.
