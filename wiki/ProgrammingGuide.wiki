@@ -441,7 +441,7 @@ Next, add in your fields using the generic `${fieldName}` syntax inside the docu
 Once your testing shows the document layout working as expected, with general fields, you can then use the 'Fields in document' tab to update their types as necessary. At this stage, you can also define the parties who will fill out the document and assign the fields to the respective parties.
 
 ==== Coding conventions ====
-`${fieldName}` specifies a document field called 'fieldName'. Examples include `${firstName}`, `${streetAddres}`, `${SSN}` etc.  We recommend that each document have a field for each variable element so it will work more easily when packaged with other documents.  However, a document may reference a field (display-only value) from another document using the notation: `${documentName.fieldName}`.  `${fieldName}` is equivalent to `${fieldlabel:fieldName}`, with the former preferred as it's easier to type.
+`${fieldName}` specifies a document field called 'fieldName'. Examples include `${firstName}`, `${streetAddress}`, `${SSN}` etc.  We recommend that each document have a field for each variable element so it will work more easily when packaged with other documents.  However, a document may reference a field (display-only value) from another document using the notation: `${documentName.fieldName}`.  `${fieldName}` is equivalent to `${fieldlabel:fieldName}`, with the former preferred as it's easier to type.
 
 The names are used as programming variables and thus have are limited to 50 characters in length, must begin with a letter, and then can contain numbers, uppercase or lowercase letters and the underscore (`_`).  So `firstName` and `First_Name` are valid, while `First name` and `1stName` and `first-name` are not.
 
