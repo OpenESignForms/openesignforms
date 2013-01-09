@@ -443,6 +443,8 @@ Once your testing shows the document layout working as expected, with general fi
 ==== Coding conventions ====
 `${fieldName}` specifies a document field called 'fieldName'. Examples include `${firstName}`, `${streetAddress}`, `${SSN}` etc.  We recommend that each document have a field for each variable element so it will work more easily when packaged with other documents.  However, a document may reference a field (display-only value) from another document using the notation: `${documentName.fieldName}`.  `${fieldName}` is equivalent to `${fieldlabel:fieldName}`, with the former preferred as it's easier to type.
 
+If the `documentName` prefix portion is set to the literal 'document' it is interpretted as the "current document" which is the same as not using the `documentName` at all.  Use the prefix 'transaction' to access data from the transaction data, including startup data and to access related fields from the transaction (id, displayname, user.* fields, etc.).
+
 The names are used as programming variables and thus have are limited to 50 characters in length, must begin with a letter, and then can contain numbers, uppercase or lowercase letters and the underscore (`_`).  So `firstName` and `First_Name` are valid, while `First name` and `1stName` and `first-name` are not.
 
 If a given field appears in multiple locations in a document, only one should be used for input with the standard field notation.  The other references to the field, where it's only displayed, should use:
@@ -525,6 +527,16 @@ To insert the value of a configured property, you may use this notation:
 
 ==== Other built-in operators ====
   * `${serial:SerialName}` is replaced by the next serial number defined with the name 'SerialName'. Numbers for test and production transactions are maintained separately. This generally should only be used to set another field value as it will return a new value every time it is referenced (i.e. not to be used directly in your document layout).
+
+==== Field specifications ====
+
+Various configuration fields allow for the specification of field specifications, which are basically the same as the field accesses above, but can be a literal or combination of other fields.
+
+For example, these are valid field specifications:
+  * `this literal string` - This literal-only field specification simply is "expanded" to the same literal string: *this literal string*
+  * `${transaction.id}` - This field-only specification expands to the ID of the current transaction, such as: *6ae1f380-8184-4a0a-ad0a-e3597d968462*
+  * `StoresIn${state}` - This combines a literal *StoresIn* with the current document field *state*, assuming the state of Washington would result in something like: *StoresInWA*
+  * `${firstName} ${lastName}` - This combines the field *firstName* with a space literal and another field *lastName* to create a full name, resulting in something like: *Steven Gates*
 
 ==== Links to advanced configuration options ====
 There are a few data types that allow for customization using Java's built in capabilities, but they are a bit technical. For advanced folks who need them, here are some useful links to documentation that describe these more.
