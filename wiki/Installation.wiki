@@ -304,7 +304,10 @@ mynetworks_style = host
 virtual_alias_maps = regexp:/etc/postfix/virtual_alias
 }}}
 
-  * In our deployments, we use dovecot for our IMAP server.
+  * In our deployments, we use dovecot for our IMAP server. With CentOS 6 (wasn't needed as late as CentOS 5.6) we seem to need to add the following to `/etc/dovecot/dovecot.conf` file:
+{{{
+mail_location = mbox:~/mail:INBOX=/var/mail/%u
+}}}
 
 ==Other tools==
 
@@ -463,8 +466,10 @@ case "$1" in
                 /usr/local/bin/sp ntpd
                         echo Status of sshd:
                 /usr/local/bin/sp sshd
-                        echo Status of postfix:
+                        echo Status of postfix SMTP:
                 /usr/local/bin/sp postfix
+                        echo Status of dovecot IMAP:
+                /usr/local/bin/sp dovecot
                 echo
                 su - esignforms -c "bin/checkall"
                 RETVAL=$?
