@@ -311,7 +311,7 @@ mail_location = mbox:~/mail:INBOX=/var/mail/%u
 
 ==Other tools==
 
-We also are making use of [http://findbugs.sourceforge.net/ FindBugs]. They have an Eclipse update site {{{http://findbugs.cs.umd.edu/eclipse}}} that you can use to add it to your Eclipse.
+We also are making use of [http://findbugs.sourceforge.net/ FindBugs]. They have an Eclipse update site {{{http://findbugs.cs.umd.edu/eclipse}}} that you can use to add it to your Eclipse. We also make use of [https://www.owasp.org/index.php/OWASP_LAPSE_Project OWASP LAPSE].
 
 While not needed for this particular effort, we recommend PasswordSafe (sourceforge) or something similar so you can remember one great pass phrase and keep your various other passwords unique, so when your bank or the like is hacked, at least the password is not used in other sites that become vulnerable as a result.
 
