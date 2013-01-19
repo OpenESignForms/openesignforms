@@ -108,6 +108,18 @@ _Note, some transactions may not be started by users, and those will not be list
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+== Start a transaction HTML page ==
+
+There are instances where using the sophisticated Web 2.0 interface is not suitable for all users, such as when starting transactions from a tablet or phone.  Just add `/start/` to your login URL (i.e. `https://example.com/appname/start/` if you'd normally login at `https://example.com/appname/`).  
+
+http://open.esignforms.com/images/HowToGuidesWiki/StartTranHTMLPage.png
+
+You will still have to login, but you will be presented with a list of transactions you can you start.
+
+If the transaction name is an active link, it means you can run a PRODUCTION version by clicking on it. The transaction is started in an independent browser window. The listing also includes simple links to start the transaction in TEST or TEST LIKE PRODUCTION modes.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 = Reports http://open.esignforms.com/images/HowToGuidesWiki/reportsIcon.png =
 
 To list reports you are allowed to run, open the Reports menu item. All reports are custom-built, but this example explains the main search criteria and capabilities.
