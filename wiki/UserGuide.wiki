@@ -116,9 +116,9 @@ http://open.esignforms.com/images/HowToGuidesWiki/StartTranHTMLPage.png
 
 You will still have to login, but you will be presented with a list of transactions you can you start.
 
-You can also add links for testing purposes by adding the param `ESFTEST=Yes` to the the URL above: `/start/?ESFTEST=Yes`.
+If the transaction name is an active link, it means you can run a PRODUCTION version by clicking on it. The transaction is started in an independent browser window. 
 
-If the transaction name is an active link, it means you can run a PRODUCTION version by clicking on it. The transaction is started in an independent browser window. The listing also includes simple links to start the transaction in TEST or TEST LIKE PRODUCTION modes.
+You can also add additional start links for testing purposes by adding the param `ESFTEST=Yes` to the the URL above: `/start/?ESFTEST=Yes`.  The listing above shows the added links to start the transaction in TEST or TEST LIKE PRODUCTION modes.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
