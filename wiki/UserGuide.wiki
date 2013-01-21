@@ -110,11 +110,13 @@ _Note, some transactions may not be started by users, and those will not be list
 
 == Start a transaction HTML page ==
 
-There are instances where using the sophisticated Web 2.0 interface is not suitable for all users, such as when starting transactions from a tablet or phone.  Just add `/start/` to your login URL (i.e. `https://example.com/appname/start/` if you'd normally login at `https://example.com/appname/`).  
+There are instances where using the sophisticated Web 2.0 interface is not suitable for all users, such as when starting transactions from a tablet or phone.  Just add `/start/` to your login URL (i.e. `https://example.com/appname/start/` if you'd normally login at `https://example.com/appname/`) to get a listing of production-level transactions you can start.
 
 http://open.esignforms.com/images/HowToGuidesWiki/StartTranHTMLPage.png
 
 You will still have to login, but you will be presented with a list of transactions you can you start.
+
+You can also add links for testing purposes by adding the param `ESFTEST=Yes` to the the URL above: `/start/?ESFTEST=Yes`.
 
 If the transaction name is an active link, it means you can run a PRODUCTION version by clicking on it. The transaction is started in an independent browser window. The listing also includes simple links to start the transaction in TEST or TEST LIKE PRODUCTION modes.
 
