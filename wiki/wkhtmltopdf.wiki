@@ -14,26 +14,25 @@ These are just some quick notes on setting up *wkhtmltopdf* on our CentOS Linux 
     {{{tar xvjf wkhtmltopdf-0.11.0_rc1-static-i386.tar.bz2}}}
 
   * Install dependencies via yum:
-    {{{yum install fontconfig libXrender libXext '*fonts*'}}}
+    {{{yum install fontconfig libXrender libXext '*fonts*' openssl}}}
 
     {{{yum remove tetex-fonts}}}      (not needed and generates daily cron errors)
     
     (In particular you want urw-fonts, but you probably want others too, like xorg-x11-fonts-truetype)
 
-  * Either put the file `wkhtmltopdf-i386` into your `~/bin` directory or create softlink, such as `cd ~bin` and `ln -s ../wkhtmltopdf_0.11.0/wkhtmltopdf-i386 .`.
+  * Either put the file `wkhtmltopdf-i386` into your `~/bin` directory named `wkhtmltopdf` or create softlink, such as `cd ~bin` and `ln -s ../wkhtmltopdf_0.11.0/wkhtmltopdf-i386 wkhtmltopdf`.
 
   * For our HTML, we typically use options:
-    {{{wkhtmltopdf.i386 --page-size Letter --print-media-type --image-quality 100}}}
+    {{{wkhtmltopdf --page-size Letter --print-media-type --image-quality 100}}}
 
-    Try running the command `wkhtmltopdf.i386` to ensure it can be found in your PATH and that it shows no missing components.
+    Try running the command `wkhtmltopdf` to ensure it can be found in your PATH and that it shows no missing components.
 
-  * For the 32-bit static builds, assuming you are on 64-bit Linux, you'll want to make sure you have these components with i386/i686 architecture. If you have the 64-bit versions, you can use `yum whatprovides fontconfig` to discover the component details for the 32-bit version (in this case, fontconfig-2.4.1-7.el5.i386 or fontconfig-2.8.0-3.el6.i686).  This includes `fontconfig`, `libXrender`, `libzip`, `libXext` and `libstdc++`.
+  * For the 32-bit static builds, assuming you are on 64-bit Linux, you'll want to make sure you have these components with i386/i686 architecture. If you have the 64-bit versions, you can use `yum whatprovides fontconfig` to discover the component details for the 32-bit version (in this case, fontconfig-2.4.1-7.el5.i386 or fontconfig-2.8.0-3.el6.i686).  This includes `fontconfig`, `libXrender`, `openssl`, `libzip`, `libXext` and `libstdc++`.
 
 = Questionable =
 
 In our various installs, we also did yum installs of:
   * libX11-devel
-  * openssl-devel (may only be needed if you use it to retrieve SSL-protected pages)
   * giflib
   * libpng
   * libjpeg
