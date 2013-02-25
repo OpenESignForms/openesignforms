@@ -18,7 +18,7 @@ These are just some quick notes on setting up *wkhtmltopdf* on our CentOS Linux 
 
     {{{yum remove tetex-fonts}}}      (not needed and generates daily cron errors)
     
-    (In particular you want urw-fonts, but you probably want others too, like xorg-x11-fonts-truetype)
+    (In particular you want urw-fonts, but you probably want others too, like xorg-x11-fonts-truetype if available)
 
   * Either put the file `wkhtmltopdf-i386` into your `~/bin` directory named `wkhtmltopdf` or create softlink, such as `cd ~bin` and `ln -s ../wkhtmltopdf_0.11.0/wkhtmltopdf-i386 wkhtmltopdf`.
 
