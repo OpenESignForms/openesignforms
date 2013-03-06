@@ -955,6 +955,49 @@ _Tips: Normally, property values are encoded to be HTML-safe when displayed in y
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+=== Nesting property sets for simple property-based database ===
+
+Using a custom action to set a field value, you can look up a property value using another field as the key, giving a simple DB-like lookup capabilities.
+
+For example, let's say you have a field, `productId`, and it perhaps is set from a drop down list, but it's values are 1, 2, 3, etc. 
+
+We can create a property set, say `ProductInfo`, with a property values such as:
+{{{
+Id1_Price = $5.00
+Id1_Description = This describes the first item.
+Id2_Price = $25.50
+Id2_Description = This describes the second item.
+Id3_Price = $19.99
+Id3_Description = This describes the third item.
+}}}
+
+Now, you want to get the product's price by it's id, you could create a field `productPrice` and in a custom action set it based on the current `productId` value using nested field specs: `${property:ProductInfo.Id${productId}_Price}`
+
+And you can get it's description using: `${property:ProductInfo.Id${productId}_Description}`
+
+This same technique also works if to select a property set (and/or the property name within the set), so if I instead had property sets named `Product_1`, `Product_2`, `Product_3`, etc. and they each had properties name `Price` and `Description`, we'd have property sets set something like:
+
+{{{
+Product_1.Price
+Product_1.Description
+
+Product_2.Price
+Product_2.Description
+
+Product_3.Price
+Product_3.Description
+}}}
+
+which could be accessed depending on the `productId` using:
+
+{{{
+${property:Product_${productId}.Price} and ${property:Product_${productId}.Description} 
+}}}
+
+I hope this is a useful tip for those who need a simple lookup database that is based on some other value.  The trick is that property set names and property names are limited to our standard field naming convention, so it must start with a letter, be composed of letters, numbers and underscores and be no longer than 50 characters each.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 == Serial generators http://open.esignforms.com/images/HowToGuidesWiki/serialGeneratorsIcon.png ==
 
 Serial generators are used to create unique, serial numbers. They are often used to automatically assign customer numbers, purchase order numbers, etc. It manages two numbers, one for test transactions and the other for production transactions.  Like other items in the library, you can override a serial generator via the branding library defined for a transaction template.
