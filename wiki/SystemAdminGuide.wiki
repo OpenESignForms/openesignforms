@@ -417,6 +417,58 @@ Record types:
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+= Template library =
+
+Under Programming->Libraries->ESF/Library/Template are the system configurations for you deployment. We will discuss a few of the key elements that you may want to tweak for you deployment.
+
+== Documents ==
+
+The system standard package listing and E-Sign Disclosures are defined in the document *StandardPackageDisclosures*. We do not recommend changing this document, but you may find that you want to export it and import into your own library so you can change the layout and wording of the standard package listing and disclosures.
+
+== Button message sets ==
+
+The system standard buttons and messages are defined in the button message set *ESF_DefaultButtonMessage*. We do not recommend changing this button set, but you may find that you want to export it and import into your own library so you change the button labels and messages.
+
+== Document styles ==
+
+The system standard styles are defined in the document style *ESF_DefaultDocumentStyle*. We do not recommend changing this document style, but you may find that you want to export it and import into your own library so you change the default styles for your documents.
+
+== Drop downs ==
+
+In general, the drop downs here will need to be changed if you need values that are not currently supported. Of course, you should take care to ensure your values are correct.
+
+== Emails ==
+
+The system sends a few emails for its own needs and they are defined here, as well as the standard pickup notification.  
+
+*DefaultPickupNotification* contains the default email notification that is sent out for a party to process your documents. We do not recommend changing this email, but you may find that you want to export it and import into your own library so you change the default emails for your transactions.
+
+*ForgotPassword* is sent when a user requests that their password be reset automatically.
+
+*PasswordChanged* is sent to the user's email address any time the password is changed.
+
+*PasswordLockout* is sent to the user's email address whenever they are locked out because of three login failures.
+
+*SetPassword* is sent to the user's email to have them set a new password for their account.
+
+== Images/Logos ==
+
+The file *Logo* is the default logo used for your deployment, such as on the login page.  The various other images allow you to change other icons used in documents, error messages, etc.
+
+== Property sets ==
+
+The *ESF* property set has a few properties you may want to tweak.
+
+The *LoginPageAllowEmbedded* can be set to *true* if you plan to embed the login page in another web page. We do not recommend this for security reasons (the domain name, SSL cert, etc. are hidden and enable phishing attacks and hacks that occur on the web page where it is embedded. This basically removes the javascript that forces the login page to be to the top level page.
+
+The *LoginPageTitle* sets the web page title for the login page.
+
+The *LoginWelcomeHeader* sets the main welcome message that appears on the login page.
+
+The *SendEmailFrom* contains the default FROM email address to be used when sending out emails from this deployment.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 = XML Digital Signatures =
 
 Open eSignForms uses industry standard XML Digital Signatures to create reliable records of every step of a transaction. Our digital signatures use the most powerful digital signatures on the marketplace today with 4096-bit RSA keys over SHA-512 hashes.
