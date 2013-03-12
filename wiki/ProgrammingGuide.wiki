@@ -289,7 +289,8 @@ By default, new fields are given the *General* type, meaning they are standard t
     * *Decimal* is a text input field that expects a valid decimal number, like 123.4. It differs from the Money type only in that it doesn't show a currency symbol.
     * *Drop down list* lets you choose a drop down list defined in your library so that parties can select a valid value from the list.
     * *Email address* is a text input field that expects a valid email address.
-    * *File upload* is a special field that allows files to be attached (or removed) when in edit mode, or listed and viewed when in display mode.
+    * *File confirm click* is a special way to select a file from the document or library that will track whether parties have clicked on the link to view/download it if the field is required for the party.
+    * *File upload* is a special field that allows files to be attached (or removed) when in edit mode, or listed and viewed when in display mode. When assigned to a party, that party will be able to upload/remove files. All parties are required to click on these files before continuing.
     * *HTML editor* puts a CKEditor field in your document, allowing the party to enter rich text, or paste from Word, etc. We recommend you only provide this feature to parties who are part of your company.
     * *Integer* is a text field that expects an integer/counting number value, such as -5 or 20. Decimal points are not allowed. This type also supposed an *Extra options* value to specify whether to show normal integers like 1, 2, 3, or to show the value as an ordinal number, like 1st, 2nd, 3rd.
     * *Money* is a text input field that expects a valid amount of money to be entered, like 15.25 or $20. It differs from the Decimal type in that it displays a currency symbol rather than just the number.
@@ -298,7 +299,7 @@ By default, new fields are given the *General* type, meaning they are standard t
     * *Radio button group* is a non-visual field type that actually holds the value of the selected radio button defined as part of the group.
     * *Signature* is a text field stylized for the purpose of having the party type their name to indicate they are signing. It will also trigger the additional of the electronic signature process record for the party who signs.
     * *SignatureDate* is a non-entry field associated with a Signature field by having the same name as the Signature field, but with "Date" added. So if you define a signature field as "CustomerSignature" you can have a date field added and automatically assigned with the actual signing date by defining a SignatureDate field named "CustomerSignatureDate" ("CustomerSignature" with "Date" added at the end).
-    * *SSN* is a text field suitable for the entry of US-based social security numbers.
+    * *SSN* is a text field suitable for the entry of US-based social security numbers. It can also be used to format as an employer identification number (EIN).
     * *Text area* is a multi-line text field that allows for greater input by a user. It is generally used to enter plain text comments, additional contract terms, descriptions, free form mailing addresses, etc.
     * *Zip code* is a text field suitable for the entry of US-based zip codes, either 5 or 9 digits.
   * Use the *Align* drop down to change the alignment of the field. "Inherit" is commoly used.
@@ -422,7 +423,33 @@ Click the *Delete* button to delete the image.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Add new field or party or file or image to the document http://open.esignforms.com/images/HowToGuidesWiki/addNewOptionButton.png ===
+=== Drop downs in document ===
+
+On the right side is the *Drop downs in document* list:
+
+http://open.esignforms.com/images/HowToGuidesWiki/dropDownsInDocumentList.png
+
+This shows all drop downs defined in the document. For drop downs that will likely appear in more than one document, we recommend you define those in the library. But many drop downs are tied specifically to a single document, and this is the place to add them.
+
+Click on a drop down to change its configuration:
+
+http://open.esignforms.com/images/HowToGuidesWiki/dropDownEditor.png
+
+  * *[HowToGuides#EsfNames_and_PathNames EsfName]* is the unique name of a drop down in this document.
+  * *Description* is a short description of the drop down.
+  * *Comments* is any other information you want to maintain about the drop down.
+
+A drop down can have one or more options specified, with the *label* being the value that is shown to the user in the drop down list, and the *value* is what is stored in the field that uses this list. Click the *Add option* button to add a new row. Click on a row and then the *Remove selected option* to delete a row. And finally you can drag each entry to change the order it will appear.
+
+Click the *Ok* button to save your changes to the drop down.
+
+Click the *Cancel* button to discard the changes made to the drop down.
+
+Click the *Delete* button to delete the drop down. 
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Add new field, party, file, image or drop down to the document http://open.esignforms.com/images/HowToGuidesWiki/addNewOptionButton.png ===
 
 On the right side, click the *Add new* button and then choose the type of new object to create: 
 
@@ -1084,7 +1111,11 @@ If the package is already a Production version, use the *Create next Test versio
 
 Click the *[#Customize_logic Customize logic]* button to add special processing rules to this package of documents.
 
-Click the *[#Map_report_fields Map report fields]* to define the fields in the documents you have selected that you would like to include in reports or To Do lists for your internal parties.
+Click the *[#Map_report_fields Map report fields]* button to define the fields in the documents you have selected that you would like to include in reports or To Do lists for your internal parties.
+
+Click the *Export* button to export the package configuration so it can be imported in another deployment. You will be prompted to save the configuration to your local computer disk.
+
+Click the *[#Package_import_configuration Import version...]* button to import the package configuration previously exported elsewhere so that it overwrites the configuration of the package version. The package version must be a Test version to change it this way. 
 
 Note that after any change to the package, including any changes made in other screens related to the package, you will have to click the *Save* button keep those changes.
 
@@ -1609,6 +1640,21 @@ Click the *Reload report fields for matching transactions* button to begin the r
 _Note that this process can take a long time based on the number of transactions that will match your selection criteria. (This process includes first finding all matching transactions, then loading each one, decrypting all of its data, parsing its XML structure, and then running the field mapping specifications.) Whenever possible, define all report field mappings before you start transactions, and if you do create new mappings later, attempt to limit the number of transactions that must be reloaded. You only need to reload them if you have reports or To Do transactions that otherwise show a blank field because the mapping was not in place when those transactions were last updated._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Package import configuration ==
+
+When you import a package configuration, all previous documents, parties, etc. are removed from the package and replaced by the imported configuration. 
+
+http://open.esignforms.com/images/HowToGuidesWiki/packageImportConfiguration.png
+
+First, select the default library in your system where documents in the package are already defined. When a document is imported, the system will first look for the document in this library. If it's not found, it will attempt to scan your libraries for a matching document name.
+
+Click the *Upload package version XML* to select the package version XML file on your computer to upload. Review the messages after the import and then close the window to return to the package configuration.
+
+_Tip: To save your changes, remember to click the *Save* button for the package._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 
 = Transaction Templates http://open.esignforms.com/images/HowToGuidesWiki/tranTemplateIcon.png =
 
