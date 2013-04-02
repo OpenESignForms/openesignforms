@@ -1,0 +1,24 @@
+#summary Tips for a server migration using CentOS Linux.
+
+==== Table of contents ====
+<wiki:toc max_depth="3" />
+
+= Introduction =
+
+These are notes we maintain about server migrations under CentOS Linux. In general, we use migrations to a new server when we need a more powerful server to support ever increasing usage, or to do an operating system upgrade. We generally take that opportunity to also update the database, Java and Tomcat versions, though such components are often upgraded in place as well.
+
+= Create the new server ==
+
+Create a new server, generally using the latest version of CentOS (or Red Hat) Linux.  
+
+If the new server will use a new IP address when completed, be sure to remember to set the DNS PTR records for the new IP address to point to the server name, and then update the DNS A record after the migration is complete. 
+
+If the new server will be able to reuse the original IP address, you generally have to migrate using a new IP address, but when completed, shut down the original server and then reboot your new server using the original IP address (no DNS changes are required).
+
+  # Create the new server using the latest CentOS release. Note the IP address for use in data transfers, as well as root password, to make transfers using `scp` and `rsync` easier. Once the migration is complete, root logins and password-based logins are generally disabled.
+  # You may want to check the new server IP address to ensure it's not on any anti-SPAM lists if you are using a third-party data center.
+  # Follow the [Installation#General_Linux_X64_server_setup_information basic Linux installation instructions] for the initial `root` steps. Note that you will use the same hostname as the original server. You may also want to take this opportunity to use new passwords for the `root` and `esignforms` (your deployment user account).
+
+= Migrate configuration =
+
+= Final database migration =
