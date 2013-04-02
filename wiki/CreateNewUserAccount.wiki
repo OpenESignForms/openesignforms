@@ -3,7 +3,7 @@
 
 = Introduction =
 
-These are the steps to create a new user account.
+These are the steps to create a new user account. You can see more in the [SystemAdminGuide#Create_a_new_user_account System Administrator Guide].
 
 
 = Details =
