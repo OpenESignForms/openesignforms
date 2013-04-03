@@ -60,6 +60,7 @@ Login to the new server as `esignforms`.
 
   * Recreate the database for all deployments: `~/postgresql/ddl/recreate_db_only` passing in the parameters dbname and dbpassword: i.e. `./recreate_db_only testdb testdbuserpassword`
   * For each deployment, restore the database backup and run `analyze` on each database: `gunzip -c ~/deployments/DBNAME/archive/db/DBNAME.quickdump.YYYYMMDD.gz | pg_restore -v -O -d DBNAME`
+  * For each deployment, run `~/postgresql/ddl/table_grants DBNAME` to ensure the correct permissions on tables and large objects.
   * For each deployment, run analyze on the new DB: 
     {{{
     psql DBNAME
