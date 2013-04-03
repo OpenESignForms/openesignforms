@@ -355,7 +355,7 @@ As `root` do the following on your new Linux instance:
   * Set `ZONE="America/Los_Angeles"` and `UTC=true` in `/etc/sysconfig/clock`
   * Set `HOSTNAME=esign.example.com` in `/etc/sysconfig/network`
   * Ensure your `/etc/resolv.conf` is set up for the name servers you can use to resolve external host names.
-  * Create Yozons-specific `/usr/local/bin/sp` script wrapper for `ps` (`chmod 750`).
+  * Create Yozons-specific `/usr/local/bin/sp` script wrapper for `ps` (`chmod 755`).
   * Create Yozons-specific `/etc/esfprofile` script for offsite backups. `chmod 640` and `chown root.esignforms`
   * Change `/etc/ssh/sshd_config` to use:
     * `PermitRootLogin no`
