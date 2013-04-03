@@ -8,6 +8,8 @@
 
 These are notes we maintain about server migrations under CentOS Linux. In general, we use migrations to a new server when we need a more powerful server to support ever increasing usage, or to do an operating system upgrade. We generally take that opportunity to also update the database, Java and Tomcat versions, though such components are often upgraded in place as well.
 
+*NOTE: If you are not upgrading any application components, you only need to rebuild the server and configure the `root` level systems on the new server and then just copy over all files in the `esignforms` user account.*
+
 = Create the new server ==
 
 Create a new server, generally using the latest version of CentOS (or Red Hat) Linux.  
@@ -55,10 +57,14 @@ Login to the old server as `esignforms`. Sync the backups you'd like to move to 
 
 Login to the new server as `esignforms`.
 
-  * Remove any tablespace data directories that may have come over from the prior rsync: `rm -fr deployments/*/current/db/*`
-  * For each deployment, create the database, but do not create any tables. This will create an empty database for the DB restores to take place. `cd postgresql/ddl` and then `./create_db` (but don't do the second step that creates the tables).
-  * For each deployment, restore the database backup and run `analyze` on each database: `gunzip -c deployments/DEPLOY/archive/db/DEPLOY.quickdump.YYYYMMDD.gz | pg_restore -v -O -d DEPLOY`
-
+  * Recreate the database for all deployments: `~/postgresql/ddl/recreate_db_only` passing in the parameters dbname and dbpassword: i.e. `./recreate_db_only testdb testdbuserpassword`
+  * For each deployment, restore the database backup and run `analyze` on each database: `gunzip -c ~/deployments/DBNAME/archive/db/DBNAME.quickdump.YYYYMMDD.gz | pg_restore -v -O -d DBNAME`
+  * For each deployment, run analyze on the new DB: 
+    {{{
+    psql DBNAME
+    analyze;
+    \q
+    }}}
 
 = Activate new server =
 
