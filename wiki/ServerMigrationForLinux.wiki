@@ -1,4 +1,5 @@
 #summary Tips for a server migration using CentOS Linux.
+#labels Phase-Deploy
 
 ==== Table of contents ====
 <wiki:toc max_depth="3" />
@@ -17,8 +18,52 @@ If the new server will be able to reuse the original IP address, you generally h
 
   # Create the new server using the latest CentOS release. Note the IP address for use in data transfers, as well as root password, to make transfers using `scp` and `rsync` easier. Once the migration is complete, root logins and password-based logins are generally disabled.
   # You may want to check the new server IP address to ensure it's not on any anti-SPAM lists if you are using a third-party data center.
-  # Follow the [Installation#General_Linux_X64_server_setup_information basic Linux installation instructions] for the initial `root` steps. Note that you will use the same hostname as the original server. You may also want to take this opportunity to use new passwords for the `root` and `esignforms` (your deployment user account).
+  # Follow the [Installation#General_Linux_X64_server_setup_information basic Linux installation instructions] for the initial `root` steps, but generally don't limit SSH access until the migration is completed. Note that you will use the same hostname as the original server. You may also want to take this opportunity to use new passwords for the `root` and `esignforms` (your deployment user account).
 
-= Migrate configuration =
+= Pre-migration configuration for `root` =
 
-= Final database migration =
+Login to the old server as `root` to copy over files to the new server.
+
+  # `rsync -avz -e ssh bin esignforms mycrontab root@NEWIPADDR:.`
+  # Yozons-specific `/usr/local/bin/sp` (`chmod 755`) script for `ps` 
+  # Yozons-specific `/etc/esfprofile` (`chmod 640`, `chown root.esignforms`) for offsite backup operations.
+  # Add `. /etc/esfprofile` to `.bash_profile`
+  # Add `rm -f ~/.bash_history` to `.bash_logout`
+  # Update `/etc/postfix/main.cf` to include the same entries for mydomain, inet_interfaces, mynetworks_style, home_mailbox and virtual_alias_maps.
+  # `rsync -avz -e ssh /etc/postfix/virtual_alias root@NEWIPADDR:/etc/postfix/`
+  # Update `/etc/dovecot/dovecot.conf` for `mail_location`
+  # Setup `/etc/sysconfig/iptables` like the old server, perhaps changing for the new IP address.
+
+= Pre-migration configuration for `esignforms` =
+
+Login to the old server as `esignforms` to copy over files to the new server.
+
+  # `rsync -avz -e ssh bashrc bin gpg.howto java mycrontab profile .s3cfg s3cmd.howto s3cmd-VER .ssh tomcat wkhtmltopdf_VER esignforms@NEWIPADDR:.`
+  # Add `. /etc/esfprofile`, `. ~/profile` and `. ~/bashrc` to `.bash_profile`
+  # Add `rm -f ~/.bash_history` to `.bash_logout`
+  # `mkdir backups`, `mkdir backups/fullbackup` and `mkdir backups/tomcat`
+  # `rsync -avz -e ssh postgresql --exclude 'postgresql/data92' esignforms@NEWIPADDR:.`
+  # `rsync -avz -e ssh deployments --exclude 'deployments/*/archive' --exclude 'deployments/*/current' esignforms@NEWIPADDR:.`
+
+= Migrate latest database backups on old server =
+
+Login to the old server as `esignforms`. Sync the backups you'd like to move to the new server using something like this:
+
+  * `rsync -avz -e ssh --include='*/' --include='*.quickdump.YYYYMMDD.gz' --exclude='*' deployments esignforms@NEWIPADDR:.`
+
+= Restore databases on the new server =
+
+Login to the new server as `esignforms`.
+
+  * Remove any tablespace data directories that may have come over from the prior rsync: `rm -fr deployments/*/current/db/*`
+  * For each deployment, create the database, but do not create any tables. This will create an empty database for the DB restores to take place. `cd postgresql/ddl` and then `./create_db` (but don't do the second step that creates the tables).
+  * For each deployment, restore the database backup and run `analyze` on each database.
+
+
+= Activate new server =
+
+While logged in as `root`:
+
+  # Activate the cron scripts for root and esignforms.
+  # Install the init script: ./esignforms install
+  # Complete any remaining items not done earlier from the [Installation#General_Linux_X64_server_setup_information basic Linux installation instructions].
