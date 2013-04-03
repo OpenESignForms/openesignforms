@@ -57,7 +57,7 @@ Login to the new server as `esignforms`.
 
   * Remove any tablespace data directories that may have come over from the prior rsync: `rm -fr deployments/*/current/db/*`
   * For each deployment, create the database, but do not create any tables. This will create an empty database for the DB restores to take place. `cd postgresql/ddl` and then `./create_db` (but don't do the second step that creates the tables).
-  * For each deployment, restore the database backup and run `analyze` on each database.
+  * For each deployment, restore the database backup and run `analyze` on each database: `gunzip -c deployments/DEPLOY/archive/db/DEPLOY.quickdump.YYYYMMDD.gz | pg_restore -v -O -d DEPLOY`
 
 
 = Activate new server =
