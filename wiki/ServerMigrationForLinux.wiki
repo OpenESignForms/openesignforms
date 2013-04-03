@@ -31,9 +31,10 @@ Login to the old server as `root` to copy over files to the new server.
   # Yozons-specific `/etc/esfprofile` (`chmod 640`, `chown root.esignforms`) for offsite backup operations.
   # Add `. /etc/esfprofile` to `.bash_profile`
   # Add `rm -f ~/.bash_history` to `.bash_logout`
-  # Update `/etc/postfix/main.cf` to include the same entries for mydomain, inet_interfaces, mynetworks_style, home_mailbox and virtual_alias_maps.
+  # Update `/etc/postfix/main.cf` to include the same entries for `mydomain`, `inet_interfaces`, `mynetworks_style`, `home_mailbox` and `virtual_alias_maps`.
   # `rsync -avz -e ssh /etc/postfix/virtual_alias root@NEWIPADDR:/etc/postfix/`
-  # Update `/etc/dovecot/dovecot.conf` for `mail_location`
+  # Update `/etc/dovecot/dovecot.conf` for `mail_location` and `mail_access_groups`.
+  # For each deployment, create the user account and password to handle in-bound email processing: `useradd DEPLOYNAME` and `passwd DEPLOYNAME`.
   # Setup `/etc/sysconfig/iptables` like the old server, perhaps changing for the new IP address.
 
 = Pre-migration configuration for `esignforms` =
