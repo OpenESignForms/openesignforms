@@ -84,6 +84,8 @@ Ensure the database is running; if not: `yostart db`
 
 = Activate new server =
 
+Update your DNS for the new IP address.
+
 While logged in as `esignforms`:
   # Ensure the normal web.xml is in place: `setWebappsUp`
   # Start Tomcat: `yostart web`
