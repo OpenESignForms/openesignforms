@@ -50,13 +50,27 @@ Login to the old server as `esignforms` to copy over files to the new server.
 
 = Migrate latest database backups on old server =
 
-Login to the old server as `esignforms`. Sync the backups you'd like to move to the new server using something like this:
+Login to the old server as `esignforms`. 
+
+Stop the application with `yostop all`.
+
+Put the 'system down' configuration into place: `setWebappsDown`
+
+Restart the now-down application: `yostart all`.  The database will be available for backups and the web apps will all report that the service is currently down.
+
+Backup all deployment databases: `~/postgresql/bin/quickbackup`
+
+Sync the backups you'd like to move to the new server using something like this:
 
   * `rsync -avz -e ssh --include='*/' --include='*.quickdump.YYYYMMDD.gz' --exclude='*' deployments esignforms@NEWIPADDR:.`
+
+Stop the database on the old system: `yostop db`
 
 = Restore databases on the new server =
 
 Login to the new server as `esignforms`.
+
+Ensure the database is running; if not: `yostart db`
 
   * Recreate the database for all deployments: `~/postgresql/ddl/recreate_db_only` passing in the parameters dbname and dbpassword: i.e. `./recreate_db_only testdb testdbuserpassword`
   * For each deployment, restore the database backup and run `analyze` on each database: `gunzip -c ~/deployments/DBNAME/archive/db/DBNAME.quickdump.YYYYMMDD.gz | pg_restore -v -d DBNAME`
@@ -70,8 +84,13 @@ Login to the new server as `esignforms`.
 
 = Activate new server =
 
+While logged in as `esignforms`:
+  # Ensure the normal web.xml is in place: `setWebappsUp`
+  # Start Tomcat: `yostart web`
+  # Activate cron jobs: `crontab mycrontab`
+
 While logged in as `root`:
 
-  # Activate the cron scripts for root and esignforms.
+  # Activate the cron scripts: `crontab mycrontab`
   # Install the init script: ./esignforms install
   # Complete any remaining items not done earlier from the [Installation#General_Linux_X64_server_setup_information basic Linux installation instructions].
