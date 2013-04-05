@@ -54,6 +54,8 @@ Login to the old server as `esignforms`.
 
 Stop the application with `yostop all`.
 
+Turn off cron jobs: `crontab -r`  (do this for the `root` too)
+
 Put the 'system down' configuration into place: `setWebappsDown`
 
 Restart the now-down application: `yostart all`.  The database will be available for backups and the web apps will all report that the service is currently down.
