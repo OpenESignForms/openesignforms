@@ -238,6 +238,8 @@ http://open.esignforms.com/images/HowToGuidesWiki/groupMemberPermissions.png
 
 Like the standard permissions, you can specify who can List, View Details, Create, Update and Delete users who belong to this group. Normally, this permission is left to the *System/Administrator* or if the group administrator, such as Company1/Admin if you build such a group.
 
+In addition, there's a special Manage To Do permission that allows members of a group to access the To Do screen of members of the selected group. Normally, other users do not need access to the To Do list of other users, but managers may want it to unlock transactions queued up to a user based on the To Do Group setting for a party, when that user has left the company, is on vacation, etc.
+
 _Remember to click *Save* after changing permissions._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
@@ -500,5 +502,21 @@ http://open.esignforms.com/images/HowToGuidesWiki/showSigningKeys.png
 The web page lists the deployment id, KeyName and the XML Digital Signature style RSAKeyValue Exponent and Modulus. All validly signed documents created using your system will match one of your keys. 
 
 Furthermore, the self-sign X.509 Certificate, including the Subject Distinguished Name (DN) is shown to prove your deployment credentials. This is mostly used for PDF digital signature validations.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Download transaction archives =
+
+== Export transactions for long-term storage ==
+
+Most will want to keep production transaction indefinitely to allow for easy online access via the reports, knowing that the data and documents are securely encrypted on disk at all times. However, as both a backup and a means to shorten the retention period of transactions to keep a database small, we recommend that you periodically download a transaction archive of completed or important transactions.
+
+Simply create a [ProgrammingGuide#Report_Templates Report] against transactions types you want to export. Most can use existing reports that are used on a daily basis to view the status of all transactions.  Just give the arhiving person, typically the system administrator, permission to run the report, see all transactions across users, download logs and snapshots, and of course the "download complete transaction archives" permission.
+
+Then run that report to list matching transactions you'd like to export, and click the *Download archive* button.  A ZIP file will be returned that contains the matching transactions. Assuming the user has full permissions specified in the report, this will include XML data for the transactions and documents, the activity log, the email sent log, attached files, and digitally signed snapshots.
+
+Just unzip the downloaded file to access your transactions from your computer.
+
+Tip: If you do expire transactions (set the retention to any value besides 'forver'), the report allows you to specify a data range along with the 'Will expire' option so you can download all transactions, for example, that will expire in the next month (or next quarter, next year, etc.), so you can do this on a periodic basis to keep a copy yourself even if the service will no longer have a copy online.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
