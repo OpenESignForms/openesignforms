@@ -75,9 +75,15 @@ All work is shown grouped by the type of transaction. Several column headers are
 
 Other columns are available to help describe the work in your To Do (such as the *Email to* and *Subject*).  These customizable columns are defined in the Package's *Map report fields*.  Check the *Show To Do* box to show the fields in the order specified.
 
-To process a transaction, just click on it. This will open a new window for you to process the transaction. Close that window when you are done.
+To process a transaction, just click on it. This will open a new window for you to process the transaction. Close that window when you are done. When you click to process a transaction, is is automatically locked to you so that others who may be able to access that transaction because they are in the same To Do Group do not also attempt to process it. If you complete the step, the entry will leave your To Do queue, but if you decide not to complete it, it will remain in your queue to complete it later.
+
+If a transaction in the To Do has been locked to you, and there is a To Do Group assigned (so others could potentially process it as well if it were not locked to you), an *Unlock* button will appear in the last column to allow you to unlock the transaction so others in the To Do Group can then process it.
 
 Click the *Refresh* button to update the list, such as after processing some work or to check for new work.
+
+
+
+For users who belong to a group that has *Manage To Do* permission for the member users of a group, a drop down box will appear next to the *Refresh* button that will allow you to see the To Do queue of other users. This is generally used to handle transactions for a user who is no longer active or perhaps is on vacation.
 
 ==To Do configuration==
 To use To Do, do the following:
@@ -158,7 +164,7 @@ In this example, the custom report also allows for two fields to be searched in 
 
 Click the *Find matching* button to generate the report based on matching transactions. The list of matching transactions will appear below.
 
-Assuming at least one matching transaction was found, and you have permission, two additional buttons appear. Click *Export to Excel* to copy the data listed in your report into a Microsoft Excel spreadsheet.  Click *Download CSV* to copy the data listed in your report into a standard Comma-Separated-Value text file, most of which are also easily imported in a spreadsheet, which can then be used to upload that data into other systems. Note that you can re-arrange the fields, or hide some, and they will then appear in the same way in your Excel or CSV files.
+Assuming at least one matching transaction was found, and you have permission, two or three additional buttons appear. Click *Export to Excel* to copy the data listed in your report into a Microsoft Excel spreadsheet.  Click *Download CSV* to copy the data listed in your report into a standard Comma-Separated-Value text file, most of which are also easily imported in a spreadsheet, which can then be used to upload that data into other systems. Note that you can re-arrange the fields, or hide some, and they will then appear in the same way in your Excel or CSV files. Click *Download archive* to download the transactions in a ZIP file for long-term storage and review offline (without access to the service).
 
 Click on any transaction row to bring up details and additional controls regarding the transaction. Again, many of these capabilities are configured in the report template to be limited to only authorized users.
 
