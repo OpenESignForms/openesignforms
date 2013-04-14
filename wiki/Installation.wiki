@@ -154,7 +154,7 @@ In Linux, often the IP address 127.0.0.1 is mapped to {{{localhost.localdomain}}
 
 ==Database using PostgreSQL==
 
-Install PostgreSQL 9 per its usual mechanisms. The version tested here was 9.2.3.
+Install PostgreSQL 9 per its usual mechanisms. The version tested here was 9.2.4.
 
 It's just a convention, but we use the DB user 'esignforms' for our admin account, and each 'deployment' (a customer system that has its own webapp and database on the server) uses a 5 character unique name that is used as that application's DB user.  The name is also the base name in the deployment folder for its database tables, log files, etc.
 
@@ -328,7 +328,7 @@ For Linux deployment servers, we use a layout like this in the home directory fo
   * `~/bin` contains our shell scripts
   * `~/deployments` contains the `template` folder hierarchy and is used to store the PostgreSQL database per web app deployment (via PostgreSQL's tablespace directive).
   * `~/java` is where we install our Java 6 Runtime Environment, such as jre1.6.0_41, and we create a softlink of that to 'jdk1.6' which is referenced in the `profile`. This allows updates to Java by changing where the softlink points. (i.e. `ln -s jre1.6.0_41 jdk1.6`)
-  * `~/postgresql` contains the location where PostgreSQL is installed. It has folders like `bin`, `data92` (where the main db is stored, but each web app's tablespace puts those databases in the `deployments` folder), `ddl`, `logs`, `pg92` (where PostgreSQL installs to) and `postgresql-9.2.3` (were we unzipped PostgreSQL and compiled it).
+  * `~/postgresql` contains the location where PostgreSQL is installed. It has folders like `bin`, `data92` (where the main db is stored, but each web app's tablespace puts those databases in the `deployments` folder), `ddl`, `logs`, `pg92` (where PostgreSQL installs to) and `postgresql-9.2.4` (were we unzipped PostgreSQL and compiled it).
   * `~/tomcat` where we unzipped Tomcat into a folder like apache-tomcat-7.0.39, and then we create a softlink from that version to `tomcat7.0` which is referenced in the `profile` script. (i.e. `ln -s apache-tomcat-7.0.39 tomcat7.0`)
   * `~/wkhtmltopdf_0.11.0` which contains the code to [wkhtmltopdf generate PDFs from HTML]. We then create a softlink of the executable to our `bin` with something like `ln -s ../wkhtmltopdf_0.11.0/wkhtmltopdf-i386 wkhtmltopdf` (command run from the `bin` directory).
 
