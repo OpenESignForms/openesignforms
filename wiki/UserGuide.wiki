@@ -37,7 +37,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/loginPage.png
 
 Your company's logo will appear at the top, along with your company name in the heading.
 
-Enter your email address and password, then click the Login button.  A password can be as long as a 50-character pass phrase that includes letters, numbers, spaces and special characters. It is case sensitive. We recommend at least 10 characters, something you can remember, but others will find impossible to guess. 
+Enter your email address and password, then click the Login button.  A password can be as long as a 100-character pass phrase that includes letters, numbers, spaces and special characters. It is case sensitive. We recommend at least 10 characters, something you can remember, but others will find impossible to guess. 
 
 Check the 'Remember email' box when on your own computer to avoid having to specify it ever time you login.
 
