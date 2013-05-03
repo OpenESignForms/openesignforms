@@ -290,7 +290,7 @@ By default, new fields are given the *General* type, meaning they are standard t
     * *Drop down list* lets you choose a drop down list defined in your library so that parties can select a valid value from the list.
     * *Email address* is a text input field that expects a valid email address.
     * *File confirm click* is a special way to select a file from the document or library that will track whether parties have clicked on the link to view/download it if the field is required for the party.
-    * *File upload* is a special field that allows files to be attached (or removed) when in edit mode, or listed and viewed when in display mode. When assigned to a party, that party will be able to upload/remove files. All parties are required to click on these files before continuing.
+    * *File upload* is a special field that allows files to be attached (or removed) when in edit mode, or listed and viewed when in display mode. When assigned to a party, that party will be able to upload/remove files. You can specify a *Limit # files* value to restrict the number of files that can be uploaded. All parties are required, by default, to click on these files before continuing. (See the custom logic action [#Change_File_field_access_action Change File field access] to change this behavior for parties who are not uploading if you'd like to block their ability to view/download, or to make it optional that they view/download the files.)
     * *HTML editor* puts a CKEditor field in your document, allowing the party to enter rich text, or paste from Word, etc. We recommend you only provide this feature to parties who are part of your company.
     * *Integer* is a text field that expects an integer/counting number value, such as -5 or 20. Decimal points are not allowed. This type also supposed an *Extra options* value to specify whether to show normal integers like 1, 2, 3, or to show the value as an ordinal number, like 1st, 2nd, 3rd.
     * *Money* is a text input field that expects a valid amount of money to be entered, like 15.25 or $20. It differs from the Decimal type in that it displays a currency symbol rather than just the number.
@@ -599,6 +599,7 @@ This is the best place to put document-specific extra data validations. Just sel
     * Choose *Calculate field value* to calculate a value (add, subtract, multiply, divide). 
     * Choose *Calculate monthly payment* to calculate a monthly payment amount based on the loan amount, term in months, and interest rate (APR).
     * Choose *Show error/message* to display a message or report an error to the user (mostly used during the *Party review document* and *Party completed page* events).
+    * Choose *Change File field access* to specify block or make optional the need for a party to view/download the files associated with this field. Of course, if the party is supposed to upload files, this has no bearing.
 
 See [#Conditional_actions conditional actions in a package] for details on conditions which are the same for package-level and document-level custom logic.
 
@@ -1199,7 +1200,8 @@ http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
     * Choose *Change tran/party status* to cancel the transaction now or in the future, clear a future auto-cancel, skip a party step or skip an entire document. 
     * Choose *Show error/message* to display a message or report an error to the user (mostly used during the *Party review document* and *Party completed page* events).
     * Choose *PayPal direct charge* to specify credit card fields in your document that will be submitted to the PayPal NVP API for a credit card sale.
- 
+    * Choose *Change File field access* to block or make optional the need for a party to view/download the files associated with this field. Of course, if the party is supposed to upload files, this has no bearing. 
+
 http://open.esignforms.com/images/HowToGuidesWiki/packageAddActionButton.png
 
 Click *Ok* to keep any changes, otherwise click *Cancel*.
@@ -1332,6 +1334,21 @@ http://open.esignforms.com/images/HowToGuidesWiki/setFieldValueAction.png
   * For *In document* select the document where the field exists that will be set.
   * For *Set field* select the field in the selected document that will be set.
   * For *New value or field spec to use* enter a literal value (or leave blank to blank out the field) or `${ }` notation to specify the new value for the field.
+  * Check *Block further party edits* only if after setting the value no further edits will be required by parties. This is typically used in situations where a document is used both standalone as well as in a package. For example, when standalone, all of the fields will be filled in by the party. But when in a package, one or more fields may be set from values entered on previous documents (such as name, ID, address, etc.), and once set with those values, the party should not be allowed to change them further.
+  * Select zero or more *Transforms* to apply to the value determined by evaluating the *New value or field spec to use*. There is no guarantee on the order multiple transforms will take place if more than one is selected.
+    * *UPPERCASE* will convert all characters to uppercase letters.
+    * *lowercase* will convert all characters to lowercase letters.
+    * *Capitalize first* will capitalize the first letter only.
+    * *Capitalize First, Lowercase Others* will capitalize the first letter in each "word" and make the other letters lowercase.
+    * *Compress whitespace* will convert multiple whitespace characters into a single space. This is most useful when concatenating fields, some of which may have not value, so extra spaces are removed.
+    * *Strip whitespace* will remove all whitespace characters.
+    * *Trim whitespace* will remove all leading and trailing whitespace characters.
+    * *Numbers only* will remove all characters that are not digits.
+    * *Alphabetic only* will remove all characters that are not letters.
+    * *Alphanumeric only* will remove all characters tat are not letters or numbers.
+    * *First character only* will remove all characters after the first. This is a shorthand for using a substring offset of 0 with a length of 1.
+  * *Subtring offset* is used to extract a portion of the value. The offset specifies the number of characters to skip from the beginning. Leave blank to keep the entire value. Specify 0 to include from the beginning.
+  * *Substring length* (appears only if a substring offset is specified) is the number of characters after skipping the specified number of offset characters. If blank (or number less than 1 or longer than the actual number of remaining characters), it will return all characters after the offset characters are skipped. In the string "1234567890" if the offset is 5 and the length is 4, you end u with "6789".
 
 Click the *Ok* button to keep your changes, or click *Cancel*.
 
@@ -1580,6 +1597,29 @@ Click the *Close* button to close the PayPal payment actions window.
 Click the *Delete* button to delete the selected action.
 
 Note that you can do multiple charges at the same time using this view.
+
+_Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Change File field access action ===
+
+The default behavior for all parties who do not have access to upload files is to view/download all previously uploaded files. Just as all subsequent parties see all data fields, they are also required to view all attached files. This action can be used to change that behavior when it's not desired.
+
+http://open.esignforms.com/images/HowToGuidesWiki/changeFileFieldAccessAction.png
+
+  * In *In document* select the document where the file upload field is defined.
+  * In *File field* select the File Upload field to change.
+  * In *Party* select the party whose access is being changed.
+  * Select either *Make view/download optional* if the party will not be required to view/download the files, or *Block view/download* if the party should not be allowed to view/download the files.
+
+Click the *Ok* button to keep your changes, or click *Cancel*.
+
+Click the *Close* button to close the Change File field action window.
+
+Click the *Delete* button to delete the selected action.
+
+Note that you can set multiple parties and file upload fields to skip at the same time using this view.
 
 _Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
 
