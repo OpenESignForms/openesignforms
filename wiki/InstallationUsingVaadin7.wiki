@@ -1,0 +1,502 @@
+#summary Basic installation instructions for developers. Updated for Vaadin 7.
+#labels Phase-Deploy,Phase-Implementation
+
+==== Table of contents ====
+<wiki:toc max_depth="3" />
+
+= Introduction =
+
+*_THIS VERSION IS UNDER CONSTRUCTION FOR USE WITH VAADIN 7, JAVA 7 AND ECLIPSE JUNO_*
+
+These instructions are pretty high level right now, so we'll want to nail it down to a more easily repeatable set of instructions, but we had to start somewhere! 
+
+[http://www.yozons.com/Open-eSignForms/pricing.jsp Yozons offers low-cost hosted solutions] for those who prefer to just get up-and-running. Yozons also offers private web servers for those who want their own domain name (and SSL cert).
+
+= Details =
+
+==Java 7==
+
+We start by installing the latest version of [http://www.oracle.com/technetwork/java/javase/downloads/ Java 7 SE] available. It appears that these days you just need the JRE, but you may find the JDK useful if you need to generate keystores and the like. The version tested here was 7.0.21.
+
+Because of the sophisticated encryption we use, you'll need the Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files installed in your jre/lib/security folder. Note that encryption entails issues with the U.S. government's misguided and impractical export rules. For Windows, be careful you may have 32-bit and 64-bit JREs installed and you'll want to update both as much depends on which Eclipse uses when it starts Tomcat, of if you run Tomcat directly yourself.  You can download these files from the Java download site (often at the bottom of the page).
+
+==Browsers==
+
+You can test as you see fit, but we're basically running the latest releases of Firefox, IE, Chrome, Safari and Opera. Earlier versions likely work, but with a Web 2.0 interface, a modern browser is best and fastest.
+
+==Cygwin==
+
+We use [http://www.cygwin.com Cygwin on Windows] so we have a Unix/Linux-like environment for our shell scripts. We actually use very few since we only develop on Windows and have never deployed in production on Windows (though it certainly should be doable), but the scripts for DB setup and the like are still driven by shell scripts.  Generally, the standard install works well for our needs. 
+
+We generally add 'vim' from the Editors choices if you know how to use 'vi'. We often add links, too, if you ever need a command line web browser for simple testing needs.
+
+We like to modify the shortcut properties Options to increase the command history buffer size from 50 to 500, and include 'QuickEdit mode'. We also modify Layout to use width 220 in both locations and a screen buffer height of 5000 so we can scroll back easily. We also set the Font to 8x12.
+
+Of course, those on Linux/Unix don't need to worry about this.
+
+Install the 'scripts' files in the cywgin/Linux-user account's 'bin' folder. You can also use a 'scripts' folder, but then be sure to add the scripts folder to your PATH. 
+
+For Windows, you'll need the .cygwin variants (we delete the file without the extension and then rename the .cygwin variants by removing that extension).  All cygwin files typically need to a {{{dos2unix *}}} done on them so they'll run correctly. (See below for Cywin details.)  Note that script files {{{bashrc}}} and {{{profile}}} should be in the home directory, not 'bin'. You can then update {{{.bash_profile}}} to include {{{. ~/profile}}} and {{{.bashrc}}} to include {{{. ~/bashrc}}}.
+
+If you find that scripts won't run on Linux or via Cygwin's shell, you may need to do a `dos2unix *` on the text files and scripts to ensure they are in encoded correctly. You may also want to do a `chmod +x ~/bin/*` if the scripts don't seem to have execute permission.
+
+==Apache Tomcat==
+
+For testing, we generally run Tomcat from Eclipse, so it's best to download and install Tomcat next. If you plan on running Tomcat as a Windows service, there's a special installer for it. But we just download the ZIP file and really only run it via Eclipse, extracting to C:\. The version tested here was 7.0.39. (There is a bug in Tomcat prior to the 7.0.21 release that caused errors in the import of esf.js file because of the new javascript mime type standard that changed from text/javascript to application/javascript.)
+
+On Tomcat version upgrades, we basically make the following changes on Linux:
+  * `bin/startup.sh` - add the following before the last 'exec' line (only include the debug info if you remotely debug your Tomcat, and your memory values will need to match your server):
+{{{
+JAVA_OPTS="-server  -Xdebug -Xrunjdwp:transport=dt_socket,address=29090,server=y,suspend=n -Xms500m -Xmx500m -XX:PermSize=200m -XX:MaxPermSize=200m -Desf.deploybase=$ESF_DEPLOYMENT_BASE"
+export JAVA_OPTS
+}}}
+
+  * `webapps` - Move all webapps except perhaps 'manager' up a subdirectory so that they are no longer deployed. Obviously, we put the Open eSignForms webapp here. You can just move them from the prior Tomcat webapps location.
+{{{
+  mkdir ../ORIG-webapps
+  mv docs examples host-manager ROOT ../ORIG-webapps
+}}}
+
+  * `webapps/manager/WEB-INF/web.xml` - If you use the manager webapp, add the following snippet to the `<security-constraint>` of the 'HTML Manager interface' and 'Status interface' to ensure it only works over SSL-protected connections.
+{{{
+    <user-data-constraint>
+          <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+}}}
+
+  * `conf/tomcat-users.xml` - If you use the manager webapp, set up the username and password to use when remoting manager your webapps:
+{{{
+  <role rolename="manager-gui"/>
+  <user username="admin" password="PUT-SECURE-PASSWORD-HERE" roles="manager-gui"/>
+}}}
+
+  * `conf/server.xml` - You can set up as you need, such as if you have an Apache HTTPD server front-end and use the APR, but for a simple stand-alone Tomcat, we make the following changes. Under the "Catalina" `<Service>` entry (of course, if you have SSL, you want to point to your keystore and its password). We also comment our the AJP Connector on port 8009, but you may need it if you put HTTP in front:
+{{{
+    <Connector port="8080" protocol="org.apache.coyote.http11.Http11NioProtocol"
+               connectionTimeout="20000" acceptorThreadCount="2" redirectPort="443" />
+
+    <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol" SSLEnabled="true"
+               connectionTimeout="20000" acceptorThreadCount="2"
+               maxThreads="100" scheme="https" secure="true"
+               keystoreFile="keys/mykeys" keystorePass="PUT-KEYSTORE-PASSWORD-HERE"
+                ciphers="TLS_DHE_DSS_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA,SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA,TLS_DHE_DSS_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA,SSL_RSA_WITH_3DES_EDE_CBC_SHA,SSL_RSA_WITH_RC4_128_SHA,SSL_RSA_WITH_RC4_128_MD5,TLS_DHE_RSA_WITH_AES_128_CBC_SHA"
+               clientAuth="false" sslProtocol="TLS" />
+
+<!--
+    <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
+-->
+}}}
+
+  * `conf/server.xml` - We also change the `<Host>` entry to turn off auto deploy:
+{{{
+      <Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="false">
+}}}
+
+  * `conf/web.xml` - Add the following to the `<servlet>` for 'jsp' since we want our JSPs to always be checked to be compiled:
+{{{
+        <init-param>
+            <param-name>development</param-name>
+            <param-value>true</param-value>
+        </init-param>
+}}}
+
+  * `keys` - We put our Tomcat SSL certificate and keys in this folder. When upgrading, be sure to copy over this folder that matches the location of specified in the SSL entry's Connector of server.xml attribute 'keystoreFile'.
+
+==Eclipse==
+
+Install the latest version of [http://www.eclipse.org] Eclipse IDE for Java EE] developers.  The version tested here is Juno (4.2) Windows x64. We extract all to c:\Program Files.  We set our workspace to c:\project.
+
+Install the [https://vaadin.com/book/vaadin7/-/page/getting-started.eclipse.html Apache IvyDE plugin and Vaadin Eclipse plugin] as instructed on their book.
+
+We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Server->Servers.  If no servers appear, right-click New->Server; then choose Apache->Tomcat v7.0 Server, click Next and choose the location where you installed Tomcat (i.e. something like C:\apache-tomcat-7.0.39). Double-click your server (named Tomcat v7.0 Server at localhost or whatever version you are using) so you display the Overview and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin for us -- see below for downloading the project code first) click the Edit button to uncheck the 'Auto reloading enabled'. 
+
+Using the same Servers configuration, we make the following changes:
+
+Overview->Ports: Change HTTP/1.1 to use port 80 (unless you prefer 8080 for testing, but you'll need to put them in all your testing URLs).
+
+Overview->Timeouts: Change 'Start' to be 600 to give you more time if you plan on debugging code during application initialization and don't want Eclipse to timeout the startup of your webapp.
+
+Overview->Generation Information->Open launch configuration: 
+Add to Arguments tab, VM arguments: -Xmx512m -Desf.deploybase=C:\deployments
+
+_Tip: For production deployments, you will not use Eclipse and you won't run Tomcat inside. These are just for software developers, not for those who will run/use the system._
+
+==Building Open eSignForms Using Eclipse==
+
+Create the Vaadin Eclipse project by downloading the code from CVS, project open-eSignFormsVaadin.
+
+{{{:pserver:cvsanon@open.esignforms.com:/home/cvs}}}
+
+If you have edit/commit permission, you'll need a user account and password with SSH access to CVS with something like:
+
+{{{:extssh:USERNAME@open.esignforms.com:/home/cvs}}}
+
+It seems from a fresh install that you'll want to right click on the open-eSignFormsVaadin project, click on Properties, click on Vaadin, and even though it may show the current Vaadin JAR (6.8.5 at this time), you should do a download and APPLY to get it put into the Eclipse area where the GWT JARs are also stored.
+
+(If you plan to do any VaadinCKEditor project work, not necessary for Open eSignForms itself, you'll need to install a subversion plugin -- we use Subversive SVN Team Provider from the Eclipse installation location and we selected the SVN Kit 1.3.5. This related project is hosted on Google Code.)
+
+You will need to compile the Vaadin widgets before testing. Vaadin widgets compile to GWT-based javascript and are stored in the `WebContent/VAADIN/widgetsets` folder.
+
+Eclipse should automatically compile all of the regular Java source code into the `WebContent/WEB-INF/classes` folder. If not, right-click on the project in Eclipse and select Properties, then click on the "Java Build Path", click on the Source tab, the "Default output folder" should be something like: `open-eSignFormsVaadin/WebContent/WEB-INF/classes` but this normally should be set automatically if you are using checked-in code or a source code snapshot release.
+
+==Passwords==
+
+The standard JAR Open eSignForms is delivered with should include the .class and .java source files that go with it.
+
+There are also several `*`.properties files with passwords in them. For testing, these work out of the box, but of course in a production setting, you'll want to copy these individual .properties files into the WEB-INF/classes folder so they can have better values specified.
+
+openesignforms.properties - Sets the two boot passwords to 'test1' and 'test2' respectively.  These values must match the values given to DbSetup when a new system is deployed.
+
+connectionpools.properties - Sets the database user and password for each deployment. The default user and password is the same for both: esignforms
+
+_Remember, in production, you never want to use such passwords._
+
+In Linux, often the IP address 127.0.0.1 is mapped to {{{localhost.localdomain}}} as well as {{{localhost}}}. On Windows, the former is generally not present, so you either need to change the .properties files that use localhost.localdomain to be just localhost, or you need to update {{{c:\Windows\System32\drivers\etc\hosts}}} so that you map the address to both names.
+
+==Database using PostgreSQL==
+
+Install PostgreSQL 9 per its usual mechanisms. The version tested here was 9.2.4.
+
+It's just a convention, but we use the DB user 'esignforms' for our admin account, and each 'deployment' (a customer system that has its own webapp and database on the server) uses a 5 character unique name that is used as that application's DB user.  The name is also the base name in the deployment folder for its database tables, log files, etc.
+
+For Windows, the installer defaults to the user 'postgres' so you can add our DB user with commands like (for production, use good passwords, of course):
+{{{psql -U postgres
+CREATE USER esignforms WITH PASSWORD 'esignforms' SUPERUSER;}}}
+
+Create the deployment folder in the home directory (/home/esignforms/deployments) or C:\deployments.  Put the 'templates' folder in there that defines the structure used for each deployment. You can delete the CVS subdirectories and DELETEME.txt files.  On Windows, you will want to give all users full permissions to the C:\deployments folder when testing. We are not sure the about the exact user permissions needed, but generally you want to access those files from Windows Explorer, your cygwin user, and the PostgreSQL user.
+
+Update the {{{~/profile}}} to point to the locations where all your stuff is. The next time you run cygwin, it should have the new good values. You can test with {{{java -version}}} and {{{psql template1}}} to see that Java and Postgresql are setup for cygwin access.
+
+==Create the database==
+
+Install of the SQL code from 'database/postgresql/ddl' into the 'ddl' folder in your home folder.  We use the 5 letter deployment id for creating the database for a given webapp.
+{{{
+If you have a previous install and need to wipe it out first, use:
+  ./drop_db
+
+To create a DB, use:
+  ./create_db
+  Please enter the LOWERCASE name for the OpenESF database and user: test          (for testing, we just use 'test' for our deployid and DB user)
+  Please enter the password to use for the OpenESF esfapp user test: test          (for testing, we just use the password 'test')
+  Type 'y' to create the database.
+  Type 'y' to create the tables.
+  
+  ./rundbsetup
+  or
+  In Eclipse, create a Java Application (debug configuration) for 'DbSetup' like below and then run it:
+    Project: open-eSignFormsVaadin
+    Main class: com.esignforms.open.db.tools.DbSetup
+    Program Arguments: open-eSignFormsVaadin
+    VM Arguments: -Xmx512m -Desf.deploybase=C:\deployments
+    Working directory: C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp2\wtpwebapps\open-eSignFormsVaadin\
+
+    (Obviously, you'll need to tweak any of the specific locations/names to match your environment.)
+    
+    When you run DbSetup you'll see something like:
+
+Copyright (c) 2009-2011 Yozons, Inc.
+DbSetup - Sets up the database for Open eSignForms v1.7.0
+
+Enter setup command (initdb,addsuperuser,initsetup,setpassword,quit) [quit] : initdb
+2011-07-22 00:31:49.353 UTC-PublicKeyGenerator provider = BC version 1.46; keysize: 4096
+insertDeployment - Created deployment with id: b96513a5-9618-40ab-a1cd-79abf611ea32
+Enter boot password 1: test1
+Enter boot password 2: test2
+insertBootKey - Added new boot key
+Added super group: ESF/Group/Deployment/SuperAdmin
+Added system admin group: System/Administrator
+Added All Users pseudo-group: ESF/Group/AllUsers
+Added External Users pseudo-group: ESF/Group/ExternalUsers
+createInitialProperties - Updated deployment with global properties id: adeb5303-bdbe-4d46-968e-a8787db45160; deployment properties id: d4acceb5-977c-484a-b801-9666f7e6fd07
+Added template library: ESF/Library/Template
+
+Enter setup command (initdb,addsuperuser,initsetup,setpassword,quit,convert1.5) [quit] : addsuperuser
+Enter super user's email address [support@yozons.com] : super@openesfdemo.com
+Enter super user's first/personal name [Yozons] : Super
+Enter super user's last/family name [Support] : Openesf
+Initial super user password: Test
+insertSuperUser - Added new super user: super@openesfdemo.com
+insertUserIntoSuperGroup - Added new super user: Super Openesf <super@openesfdemo.com>; to super group: ESF/Group/Deployment/SuperAdmin
+
+Enter setup command (initdb,addsuperuser,initsetup,setpassword,quit,convert1.5) [quit] : initsetup
+Enter Commercial DB license size in MB (enter 0 for AGPL deployment) [0] :
+Enter company name: Demo Company
+Enter company street address: 123 Main St.
+Enter company city: Kirkland
+Enter company state: WA
+Enter company zip: 98033
+Enter company default phone number [800.555.1212] : 800-555-4321
+Enter company group EsfName [CompanyRenamePlease] : DemoCo
+Enter company default email address [renameyser@pleaserenamecompany.com] : democo@david.com
+Enter programmer user's email address [open-esign@yozons.com] : myprogrammer@openesfdemo.com
+Created company group: com.esignforms.open.user.Group@a1c6407f
+Created company programming group: com.esignforms.open.user.Group@a1c6407f
+Added company programming group to Library, Package, Transaction Template and Transaction Listing views
+Added company groups to list/view the template library
+Created sample company library: Lib/DemoCo
+Created default style and version: ESF_DefaultDocumentStyle
+Set default style in template library: ESF/Library/Template
+Set default style in company library: Lib/DemoCo
+Created standard package document: StandardPackageDisclosures
+Created image: Logo
+Created image: SignHereLeftArrow
+Created image: PackageDocumentCompleted
+Created image: PackageDocumentFixRequested
+Created image: PackageDocumentRejected
+Created image: PackageDocumentToDo
+Created image: PackageDocumentViewOnly
+Created email template and version: SetPassword
+Created email template and version: ForgotPassword
+Created email template and version: PasswordChanged
+Created email template and version: PasswordLockout
+Created email template and version: DefaultPickupNotification
+Created dropdown and version: ESF_BackgroundColor
+Created dropdown and version: ESF_BorderTypes
+Created dropdown and version: ESF_Font
+Created dropdown and version: ESF_FontColor
+Created dropdown and version: ESF_FontSize
+Created dropdown and version: ESF_FontStyle
+Created dropdown and version: ESF_TextAlign
+Created dropdown and version: ESF_Locale
+Created dropdown and version: ESF_TimeZone
+Created dropdown and version: ESF_USA_PostalStatePossession
+Created dropdown and version: ESF_USA_PostalStates
+Created dropdown and version: ESF_PartyRenotifyTimes
+Created dropdown and version: ESF_TimeIntervalUnits
+Created drop and version: ESF_DateFormat
+Created dropdown and version: ESF_TimeFormat
+Created drop and version: ESF_DecimalFormat
+Created drop and version: ESF_IntegerFormat
+Created drop and version: ESF_MoneyFormat
+Created propertyset and version: ESF
+Created propertyset and version: MyCompany
+Created propertyset and version: MyCompany
+Added template package and version: ESF/Package/Template
+Added template package and version: Package/Template
+Added ESF template transaction template: ESF/TransactionTemplate/Template
+Added company template transaction template: TransactionTemplate/Template
+Created programming user: Open eSignForms Programming <myprogrammer@openesfdemo.com>
+
+Enter setup command (initdb,addsuperuser,initsetup,setpassword,quit,convert1.5) [quit] : quit
+}}}
+
+==Running the Application in Eclipse==
+
+Generally for testing in Eclipse, click Debug As->Debug On Server->Apache->Tomcat v7.0 Server. The first time you just need to point it to where you installed Tomcat above.
+
+==SMTP and IMAP==
+
+Under the System config->Deployment link in the application, you must configure the SMTP Return Path hostname, SMTP server and IMAP server to use. These are Internet standard services external to Open eSignForms, but must be available. Open eSignForms sends out notifications and invitation emails using a scheme that will associate bounces and replies to the original email sent. 
+
+Our basic configuration works like this:
+
+  * Set the SMTP Return Path Hostname to the hostname where you are runnning your SMTP server. The Return-Path SMTP header, along with the Reply-To and Sender headers, are used by receiving systems to validate that an email is legitimate and not spam sent through an open relay. In general, this is the server name where Open eSignForms is installed. On our demo system, we use the value {{{open.esignforms.com}}} which results in emails sent with a return-path something like: {{{Return-Path: <deploy2_pxriwpqowoislybxlucq@open.esignforms.com>}}}  The 'deploy2' value is the deployment id so that a single server can run multiple deployments of our application for multiple customers. The 'pxriwpqowoislybxlucq' is a random, unique value that allows us to associate bounces and replies to the original email sent.
+
+  * Set the SMTP server to the server that sends out emails for your deployment. Typically this is the same as the SMTP eturn Path Hostname. You can also set the SMTP Port, SMTP Auth User, SMTP Auth Password and whether SSL should be used. For typical deployments, port 25 is fine, but for some home developer systems, you may find 587 works for you to bypass ISP firewalls. For a typical deployment where relaying is allowed only from the localhost, you may not need to set the Auth User, Password or SSL options.
+
+  * Set the IMAP Server to the server that will handle inbound emails, such as bounces and replies. This most certainly is the same value as the SMTP ReturnPath Hostname. The IMAP Port of 143 is standard. You will want to set the IMAP User and Password to be used to retrieve emails. We typically create a user account for each deployment, so in the example above, we'd have a user account 'deploy2' created. Note that this user account is only used for receiving email, and we do not allow it to be accessed from the Internet for login purposes.  We recommend using SSH with a setting that restricts user login accounts, and if possible, do as we do and prohibit 'root' login and only allow logins via public key authorization so password guessing cannot be used to hack your system.
+
+  * In our deployments, we use Postfix for SMTP, configured to allow only the localhost server to send out messages (external systems cannot relay through it). We then set the {{{/etc/postfix/virtual_alias}}} to use values like {{{/^deploy2_.*@open.esignforms.com$/ deploy2}}}  This basically will match that return path value and assign it to the right user account that we'll access via IMAP for correlating bounces and replies. Typical settings changes we make to the {{{/etc/postfix/main.cf}}} is (the domain is your server's name):
+{{{
+mydomain = example.com
+home_mailbox = Maildir/
+inet_interfaces = all
+mynetworks_style = host
+virtual_alias_maps = regexp:/etc/postfix/virtual_alias
+}}}
+
+  * In our deployments, we use dovecot for our IMAP server. With CentOS 6 (wasn't needed as late as CentOS 5.6) we seem to need to add the following to `/etc/dovecot/dovecot.conf` file:
+{{{
+mail_location = mbox:~/mail:INBOX=/var/mail/%u
+mail_access_groups=mail
+}}}
+
+==Other tools==
+
+We also are making use of [http://findbugs.sourceforge.net/ FindBugs]. They have an Eclipse update site {{{http://findbugs.cs.umd.edu/eclipse}}} that you can use to add it to your Eclipse. We also make use of [https://www.owasp.org/index.php/OWASP_LAPSE_Project OWASP LAPSE].
+
+While not needed for this particular effort, we recommend PasswordSafe (sourceforge) or something similar so you can remember one great pass phrase and keep your various other passwords unique, so when your bank or the like is hacked, at least the password is not used in other sites that become vulnerable as a result.
+
+We also like OpenOffice for our office productivity.
+
+For Windows, we use WinSCP and Putty for SSH/SCP access to our Linux servers.
+
+= Linux setup =
+
+For Linux deployment servers, we use a layout like this in the home directory for the application. For scripts and such, you may want to run `dos2unix` on them. 
+
+  * `~/bashrc` and `profile` are here; tweak as necessary for your setup.
+  * `~/bin` contains our shell scripts
+  * `~/deployments` contains the `template` folder hierarchy and is used to store the PostgreSQL database per web app deployment (via PostgreSQL's tablespace directive).
+  * `~/java` is where we install our Java 6 Runtime Environment, such as jre1.6.0_41, and we create a softlink of that to 'jdk1.6' which is referenced in the `profile`. This allows updates to Java by changing where the softlink points. (i.e. `ln -s jre1.6.0_41 jdk1.6`)
+  * `~/postgresql` contains the location where PostgreSQL is installed. It has folders like `bin`, `data92` (where the main db is stored, but each web app's tablespace puts those databases in the `deployments` folder), `ddl`, `logs`, `pg92` (where PostgreSQL installs to) and `postgresql-9.2.4` (were we unzipped PostgreSQL and compiled it).
+  * `~/tomcat` where we unzipped Tomcat into a folder like apache-tomcat-7.0.39, and then we create a softlink from that version to `tomcat7.0` which is referenced in the `profile` script. (i.e. `ln -s apache-tomcat-7.0.39 tomcat7.0`)
+  * `~/wkhtmltopdf_0.11.0` which contains the code to [wkhtmltopdf generate PDFs from HTML]. We then create a softlink of the executable to our `bin` with something like `ln -s ../wkhtmltopdf_0.11.0/wkhtmltopdf-i386 wkhtmltopdf` (command run from the `bin` directory).
+
+== Mapping code from the Eclipse project to Linux paths ==
+
+  * From `ECLIPSEPROJECTNAME/database/postgresql`, we put 'ddl' in `~postgresql` and run `dos2unix` on them.
+  * From `ECLIPSEPROJECTNAME/database`, we put 'deployments' in `~`.
+  * From `ECLIPSEPROJECTNAME/scripts`, we put all files in `~/bin` and run `dos2unix` on them. You can put them in a 'scripts' folder, too, but just remember to add that directory to your PATH. You can delete the `*.cygwin` files. You may want to do a `chmod +x ~/bin/*` if the scripts don't seem to have execute permission.
+  * From `ECLIPSEPROJECTNAME/WebContent`, we put all files in `~/tomcat/tomcat7.0/webapps/WEBAPPNAME` where WEBAPPNAME is what you are calling your deployment.
+
+== General Linux X64 server setup information ==
+
+As `root` do the following on your new Linux instance:
+  * `useradd esignforms` (assuming you install the code under this username)
+  * `passwd root`  (be sure to set good passwords)
+  * `passwd esignforms`  (be sure to set good passwords)
+  * `yum update`  (to ensure you are up-to-date with everything)
+  * `yum install iptables ntp logwatch dos2unix gpg bind-utils jwhois telnet traceroute make gcc libgcc gcc-c++ glibc-devel readline readline-devel ncurses ncurses-devel zlib zlib-devel zip unzip pam pam-devel postfix screen lynx dovecot rsync`
+  * See the [wkhtmltopdf wkhtmltopdf wiki] for other components you need, including using the 32-bit versions of some libraries.
+  * Put `ALL: ALL` in `/etc/hosts.deny`
+  * Put `sshd: ALL` in `/etc/hosts.allow`
+  * Ensure you `/etc/hosts` file is correct with your hostname and IP address.
+  * `hostname esign.example.com`
+  * Set up for you timezone, i.e. `rm -f /etc/localtime` and then `ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime`
+  * Set `ZONE="America/Los_Angeles"` and `UTC=true` in `/etc/sysconfig/clock`
+  * Set `HOSTNAME=esign.example.com` in `/etc/sysconfig/network`
+  * Ensure your `/etc/resolv.conf` is set up for the name servers you can use to resolve external host names.
+  * Create Yozons-specific `/usr/local/bin/sp` script wrapper for `ps` (`chmod 755`).
+  * Create Yozons-specific `/etc/esfprofile` script for offsite backups. `chmod 640` and `chown root.esignforms`
+  * Change `/etc/ssh/sshd_config` to use:
+    * `PermitRootLogin no`
+    * `PasswordAuthentication no`
+    * `AllowUsers esignforms`
+    
+As `esignforms` do:
+  * `mkdir .ssh`
+  * `chmod 700 .ssh`
+  * `cd .ssh`
+  * Install your `authorized_keys` file so you can SSH in
+  * `chmod 600 authorized_keys`
+
+As `root` again do:
+  * `service sshd restart`
+  * `service ntpd start`
+  * `chkconfig ntpd on`
+  * Setup `/etc/sysconfig/iptables` something like:
+{{{
+# We do simple NAT here to map HTTP/HTTPS to the safer unprivileged ports Tomcat listens on.
+*nat
+:PREROUTING ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A PREROUTING -p tcp -m tcp --dport 443 -j REDIRECT --to-ports 8443
+-A PREROUTING -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 8080
+# causes outbound connections on my public IP to also redirect like above
+-A OUTPUT -p tcp -m tcp -d esign.example.com --dport 443 -j REDIRECT --to-ports 8443
+-A OUTPUT -p tcp -m tcp -d esign.example.com --dport 80 -j REDIRECT --to-ports 8080
+COMMIT
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:RH-Firewall-1-INPUT - [0:0]
+-A INPUT -j RH-Firewall-1-INPUT
+-A FORWARD -j RH-Firewall-1-INPUT
+-A RH-Firewall-1-INPUT -i lo -j ACCEPT
+-A RH-Firewall-1-INPUT -p icmp --icmp-type any -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 25 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp -s localhost.localdomain -d localhost.localdomain --dport 143 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+# 29090 is the tomcat debug port
+# -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 29090 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8443 -j ACCEPT
+-A RH-Firewall-1-INPUT -j REJECT --reject-with icmp-host-prohibited
+COMMIT
+}}}
+  * Make changes to [#SMTP_and_IMAP /etc/postfix/main.cf] as above.
+  * Set up `/etc/postfix/virtual_alias` something like with the first being how to map individual deployments (named 'demo' in this example) as well as creating forwarding rules for the esignforms, postmaster and root users:
+{{{
+/^demo_.*@esign.example.com$/ demo
+/^esignforms@esign.example.com$/ support@example.com
+/^postmaster@esign.example.com$/ support@example.com
+/^root@esign.example.com$/ support@example.com
+}}}
+  * Add `MailTo = support@example.com` to `/etc/logwatch/conf/logwatch.conf`
+  * `service postfix start`
+  * `chkconfig postfix on`
+  * `service dovecot start`
+  * `chkconfig dovecot on`
+  * Here is a sample init script for auto-starting/stopping the application on boot and shutdown (so you can use `service esignforms start` and `service esignforms stop` for example). The latest Red Hat and CentOS has programs named `start` and `stop` so our start/stop scripts are often renamed to `yostart` and `yostop` along with similar changes in their contents in the `bin` subdirectory:
+{{{
+#!/bin/bash
+#
+# Copyright (c) 2012 Yozons Inc.  All rights reserved worldwide.
+#
+# Start in runlevels 3, 4, 5, with start at the end and stop at the beginning
+# chkconfig: 345 99 3
+# description: Init file for Yozons Open eSignForms web applications
+#
+INITFILE=/etc/rc.d/init.d/esignforms
+LOCK=/var/lock/subsys/esignforms
+
+# source in the function library
+. /etc/rc.d/init.d/functions
+
+start()
+{
+        echo -n "Starting Open eSignForms:"
+        su - esignforms -c "bin/yostart all" && success || failure
+        RETVAL=$?
+        [ "$RETVAL" = 0 ] && touch $LOCK
+        echo
+}
+
+stop()
+{
+        echo -n "Stopping Open eSignForms:"
+        su - esignforms -c "bin/yostop all"
+        RETVAL=$?
+        [ "$RETVAL" = 0 ] && rm -f $LOCK
+        echo
+}
+
+case "$1" in
+        start)
+                start
+                ;;
+        stop)
+                stop
+                ;;
+        restart)
+                stop
+                sleep 5
+                start
+                ;;
+        status)
+                        echo Status of ntpd:
+                /usr/local/bin/sp ntpd
+                        echo Status of sshd:
+                /usr/local/bin/sp sshd
+                        echo Status of postfix SMTP:
+                /usr/local/bin/sp postfix
+                        echo Status of dovecot IMAP:
+                /usr/local/bin/sp dovecot
+                echo
+                su - esignforms -c "bin/checkall"
+                RETVAL=$?
+                ;;
+        install)
+                echo Adding esignforms to runlevel system for auto start and stop
+                cp $0 $INITFILE
+                chmod 755 $INITFILE
+                /sbin/chkconfig --add esignforms
+                ;;
+        uninstall)
+                echo Removing esignforms from runlevel system for auto start and stop
+                /sbin/chkconfig --del esignforms
+                rm -f $INITFILE
+                ;;
+        *)
+                echo $"Usage: $0 {start|stop|restart|status|install|uninstall}"
+                RETVAL=1
+esac
+exit $RETVAL
+}}}
