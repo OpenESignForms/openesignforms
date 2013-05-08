@@ -8,7 +8,7 @@
 
 These instructions are pretty high level right now, so we'll want to nail it down to a more easily repeatable set of instructions, but we had to start somewhere! 
 
-[http://www.yozons.com/Open-eSignForms/pricing.jsp Yozons offers low-cost hosted solutions] for those who prefer to just get up-and-running. Yozons also offers private web servers for those who want their own domain name (and SSL cert).
+[http://www.yozons.com/Open-eSignForms/pricing.jsp Yozons offers low-cost hosted commercial solutions] for those who prefer to just get up-and-running. [http://open.esignforms.com/pricing.jsp Lower-priced hosting is available for open source users]. Yozons also offers private web servers for those who want their own domain name (and SSL cert).
 
 = Details =
 
