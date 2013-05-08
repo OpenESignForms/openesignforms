@@ -25,6 +25,7 @@ Thank you for using [http://open.esignforms.com Open eSignForms]^TM^ by [http://
 See our [http://www.youtube.com/watch?v=Au6FMeautUI&hd=1 YouTube video] for a 15-minute overview tour. Or check out our selection of [http://www.youtube.com/user/YozonsHTV#g/a How-To Videos on YozonsHTV].  Check out our [ProgrammingTutorial Programming Tutorial] for a step-by-step learning approach.
 
 With Open eSignForms:
+  * E-Contracting on Purpose^SM^
   * Free forms to get you started
   * You stay in control
   * Conduct business using your brand with your documents and your data
