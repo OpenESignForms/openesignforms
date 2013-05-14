@@ -498,3 +498,22 @@ case "$1" in
 esac
 exit $RETVAL
 }}}
+
+=== IPv6 use ===
+
+We have no IPv6 expertise yet, but you may consider the following changes if you do not want IPv6 connections on your server if IPv6 is otherwise configured. The application has no specific knowledge of IPv6.
+
+  * Add to `/etc/sysctl.conf`:
+{{{
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+}}}
+  * For a running system:
+{{{
+sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sysctl -w net.ipv6.conf.default.disable_ipv6=1
+}}}
+  * Change `/etc/sysconfig/network`:
+{{{
+NETWORKING_IPV6=no
+}}}
