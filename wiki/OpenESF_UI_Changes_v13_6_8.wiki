@@ -21,10 +21,7 @@ The Open eSignForms release 13.6.8 was a significant rewrite based on the update
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+(Screenshots are coming soon.)
 
 = See it in action early =
 
