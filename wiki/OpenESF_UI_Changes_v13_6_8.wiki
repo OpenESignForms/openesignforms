@@ -78,7 +78,27 @@ If you have more tabs than can be shown, arrow buttons will appear on the far ri
 
 If you click on a menu item that is already open in a tab, that tab will be shown again.
 
-_NOTE: If you have a large or dual monitors, you may want to open another view in a second browser windows to compare items. Just click on the logo in the upper left corner to open a new browser window that you can navigate separately, or even be in a different mode._
+= Comparing in a second browser window = 
+
+If you have a large or dual monitors, you may want to open another view in a second browser windows to compare items. Just click on the logo in the upper left corner to open a new browser window that you can navigate separately, or even be in a different mode.
+
+https://open.esignforms.com/images/NewUIWiki20130608/secondBrowserWindow.png
+
+= Document page editor =
+
+The document page editor should be familiar, except that now the fields, parties, files, images and drop down lists on the right panel are individually behind tabs. Just click on the appropriate tab to see the respective lists.
+
+https://open.esignforms.com/images/NewUIWiki20130608/pageEditor.png
+
+Also, the *Add new* button has moved to the main document editor area.
+
+= Document tester =
+
+The document tester should also be familiar, but note that the *Close test window* and *View document as party* drop down are at the top of the test window instead of at the bottom.
+
+https://open.esignforms.com/images/NewUIWiki20130608/documentTester.png
+
+The buttons at the bottom, of course, are the document navigation buttons that parties will use when completing the document.
 
 = See it in action early =
 
