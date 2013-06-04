@@ -57,9 +57,37 @@ When you login, you will see a welcome screen that includes links you may be int
 
 Whenever you are done using the application, you should logoff. This not only protects access to your account, but it also frees server resources. If you just close your browser, go to another web site (URL) or remain idle for a long period of time, the web server will eventually time out your session.
 
-There is a logoff button on the bottom of the navigation bar on the left side column, as well as in the upper right corner.
+There is a logoff button in the upper right corner.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Modes: Production versus Test =
+
+When you login, the mode and tabs you had open when you last logged off will be shown again. If you are new, you will default to PRODUCTION: Live mode with the Welcome tips tab shown.
+
+The current mode is displayed first in the black menu bar. It's a drop down list so click on it to change modes.
+
+http://open.esignforms.com/images/HowToGuidesWiki/modeList.png
+
+== PRODUCTION: Live mode ==
+
+The "normal" mode is *PRODUCTION: Live*, in which new transactions you start are for your regular needs, and To Do, Reports and Transaction Search return production-mode transactions. Also, when you click Start transaction you will only see transactions suitable for production mode.
+
+Note that the header and footer have a blue background and the mode selector reads Production: Live
+
+== TEST: Like Production mode ==
+
+In *TEST: Like Production* mode, you will see a new orange border that will help you understand that you are actually in test mode, albeit for production-level components (package, document, image, drop down, etc. all will use production versions). To Do, reports and transaction search will show only test transactions. When you run To Do or reports you will see a similarly colored orange dotted line appear under the search area to make it clear that the output you see in is for test transactions. This is because if you switch modes and you run reports or the like in different tabs, you will be able to tell easily if you were looking at test/production transactions in those reports. 
+
+You should use this mode when testing what your customers/users will see so that you do not pollute your production reports with test transactions. 
+
+It is also recommended that when any new or updated transaction is put into production, you do at least one 'Test Like Production' to ensure it is working as you expect. It is possible that some test-level components were not promoted to the production version and this final test will catch that.
+
+== TEST: Development mode ==
+
+In *TEST: Development* mode, the header and footer backgrounds will change to a yellow color along with that new orange border. It's the same background color as the library programming navigation shows to help tie in the fact that you are not only doing test transactions, but it resolves all parts with the latest test versions when available. 
+
+This is the mode suitable to the programmer or tester of new documents and process flows before they are put into production. 
 
 = To Do http://open.esignforms.com/images/HowToGuidesWiki/toDoIcon.png =
 
@@ -81,8 +109,6 @@ If a transaction in the To Do has been locked to you, and there is a To Do Group
 
 Click the *Refresh* button to update the list, such as after processing some work or to check for new work.
 
-
-
 For users who belong to a group that has *Manage To Do* permission for the member users of a group, a drop down box will appear next to the *Refresh* button that will allow you to see the To Do queue of other users. This is generally used to handle transactions for a user who is no longer active or perhaps is on vacation.
 
 ==To Do configuration==
@@ -96,17 +122,11 @@ To use To Do, do the following:
 
 = Start a transaction http://open.esignforms.com/images/HowToGuidesWiki/startTransactionIcon.png =
 
-To start a transaction, open the *Start transaction* menu to list transactions you are authorized to start manually.
+To start a transaction, click the *Start transaction* menu to list transactions you are authorized to start manually.
 
-Click on the transaction name to start that transaction for Production mode. A new window will pop up to allow you to work on that transaction. Close that window when you are done. If the transaction allows it, you can delete it from the package's document list using the *Delete this transaction* button. The package document list is either the first page you see, or while in edit mode, you can click on the *Return to the document list*  button to show it.
+http://open.esignforms.com/images/HowToGuidesWiki/startTransactionMenuListing.png
 
-If you are testing or making changes, you can run the transaction in Test mode by right-clicking on the transaction name:
-
-http://open.esignforms.com/images/HowToGuidesWiki/startTransactionTestModes.png
-
-Click on *Start TEST transaction* to start the transaction in Test mode using all of the most recent test versions where available. If a component has no test version, the production version will be used.
-
-Click on *Start TEST like Production* to start the transaction in Test mode, but using only production versions. This is a good "final test" after you migrate components from Test to Production, or when a customer says something odd is happening and you want to test out a production-level transaction, but in Test mode.
+Click on the transaction name to start that transaction using your currently selected mode. A new window will pop up to allow you to work on that transaction. Close that window when you are done. If the transaction allows it, you can delete it from the package's document list using the *Delete this transaction* button. The package document list is either the first page you see, or while in edit mode, you can click on the *Return to the document list*  button to show it.
 
 _Note, some transactions may not be started by users, and those will not be listed here. Some transactions are configured to be started by *External users*, parties who are not logged in, such as transactions that are started by your customers who visit your web site or are started via integration of existing applications you have._
 
@@ -130,7 +150,9 @@ You can also add additional start links for testing purposes by adding the param
 
 = Reports http://open.esignforms.com/images/HowToGuidesWiki/reportsIcon.png =
 
-To list reports you are allowed to run, open the Reports menu item. All reports are custom-built, but this example explains the main search criteria and capabilities.
+To list reports you are allowed to run, click on the Reports menu item. Click on one listed to run that report.
+
+All reports are custom-built, but this example explains the main search criteria and capabilities.
 
 See the [ProgrammingGuide Point & Click Programmer's Guide] for details on mapping data fields from your packages to report fields, and for building a custom report that includes such report fields.
 
@@ -147,7 +169,7 @@ Below is a typical search and filtering control for reports.
 http://open.esignforms.com/images/HowToGuidesWiki/reportSearch.png
 
   * Select *Any transaction type* when you'd like to report on all transaction types defined for this report, which are listed below the "Any" entry. You may also select one or more specific transaction types to narrow the results.
-  * The *Production* or *Test* radio buttons let you choose which type of transactions are you interested, those for testing, or those for production.
+  * The search will select production transactions if your current mode is *PRODUCTION: Live*, otherwise it will list test transactions.
   * Select *Started by external parties* to find only those transactions started by external parties, those users who do not have a login and typically created the transaction by starting from your company's web site. The "external parties" option is only available if the report has authorized you to see them. You may also select *Started by any user*, if the report authorizes you to do so, to include all users (those listed below this entry). You may select *Started by me* to include transactions that you started (this is the default access). And if additional users are listed below that, you may select individual users. Multiple selections are allowed.
   * Enter a unique transaction id in the *Tran id only search* field to search for a particular transaction. This mode skips all other search criteria, but of course the transaction found must be one of the types listed for the report.
   * Enter an email address, or partial email address, in the *Party email* field to limit records to those transactions in which one of the parties is associated with a matching email address.
@@ -158,9 +180,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/reportSearch.png
   * Choose the which date associated with the transactions to use: *Started* means the date the transaction was started; *Last updated* means the date the transaction was last changed or in use by a party; *Will cancel* means the date the transaction is set to automatically cancel itself if it does not complete before; and *Will expire* means the date the transaction will expire and be removed from the data base.
   * For *In date range* choose from one of the options: *Today* will show matching transactions for the current date; *Yesterday* will show matching transactions from yesterday; *Last 7 days* will show matching transactions for the last 7 days; *Last 30 days* will show matching transactions for the last 30 days; *Last 90 days* will show matching transactions for the last 90 days; *Last 365 days* will show matching transactions for the last 365 days; or *Date range* will let you choose your own date range starting from the *From date* through the *To date* fields.
 
-In this example, the custom report also allows for two fields to be searched in addition to the standard search fields:
-  * *Last status* allows you to search on the last status field, which is typically a document and/or party name.
-  * *Last name* allows you to search on the last name field presumably defined in the documents defined for the transaction types listed.
+In this example, the custom report also allows for additional fields from your data to be searched in addition to the standard search fields.
 
 Click the *Find matching* button to generate the report based on matching transactions. The list of matching transactions will appear below.
 
@@ -407,7 +427,7 @@ If you download the data associated with a document, you will receive something 
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= General tran search http://open.esignforms.com/images/HowToGuidesWiki/generalTranSearchIcon.png =
+= Tran search http://open.esignforms.com/images/HowToGuidesWiki/generalTranSearchIcon.png =
 
 The general transaction search feature is very similar to [#Reports Reports], except that is has fixed fields in the listing instead of custom field selections. This feature provides full access to the transaction and thus has less control than with custom reports. It is recommended this feature only be given to system administrators or other power users who have full control over the transactions they can list. 
 
@@ -415,7 +435,7 @@ This view provide basic control and monitoring of transactions that a user has L
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== General tran searching and filtering ==
+== Tran searching and filtering ==
 
 Below is a typical search and filtering control for general transaction search. 
 
@@ -425,7 +445,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/generalTranSearch.png
   * Choose your date range starting from the *From date* through the *To date* fields.  
   * Enter a unique transaction id in the *Tran id only search* field to search for a particular transaction. This mode skips all other search criteria, but of course the transaction found must be one of the types allowed.
   * Enter an email address, or partial email address, in the *Party email* field to limit records to those transactions in which one of the parties is associated with a matching email address.
-  * The *Production* or *Test* radio buttons let you choose which type of transactions are you interested, those for testing, or those for production.
+  * If your current mode is *PRODUCTION: Live* then you will search for production transactions, otherwise it will search for test transactions.
   * Check *In progress* to include transactions that are currently in progress.
   * Check *Completed* to include transactions that have been completed.
   * Check *Suspended* to include transactions that have been suspended. A suspended transaction cannot be processed further until re-activated.
@@ -437,7 +457,7 @@ Click on any transaction row to bring up details and additional controls regardi
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-== General search transaction details ==
+== Tran search transaction details ==
 
 See [#Report_transaction_details report transaction details] for details on this function.
 
