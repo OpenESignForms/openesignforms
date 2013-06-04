@@ -1,0 +1,35 @@
+#summary The Open eSignForms user interface changed with the Vaadin 7 port in releaes 13.6.8
+#labels Phase-Support
+
+<h1>Updated Open eSignForms User Interface for v13.6.8</h1> 
+
+= Introduction =
+
+The Open eSignForms release 13.6.8 was a significant rewrite based on the updated Vaadin 7 port.  This is an overview of how the screens have changed as a quick start introduction for those familiar with the previous releases.
+
+= Overview =
+
+  * The main menu no longer is the tree on the right side.  It is now a more traditional tab-like menu on the top.  This allows for long lists of transactions and reports and such to not cause the navigation to get too long. Also, after you you select something, the menu list pops back in so it doesn't remain cluttering the view.
+  * Except for clicks that start a transaction in a new browser window, you will note that the menu automatically opens in the tab interface.  You should close these tabs when you are done to improve performance, but any tabs you leave there will re-open if you logoff and then log back in.
+  * The next change is the Production, Test Like Production, and Test modes.  There's no more right-clicking or choosing Test/Production modes in reports.  When you login, the last mode you set will be remembered.
+    # Normally you should be in *Production mode*, which means that starting a transaction, To Do, reports and transaction search will work on production transactions.  It also means that you won't see a transaction listed under "start transaction" that is not available for the mode you are in. 
+    # In *Test Like Production mode*, you will see a new border that will help you understand that you are actually in test mode, albeit for production-level transactions.  To Do, reports and transaction search will operate on test transactions only.  When you run To Do or reports you will see that colored line appear under the search area to make it clear that the output you see in is for test transactions.  This is because if you switch modes and you run reports or the like in different tabs, you will be able to tell easily if you were looking at test/production transactions.
+    # In *Test mode*, the background will change along with that new border.  It's the same color as the library programming navigation now, to help tie in the fact that you are not only doing test transactions, but it resolves all parts with the latest test versions when available.
+  * The document page editor has also changed a bit.  The fields, parties, files, images and dropdowns lists that were all shown on the right side now only show one of them at a time in their own tabs, with the default being the list of fields.  The "Add new" button for adding new of any of those is now in the main editor area.
+  * When in the document page editor, the TEST button puts the controls at the top since it was confusing to have the regular document buttons appear, and then scroll lower to find the test window buttons (to close the test window and select the party view to test).
+  * If you have a large or dual monitor, there are times when you'd like to open multiple items and compare them. The easiest way to do that now is to click on the Open eSignForms logo in the upper left corner after you login. This will open a new browser window (note that it will not have the header/footer areas to make it clear it's a subordinate window) where you can navigate separately and then compare entries between the two browser windows.
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
+
+= See it in action early =
+
+You can see the new user interface in action now on the demo system.
+
+https://open.esignforms.com/demo/
+
+Login using `demo@yozons.com` and password `demo2013`
