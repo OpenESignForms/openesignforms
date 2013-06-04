@@ -1,5 +1,5 @@
 #summary Basic installation instructions for developers.
-#labels Featured,Phase-Implementation
+#labels Phase-Implementation
 
 ==== Table of contents ====
 <wiki:toc max_depth="3" />
