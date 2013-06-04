@@ -6,8 +6,6 @@
 
 = Introduction =
 
-*_THIS VERSION IS UNDER CONSTRUCTION FOR USE WITH VAADIN 7, JAVA 7 AND ECLIPSE JUNO_*
-
 These instructions are pretty high level right now, so we'll want to nail it down to a more easily repeatable set of instructions, but we had to start somewhere! 
 
 [http://www.yozons.com/Open-eSignForms/pricing.jsp Yozons offers low-cost hosted commercial solutions] for those who prefer to just get up-and-running. [http://open.esignforms.com/pricing.jsp Lower-priced hosting is available for open source users]. Yozons also offers private web servers for those who want their own domain name (and SSL cert).
@@ -109,7 +107,7 @@ Install the latest version of [http://www.eclipse.org] Eclipse IDE for Java EE] 
 
 Install the [https://vaadin.com/book/vaadin7/-/page/getting-started.eclipse.html Apache IvyDE plugin and Vaadin Eclipse plugin] as instructed on their book.
 
-We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Server->Servers.  If no servers appear, right-click New->Server; then choose Apache->Tomcat v7.0 Server, click Next and choose the location where you installed Tomcat (i.e. something like C:\apache-tomcat-7.0.39). Double-click your server (named Tomcat v7.0 Server at localhost or whatever version you are using) so you display the Overview and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin for us -- see below for downloading the project code first) click the Edit button to uncheck the 'Auto reloading enabled'. 
+We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Server->Servers.  If no servers appear, right-click New->Server; then choose Apache->Tomcat v7.0 Server, click Next and choose the location where you installed Tomcat (i.e. something like C:\apache-tomcat-7.0.39). Double-click your server (named Tomcat v7.0 Server at localhost or whatever version you are using) so you display the Overview and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin7 for us -- see below for downloading the project code first) click the Edit button to uncheck the 'Auto reloading enabled'. 
 
 Using the same Servers configuration, we make the following changes:
 
@@ -132,13 +130,13 @@ If you have edit/commit permission, you'll need a user account and password with
 
 {{{:extssh:USERNAME@open.esignforms.com:/home/cvs}}}
 
-It seems from a fresh install that you'll want to right click on the open-eSignFormsVaadin project, click on Ivy->Clean All Caches and then again on Ivy->Resolve to get all of the Vaadin JARs.
+It seems from a fresh install that you'll want to right click on the ECLIPSEPROJECTNAME project, click on Ivy->Clean All Caches and then again on Ivy->Resolve to get all of the Vaadin JARs.
 
 (If you plan to do any VaadinCKEditor project work, not necessary for Open eSignForms itself, you'll need to install a subversion plugin -- we use Subversive SVN Team Provider from the Eclipse installation location or Eclipse Marketplace and we selected the SVN Kit 1.7.9. This related project is hosted on Google Code.)
 
 You will need to compile the Vaadin widgets before testing. Vaadin widgets compile to GWT-based javascript and are stored in the `WebContent/VAADIN/widgetsets` folder.
 
-Eclipse should automatically compile all of the regular Java source code into the `WebContent/WEB-INF/classes` folder. If not, right-click on the project in Eclipse and select Properties, then click on the "Java Build Path", click on the Source tab, the "Default output folder" should be something like: `open-eSignFormsVaadin/WebContent/WEB-INF/classes` but this normally should be set automatically if you are using checked-in code or a source code snapshot release.
+Eclipse should automatically compile all of the regular Java source code into the `WebContent/WEB-INF/classes` folder. If not, right-click on the project in Eclipse and select Properties, then click on the "Java Build Path", click on the Source tab, the "Default output folder" should be something like: `ECLIPSEPROJECTNAME/WebContent/WEB-INF/classes` but this normally should be set automatically if you are using checked-in code or a source code snapshot release.
 
 ==Passwords==
 
@@ -149,6 +147,8 @@ There are also several `*`.properties files with passwords in them. For testing,
 openesignforms.properties - Sets the two boot passwords to 'test1' and 'test2' respectively.  These values must match the values given to DbSetup when a new system is deployed.
 
 connectionpools.properties - Sets the database user and password for each deployment. The default user and password is the same for both: esignforms
+
+log4j.properties - Be sure to fix up the location where to store the log files for your deployment.
 
 _Remember, in production, you never want to use such passwords._
 
@@ -332,7 +332,7 @@ For Linux deployment servers, we use a layout like this in the home directory fo
   * `~/bashrc` and `profile` are here; tweak as necessary for your setup.
   * `~/bin` contains our shell scripts
   * `~/deployments` contains the `template` folder hierarchy and is used to store the PostgreSQL database per web app deployment (via PostgreSQL's tablespace directive).
-  * `~/java` is where we install our Java 6 Runtime Environment, such as jre1.6.0_41, and we create a softlink of that to 'jdk1.6' which is referenced in the `profile`. This allows updates to Java by changing where the softlink points. (i.e. `ln -s jre1.6.0_41 jdk1.6`)
+  * `~/java` is where we install our Java 7 Runtime Environment, such as jre7u21, and we create a softlink of that to 'jdk1.7' which is referenced in the `profile`. This allows updates to Java by changing where the softlink points. (i.e. `ln -s jdk1.7.0_21 jdk1.7`)
   * `~/postgresql` contains the location where PostgreSQL is installed. It has folders like `bin`, `data92` (where the main db is stored, but each web app's tablespace puts those databases in the `deployments` folder), `ddl`, `logs`, `pg92` (where PostgreSQL installs to) and `postgresql-9.2.4` (were we unzipped PostgreSQL and compiled it).
   * `~/tomcat` where we unzipped Tomcat into a folder like apache-tomcat-7.0.39, and then we create a softlink from that version to `tomcat7.0` which is referenced in the `profile` script. (i.e. `ln -s apache-tomcat-7.0.39 tomcat7.0`)
   * `~/wkhtmltopdf_0.11.0` which contains the code to [wkhtmltopdf generate PDFs from HTML]. We then create a softlink of the executable to our `bin` with something like `ln -s ../wkhtmltopdf_0.11.0/wkhtmltopdf-i386 wkhtmltopdf` (command run from the `bin` directory).
