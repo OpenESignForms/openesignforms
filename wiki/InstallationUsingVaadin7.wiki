@@ -164,7 +164,7 @@ For Windows, the installer defaults to the user 'postgres' so you can add our DB
 {{{psql -U postgres
 CREATE USER esignforms WITH PASSWORD 'esignforms' SUPERUSER;}}}
 
-Create the deployment folder in the home directory (/home/esignforms/deployments) or C:\deployments.  Put the 'templates' folder in there that defines the structure used for each deployment. You can delete the CVS subdirectories and DELETEME.txt files.  On Windows, you will want to give all users full permissions to the C:\deployments folder when testing. We are not sure the about the exact user permissions needed, but generally you want to access those files from Windows Explorer, your cygwin user, and the PostgreSQL user.
+Create the deployment folder in the home directory (/home/esignforms/deployments) or C:\deployments.  On Windows, you will want to give all users full permissions to the C:\deployments folder and subfolders when testing. We are not sure the about the exact user permissions needed, but generally you want to access those files from Windows Explorer, your cygwin user, and the PostgreSQL user.
 
 Update the {{{~/profile}}} to point to the locations where all your stuff is. The next time you run cygwin, it should have the new good values. You can test with {{{java -version}}} and {{{psql template1}}} to see that Java and Postgresql are setup for cygwin access.
 
@@ -172,7 +172,7 @@ Update the {{{~/profile}}} to point to the locations where all your stuff is. Th
 
 Install of the SQL code from 'database/postgresql/ddl' into the 'ddl' folder in your home folder.  We use the 5 letter deployment id for creating the database for a given webapp.
 
-Note that the `profile` script sets ESF_DEPLOYMENT_BASE to the base directory where your deployment databases (PostgreSQL tablespaces) are independently stored. On Windows, we may use `C:\deployments` and on Linux something like `/home/esignforms/deployments`.  The 'templates' folder should be created in here using layout from the Eclipse project's `database/deployments/template`.
+Note that the `profile` script sets ESF_DEPLOYMENT_BASE to the base directory where your deployment databases (PostgreSQL tablespaces) are independently stored. On Windows, we may use `C:\deployments` and on Linux something like `/home/esignforms/deployments`.  The 'templates' folder should be created in the deployment folder automatically once you run the `create_db` script.
 
 {{{
 If you have a previous install and need to wipe it out first, use:
