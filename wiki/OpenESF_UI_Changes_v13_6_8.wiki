@@ -66,6 +66,20 @@ If in *TEST: Like Production* mode, the same set of transactions would be listed
 
 If in *TEST: Development* mode, the list of transactions will include those that are under development but have not yet been put into production.  If you click on a listed transaction then, it will be a test transaction that resolves test version parts first, and if no test version exists, then it would use a production version if available.
 
+= Main tabs =
+
+When you start a transaction, it will always appear in its own browser window.  But for every other menu selection, it will open the chosen item in a tab below the menu bar.  
+
+Just click on an existing tab to view its contents again, or click the X in the tab name to close it (you must have at least one tab open, though).
+
+https://open.esignforms.com/images/NewUIWiki20130608/mainTabs.png
+
+If you have more tabs than can be shown, arrow buttons will appear on the far right side to make those other tabs visible.  There is no limit on the number of tabs you can have open, but we do produce a warning whenever you open the 10th tab.  In general, you want to close tabs you are not longer using to improve performance on the server as well as in your browser.
+
+If you click on a menu item that is already open in a tab, that tab will be shown again.
+
+_NOTE: If you have a large or dual monitors, you may want to open another view in a second browser windows to compare items. Just click on the logo in the upper left corner to open a new browser window that you can navigate separately, or even be in a different mode._
+
 = See it in action early =
 
 You can see the new user interface in action now on the demo system.
