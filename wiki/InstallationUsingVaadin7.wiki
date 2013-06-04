@@ -171,6 +171,9 @@ Update the {{{~/profile}}} to point to the locations where all your stuff is. Th
 ==Create the database==
 
 Install of the SQL code from 'database/postgresql/ddl' into the 'ddl' folder in your home folder.  We use the 5 letter deployment id for creating the database for a given webapp.
+
+Note that the `profile` script sets ESF_DEPLOYMENT_BASE to the base directory where your deployment databases (PostgreSQL tablespaces) are independently stored. On Windows, we may use `C:\deployments` and on Linux something like `/home/esignforms/deployments`.  The 'templates' folder should be created in here using layout from the Eclipse project's `database/deployments/template`.
+
 {{{
 If you have a previous install and need to wipe it out first, use:
   ./drop_db
