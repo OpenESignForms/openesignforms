@@ -1,5 +1,5 @@
 #summary Basic installation instructions for developers. Updated for Vaadin 7.
-#labels Phase-Deploy,Phase-Implementation
+#labels Featured,Phase-Implementation,Phase-Deploy
 
 ==== Table of contents ====
 <wiki:toc max_depth="3" />
