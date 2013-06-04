@@ -121,12 +121,11 @@ Generally, default buttons are the Save, Find and Refresh buttons.
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 == Menu items ==
-You can open any menu item feature by clicking on it, and it will replace the tab in the main part of the application screen. If you right click a menu item and bring up a context menu:
+You can open any menu item feature by clicking on it, and it will open it in a tab in the main part of the application screen. Or the menu item may simply display additional options, such as when clicking on the *Programming* item.
 
-http://open.esignforms.com/images/HowToGuidesWiki/rightClickMenuItem.png
-  * *Open in a new tab* means to open this item in a new tab rather than replace the current tab with the new screen.
-  * *Open in a new window* means to open this item in a new window that can be dragged about, though it is limited to the browser window and can fall behind other such windows and become invisible until you close the top window.
-  * *Open in a new browser window* mean to open this item in a new browser window that is distinct from the browser window, so they can be placed side-by-side, for example, on your computer screen.
+http://open.esignforms.com/images/HowToGuidesWiki/menuItems.png
+
+Also, in this case, you can also see that *Libraries* has an arrow indicating there are even more options if you click on the arrow. If you just click on *Libraries* it will allow you to configure permissions on your libraries, while the arrow allows you to program the contents of your libraries.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
@@ -152,11 +151,15 @@ http://open.esignforms.com/images/HowToGuidesWiki/tooltips.png
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 == Arrows reveal additional related data ==
-And finally, often items are listed in a tree or panel that only opens when you click on the arrow next to it's name:
+And finally, often items are hidden and only open when you click on the arrow next to it's name:
 
 http://open.esignforms.com/images/HowToGuidesWiki/openCloseArrows.png
 
-When the arrow points down (such as *Programming* above), that item is "opened" and any elements it contains are displayed (in this case, *Libraries* appears). When the arrow points to the right (such as *Libraries* above), that item is "closed" and any elements it contains are not displayed. If you click on the arrow multiple times, will will alternate between being open and being closed.
+When the arrow points down, that item is "opened" and any elements it contains are displayed. When the arrow points to the right, that item is "closed" and any elements it contains are not displayed. If you click on the arrow multiple times, will will alternate between being open and being closed.
+
+Here is that same element opened:
+
+http://open.esignforms.com/images/HowToGuidesWiki/openCloseArrows-opened.png
 
 If there are no elements (or at least no elements you have *List* permission to) when you open an item, the arrow will change, but nothing will appear. This generally means you do not have permission to any items under it, or perhaps none have been created yet (such as for menu items *Reports*, or *Start transaction*), or if some exist, they are disabled and so do not appear in the listing.
 
