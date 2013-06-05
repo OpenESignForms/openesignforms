@@ -204,6 +204,7 @@ On the left side editor:
   * The *Page [HowToGuides#EsfNames_and_PathNames EsfName]* is the unique page name in this document.
   * The *Edit/Review mode* specifies how a given page will be used. By default, it's for both "edit" mode, which means parties can fill it out, and "review" mode, which is shown as the final step before submitting a completed document. Choose "Edit and review" if the page is to be filled out and included in the final review. Choose "Edit only" if it's just for collecting data, such as in wizard, but won't be used in the final review. Choose "Reivew only" if it's just for the final review and will otherwise not have any input required.
   * The *Assign new fields so party can update* drop down lists all defined parties for the document, or "-none-", so that as you are building a new document, if you select the party who will fill out the respective fields, when you click *Save*, all new fields will automatically be associated with that party. Don't worry if you forget as you can assign which fields each party can update by clicking on the Party in the right side list.
+  * The *Add new* button http://open.esignforms.com/images/HowToGuidesWiki/addNewOptionButton.png will let you manually create a new field, party, file, image or drop down.
   * The *View default CSS* list may be useful to more advanced programmers who understand CSS (cascading style sheets). The styles shown when you click on the link are provided for all pages, so you can use these style class names as necessary. It may also be useful if you need to override any in your document (just redefine via the 'Source' mode and add {{{!important}}} to ensure your style class is used).
   * The (i) info button has various tips and useful information (cheatsheet) for defining fields in your document.
 
@@ -265,11 +266,11 @@ Click the Show Blocks button to display the page in terms of blocks, indicating 
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-=== Fields in document ===
+=== Fields ===
 
-On the right side is the *Fields in document* list:
+On the right side is the *Fields* tab and list of fields:
 
-http://open.esignforms.com/images/HowToGuidesWiki/fieldsInDocumentList.png
+http://open.esignforms.com/images/HowToGuidesWiki/fieldInDocumentList.png
 
 This shows all fields defined in the document using the `${ }` notation. It shows the number of references as well as the field's type.  
 
@@ -339,7 +340,7 @@ Click the *Delete* button to delete the field. Note that you must also remove th
 
 === Parties to document ===
 
-On the right side is the *Parties to document* list:
+On the right side is the *Parties* tab and list of parties who work on this document:
 
 http://open.esignforms.com/images/HowToGuidesWiki/partyInDocumentList.png
 
@@ -367,7 +368,7 @@ Click the *Delete* button to delete the party.
 
 === Files linked in document ===
 
-On the right side is the *Files linked in document* list:
+On the right side is the *Files* tab and list of files linked to in this document:
 
 http://open.esignforms.com/images/HowToGuidesWiki/fileInDocumentList.png
 
@@ -396,7 +397,7 @@ Click the *Delete* button to delete the file.
 
 === Images in document ===
 
-On the right side is the *Images in document* list:
+On the right side is the *Images* tab and list of images that are used only in this document:
 
 http://open.esignforms.com/images/HowToGuidesWiki/imageInDocumentList.png
 
@@ -426,7 +427,7 @@ Click the *Delete* button to delete the image.
 
 === Drop downs in document ===
 
-On the right side is the *Drop downs in document* list:
+On the right side is the *Drop downs* tab and list of drop downs used only in this document:
 
 http://open.esignforms.com/images/HowToGuidesWiki/dropDownsInDocumentList.png
 
@@ -447,16 +448,6 @@ Click the *Ok* button to save your changes to the drop down.
 Click the *Cancel* button to discard the changes made to the drop down.
 
 Click the *Delete* button to delete the drop down. 
-
-<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
-
-=== Add new field, party, file, image or drop down to the document http://open.esignforms.com/images/HowToGuidesWiki/addNewOptionButton.png ===
-
-On the right side, click the *Add new* button and then choose the type of new object to create: 
-
-http://open.esignforms.com/images/HowToGuidesWiki/addNewButtonOptions.png
-
-Click on whichever type of object to create.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
@@ -1667,7 +1658,7 @@ To manually reload report fields for existing transactions using the current fie
 http://open.esignforms.com/images/HowToGuidesWiki/reloadTranReportFields.png
 
   * Select which transaction type(s) should be reloaded. Only those transactions you have access to and which use this package are listed.
-  * Select *Production* to reload production transactions, or *Test* to reload test transactions.
+  * If your current mode is *PRODUCTION: Live*, this will reload production transactions, otherwise it will reload test transactions.
   * Select the type of date and date range to limit which transactions are reloaded.
   * In *Tran id only reload* enter a single transaction id to reload only that one specific transaction. Otherwise leave it blank.
   * In *Party email* enter the email address of a party to limit the reload to just those transactions. Otherwise leave it blank.
