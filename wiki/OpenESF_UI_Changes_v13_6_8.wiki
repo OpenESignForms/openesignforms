@@ -74,7 +74,7 @@ Just click on an existing tab to view its contents again, or click the X in the 
 
 https://open.esignforms.com/images/NewUIWiki20130608/mainTabs.png
 
-If you have more tabs than can be shown, arrow buttons will appear on the far right side to make those other tabs visible.  There is no limit on the number of tabs you can have open, but we do produce a warning whenever you open the 10th tab.  In general, you want to close tabs you are not longer using to improve performance on the server as well as in your browser.
+If you have more tabs than can be shown, arrow buttons will appear on the far right side to make those other tabs visible.  There is no limit on the number of tabs you can have open, but we do produce a warning whenever you open the 15th tab during your login session.  In general, you want to close tabs you are not longer using to improve performance on the server as well as in your browser.
 
 If you click on a menu item that is already open in a tab, that tab will be shown again.
 
