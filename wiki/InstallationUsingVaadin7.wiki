@@ -288,6 +288,14 @@ Enter setup command (initdb,addsuperuser,initsetup,setpassword,quit,convert1.5) 
 
 Generally for testing in Eclipse, click Debug As->Debug On Server->Apache->Tomcat v7.0 Server. The first time you just need to point it to where you installed Tomcat above.
 
+=== Windows file and folder permissions concerns ===
+
+Open eSignForms creates a folder called `LIBRARYGENERATED-KEEP` in the webapp's deployment folder that is used to store generated CSS and JSP files.  On Linux, this seems to work naturally with respect to ownership and file/subdirectory permissions as set from the Java code, but we've seen issues in Windows where Tomcat/Eclipse is not given permission to create files in this location.  You will see the errors in the esf.log during startup for your deployment when this is the case.
+
+Unfortunately, while we manage to resolve this suitable for a developer's personal deployment, we never really know which of our various attempts at setting up Windows security is the correct way.  Surely if you expect to run on Windows, this needs more attention.  In general, we struggle with folder permissions and granting permission so that the application can create files/folders/subfolders in this directory as needed.  If you have Windows expertise and know just want to do to make this happen, please let us know and we'll update this section.
+
+In general, we find we need to give "Full control" permission to seemingly too many group/user names using the Security tab on the folder's properties.  We seem to need to use the Advanced button, giving permissions to "This folder, subfolders and files" (sometimes with "Include inheritable permissions from this object's parent" and "Replace all child object permissions with inheritable permissions from this object" checked.  It generally seems to take 2-3 restarts with permission settings for us to get it working. Ugh!
+
 ==SMTP and IMAP==
 
 Under the System config->Deployment link in the application, you must configure the SMTP Return Path hostname, SMTP server and IMAP server to use. These are Internet standard services external to Open eSignForms, but must be available. Open eSignForms sends out notifications and invitation emails using a scheme that will associate bounces and replies to the original email sent. 
