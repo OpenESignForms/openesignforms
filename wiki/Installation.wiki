@@ -4,6 +4,11 @@
 ==== Table of contents ====
 <wiki:toc max_depth="3" />
 
+= MOVED =
+Please note that this is wiki is out of date and reflects versions of Open eSignForms prior to 13.6.8 that was based on Vaadin 6.
+
+[http://code.google.com/p/openesignforms/wiki/InstallationUsingVaadin7 Here is the new installation wiki.]
+
 = Introduction =
 
 These instructions are pretty high level right now, so we'll want to nail it down to a more easily repeatable set of instructions, but we had to start somewhere! 
