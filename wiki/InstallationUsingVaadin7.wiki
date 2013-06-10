@@ -290,7 +290,13 @@ Generally for testing in Eclipse, click Debug As->Debug On Server->Apache->Tomca
 
 === Windows file and folder permissions concerns ===
 
-Open eSignForms creates a folder called `LIBRARYGENERATED-KEEP` in the webapp's deployment folder that is used to store generated CSS and JSP files.  On Linux, this seems to work naturally with respect to ownership and file/subdirectory permissions as set from the Java code, but we've seen issues in Windows where Tomcat/Eclipse is not given permission to create files in this location.  You will see the errors in the esf.log during startup for your deployment when this is the case.
+Open eSignForms creates a folder called `LIBRARYGENERATED-KEEP` in the webapp's deployment folder that is used to store generated CSS and JSP files.  On Linux, this seems to work naturally with respect to ownership and file/subdirectory permissions as set from the Java code, but we've seen issues in Windows where Tomcat/Eclipse is not given permission to create files in this location.  
+
+You will see the errors in the esf.log during startup for your deployment when this is the case.  Here's an example we get from time to time:
+{{{
+ERROR (com.esignforms.open.prog.DocumentVersion) generateCode() could not create read/write/execute document version directory: C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp2\wtpwe
+bapps\open-eSignFormsVaadin7\LIBRARYGENERATED-KEEP\document\279d0d44-5e41-4b95-a2cb-6f56547b3462\d775b182-e500-4bbf-bd27-f8e9db600654
+}}}
 
 Unfortunately, while we manage to resolve this suitable for a developer's personal deployment, we never really know which of our various attempts at setting up Windows security is the correct way.  Surely if you expect to run on Windows, this needs more attention.  In general, we struggle with folder permissions and granting permission so that the application can create files/folders/subfolders in this directory as needed.  If you have Windows expertise and know just want to do to make this happen, please let us know and we'll update this section.
 
