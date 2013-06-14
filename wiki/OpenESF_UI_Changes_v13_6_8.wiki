@@ -7,6 +7,18 @@
 
 The Open eSignForms release 13.6.8 was a significant rewrite based on the updated Vaadin 7 port.  This is an overview of how the screens have changed as a quick start introduction for those familiar with the previous releases.
 
+= Browser support has changed =
+
+With Vaadin 7 comes the latest Google Web Toolkit, and this means that support for buggy, unpatched and insecure old browsers is no longer supported.  You should be using IE9 or later, or an up-to-date version of Firefox, Chrome, Safari, Opera, etc. as they are free and much more secure than any old browser.
+
+Yozons recommends you keep your browser current so as to have the best standards compliance, but also to have a more secure version. Old browsers with their well-established security vulnerabilities should never be connected to a global network within a business environment, especially when it comes to a secure system like electronic signatures and encrypted data that may include sensitive information.
+
+For those who are stuck using IE6 or IE7 (dangerous on the Internet), you may want to consider this:
+
+http://www.google.com/chromeframe
+
+Of course, it should not be a problem to use a modern browser as they are all free and you can run more than one browser on a computer if you really need to preserve compatibility with a particular application that itself is old and less secure by relying on insecure client software. 
+
 = Overview =
 
   * The main menu no longer is the tree on the right side.  It is now a more traditional tab-like menu on the top.  This allows for long lists of transactions and reports and such to not cause the navigation to get too long. Also, after you you select something, the menu list pops back in so it doesn't remain cluttering the view.
