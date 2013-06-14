@@ -7,6 +7,8 @@
 
 The Open eSignForms release 13.6.8 was a significant rewrite based on the updated Vaadin 7 port.  This is an overview of how the screens have changed as a quick start introduction for those familiar with the previous releases.
 
+_*Note* that there are no changes for customers, employees, partners and others who are signing your documents online. This just affects those who login to the advanced Open eSignForms Web 2.0 application._
+
 = Browser support has changed =
 
 With Vaadin 7 comes the latest Google Web Toolkit, and this means that support for buggy, unpatched and insecure old browsers is no longer supported.  You should be using IE9 or later, or an up-to-date version of Firefox, Chrome, Safari, Opera, etc. as they are free and much more secure than any old browser.
