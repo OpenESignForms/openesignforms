@@ -656,6 +656,8 @@ You can add your custom Java programming to your document using JSP code syntax 
 
 Unlike JavaScript, this code runs on the server before the page is rendered to the user's browser.  Note that it is important to get the syntax right, especially with respect to open and close brackets for conditions and loops.
 
+Also, this syntax is only supported on a single line. The starting '<%' and ending '%>' must not span lines.
+
 This is particularly useful for optional HTML to display in a document. The variable *esf* can be used in your document custom Java code to access the server-side state. The Java interface for this object is shown below:
 
 {{{
