@@ -388,6 +388,39 @@ As `esignforms` do:
   * `cd .ssh`
   * Install your `authorized_keys` file so you can SSH in
   * `chmod 600 authorized_keys`
+  * For compiling PostgreSQL, we use this configure commands:
+    {{{
+    cd ~/postgresql/postgresql-9.2.4
+    ./configure --prefix=/home/esignforms/postgresql/pg92 --with-pam
+    gmake
+    gmake install
+    cd contrib/vacuumlo
+    gmake
+    cp -p vacuumlo ../../../bin/
+    cd ../pg_standby
+    gmake
+    cp -p pg_standby ../../../bin/
+    cd ~/postgresql
+    initdb -D $PGDATA
+    yostart db
+    psql template1
+       ALTER USER esignforms WITH PASSWORD 'DB-ADMIN-PASSWORD-HERE';
+    yostop db    
+    }}}
+  * Allow for local access to all databases (for multiple deployments) by updating `data92/pg_hba.conf`:
+    {{{
+    local all all md5
+    host all all 127.0.0.1/32 md5
+    }}}
+  * A few tweaks to `data92/postgresql.conf` for basic operation:
+    {{{
+    logging_collector = on
+    log_directory = '../logs'
+    log_line_prefix = '%m %d '
+    log_connections = on
+    log_disconnections = on
+    }}}
+    Restart PG: `yostart db`
 
 As `root` again do:
   * `service sshd restart`
