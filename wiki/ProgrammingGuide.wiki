@@ -731,6 +731,12 @@ _put the optional HTML here to show only if the document is being reviewed befor
 
 Button messages provides a way to customize the button labels, tooltips on the buttons, messages shown to the party about how to use the button as well as other common messages shown to parties when processing a document. Open eSignForms comes with a built-in default button messages in the *ESF/Library/Template* library called *ESF_DefaultButtonMessage*.
 
+Also, the buttons added to your documents during run-time are placed in a P tag (`<p class="buttons">`), so you can use your own CSS to control them. For example, by adding this to your document, you can center the buttons:
+{{{
+<style type="text/css">
+p.buttons { text-align: center; }
+</style>
+}}}
 The button message set is configured in each package. Note that a transaction template can specify a branding library such that if the same button message set name is defined in that library, then it will be selected at run time.
 
 Click on *Button message sets* to show all document styles in the selected library.
