@@ -737,6 +737,14 @@ Also, the buttons added to your documents during run-time are placed in a P tag 
 p.buttons { text-align: center; }
 </style>
 }}}
+
+You may also find that you'd like the electronic signature process record to also be centered, so you could use this combination:
+{{{
+<style type="text/css">
+p.buttons { text-align: center; }
+div.signatureBlock { margin: 0 auto;}
+</style>
+}}}
 The button message set is configured in each package. Note that a transaction template can specify a branding library such that if the same button message set name is defined in that library, then it will be selected at run time.
 
 Click on *Button message sets* to show all document styles in the selected library.
