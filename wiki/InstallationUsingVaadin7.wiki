@@ -325,7 +325,7 @@ virtual_alias_maps = regexp:/etc/postfix/virtual_alias
 
   * In our deployments, we use dovecot for our IMAP server. With CentOS 6 (wasn't needed as late as CentOS 5.6) we seem to need to add the following to `/etc/dovecot/dovecot.conf` file:
 {{{
-mail_location = mbox:~/mail:INBOX=/var/mail/%u
+mail_location = maildir:~/Maildir
 mail_access_groups=mail
 }}}
 
