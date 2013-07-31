@@ -335,7 +335,7 @@ We also are making use of [http://findbugs.sourceforge.net/ FindBugs]. They have
 
 While not needed for this particular effort, we recommend PasswordSafe (sourceforge) or something similar so you can remember one great pass phrase and keep your various other passwords unique, so when your bank or the like is hacked, at least the password is not used in other sites that become vulnerable as a result.
 
-We also like OpenOffice for our office productivity.
+We also like LibreOffice or OpenOffice to replace any need for Microsoft Office.
 
 For Windows, we use WinSCP and Putty for SSH/SCP access to our Linux servers.
 
