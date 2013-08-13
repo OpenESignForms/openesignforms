@@ -1203,7 +1203,8 @@ http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
     * Choose *Set field action* to change any field values in your documents. 
     * Choose *Calculate field value* to calculate a value (add, subtract, multiply, divide). 
     * Choose *Calculate monthly payment* to calculate a monthly payment amount based on the loan amount, term in months, and interest rate (APR).
-    * Choose *Send email* to send an email. 
+    * Choose *Send email* to send an email. You only need to send emails that are not invitations for a party. Party invitations are specified in the package party configuration.
+    * Choose *HTTP send data* to send data to another system via HTTP(S) GET/POST.
     * Choose *Change tran/party status* to cancel the transaction now or in the future, clear a future auto-cancel, skip a party step or skip an entire document. 
     * Choose *Show error/message* to display a message or report an error to the user (mostly used during the *Party review document* and *Party completed page* events).
     * Choose *PayPal direct charge* to specify credit card fields in your document that will be submitted to the PayPal NVP API for a credit card sale.
@@ -1450,6 +1451,73 @@ Click the *Delete* button to delete the selected action.
 Note that you can send multiple emails at the same time using this view.
 
 _Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== HTTP send data action ===
+
+When you need to send data to another system (integration of applications), use the *HTTP send data* action. Click the *Add HTTP Send* button http://open.esignforms.com/images/HowToGuidesWiki/addHTTPSendButton.png to add a new set of data to send to a specific URL. Or you can click on a previously created rule to update it.
+
+http://open.esignforms.com/images/HowToGuidesWiki/HTTPSendAction.png
+
+  * For *Method* choose the HTTP method to send the data to the specified URL, either a GET or a POST. In general, use POST unless a GET is all that you can use as GET requests will generally record all of your data parameters into web server logs that may not be secure if the data you are sending should be secure.
+  * For *URL* specify the URL that will accept your data. It must begin with `http://` (data is in the clear over the Internet) or `https://` (data will be encrypted over the Internet), then have the server domain name and optional port number, along with any path specifiers. You can even include some hard-coded name-value params.  A typical URL looks like `https://open.esignforms.com/demo/HttpVariableTester.jsp`.  Note that every deployment has just such an URL available using your deployment's server name and application name. You can use this when testing as it will echo back all of the data it receives and can be used to help ensure you are sending the data you expect.
+  * For *Max attempts* enter the number of times to attempt to send the data. Each attempt is recorded, including both the request sent and the response received. If the attempt is considered a success, no further attempts will be made.  If the attempt is not considered a success, it will try again if you specify a value greater than 1.
+  * For *Retry (minutes)* select the number of minutes that should pass before a retry is attempted. This only has meaning if *Max attempts* is greater than 1.
+  * For *Limit successful HTTP status codes* enter one or more numbers (standard HTTP status codes) separated by semicolons (;) that must be returned by the URL to indicate a successful send. Note that '200' is the normal HTTP status for a successful request. Leave this field blank if the HTTP status code should be ignored.
+  * For *Purpose/reason spec* enter a literal and/or field specification that explains why the HTTP Send is taking place. It's used for logging.
+  * For *Match type* select the type of match to apply to the response returned from the URL to determine if it was a successful request. 
+    * The match type *Anything* means that any response would indicate a success (this is not recommended unless you can rely on the HTTP status codes instead). 
+    * *Must contain* means that the response must contain the associated value somewhere in the response to be considered successful.
+    * *Must not contain* means that the response must not contain the associated value anywhere in the response to be considered successful.
+    * *Must start with* means that the response must start with the associated value to be considered successful.
+    * *Must not start with* means that the response must not start with the associated value to be considered successful.
+    * *Must match regular expression* means that the [http://docs.oracle.com/javase/tutorial/essential/regex/ Java regular expression] must find a match in the response to be considered successful.
+    * *Must not match regular expression* means that the [http://docs.oracle.com/javase/tutorial/essential/regex/ Java regular expression] must not find a match in the response to be considered successful.
+  * For *Successful response it matches this value* specify a literal string (or a regular expression if the match type is for a regular expression) to apply based on the selected match type. This is generally a value that is included in the response that indicates it was successfully received.
+
+_(See below for more information about specifying the name-value pairs to send.)_
+
+Click the *Ok* button to keep your changes, or click *Cancel*.
+
+Click the *Close* button to close the HTTP send action window.
+
+Click the *Delete* button to delete the selected action.
+
+Note that you can send multiple HTTP requests at the same time using this view.
+
+_Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
+
+==== HTTP Send name-value params to send ====
+
+Next, you need to specify the data you'd like to include in the HTTP(s) GET/POST request that is sent out.
+
+http://open.esignforms.com/images/HowToGuidesWiki/HTTPSendNameValueList.png
+
+You can use drag and drop to reorder the list of fields shown.
+
+Click on a row to modify it. You are free to change the param name to match the name expected by the receiving system (at the URL specified). 
+
+For document fields, you may optionally change the format for the field. By default, it will use the field's definition in the document (it's output/display format), which basically matches what the parties see when completing the document.  But if you need a different format for the receiving system, you can adjust it here.
+
+For literal/field specs, you can also update the value to the specified literal string or field specification using `${}` notation.
+
+Click the *Ok* button to accept and changes made. Click the *Cancel* button to ignore any changes made.  Click the *Delete* button to delete the name-value from being included in the HTTP Send.
+
+==== Add document fields http://open.esignforms.com/images/HowToGuidesWiki/addDocumentFieldsButton.png ====
+
+For the HTTP Send Action, use the *Add document fields...* button to add one more fields from your document(s) to be sent. 
+
+http://open.esignforms.com/images/HowToGuidesWiki/HTTPSendDocumentFieldsSelector.png
+
+  * For *Choose a document* select the document that has the fields you'd like to send out.
+  * For *Select fields to add* click on one or more fields from the selected document to send out.
+
+Click the *Add* button to add the selected fields to be sent out.  Click *Cancel* to not add any fields.
+
+==== Add literals or field specifications http://open.esignforms.com/images/HowToGuidesWiki/addLiteralOrFieldSpecButton.png ====
+
+For the HTTP Send Action, use the *Add literal or field spec* button to add one literal (with or without a field specification using `${}` notation) to be sent. You will have to update the name and value.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
