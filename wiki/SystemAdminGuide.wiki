@@ -382,15 +382,16 @@ Under the *System* column:
   * *Java version* is the [http://java.sun.com Java] version used to run your application.
   * *JVM Memory* is the amount of memory assigned to Java, as well as the maximum specified it can use. If the amount used reaches the maximum, garbage collection takes place to try to reduce the amount of memory in use.  This is for all web applications.
   * *Total threads* is the number of threads Java is using. This is for all web applications.
-  * *Backgrounder thread* should say 'Running' to indicate that the background task processor is running.
-  * *Email out thread* should say 'Running' to indicate that the outbound email processor is running.
-  * *Email in thread* should say 'Running' to indicate the the inbound email processor is running.
 
 Under the *Web server* column:
   * *Version* is the web server version, which by default is [http://tomcat.apache.org/ Apache Tomcat].
   * *Vaadin version* is the version of [http://www.vaadin.com Vaadin] used, which provides the user interface code for the Web 2.0 look.
   * *HTTP threads* specifies the number of HTTP (non-secure) access threads are in the web server (and how many are inactive). This is for all web applications.
   * *HTTPS threads* specifies the number of HTTPS (secure) access threads are in the web server (and how many are inactive). This is for all web applications.
+  * *Backgrounder thread* should say 'Running' to indicate that the background task processor is running.
+  * *Email out thread* should say 'Running' to indicate that the outbound email processor is running.
+  * *Email in thread* should say 'Running' to indicate the inbound email processor is running.
+  * *HTTP Send thread* should say 'Running' to indicate the HTTP(S) GET/POST processor is running.
 
 Under the *Database* column:
   * *Version* is the database version, which by default is [http://www.postgresql.org PostgreSQL].
