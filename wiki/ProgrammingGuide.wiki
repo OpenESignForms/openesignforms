@@ -1810,6 +1810,9 @@ You can drag to re-order existing fields to control the order they will appear i
   * In *Report field* select a user-defined or built-in report field to show in the report. The following are the built-in fields:
     * *esf_cancel_timestamp* is the date/time the transaction was canceled.
     * *esf_created_by_user* is the user who started the transaction, when it's not started by an external user.
+    * *esf_download_pdf_latest_snapshots* will produce an "All completed docs" button that will download a PDF containing all of the latest completed documents. 
+http://open.esignforms.com/images/HowToGuidesWiki/allCompletedDocsAsPdfButton.png
+    * *esf_download_pdf_selected_snapshots* will produce a "Completed docs" dropdown button to select which completed documents and versions you want to download as a PDF. http://open.esignforms.com/images/HowToGuidesWiki/selectedCompletedDocsAsPdfButton.png
     * *esf_expire_timestamp* is the date/time the transaction is set to expire and be deleted from the system (this is set based on the transaction template's retention values).
     * *esf_last_updated_by_user* is the user who last updated the transaction, when it's not last updated by an external user.
     * *esf_last_updated_timestamp* is the date/time the transaction was last updated.
