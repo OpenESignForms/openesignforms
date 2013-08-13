@@ -1634,6 +1634,25 @@ _Tip: To save your changes, you will want to click the *Ok* button on the custom
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+=== Common conditional scenarios ===
+
+==== Make a field required only if another field is set to a value ====
+
+Sometimes a field is only required if some other field is set to a given value.  In this case, configure the field itself as optional, and then add a Condition+Action as follows:
+
+Assume a checkbox named 'cb'. If checked, then a general field named 'other' is required, otherwise it's optional.
+
+  # In the field specification, make 'other' optional so it doesn't force it to be required.
+  # Create a rule for the event "Party review document".
+  # Add the action "Show error/message".
+  # Right-click on the AND condition of the Action to add a "Comparison" check. Select the 'cb' field and check if it's equal to its checked value (by default it's 'Y'): cb EQUALS Y
+  # Right-click on the AND condition to add an "All fields blank" condition and specify the field 'other'.  These two conditions basically mean: IF the 'cb' checkbox is checked AND the 'other' field is blank, THEN display an error message saying it's required.
+  # Next, set the error message to show the user to have them complete the field.
+  # Mark this as an error or warning so that it will block the party from going into review mode when it's displayed. 
+  # Select the 'cb' and 'other' fields to highlight them to call attention to why the "required error" is being displayed.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 == Map report fields ==
 
 By default, all fields in your documents are fully encrypted and can only be accessed by a given package party in a transaction. However, often you may want some fields to be available for [UserGuide#Reports reports] or shown in the [UserGuide#To_Do To Do queue]. For these reasons, you can map fields from the package to report fields. 
