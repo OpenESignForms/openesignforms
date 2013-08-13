@@ -1539,7 +1539,9 @@ _Tip: To save your changes, you will want to click the *Ok* button on the custom
 
 === Show error/message action ===
 
-When you need to display a message or report a custom data validation error, the show error/message action can be used. For data validations, you should use this action in a rule that specifies the *Party review document* event. If you report an error or warning on the review step, the user will not be able to complete the document until it is fixed so it no longer matches the condition specified with this action.
+When you need to display a message or report a custom data validation error, the show error/message action can be used. For data validations, you should use this action in a rule that specifies the *Party review document* event. 
+
+If you report an error or warning on the review step, the user will not be able to complete the document until it is fixed so it no longer matches the condition specified with this action. You can also only highlight fields when doing an error or warning to call attention to the field.
 
 http://open.esignforms.com/images/HowToGuidesWiki/showErrorAction.png
 
