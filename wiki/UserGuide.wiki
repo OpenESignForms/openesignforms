@@ -223,13 +223,15 @@ http://open.esignforms.com/images/HowToGuidesWiki/reportTranDetail.png
   * The *Last updated* field shows the date and time the transaction was last updated.
   * The *Last updated by* field shows the user, if any, who last updated the transaction.
 
-The *Download transaction data* button will download, as XML data, all of the data fields stored in the transaction. Typically, this is all related parameters that were posted at the time the transaction was created.
-
 The *Reason/note to log* field can be populated and then click the *Change status / Add log record* button next to it to choose from the action type to take: *Add reason/note to log (no status change)* is used to simply add a comment to the log for this transaction; *Cancel transaction* will cancel the transaction if it's currently in progress; *Suspend transaction* will suspend the transaction if it's currently in progress; *Cancel suspended transaction* will cancel the currently suspended transaction; *Resume suspended transaction* will re-activate the suspended transaction so it's in progress again; *Re-activate canceled transaction* will re-activate a canceled transaction so it's in progress again.
 
 The *View activity log* button will popup an activity log ([#Report_transaction_activity_log see below for more]) that shows all actions taken with respect to the transaction, as well as any user-defined log records.
 
 The *View email* button will popup a window that lists all emails sent related to this transaction, as well as any correlated replies or bounces. See [SystemAdminGuide#View_user_email the view user email information in the system administrator guide for any details.]
+
+The *View HTTP Send* button will popup an activity log for all HTTP Send actions including the request sent and the response received. See [#View_HTTP_Send_log the HTTP send log for details.]
+
+The *Download transaction data* button will download, as XML data, all of the data fields stored in the transaction. Typically, this is all related parameters that were posted at the time the transaction was created.
 
 The Party List shows each party to the transaction, including the status, number of documents, email address (if known), user who process as this party (if any), when the party was created, and a *More* button related to emails. If you click the *More* button, there will be an option to *View email* to see the emails for this party, and *Send email again* to send the email invitation associated with the party again, and if the party is still active, you can enter a *New email address* to transfer the party to a new email address should the original email address have been incorrect or you learned another person needs to process it.
 
@@ -246,6 +248,16 @@ You can use the report's transaction activity log to follow every step the trans
 http://open.esignforms.com/images/HowToGuidesWiki/reportTranActivityLog.png
 
 Select the *From date* and *To date* to narrow the range, or leave both blank to include the oldest through the newest records.  Check *General* to include general log records, those that relate to the basic process flow. Check *Basic trace* to include more details about the processing steps. And check *Detail trace* to include the most details about the processing steps.  The latter two are particularly important when programming test transactions to determine what may be wrong with your configuration.  You may also search for a particular string in the *Log record contains* field. Click the *Find matching* button to list all matching log records related to the transaction.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== View HTTP Send log ==
+
+You can see the HTTP send requests and responses by clicking on the *Vew HTTP Send* button from the transaction detail page.
+
+http://open.esignforms.com/images/HowToGuidesWiki/HTTPSendLog.png
+
+Each request and response is listed, with the response tied under the request.  Click on a row to view the request information and parameters, or the response values.  The request is considered completed when it gets a successful response or has used up all of its attempts with failure responses.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
