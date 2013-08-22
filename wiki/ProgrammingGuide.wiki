@@ -1187,7 +1187,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
   * In *When event(s) occur* select at least one type of event that describes when you'd like the associated actions to run. You can choose from:
     * *Party created* occurs when a package party is created.
     * *Party activated* occurs when a package party is first activated to process the package.
-    * *Party retrieved document* occurs when a package party retrieves a document.
+    * *Party retrieved document* occurs when a package party first retrieves a document.
     * *Party review document* occurs when a package party has filled out the form or is signing and clicks the review button. The party cannot continue to review the completed document if any action produces an error or warning message.
     * *Party completed document* occurs when a package party completes a given document. The party cannot complete the document if any action produces an error or warning message.
     * *Party view completed document* occurs when a package party views a document that has already been completed.
