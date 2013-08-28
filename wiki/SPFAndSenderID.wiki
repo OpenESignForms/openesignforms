@@ -38,7 +38,7 @@ Some choose to define their Sender ID `spf2.0/pra` record to be just like their 
 
 = Review =
 
-So, Yozons generally recommends you setup both the SPF and empty Sender ID records in your DNS TXT records.  Remember the double quotes around the entries.  Here's a typical setup, and feel free to see how we've done ours for the yozons.com domain by checking out our DNS TXT records.
+So, Yozons generally recommends you setup both the SPF and empty Sender ID records in your DNS TXT records.  Remember the double quotes around the entries unless you have a system that will put those quotes in for you when it's actually published to DNS.  Here's a typical setup, and feel free to see how we've done ours for the yozons.com domain by checking out our DNS TXT records.
 
 {{{
 "spf2.0/pra"
