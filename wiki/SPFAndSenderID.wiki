@@ -2,7 +2,7 @@
 
 = Introduction =
 
-SPF is used to determine if email sent from a given system is allowed to send email using your domain name.  It is configured in DNS TXT records.
+SPF is used to determine if email sent from a given system is allowed to send email using your domain name.  It is configured in DNS TXT records for your domain (the one used in your email addresses).
 
 = Recommendation =
 
