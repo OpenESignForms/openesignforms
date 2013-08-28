@@ -2016,3 +2016,9 @@ We call this "email process" because the next user will only gain access to the 
 _Note that no document snapshots will exist for the first party since the documents were not, in fact, presented in Review mode. Data snapshots still are done._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Sending data back to your system ==
+
+Please view the custom logic setup for the [#HTTP_send_data_action HTTP Send Data Action] for details on sending back data to your system.  This allows you to do an HTTP(S) GET/POST of name-value pairs including fields defined in your documents.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
