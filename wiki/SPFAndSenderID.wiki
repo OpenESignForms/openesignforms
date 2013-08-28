@@ -1,4 +1,4 @@
-#summary SPF and Sender ID
+#summary SPF and Sender ID setup to reduce spam-blocking
 
 = Introduction =
 
