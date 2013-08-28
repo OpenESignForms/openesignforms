@@ -18,7 +18,7 @@ Replace the `N.N.N.N` with the actual IP address of the Yozons esign server you 
 "v=spf1 mx ip4:166.78.63.200 -all"
 }}}
 
-If your SPF record is not too long, you can use a simpler A record reference that will also adjust its IP address should we migrate our server to a new IP address, which occurs from time to time.  But note that you do not want any more than 10 such non-IP-specific addresses, like the 'mx' or 'a' or 'include' options, since that's the maximum number of DNS lookups most receiving systems will use to determine a valid SPF record.  Then it would be something like the following your Yozons esign system is running on the server named `esign-contracts.com`:
+If your SPF record is not too long, you can use a simpler A record reference that will also adjust its IP address should we migrate our server to a new IP address, which occurs from time to time.  But note that you do not want any more than 10 such non-IP-specific addresses, like the 'mx' or 'a' or 'include' options, since that's the maximum number of DNS lookups most receiving systems will use to determine a valid SPF record.  Then it would be something like the following if your Yozons esign system is running on the server named `esign-contracts.com`:
 
 {{{
 "v=spf1 mx a:esign-contracts.com -all"
