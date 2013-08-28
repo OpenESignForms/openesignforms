@@ -1,0 +1,49 @@
+#summary SPF and Sender ID
+
+= Introduction =
+
+SPF is used to determine if email sent from a given system is allowed to send email using your domain name.  It is configured in DNS TXT records.
+
+= Recommendation =
+
+Add and SPF record that includes all of the systems that send out emails using your domain name. This includes your mail servers and third party services like Yozons operates.  So, here's a typical DNS TXT record for SPF:
+
+{{{
+"v=spf1 mx ip4:N.N.N.N -all"
+}}}
+
+Replace the `N.N.N.N` with the actual IP address of the Yozons esign server you are on, such as if your esign system is running on the `esign-contracts.com` server it would be:
+
+{{{
+"v=spf1 mx ip4:166.78.63.200 -all"
+}}}
+
+If your SPF record is not too long, you can use a simpler A record reference that will also adjust its IP address should we migrate our server to a new IP address, which occurs from time to time.  But note that you do not want any more than 10 such non-IP-specific addresses, like the 'mx' or 'a' or 'include' options, since that's the maximum number of DNS lookups most receiving systems will use to determine a valid SPF record.  Then it would be something like the following your Yozons esign system is running on the server named `esign-contracts.com`:
+
+{{{
+"v=spf1 mx a:esign-contracts.com -all"
+}}}
+
+Lastly, if you are not sure you have all systems that send out email using your domain name listed, change the `-all` at the end to `~all` to reduce the rigor associated with your configuration.
+
+= Sender ID problems =
+
+Unfortunately, some email receiving systems implement Sender ID, a now-defunct system that Microsoft hijacked from the perfectly good SPF.  We recommend, unless you are sure your Sender ID records are valid, to specify an empty Sender ID DNS TXT record as follows:
+
+{{{
+"spf2.0/pra"
+}}}
+
+Some choose to define their Sender ID `spf2.0/pra` record to be just like their SPF `v=spf1` record, which may be okay for you, but it also may be causing unexpected issues with services like Open eSignForms that send out emails with a valid return-path (`MAIL FROM`) in the envelope and a `Sender:` header, though the `FROM` header may vary depending on who you'd like to appear as the FROM email address.
+
+= Review =
+
+So, Yozons generally recommends you setup both the SPF and empty Sender ID records in your DNS TXT records.  Remember the double quotes around the entries.  Here's a typical setup, and feel free to see how we've done ours for the yozons.com domain by checking out our DNS TXT records.
+
+{{{
+"spf2.0/pra"
+"v=spf1 mx a:esign-contracts.com -all"
+}}}
+
+= For more information =
+For details, please read more at: http://www.openspf.org/SPF_vs_Sender_ID
