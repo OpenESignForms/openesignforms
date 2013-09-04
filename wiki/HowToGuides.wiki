@@ -129,6 +129,25 @@ Also, in this case, you can also see that *Libraries* has an arrow indicating th
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+== Menu tabs ==
+As you click items in the menu (except when starting new transactions), they open in tabs listed right below the menu bar.  New tabs always appear on the far right.  When you start a new transaction, the document opens in its own window and not in a tab.
+
+Just click on any tab to revisit that screen.
+
+To close a tab, position your mouse over the tab until the (X) appears in the upper right corner of the tab (as in the 'User sessions' tab below).  Click on the (X) to close that tab and release the resources associated with the view.  Closed tabs use less memory in your browser as well as on the server, so it's a good idea to close them when you no longer expect to use them.
+
+http://open.esignforms.com/images/HowToGuidesWiki/closingTabs.png
+
+You can drag and drop tabs to reorder them. For commonly used tabs, this is useful so you can keep them in an order you become comfortable with.
+
+When you logoff, the currently opened tabs will be remembered and re-opened in the same order when you login the next time.
+
+If you have more tabs open than can be displayed, tab navigation buttons appear on the far right side that will let you scroll tabs to the left or right as shown below:
+
+http://open.esignforms.com/images/HowToGuidesWiki/scrollingTabs.png
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 == Tabular data ==
 Often, data is presented as a list in table, with column headers such as:
 
