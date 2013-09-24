@@ -1515,6 +1515,8 @@ http://open.esignforms.com/images/HowToGuidesWiki/HTTPSendDocumentFieldsSelector
 
 Click the *Add* button to add the selected fields to be sent out.  Click *Cancel* to not add any fields.
 
+If the document field is a File type (for uploaded files), the param name you specify will be associated with the BASE-64 encoded file data. Two additional params are automatically included by appending `__fileName` and `__fileMimeType` to your file field's param name to supply the respective file name and mime type as it was uploaded. If multiple files were uploaded, you will receive the set of 3 params multiple times (on the receiving end, this often appears as receiving an array of values).  So if your File field param name is `attachment` then for each uploaded file associated with the field, you'll get params: `attachment` and `attachment__fileName` and `attachment__fileMimeType`.  Note two underbars are used between the param name you supply and these additional fields.
+
 ==== Add literals or field specifications http://open.esignforms.com/images/HowToGuidesWiki/addLiteralOrFieldSpecButton.png ====
 
 For the HTTP Send Action, use the *Add literal or field spec* button to add one literal (with or without a field specification using `${}` notation) to be sent. You will have to update the name and value.
