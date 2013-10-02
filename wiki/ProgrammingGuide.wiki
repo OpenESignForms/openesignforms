@@ -1537,6 +1537,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/cancelTransactionAction.png
   * For *#* specify the number of *Cancel time* units before the transaction is canceled. This has no meaning for Now or Forever cancel times.
   * For *Cancel time* choose when the transaction should be canceled. If you select Now, the transaction will be canceled when this action takes place. You can specify a future date so it will cancel automatically in the future if it's not completed or the cancel transaction is turned off later.
   * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the transaction is being canceled.
+  * If you'd like to reduce the default retention for such auto-canceled transactions (from the value set in the transaction template for production/test modes), check *Reduce retention on cancel* and choose a new retention value. This is generally used to remove new transactions that do not get past the first step.
 
 ==== Clear cancel transaction action ====
 
