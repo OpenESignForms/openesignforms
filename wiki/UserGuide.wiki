@@ -136,7 +136,9 @@ _Note, some transactions may not be started by users, and those will not be list
 
 == Start a transaction HTML page ==
 
-There are instances where using the sophisticated Web 2.0 interface is not suitable for all users, such as when starting transactions from a tablet or phone.  Just add `/start/` to your login URL (i.e. `https://example.com/appname/start/` if you'd normally login at `https://example.com/appname/`) to get a listing of production-level transactions you can start.
+There are instances where using the sophisticated Web 2.0 interface is not suitable for all users.  Just add `/start/` to your login URL (i.e. `https://example.com/appname/start/` if you'd normally login at `https://example.com/appname/`) to get a listing of production-level transactions you can start. 
+
+If you have started a transaction, but never submitted it, it will be listed at the top in a To Do box so you can resume where you left off.
 
 http://open.esignforms.com/images/HowToGuidesWiki/StartTranHTMLPage.png
 
