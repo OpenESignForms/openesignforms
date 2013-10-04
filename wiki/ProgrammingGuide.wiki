@@ -1105,6 +1105,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/package.png
 
   * Choose *Enabled* to allow the package to be used. If a package is no longer needed, click *Disable*.
   * *[HowToGuides#EsfNames_and_PathNames PathName]* is the unique path name for this package.
+  * *PDF download file name spec* is an optional default file name to use when parties download their documents after completing them all, as well as in reports. The default is generally 'MyDocuments.pdf' but when downloading an individual document, if that document has it's own naming specification, that name will be used.
   * *Description* is a short description.
   * *Comments* is any other information you want to maintain.
   * *Permissions to access this package* contain the standard List, View Details, Create Like, Update and Delete permission lists. Just choose which groups are allowed to do each of these operations on a package. Normally, the "programming" group has permission to this as it's not a general user task.
