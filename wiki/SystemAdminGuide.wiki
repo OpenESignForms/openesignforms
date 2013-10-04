@@ -82,11 +82,19 @@ Each user who can start transactions, run reports, or process work via the To Do
 Configuring a user involves setting up the user's email address, name and what groups he or she belongs to:
 
 http://open.esignforms.com/images/HowToGuidesWiki/userEdit.png
+  * Select *Enabled* to allow this user to login. Choose *Disabled* to block user logins. We recommend disabling user accounts, rather than deleting them, to keep any associations that point back to the user.
   * *Time zone* specifies the user's preferred time zone for dates and times shown in forms, logs, reports, etc. 
   * *Email address* must uniquely identify this user, and it should be a valid, working email address in order for the user to set a password, get email notifications, etc.
   * *Email display name* is the name shown that goes with the email address to create a "fully qualified" email address. Most people use their full name or role, such as "Support" or "David Jones", which results in an email address of "Support <support@example.com>" or "David Jones <djones@example.com>".
   * *First name* is the user's first, or personal, name.
   * *Last name* is the user's last, or family, name.
+
+The following additional fields are generally for information only and can be accessed in documents and custom logic using field specifiers.
+  * *Phone number* is the user's contact phone number.
+  * *Job title* is the user's job title.
+  * *Employee ID* is the user employee ID or related ID.
+  * *Location/region* is the user's location or region.
+  * *Department/division/workgroup* is the user's department.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
