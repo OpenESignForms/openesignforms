@@ -512,6 +512,7 @@ To insert the value of a configured property, you may use this notation:
   * `${transaction:ESF_Started_By_User_Family_Name}` is replaced by the last/family name of the person who started this transaction if it was started by a logged in user.
   * `${transaction:ESF_Started_By_User_Employee_ID}` is replaced by the employee id of the person who started this transaction if it was started by a logged in user and this optional field has been set.
   * `${transaction:ESF_Started_By_User_Job_Title}` is replaced by the job title of the person who started this transaction if it was started by a logged in user and this optional field has been set.
+  * `${transaction:ESF_Started_By_User_Location}` is replaced by the location of the person who started this transaction if it was started by a logged in user and this optional field has been set.
   * `${transaction:ESF_Started_By_User_Department}` is replaced by the department of the person who started this transaction if it was started by a logged in user and this optional field has been set.
   * `${transaction:ESF_Started_By_User_Phone_Number}` is replaced by the phone number of the person who started this transaction if it was started by a logged in user and this optional field has been set.
   * `${transaction:paramName}` is replaced by the value of the named parameter passed at startup (X prefix is needed if original param started with a number; '-', '/' or '.' replaced by '`_`').
@@ -528,6 +529,7 @@ To insert the value of a configured property, you may use this notation:
   * `${transaction:user.family_name}` is replaced by the last/family name of the logged in user who is acting as the current party if it's a logged in user.
   * `${transaction:user.employee_id}` is replaced by the employee id of the logged in user who is acting as the current party if it's a logged in user and this optional field has been set.
   * `${transaction:user.job_title}` is replaced by the job title of the logged in user who is acting as the current party if it's a logged in user and this optional field has been set.
+  * `${transaction:user.location}` is replaced by the location of the logged in user who is acting as the current party if it's a logged in user and this optional field has been set.
   * `${transaction:user.department}` is replaced by the department of the logged in user who is acting as the current party if it's a logged in user and this optional field has been set.
   * `${transaction:user.phone_number}` is replaced by the phone number of the logged in user who is acting as the current party if it's a logged in user and this optional field has been set.
 
