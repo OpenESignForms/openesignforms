@@ -1504,9 +1504,15 @@ For literal/field specs, you can also update the value to the specified literal 
 
 Click the *Ok* button to accept and changes made. Click the *Cancel* button to ignore any changes made.  Click the *Delete* button to delete the name-value from being included in the HTTP Send.
 
+==== Add literals or field specifications http://open.esignforms.com/images/HowToGuidesWiki/addLiteralOrFieldSpecButton.png ====
+
+For the HTTP Send Action, use the *Add literal or field spec* button to add one literal (with or without a field specification using `${}` notation) to be sent. You will have to update the name and value by clicking on it from the list.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 ==== Add document fields http://open.esignforms.com/images/HowToGuidesWiki/addDocumentFieldsButton.png ====
 
-For the HTTP Send Action, use the *Add document fields...* button to add one more fields from your document(s) to be sent. 
+For the HTTP Send Action, use the *Add document fields...* button to add one or more fields from your document(s) to be sent. 
 
 http://open.esignforms.com/images/HowToGuidesWiki/HTTPSendDocumentFieldsSelector.png
 
@@ -1517,9 +1523,36 @@ Click the *Add* button to add the selected fields to be sent out.  Click *Cancel
 
 If the document field is a File type (for uploaded files), the param name you specify will be associated with the BASE-64 encoded file data. Two additional params are automatically included by appending `__fileName` and `__fileMimeType` to your file field's param name to supply the respective file name and mime type as it was uploaded. If multiple files were uploaded, you will receive the set of 3 params multiple times (on the receiving end, this often appears as receiving an array of values).  So if your File field param name is `attachment` then for each uploaded file associated with the field, you'll get params: `attachment` and `attachment__fileName` and `attachment__fileMimeType`.  Note two underbars are used between the param name you supply and these additional fields.
 
-==== Add literals or field specifications http://open.esignforms.com/images/HowToGuidesWiki/addLiteralOrFieldSpecButton.png ====
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-For the HTTP Send Action, use the *Add literal or field spec* button to add one literal (with or without a field specification using `${}` notation) to be sent. You will have to update the name and value.
+==== Add completed documents http://open.esignforms.com/images/HowToGuidesWiki/addCompletedDocumentsButton.png ====
+
+For the HTTP Send Action, use the *Add completed documents...* button to add one or more document(s) to be sent. 
+
+http://open.esignforms.com/images/HowToGuidesWiki/HTTPSendCompletedDocumentsSelector.png
+
+  * For *Completed document(s)* select one or more completed documents that you'd like to send out. Note you can send any version based on a particular party or the latest party. If multiple documents are selected, you will get multiple 'Param name' param-values sent except for the PDF format that combines them into a single file. Note that if you select a 'Latest' version that happens to be the same version as the a selected party-specific version, only one copy will be sent. Also, if no version exists for a given party (it hasn't taken place yet), no value will be sent with the 'Param name'.
+  * For *Param name* select the name of the parameter that will be used. It defaults to 'document'.
+  * For *Type to send* select the type of document to send. Use 'Document (HTML)' to send the original HTML document the party completed. Use 'Document(PDF)' to send over the selected documents as a combined PDF file.  Use 'Data (XML)' to send over the document's data in XML format. Or use 'Snapshots (XML DSig)' to send over the document and data snapshots as XML, both including their XML digital signatures.
+
+Note that all documents are sent using Base-64 encoding. 
+
+Base-64 encoding converts data into an ASCII format, essentially emitting 4 ASCII characters for every 3 input bytes. It has only three special characters: `+`, `/` and `=` (the equals sign for padding at the end only), but oddly enough all three have special meaning in URLs (and for URL encoding for name-value params for HTTPS GET/POST). Therefore, when viewing the Base-64 encoded data in the HTTP Send logs, you will see URL-encode Base-64, so `+` is replaced by `%2B`, `/` is replaced by `%2F` and `=` is replaced by `%3D`.
+
+Click the *Add* button to add the selected documents to be sent out.  Click *Cancel* to not add any documents.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+==== Add party LINKs http://open.esignforms.com/images/HowToGuidesWiki/addPartyLINKsButton.png ====
+
+For the HTTP Send Action, use the *Add party LINKs...* button to add one or more party pick up links to be sent. 
+
+http://open.esignforms.com/images/HowToGuidesWiki/HTTPSendPartyLINKsSelector.png
+
+  * For *LINK for parties* select one or more parties whose pick up LINK you'd like to send out. If multiple parties are selected, you will get multiple 'param name' params sent.
+  * For *Param name* select the name of the parameter that will be used. It defaults to 'partyLink'.
+
+Click the *Add* button to add the selected parties' pick up LINKs to be sent out.  Click *Cancel* to not add any party links.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
