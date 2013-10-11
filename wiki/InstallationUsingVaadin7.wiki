@@ -14,7 +14,7 @@ These instructions are pretty high level right now, so we'll want to nail it dow
 
 ==Java 7==
 
-We start by installing the latest version of [http://www.oracle.com/technetwork/java/javase/downloads/ Java 7 SE] available. It appears that these days you just need the JRE, but you may find the JDK useful if you need to generate keystores and the like. The version tested here was 7.0.21.
+We start by installing the latest version of [http://www.oracle.com/technetwork/java/javase/downloads/ Java 7 SE] available. It appears that these days you just need the JRE, but you may find the JDK useful if you need to generate keystores and the like. The version tested here was 7.0.24.
 
 Because of the sophisticated encryption we use, you'll need the Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files installed in your jre/lib/security folder. Note that encryption entails issues with the U.S. government's misguided and impractical export rules. For Windows, be careful you may have 32-bit and 64-bit JREs installed and you'll want to update both as much depends on which Eclipse uses when it starts Tomcat, of if you run Tomcat directly yourself.  You can download these files from the Java download site (often at the bottom of the page).
 
@@ -40,7 +40,7 @@ If you find that scripts won't run on Linux or via Cygwin's shell, you may need 
 
 ==Apache Tomcat==
 
-For testing, we generally run Tomcat from Eclipse, so it's best to download and install Tomcat next. If you plan on running Tomcat as a Windows service, there's a special installer for it. But we just download the ZIP file and really only run it via Eclipse, extracting to C:\. The version tested here was 7.0.39. (There is a bug in Tomcat prior to the 7.0.21 release that caused errors in the import of esf.js file because of the new javascript mime type standard that changed from text/javascript to application/javascript.)
+For testing, we generally run Tomcat from Eclipse, so it's best to download and install Tomcat next. If you plan on running Tomcat as a Windows service, there's a special installer for it. But we just download the ZIP file and really only run it via Eclipse, extracting to C:\. The version tested here was 7.0.42. (There is a bug in Tomcat prior to the 7.0.21 release that caused errors in the import of esf.js file because of the new javascript mime type standard that changed from text/javascript to application/javascript.)
 
 On Tomcat version upgrades, we basically make the following changes on Linux:
   * `bin/startup.sh` - add the following before the last 'exec' line (only include the debug info if you remotely debug your Tomcat, and your memory values will need to match your server):
@@ -103,11 +103,11 @@ export JAVA_OPTS
 
 ==Eclipse==
 
-Install the latest version of [http://www.eclipse.org] Eclipse IDE for Java EE] developers.  The version tested here is Juno (4.2) Windows x64. We extract all to c:\Program Files.  We set our workspace to c:\project.
+Install the latest version of [http://www.eclipse.org] Eclipse IDE for Java EE] developers.  The version tested here is Kepler (4.3) Windows x64. We extract all to c:\Program Files.  We set our workspace to c:\project.
 
 Install the [https://vaadin.com/book/vaadin7/-/page/getting-started.eclipse.html Apache IvyDE plugin and Vaadin Eclipse plugin] as instructed on their book.
 
-We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Server->Servers.  If no servers appear, right-click New->Server; then choose Apache->Tomcat v7.0 Server, click Next and choose the location where you installed Tomcat (i.e. something like C:\apache-tomcat-7.0.39). Double-click your server (named Tomcat v7.0 Server at localhost or whatever version you are using) so you display the Overview and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin7 for us -- see below for downloading the project code first) click the Edit button to uncheck the 'Auto reloading enabled'. 
+We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Server->Servers.  If no servers appear, right-click New->Server; then choose Apache->Tomcat v7.0 Server, click Next and choose the location where you installed Tomcat (i.e. something like C:\apache-tomcat-7.0.42). Double-click your server (named Tomcat v7.0 Server at localhost or whatever version you are using) so you display the Overview and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin7 for us -- see below for downloading the project code first) click the Edit button to uncheck the 'Auto reloading enabled'. 
 
 Using the same Servers configuration, we make the following changes:
 
