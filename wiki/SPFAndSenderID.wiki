@@ -4,6 +4,18 @@
 
 SPF is used to determine if email sent from a given system is allowed to send email using your domain name.  It is configured in DNS TXT records for your domain (the one used in your email addresses).
 
+== Tips to reduce false spam-blocking ==
+
+Of course, there are also steps you can do with the content of your email messages to reduce having your emails falsely labeled as spam:
+  * Avoid "spamy" keywords in your message body and subject that sound like a sales pitch.
+  * Include the party's name in the subject and message body whenever possible to ensure each email is distinct and personalized
+  * Provide both TEXT and HTML versions.
+  * Keep the email brief, but not so terse that it appears like a trick to get them to click on a link.
+  * Include your company name and contact information.
+  * Ensure you don't send spam or bulk email using your domain name (and certainly this is prohibited when using the e-sign system) to keep a good reputation. In general, newly registered domain names are more suspect than established domain names, provided it was never used for spamming in the past.
+  * If parties do receive email in their spam/bulk email folders, request that they click "Not spam" to indicate that the email received is not spam as this will help you grow a good reputation. Note that such parties who do receive the email may mark your email as spam if you give them poor service, thus hurting your anti-spam reputation.
+  * There is no single fix for this issue as every receiving system has its own rules and tricks for detecting spam. Setting up SPF is a good step, though, as it shows you have taken the time to set up your domain to establish the valid sending systems and thus improves your credibility.
+
 = Recommendation =
 
 Add and SPF record that includes all of the systems that send out emails using your domain name. This includes your mail servers and third party services like Yozons operates.  So, here's a typical DNS TXT record for SPF:
