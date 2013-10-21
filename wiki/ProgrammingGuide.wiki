@@ -1897,7 +1897,7 @@ It also has special permissions related to the reports that are specified under 
   * *Download report data in Excel or CSV format* specifies who can download report data in Excel or CSV formats. 
   * *View transaction email log* specifies who can see email details about a transaction. 
   * *View/download document snapshots* specifies who can see and download document snapshots.
-  * *View/download data snapshots* specifies who can see and download data snapshots, which includes the data values stored in documents.
+  * *View/download data and uploaded files* specifies who can see and download data snapshots, which includes the data values stored in documents as well as files uploaded to a given field.
   * *Download complete transaction archives* specifies who can download a complete transaction archive.
 
 Click on the *[#Field_in_report Fields in report]* button http://open.esignforms.com/images/HowToGuidesWiki/fieldsInReportButton.png to configure the report fields that will appear in the custom report.
