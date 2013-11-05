@@ -48,7 +48,7 @@ And finally, you can build custom reports that specify which data fields to incl
 
 = Libraries http://open.esignforms.com/images/HowToGuidesWiki/librariesIcon.png =
 
-When you click on *Programming->Libraries* from the menu, you will see a list of libraries that are available to you. 
+When you click on *Programming->Libraries* from the menu, you will see a list of libraries that are available to you. Libraries provide a handy way to bundle documents and related configuration together across various projects, departments or even partner companies. A library may also play the role of a "branding library" as defined in the Transaction Templates, which allows for "brand" overriding all components in a library except for documents.
 
 Click on a library to view or configure it. To create a new library, you must select a template library or an existing library you have permission to access and click the *Create new empty library* button.
 
@@ -124,6 +124,8 @@ Click on one of the libraries listed when you open the *Programming->Libraries* 
 You will be presented with a page that lists all of the component types available:
 
 http://open.esignforms.com/images/HowToGuidesWiki/programmingLibrary.png
+
+Each component, except for documents, can be overridden using a "branding library" defined in a transaction template. For example, if you define an email or image logo in a library and a document in that library references them, by default it will find those components by name using the library where the document is defined. But if you also redefine those components using the same name in a different library, you can specify that library as a branding library in a transaction template so that at run-time, those transactions will reference those redefined components instead of the original. This allows a given document to carry different branding information without having to create duplicate documents and packages that only differ by the brand to be used.
 
 Click on one of the following to program that type of component:
 
