@@ -483,6 +483,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/dropDownEditor.png
   * *[HowToGuides#EsfNames_and_PathNames EsfName]* is the unique name of a drop down in this document.
   * *Description* is a short description of the drop down.
   * *Comments* is any other information you want to maintain about the drop down.
+  * Check Allow Multi-Selections if the drop down should allow the user to select more than one value from the list.
 
 A drop down can have one or more options specified, with the *label* being the value that is shown to the user in the drop down list, and the *value* is what is stored in the field that uses this list. Click the *Add option* button to add a new row. Click on a row and then the *Remove selected option* to delete a row. And finally you can drag each entry to change the order it will appear.
 
