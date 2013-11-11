@@ -110,6 +110,9 @@ To select multiple items when allowed, click the first item, then CTRL-click to 
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+<wiki:comment>
+11/11/2013 commented out until default buttons working in Vaadin correctly.
+
 == Default buttons ==
 
 Buttons that are blue are called "default buttons" in that if you press enter when your focus is on that page, it will be as if you clicked that button. 
@@ -119,6 +122,8 @@ http://open.esignforms.com/images/HowToGuidesWiki/defaultVersusNormalButtons.png
 Generally, default buttons are the Save, Find and Refresh buttons.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+</wiki:comment>
 
 == Menu items ==
 You can open any menu item feature by clicking on it, and it will open it in a tab in the main part of the application screen. Or the menu item may simply display additional options, such as when clicking on the *Programming* item.
