@@ -412,6 +412,7 @@ Click on an image to change its configuration:
 http://open.esignforms.com/images/HowToGuidesWiki/imageEditor.png
 
   * *[HowToGuides#EsfNames_and_PathNames EsfName]* is the unique name of an image in this document.
+  * Check *Embed image in HTML* to include the image data directly in the HTML web page using a 'data URI'.  If not checked, the image will be served using a separate link/URL and request. Normally, this should not be checked, but it may be desirable when using image field overlays so the base document image is included in digitally signed HTML.
   * *Description* is a short description of the image.
   * *Comments* is any other information you want to maintain about the image.
   
@@ -421,11 +422,49 @@ Click on the *View full image* link to display the image "as is".
 
 _Note that the thumbnail image may appear to have a black background when the original images uses a transparent background._
 
+For images that have fields defined on top of them, select from the *Field in document* left-side list and move to the *Fields that overlay this image* right-side list.  If fields are defined to overlay the image, a *[#Position_overlay_fields Position overlay fields...]* button will appear to allow you to set the top, left, width and height values relative to the image where the fields will be positioned.
+
 Click the *Ok* button to save your changes to the image.
 
 Click the *Cancel* button to discard the changes made to the image.
 
 Click the *Delete* button to delete the image. 
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Position overlay fields ===
+
+If you have specified that some fields overlay your image, you will then have to specify the position (left and top) and size (width and height) on the image where the field is to be placed.
+
+Note that only fields can overlay the image. If you need to position property values or the like, you will need to set a field to the value.
+
+We recommend setting a label for field templates that overlay an image even if you don't show the label because it will be used in error messages for missing/invalid input.
+
+The top left corner of the image is considered to be a top position 0, left position 0.  The bottom right corner of the image essentially has a top position of the image's height, and the left position of the image's width.
+
+http://open.esignforms.com/images/HowToGuidesWiki/imageOverlayFieldPosition.png
+
+  * The *Field EsfName* is displayed to remind you which field is being positioned.
+  * The *Display mode* is generally "Field" for a standard field overlay (similar to using ${field:XXXX} in the HTML document editor), or "Display only" to just show the field's value (similar to using ${out:XXXX}). You may also select "Field+Label" to position the field and it's label, but this is generally rare for image overlays.
+  * Choose the *Background color* to use for the overlay field. By default, it'll just place the value on top of the image, which is the most typical need.  But you may select a color, such as "White", to make the field stand out more if the image underneath the field would otherwise make it hard to read.
+  * Specify the *Left offset (px)* to specify how far in pixels from the left edge of the image where your field's upper left corner will be in.
+  * Specify the *Top offset (px)* to specify how far in pixels from the top edge of the image where your field's upper left corner will be in.
+  * Specify the *Width (px)* to specify how wide in pixels the field will occupy. Note that if you left, center or right align the field, it will be within this specified width.  Radio buttons and checkboxes do not support width or height.
+  * Specify the *Height (px)* to specify how tall/high in pixels the field will occupy. You will find most text fits nicely in 20 or 22 pixel height. Radio buttons and checkboxes do not support width or height.
+
+Click *Ok* to save your change, *Cancel* to abandon the change, and *Close* to dismiss the field overlay positioning window.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+==== Microsoft Paint tip ====
+
+There are lots of image processing tools that can help you with the positioning of overlay fields.  This is just a quick tip for the free/bundled Microsoft Paint program.
+
+Using Paint's "Select" tool, draw a box on the image where a field should be positioned.  Then note the left and top position, as well as the width and height of the box you drew.
+
+http://open.esignforms.com/images/HowToGuidesWiki/MSPaintFieldPositionTip.png
+
+Above, we have used the "Select" tool to draw an area in the "Signature of U.S. person" field. At the bottom of Paint, it shows the left position offset of 151 and the top offset of 748.  Next to it is the width of 380 and the height of 25.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
@@ -948,6 +987,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/imageNewUpload.png
   * *[HowToGuides#EsfNames_and_PathNames EsfName]* is the unique name for this image.
   * *Description* is a short description.
   * *Comments* is any other information you want to maintain.
+  * Check *Embed image in HTML* to include the image data directly in the HTML web page using a 'data URI'.  If not checked, the image will be served using a separate link/URL and request.
 
 If it's a new image, click the *Set the image file* button. You can then choose an image file (GIF, JPEG or PNG should be used for online documents). A thumbnail image will be generated, along with a link to view the full-sized image. Note that images that have transparent backgrounds will show a black background in the thumbnail, but the original image will remain transparent.
 
