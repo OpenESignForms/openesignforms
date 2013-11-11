@@ -564,3 +564,17 @@ http://open.esignforms.com/images/HowToGuidesWiki/communicationProblem.png
 it means your session was terminated unexpectedly. Note any changes you may have made (if they were not already saved, they will be lost) and click on the red box to continue and [#Login login again].
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+= Error Pages =
+
+It is possible for errors to occur, including various user-errors such as accessing a broken link, trying to start a transaction they do not have permission to, accessing a package after it's been transferred to another party, etc.
+
+When such errors occur, you will see a page like this:
+
+http://open.esignforms.com/images/HowToGuidesWiki/ErrorPage.png
+
+Under the logo is the general error that occurred, such as "request not found" (bad URL generally), "invalid request", "request not allowed" (no permission), or an expected application error.
+
+In the box is a more detailed explanation of what went wrong. It generally includes the link/URL that was used (in case it doesn't match what you expected to have used), and if you are logged in, it will tell you who are are logged in as.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
