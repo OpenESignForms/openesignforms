@@ -46,6 +46,21 @@ And finally, you can build custom reports that specify which data fields to incl
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+== Making a change to your document ==
+
+This is a rough overview of the steps of modifying a working document, such as to fix typos, add more text, etc.  This also applies to images/logos, emails, and the like, but the changes are done to those objects, not the document objects.
+
+  * Put yourself in *TEST: Development* mode using the selection list in the upper left corner. This ensure any transactions you start or reports you run will show only test transactions, not production ones.
+  * Under Programming->Libraries choose the Library your documents are in.
+  * Click on the Documents item to list your documents.
+  * Click on the document to change.
+  * Click on *Create next Test version* to make a new version that is not in production. Click *Save*.
+  * Click on the page to update and make your changes and click *Save*.  Test as needed while in the document editor.
+  * Run a test transaction -- not needed for simple typo fixes probably. If the tests are good, return to the document and then click the *Make Test version Production* to put it back into production. 
+  * Put yourself in *TEST: Like Production* mode, and test it again to ensure it's working as you want as this will create a test transaction using only production-level components.  If testing is good, then you are done and can just put yourself back in *PRODUCTION: Live* mode.  If there's an issue, you probably want to return to that document and click *Revert to Test* so it's not longer in production (and the prior version will be back in production until your fixes are done).
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 = Libraries http://open.esignforms.com/images/HowToGuidesWiki/librariesIcon.png =
 
 When you click on *Programming->Libraries* from the menu, you will see a list of libraries that are available to you. 
