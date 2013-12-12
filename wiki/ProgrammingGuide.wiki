@@ -1950,9 +1950,10 @@ The report template has standard List, View Details, Create Like, Update and Del
 
 It also has special permissions related to the reports that are specified under *Permissions for reports*
 
-  * *Run* permission specifies who can run the report. By default, users can only see test transactions they started themselves.
+  * *Run* permission specifies who can run the report. By default, users can only see test transactions they started themselves or they were a party to.
   * *See transactions started by external users* specifies who can also see transactions started by external users.
-  * *See transactions started by any other user* specifies who can also see transactions started by any other user.
+  * *See transactions started by any other user* specifies who can also see transactions started by any other user. Note that "any user" is limited to those users the user running the report is allowed to list.
+  * *See transactions with any other user a party to* specifies who can also see transactions in which any other user was a party. Note that "any user" is limited to those users the user running the report is allowed to list.
   * *See Production Transactions as well as Test* specifies who can also see production transactions. By default, only Test transactions can be seen.
   * *Download report data in Excel or CSV format* specifies who can download report data in Excel or CSV formats. 
   * *View transaction email log* specifies who can see email details about a transaction. 
