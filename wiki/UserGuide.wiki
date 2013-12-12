@@ -246,6 +246,8 @@ The Document List shows each document by name and ID, whether the document was a
 
 Lastly, there's an option to select one or more documents (either the latest version or the version after a particular party completed it) and download them together as a PDF file. Just select which documents are of interest, then click the *Download selected as PDF* button.
 
+Note that for those transactions that fully skip documents (meaning all parties to the document were skipped) defined in the package, those skipped documents are not listed above. Instead, they are shown in a small list at the bottom so they don't "disappear" from the listing, but don't interfere with the list of documents that are being processed. _(Note that skipped documents are generally in packages that have multiple flavors and only one -- or a subset -- are chosen. An obvious example in human resources are the state tax forms, in which the employee only fills out for the state where they live/work and those belonging to other states are skipped.)_
+
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 == Report transaction activity log == 
