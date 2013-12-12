@@ -158,6 +158,8 @@ All reports are custom-built, but this example explains the main search criteria
 
 See the [ProgrammingGuide Point & Click Programmer's Guide] for details on mapping data fields from your packages to report fields, and for building a custom report that includes such report fields.
 
+By default, users with permission to run the report can view transactions they started or they were a party to. Additional permissions can be set in Report Template to allow these to be expanded to "any user" the report runner can list.
+
 Reports allow you to view the data stored in documents in your transactions, as well as provide basic control and monitoring of the related transactions themselves.
 
 [http://www.youtube.com/watch?v=_kQP9LK64gU&hd=1 See our YouTube video] on reports, which includes configuring them as well as running them.
@@ -170,11 +172,14 @@ Below is a typical search and filtering control for reports.
 
 http://open.esignforms.com/images/HowToGuidesWiki/reportSearch.png
 
+The search will select production transactions if your current mode is *PRODUCTION: Live*, otherwise it will list test transactions.  You can also search for transactions based on who started them, or who was a party to them.
+
   * Select *Any transaction type* when you'd like to report on all transaction types defined for this report, which are listed below the "Any" entry. You may also select one or more specific transaction types to narrow the results.
-  * The search will select production transactions if your current mode is *PRODUCTION: Live*, otherwise it will list test transactions.
-  * Select *Started by external parties* to find only those transactions started by external parties, those users who do not have a login and typically created the transaction by starting from your company's web site. The "external parties" option is only available if the report has authorized you to see them. You may also select *Started by any user*, if the report authorizes you to do so, to include all users (those listed below this entry). You may select *Started by me* to include transactions that you started (this is the default access). And if additional users are listed below that, you may select individual users. Multiple selections are allowed.
-  * Enter a unique transaction id in the *Tran id only search* field to search for a particular transaction. This mode skips all other search criteria, but of course the transaction found must be one of the types listed for the report.
   * Enter an email address, or partial email address, in the *Party email* field to limit records to those transactions in which one of the parties is associated with a matching email address.
+  * Enter a unique transaction id in the *Tran id only search* field to search for a particular transaction. This mode skips all other search criteria, but of course the transaction found must be one of the types listed for the report.
+  * Click either the *Started by* or the *Party to* tab to determine if you'd like to search by who started the transactions, or who was a party to the transactions.
+    * For *Started by*, select *Started by external parties* to find only those transactions started by external parties, those users who do not have a login and typically created the transaction by starting from your company's web site. The "external parties" option is only available if the report has authorized you to see them. You may also select *Started by any user*, if the report authorizes you to do so, to include all users (those listed below this entry). You may select *Started by me* to include transactions that you started (this is the default access). And if additional users are listed below that, you may select individual users. Multiple selections are allowed.
+    * For *Party to*, select *Any user a party to*, if the report authorizes you to do so, to find those transactions in which any of the users (also listed individually) were a party to it.  Select *I was a party to* to find only those you were a party to. If additional users are listed below, you may select individual users.  Multiple selections are allowed.
   * Check *In progress* to include transactions that are currently in progress.
   * Check *Completed* to include transactions that have been completed.
   * Check *Suspended* to include transactions that have been suspended. A suspended transaction cannot be processed further until re-activated.
