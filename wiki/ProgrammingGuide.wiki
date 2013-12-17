@@ -1861,6 +1861,8 @@ _Tip: To save your changes, remember to click the *Save* button for the package.
 
 To manually reload report fields for existing transactions using the current field mappings, click the *Reload tran report fields* button from the [#Map_report_fields package's map report fields] window.
 
+This will find all matching transactions, and then reload all defined report fields in its related package version. If you have previous package versions and you need transactions based on the older package version to also be reloaded, be sure you have mapped the fields in those package versions as well. If you update multiple package versions, you only need to run the reload once (not once per package version).
+
 http://open.esignforms.com/images/HowToGuidesWiki/reloadTranReportFields.png
 
   * Select which transaction type(s) should be reloaded. Only those transactions you have access to and which use this package are listed.
