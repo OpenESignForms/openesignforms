@@ -198,14 +198,14 @@ Note that the `profile` script sets ESF_DEPLOYMENT_BASE to the base directory wh
 If you have a previous install and need to wipe it out first, use:
   ./drop_db
 
-To create a DB, use:
+To create a DB, use (if you deploy your webapp in ROOT, use ROOT as the WEBAPPNAME to rundbsetup):
   ./create_db
   Please enter the LOWERCASE name for the OpenESF database and user: test          (for testing, we just use 'test' for our deployid and DB user)
   Please enter the password to use for the OpenESF esfapp user test: test          (for testing, we just use the password 'test')
   Type 'y' to create the database.
   Type 'y' to create the tables.
   
-  ./rundbsetup
+  ./rundbsetup WEBAPPNAME
   or
   In Eclipse, create a Java Application (debug configuration) for 'DbSetup' like below and then run it:
     Project: open-eSignFormsVaadin
