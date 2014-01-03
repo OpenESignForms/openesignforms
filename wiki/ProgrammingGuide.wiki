@@ -1990,7 +1990,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/allCompletedDocsAsPdfButton.pn
     * *esf_last_updated_timestamp* is the date/time the transaction was last updated.
     * *esf_literal* allows you to specify a fixed *Literal value* that will always appear in the column. This is mostly used for CSV integration with other systems where you need to provide a fixed value.
     * *esf_package_name* is the PathName of the package referenced by the transaction.
-    * *esf_stall_timestamp* is the date/time the transaction stalled (was in progress, but had no active party), indicating a programming error.
+    * *esf_stall_timestamp* is the date/time the transaction stalled (was in progress, but had no active party or the active party has no email address or related TO DO group associated with it -- if they are currently working on it, then it may not be truly stalled), indicating a possible programming error.
     * *esf_start_timestamp* is the date/time the transaction was started.
     * *esf_status* is the transaction status: In progress, Canceled, Completed, or Suspended.
     * *esf_status_text* is the transaction status description, which is typically the current document and party in the process flow.
