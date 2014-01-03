@@ -467,6 +467,8 @@ http://open.esignforms.com/images/HowToGuidesWiki/imageOverlayFieldPosition.png
   * Specify the *Width (px)* to specify how wide in pixels the field will occupy. Note that if you left, center or right align the field, it will be within this specified width.  Radio buttons and checkboxes do not support width or height.
   * Specify the *Height (px)* to specify how tall/high in pixels the field will occupy. You will find most text fits nicely in 20 or 22 pixel height. Radio buttons and checkboxes do not support width or height.
 
+Note that the width and height create a "box" where the field will be placed.  If width specified is wider than than the field will naturally display, you likely want to change the field template to use 100% width so it fills the entire box's width.
+
 Click *Ok* to save your change, *Cancel* to abandon the change, and *Close* to dismiss the field overlay positioning window.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
