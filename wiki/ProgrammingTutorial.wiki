@@ -21,11 +21,15 @@
 
 This tutorial assumes you have "programmer" access to Open eSignForms, so you have permission to update a library, create a package, transaction template and report. Programming is primarily about document layout and point & click configuration and can be done by anybody. There is no traditional programming involved, so you do not need to be a software developer.
 
-Of course, if you do not, this is also a useful guide to just read and see how it's done step-by-step.
+Of course, if you do not, this is also a useful guide to just read and see how it's done step-by-step.  Note that some screens have changed since this was created, but the procedure remains the same.
 
 You are going to build a simple, custom contract that allows supporting documentation to be uploaded and attached. You'll learn how to build the document all the way through seeing it in a custom report and then moving it from Test mode to Production.
 
 Please login now and we'll get started. It's all pretty easy.
+
+After you login, but before you begin, be sure to put yourself into *TEST: Development* [UserGuide#Modes:_Production_versus_Test mode] using the drop down in the upper left corner:
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/TestDevMode.png
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
@@ -314,13 +318,9 @@ http://open.esignforms.com/images/ProgrammingTutorialWiki/tranTemplateFirstSave.
 
 = Step 5: Run a Test transaction http://open.esignforms.com/images/ProgrammingTutorialWiki/startTransactionTutorialIcon.png =
 
-You should now see your tutorial transaction listed under the *Start transaction* menu.
+You should now see your tutorial transaction listed under the *Start transaction* menu.  If not, it is possible that you are not in *TEST: Development* mode, as the 'Start transaction' menu only lists transactions you are authorized to start in test mode.
 
-If you just click on *Tutorial*, you should see a *Start error* message like the following:
-
-http://open.esignforms.com/images/ProgrammingTutorialWiki/startError.png
-
-This is because a regular click starts a production transaction, and you are still testing. Instead, you want to right-click on *Tutorial* and then click *Start TEST transaction* to run a test transaction.  A Test transaction will not get mixed up with your Production transactions, and it will also use any components (document, image, property set, drop down, etc.) that are marked at the Test level. 
+A Test transaction will not get mixed up with your Production transactions, and it will also use any components (document, image, property set, drop down, etc.) that are marked at the Test level. 
 
 _Tip: If you do not see a new popup window, most likely your browser is blocking popups, so look for such errors or warnings and then tell your browser to allow popups from your web site domain._
 
@@ -526,15 +526,23 @@ _Tip: Note that there is a document retention value for Production transactions 
 
 At this point, your Tutorial transaction is ready to run in Production mode. However, since you just updated the components, you should run one more *Test Like Production* transaction, which is a Test mode transaction, but using only Production-level components, just like a real Production transaction would.  If you were to find any problems, you would correct them and try again.  After a successful "Test Like Production" run, you would then be free to run real Production transactions with your customers.
 
-Right click on *Start transaction->Tutorial* and then click *Start TEST like Production*. Because the transaction template allows production now, you get that added option under the test start mode when you right-click on it.
+Just change your mode to *TEST: Like Production* mode.
 
-http://open.esignforms.com/images/ProgrammingTutorialWiki/startTestLikeProductionButton.png
+http://open.esignforms.com/images/ProgrammingTutorialWiki/TestLikeProductionMode.png
+
+Because the transaction template allows production now, it will be listed under the 'Start transaction' menu when in *TEST: Like Production* as well as *PRODUCTION: Live* modes.
+
+Now, when you click 'Start transaction' you will only see transactions that can be run in production mode, though it will start it as a test transaction to keep it separate from your real production transactions.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
 = Step 10: Run a Production transaction =
 
 Assuming that the "test like production" worked as desired, you are now ready to run real production-level transactions with your customers.
+
+Just change your mode to *PRODUCTION: Live* mode.
+
+http://open.esignforms.com/images/ProgrammingTutorialWiki/ProductionMode.png
 
 Just click on *Start transaction->Tutorial" to start a regular, production-level transaction.  
 
@@ -553,6 +561,8 @@ _Tip: If you don't want to run an actual production transaction, click the *Retu
 = Extra credit: Create your next version =
 
 We will go a bit faster now since you should be somewhat familiar with programming the document.
+
+Remember to go back to *TEST: Development* mode before you test your changes.
 
 Click on *Programming->Libraries->XXXXX* to select your library.
 
@@ -649,7 +659,7 @@ ${property:MyCompany.MailingAddressCity}, ${property:MyCompany.MailingAddressSta
 ${property:MyCompany.UserSupportEmail}
 ----
 
-In *HTML version:* copy the HTML code fro below and paste it in. However, because this already is in HTML, you'll want to click the *Source* button in the editor (it will highlight when in Source mode) first and then paste the HTML in.
+In *HTML version:* copy the HTML code from below and paste it in. However, because this already is in HTML, you'll want to click the *Source* button in the editor (it will highlight when in Source mode) first and then paste the HTML in.
 
 {{{
 <p>An electronic document has been created for you to process on the Open eSignForms system for ${property:MyCompany.InformalName}.<br />
@@ -675,6 +685,8 @@ Click the "Customer" party from the party list. Click on the *Notify Email EsfNa
 
 === Run a new test transaction to see it all in action ===
 
+Again, be sure you are in *TEST: Development* mode.
+
 Now, if you run a test "tutorial" transaction, you should see the new document with the clientName field and logo.  When you complete it, the new email should arrive with the subject you specified in the form.
 
 === Put this all into production ===
@@ -689,7 +701,7 @@ Do the same for the email template you created in the library.
 
 Then return to the package and make it production.
 
-You are ready to run a *Start TEST like Production* to ensure it's all good, and if so, then the next version is ready to be used in production.
+Finally, change to *Test: Like Production* mode to run a test transaction using the production versions to ensure it's all good, and if so, then the next version is ready to be used in production.
 
 Congratulations again!
 
