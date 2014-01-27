@@ -2126,3 +2126,45 @@ _Note that no document snapshots will exist for the first party since the docume
 Please view the custom logic setup for the [#HTTP_send_data_action HTTP Send Data Action] for details on sending back data to your system.  This allows you to do an HTTP(S) GET/POST of name-value pairs including fields defined in your documents.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+== Retrieve CSV data back to your system ==
+
+Assuming you have built a Report to list the fields you want to retrieve, you can run a CSV Report by using a special link/URL (HTTPS POST of name-value pairs is best) that will run that report and return the data in CSV format.
+
+The CSV data fields will be separated by a comma. When necessary, data values will be quoted (such as if the data value contains quotes or commas).  Each line ends with a CR+LF.  On successful retrieval, the content-type returned will be `text/csv; charset=UTF-8`
+
+The base URL to retrieve CSV data is:
+
+`https://example.com/WEBAPP/csv/YourReportPathNameHere`
+
+`YourReportPathNameHere` must be the EsfPathName of the report you created and have permission to run, as well as permission to export CSV data.
+
+`WEBAPP` is the name of your deployment. For those who run their own systems, this may not be present if you are using the ROOT webapp. For most hosted customers, this will be the same name you use when you login.
+
+Next, you can add various named-value parameters to control the CSV export process:
+
+  * *rid* - Optional report template id; if present, this is the report template ID to use to find the report if `YourReportPathNameHere` could not be found.
+  * *ESFLOGINUSER* - Required user name; the email address of the user account used to authenticate the request to run the report.
+  * *ESFLOGINPASSWORD* - Required user password; the password to authenticate the request.
+  * *ESFTEST* - Optional type of transactions to retrieve; if not present, assumes Production transactions should be retrieved. If present, assumes Test transactions unless the value is set to N or F or 0 to turn it off.
+  * *dateType* - Optional meaning of the startDate/endDate; assumes *started* unless set to *lastUpdated*.
+  * *startDate* - Optional start date (oldest to retrieve); assumes *now* (today at 00:00:00 in the user's default time zone). Use -1 for yesterday or -N for N days ago. Use YYYY-MM-DD format to specify a particular date.
+  * *endDate* - Optional end date (most recent to retrieve); assumes *now* (today at 23:59:59 in the user's default time zone). Use -1 for yesterday or -N for N days ago. Use YYYY-MM-DD format to specify a particular date.
+  * *startedByMe* - Optional; assumes *Y*. If *N*, you must allow one of the two other 'started by' options or this will still assume *Y*.
+  * *startedByAnyUser* - Optional; assumes *Y* if the user has such permissions specified in the report, otherwise *N*.
+  * *startedByExternalParties* - Optional; assumes *Y* if the user has such permissions specified in the report, otherwise *N*.
+  * *showInProgress* - Optional; assumes *N* to not include in progress transactions. If *Y* transactions that are still in progress will be included.
+  * *showCompleted* - Optional; assumes *Y* to include completed transactions. If *N* transactions that are completed will not be included.
+  * *showCanceled* - Optional; assumes *N* to not include canceled transactions. If *Y* transactions that are canceled will be included.
+  * *showSuspended* - Optional; assumes *N* to not include suspended transactions. If *Y* transactions that are suspended will be included.
+  * *includeHeaderLine* - Optional; assumes *Y* to include the first line in the CSV data that lists the field names; If *N* then that line will not be included and you will just get CSV data records.
+
+For example, assuming a report named `API/ContactReport` in a customer webapp named `demo`, to retrieve production transactions completed yesterday, the URL would be:
+
+{{{https://example.com/demo/csv/API/ContactReport?ESFLOGINUSER=demo@example.com&ESFLOGINPASSWORD=demopass&dateType=lastUpdated&startDate=-1&endDate=-1}}}
+
+When possible, we recommend using an HTTPS POST instead of a simple URL/link like above to ensure none of the parameters are recorded in server logs. With an HTTPS POST, you use the same name-value pairs, just sent as the body of the request instead of on the URL/link.
+
+_Note: The value of all params must be URL encoded as per the standard for HTTP._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
