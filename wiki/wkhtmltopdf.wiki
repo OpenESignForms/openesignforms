@@ -10,6 +10,9 @@ These are just some quick notes on setting up *wkhtmltopdf* on our CentOS Linux 
 
   * Download wkhtmltopdf-0.12.0 from [https://github.com/wkhtmltopdf/wkhtmltopdf/releases/tag/0.12.0 wkhtmltopdf on GITHUB].
 
+  * If necessary, ensure you have 'xz' installed (install as root):
+    {{{yum install xz}}}
+
   * Unzip using tar 
     {{{tar xvJf wkhtmltox-linux-i386_0.12.0-03c001d.tar.xz}}}
 
