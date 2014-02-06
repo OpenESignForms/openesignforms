@@ -8,10 +8,10 @@ These are just some quick notes on setting up *wkhtmltopdf* on our CentOS Linux 
 
 = Details =
 
-  * Download wkhtmltopdf-0.11.0_rc1-static-i386.tar.bz2 from [http://code.google.com/p/wkhtmltopdf/ wkhtmltopdf on Google Code].
+  * Download wkhtmltopdf-0.12.0 from [https://github.com/wkhtmltopdf/wkhtmltopdf/releases/tag/0.12.0 wkhtmltopdf on GITHUB].
 
-  * Unzip using bunzip2, or perhaps use 
-    {{{tar xvjf wkhtmltopdf-0.11.0_rc1-static-i386.tar.bz2}}}
+  * Unzip using tar 
+    {{{tar xvJf wkhtmltox-linux-i386_0.12.0-03c001d.tar.xz}}}
 
   * Install dependencies via yum:
     {{{yum install fontconfig libXrender libXext '*fonts*' openssl}}}
@@ -20,7 +20,7 @@ These are just some quick notes on setting up *wkhtmltopdf* on our CentOS Linux 
     
     (In particular you want urw-fonts, but you probably want others too, like xorg-x11-fonts-truetype if available)
 
-  * Either put the file `wkhtmltopdf-i386` into your `~/bin` directory named `wkhtmltopdf` or create softlink, such as `cd ~bin` and `ln -s ../wkhtmltopdf_0.11.0/wkhtmltopdf-i386 wkhtmltopdf`.
+  * Either put the file `wkhtmltopdf-i386` into your `~/bin` directory named `wkhtmltopdf` or create softlink, such as `cd ~bin` and `ln -s ../wkhtmltopdf_0.12.0/wkhtmltopdf-i386 wkhtmltopdf`.
 
   * For our HTML, we typically use options:
     {{{wkhtmltopdf --page-size Letter --print-media-type --image-quality 100}}}
@@ -48,6 +48,6 @@ Often these did not resolve issues, but unsure if they are helpful or not.
 
 There is generally a Windows installer version for this program that can be used on Windows platforms. Our developers typically are on Windows, and so they make use of the Windows version if they need the PDF export capability.  
 
-We downloaded 'wkhtmltox-0.11.0_rc1-installer.exe' and when run, it installed the tool in {{{C:\Program Files (x86)\wkhtmltopdf}}}
+We downloaded 'wkhtmltox-win32_0.12.0-03c001d.exe' and when run, it installed the tool in {{{C:\Program Files (x86)\wkhtmltopdf}}}
 
-For Tomcat+Java on Windows 7, we found we had to add that path to Windows PATH. For Windows 7, we did this by clicking on the Windows icon, Right-click on Computer->Properties, click on Advanced system settings, click on Environment Variables button, under System variables scroll and click on Path, click the Edit button, then append at the end: {{{;C:\Program Files (x86)\wkhtmltopdf}}}
+For Tomcat+Java on Windows 7, we found we had to add that path to Windows PATH. For Windows 7, we did this by clicking on the Windows icon, Right-click on Computer->Properties, click on Advanced system settings, click on Environment Variables button, under System variables scroll and click on Path, click the Edit button, then append at the end: {{{;C:\Program Files (x86)\wkhtmltopdf\bin}}}
