@@ -8,7 +8,7 @@ These are just some quick notes on setting up *wkhtmltopdf* on our CentOS Linux 
 
 = Details =
 
-  * Download wkhtmltopdf-0.12.0 from [https://github.com/wkhtmltopdf/wkhtmltopdf/releases/tag/0.12.0 wkhtmltopdf on GITHUB].
+  * Download wkhtmltopdf-0.12.0 from [https://github.com/wkhtmltopdf/wkhtmltopdf/releases/tag/0.12.0 wkhtmltopdf on GITHUB]. Tested on CentOS 6.4.
 
   * If necessary, ensure you have 'xz' installed (install as root):
     {{{yum install xz}}}
@@ -19,33 +19,18 @@ These are just some quick notes on setting up *wkhtmltopdf* on our CentOS Linux 
   * Install dependencies via yum:
     {{{yum install fontconfig libXrender libXext '*fonts*' openssl}}}
 
-    {{{yum remove tetex-fonts}}}      (not needed and generates daily cron errors; may not be present in CentOS 6.x)
-    
     (In particular you want urw-fonts, but you probably want others too, like xorg-x11-fonts-truetype if available)
 
-  * Either put the file `wkhtmltopdf-i386` into your `~/bin` directory named `wkhtmltopdf` or create softlink, such as `cd ~bin` and `ln -s ../wkhtmltopdf_0.12.0/wkhtmltopdf-i386 wkhtmltopdf`.
+  * Either put the file `wkhtmltopdf` into your `~/bin` directory named `wkhtmltopdf` or create softlink, such as `cd ~bin` and `ln -s ../wkhtmltox/wkhtmltopdf wkhtmltopdf`.
 
   * For our HTML, we typically use options:
-    {{{wkhtmltopdf --page-size Letter --print-media-type --image-quality 100}}}
+    {{{wkhtmltopdf --page-size Letter --encoding utf-8 --print-media-type --disable-external-links --image-quality 100 --margin-left 5mm --margin-right 5mm --margin-top 5mm --margin-bottom 5mm}}}
 
     Try running the command `wkhtmltopdf` to ensure it can be found in your PATH and that it shows no missing components.
 
   * For the 32-bit static builds, assuming you are on 64-bit Linux, you'll want to make sure you have these components with i386/i686 architecture. If you have the 64-bit versions, you can use `yum whatprovides fontconfig` to discover the component details for the 32-bit version (in this case, fontconfig-2.4.1-7.el5.i386 or fontconfig-2.8.0-3.el6.i686).  This includes `fontconfig`, `libXrender`, `openssl`, `libzip`, `libXext` and `libstdc++`.
 
      (i.e. `yum install fontconfig.i686 libXrender.i686 openssl.i686 libzip.i686 libXext.i686 libstdc++.i686`)
-
-= Questionable =
-
-In our various installs, we also did yum installs of:
-  * libX11-devel
-  * giflib
-  * libpng
-  * libjpeg
-  * a2ps (pretty sure not needed)
-  * libstdc++ (required on some x64 Linux if the i386/i686 version is not present for 32-bit)
-  * zlib, libzip may also be needed on x64 Linux to get the i386/i686 versions
-
-Often these did not resolve issues, but unsure if they are helpful or not.
 
 = Windows Developers =
 
