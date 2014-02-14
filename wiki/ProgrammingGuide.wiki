@@ -229,7 +229,7 @@ On the left side editor:
 
 See below for [#CKEditor_tips CKEditor tips].
 
-Click the *Save* button to save changes to the page, fields, parties or images.
+Click the *Save* button to save changes to the page, fields, parties or images. You can also use CTRL-S in the editor to save.
 
 Click the *Close* button to close the page editor.
 
@@ -309,7 +309,7 @@ By default, new fields are given the *General* type, meaning they are standard t
     * *Decimal* is a text input field that expects a valid decimal number, like 123.4. It differs from the Money type only in that it doesn't show a currency symbol.
     * *Drop down list* lets you choose a drop down list defined in your library so that parties can select a valid value from the list.
     * *Email address* is a text input field that expects a valid email address.
-    * *File confirm click* is a special way to select a file from the document or library that will track whether parties have clicked on the link to view/download it if the field is required for the party.
+    * *File confirm click* is a special way to select a file from the document or library that will track whether parties have clicked on the link to view/download it if the field is required for the party. You can also set this field to another File EsfName at runtime if the required file is not known when configured.
     * *File upload* is a special field that allows files to be attached (or removed) when in edit mode, or listed and viewed when in display mode. When assigned to a party, that party will be able to upload/remove files. You can specify a *Limit # files* value to restrict the number of files that can be uploaded. All parties are required, by default, to click on these files before continuing. (See the custom logic action [#Change_File_field_access_action Change File field access] to change this behavior for parties who are not uploading if you'd like to block their ability to view/download, or to make it optional that they view/download the files.)
     * *HTML editor* puts a CKEditor field in your document, allowing the party to enter rich text, or paste from Word, etc. We recommend you only provide this feature to parties who are part of your company.
     * *Integer* is a text field that expects an integer/counting number value, such as -5 or 20. Decimal points are not allowed. This type also supposed an *Extra options* value to specify whether to show normal integers like 1, 2, 3, or to show the value as an ordinal number, like 1st, 2nd, 3rd.
@@ -1984,6 +1984,8 @@ You can drag to re-order existing fields to control the order they will appear i
   * In *Report field* select a user-defined or built-in report field to show in the report. The following are the built-in fields:
     * *esf_cancel_timestamp* is the date/time the transaction was canceled.
     * *esf_created_by_user* is the user who started the transaction, when it's not started by an external user.
+    * *esf_download_html_selected_snapshot* will produce an "Completed docs" popup button that will produce a list of completed documents (by party, or latest) that when clicked will show that HTML document. 
+http://open.esignforms.com/images/HowToGuidesWiki/completedDocAsHTMLButton.png
     * *esf_download_pdf_latest_snapshots* will produce an "All completed docs" button that will download a PDF containing all of the latest completed documents. 
 http://open.esignforms.com/images/HowToGuidesWiki/allCompletedDocsAsPdfButton.png
     * *esf_download_pdf_selected_snapshots* will produce a "Completed docs" dropdown button to select which completed documents and versions you want to download as a PDF. http://open.esignforms.com/images/HowToGuidesWiki/selectedCompletedDocsAsPdfButton.png
