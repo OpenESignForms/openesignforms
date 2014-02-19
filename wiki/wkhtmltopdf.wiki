@@ -19,7 +19,7 @@ These are just some quick notes on setting up *wkhtmltopdf* on our CentOS Linux 
   * Install dependencies via yum:
     {{{yum install fontconfig libXrender libXext '*fonts*' openssl}}}
 
-    (In particular you want urw-fonts, but you probably want others too, like xorg-x11-fonts-truetype if available)
+    (In particular you want urw-fonts, but you probably want others too, like xorg-x11-fonts-truetype for CentOS 5.  For CentOS 6, see http://www.itzgeek.com/how-tos/linux/centos-how-tos/how-to-install-microsoft-truetype-fonts-in-centos-6-rhel-6.html for the commands `wget http://www.my-guides.net/en/images/stories/fedora12/msttcore-fonts-2.0-3.noarch.rpm` and then `rpm -Uvh msttcore-fonts-2.0-3.noarch.rpm` while logged in as root.)
 
   * Either put the file `wkhtmltopdf` into your `~/bin` directory named `wkhtmltopdf` or create softlink, such as `cd ~bin` and `ln -s ../wkhtmltox/wkhtmltopdf wkhtmltopdf`.
 
