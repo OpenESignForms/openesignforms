@@ -238,6 +238,8 @@ The *View email* button will popup a window that lists all emails sent related t
 
 The *View HTTP Send* button will popup an activity log for all HTTP Send actions including the request sent and the response received. See [#View_HTTP_Send_log the HTTP send log for details.]
 
+The *Completed docs* dropdown button allows you to view any completed document (by specific party, or "latest" to get the latest version of a given document). The document viewed is the same one the party saw when submitting it.
+
 The *Download transaction data* button will download, as XML data, all of the data fields stored in the transaction. Typically, this is all related parameters that were posted at the time the transaction was created.
 
 The Party List shows each party to the transaction, including the status, number of documents, email address (if known), user who process as this party (if any), when the party was created, and a *More* button related to emails. If you click the *More* button, there will be an option to *View email* to see the emails for this party, and *Send email again* to send the email invitation associated with the party again, and if the party is still active, you can enter a *New email address* to transfer the party to a new email address should the original email address have been incorrect or you learned another person needs to process it.
