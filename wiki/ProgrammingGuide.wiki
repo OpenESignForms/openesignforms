@@ -763,12 +763,50 @@ public interface EsfDocumentPageInterface
 	public boolean isParty(String docPartyName);
 	
 	/**
+	 * @return true if the current party is completed (all documents done)
+	 */
+	public boolean isPartyCompleted();
+	
+	/**
+	 * @return true if the current party is a logged in user
+	 */
+	public boolean isPartyLoggedIn();
+	
+	/**
+	 * @return true if the transaction is completed (all parties done)
+	 */
+	public boolean isTransactionCompleted();
+	
+	/**
+	 * @return true if the transaction is deleted (the current party has deleted the transaction)
+	 */
+	public boolean isTransactionDeleted();
+	
+	/**
+	 * @param packagePartyName the String package party name to check. This is mostly useful for the package+disclosure document that
+	 * does not have document parties defined at all.
+	 * @return true if the current party is the specified package party
+	 */
+	public boolean isPackageParty(String packagePartyName);
+	
+	/**
 	 * @param fieldSpec the String field specification, such as ${firstName} to get the field firstName from the document
 	 * @return the String value associated with the field spec. If the field spec is invalid (no such field can be found)
 	 * the field spec is returned without any values replacing it.
 	 */
 	public String getFieldSpecValue(String fieldSpec);
 
+	/**
+	 * @param v the String to check if it's blank (null, empty or just spaces)
+	 * @return true if 'v' is blank
+	 */
+	public boolean isBlank(String v);
+
+	/**
+	 * @param v the String to check if it's non-blank (not null, not empty and not just spaces)
+	 * @return true if 'v' is non-blank
+	 */
+	public boolean isNonBlank(String v);
 }
 }}}
 
