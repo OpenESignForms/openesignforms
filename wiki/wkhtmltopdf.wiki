@@ -3,6 +3,8 @@
 
 = Introduction =
 
+*NOTE 3/21/2014* We seem to have some issues with blank pages appearing before the document using the 0.12.0 version. We are currently running on 0.11.0 rc1 at this time.
+
 These are just some quick notes on setting up *wkhtmltopdf* on our CentOS Linux servers. As we gain expertise, I'm sure we'll iron out the details a bit better.
 
 
