@@ -351,6 +351,11 @@ rm *.cygwin
 dos2unix ~/bin/*
 }}}
 
+*Copy contents of ~/bin/bashrc to .bashrc in esignforms home directory* 
+{{{
+cat ~/bin/bashrc >>~/.bashrc 
+}}}
+
 *Copy profile into esignforms home directory*
 {{{
 cp ~/bin/profile ~/
