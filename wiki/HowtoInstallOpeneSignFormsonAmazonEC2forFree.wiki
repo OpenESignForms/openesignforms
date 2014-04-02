@@ -292,6 +292,16 @@ sudo cp /tmp/open-eSignForms-14.3.15/VAADIN-release-extras/VAADIN/themes/ /usr/s
 sudo cp /tmp/open-eSignForms-14.3.15/lib/*.jar /usr/share/tomcat7/webapps/ROOT/WEB-INF/lib -r
 }}}
 
+*Copy scripts into esignforms home directory under bin*
+
+{{{
+sudo su
+sudo - esignforms
+mkdir bin
+cp -r /tmp/open-eSignForms-14.3.15/scripts/* ~/bin
+chmod 755 ~/bin/*
+}}}
+
 = Post Install =
 
 == Listen to HTTP requests on port 80 ==
