@@ -119,7 +119,7 @@ Accept the license agreement and download the version for Linux x64. I prefer th
 Next you will need to get this file unto your instance. In linux, I open a new terminal window and issue the following command. Be sure to specify the correct path to your private key and downloaded JRE file.
 
 {{{
-scp -i *privatekey.pem* jre-8-linux-x64.rpm ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com:/tmp
+scp -i privatekey.pem jre-8-linux-x64.rpm ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com:/tmp
 }}}
 
 
