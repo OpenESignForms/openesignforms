@@ -330,6 +330,13 @@ chmod 755 ~/bin/*
 cp -r /tmp/open-eSignForms-14.3.15/database/ /home/esignforms/ 
 }}}
 
+*Make files executable, clean-up, and dos2unix*
+{{{
+chmod +x /home/esignforms/database/postgresql/ddl/*
+rm -rf /home/esignforms/database/postgresql/ddl/CVS
+dos2unix /home/esignforms/database/postgresql/ddl/*
+}}}
+
 *Copy wkhtmltopdf to esignforms bin directory*
 {{{
 cp /tmp/wkhtmltopdf-amd64 ~/bin/wkhtmltopdf
@@ -341,6 +348,7 @@ cp /tmp/wkhtmltopdf-amd64 ~/bin/wkhtmltopdf
 cd ~/bin
 rm -rf CVS
 rm *.cygwin
+dos2unix ~/bin/*
 }}}
 
 *Copy profile into esignforms home directory*
