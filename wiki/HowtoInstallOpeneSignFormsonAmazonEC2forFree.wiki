@@ -118,21 +118,17 @@ Accept the license agreement and download the version for Linux x64. I prefer th
 
 Next you will need to get this file unto your instance. In linux, I open a new terminal window and issue the following command. Be sure to specify the correct path to your private key and downloaded JRE file.
 
-{{
+{{{
 scp -i *privatekey.pem* jre-8-linux-x64.rpm ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com:/tmp
-}}
+}}}
 
-# First verify the version of Java being used is not SunJSK.
-java -version
- 
-# Get the latest Sun Java SDK from Oracle http://www.oracle.com/technetwork/java/javase/downloads/jdk-7u1-download-513651.html
-wget http://download.oracle.com/otn-pub/java/jdk/7u1-b08/jdk-7u1-linux-i586.rpm
- 
-# Rename the file downloaded, just to be nice
-mv jdk-7u1-linux-i586.rpm\?e\=1320265424\&h\=916f87354faed15fe652d9f76d64c844 jdk-7u1-linux-i586.rpm
+
  
 # Install Java
-sudo rpm -i jdk-7u1-linux-i586.rpm 
+`sudo rpm -i jre-8-linux-x64.rpm `
+ 
+# Verify the Java is installed
+`java -version`
  
 # Check if the default java version is set to sun jdk
 java -version
