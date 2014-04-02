@@ -16,7 +16,7 @@ This guide will take you through installing Open eSignForms on a micro Amazon Li
 # System Administrators
 
 
-= Create an Instance =
+= Create an Instance on Amazon EC2 =
 
 Launch a new Amazon Linux AMI. This tutorial was created using Amazon Linux AMI 2014.03. Choose the 64-bit version.
 
@@ -56,6 +56,8 @@ Connect to your instance using the username *ec2-user* with the private key you 
 
 `chmod 700 privatekey.pem;`
 `ssh -i privatekey.pem ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com`
+
+= Prepare the Environment =
 
 == Update the Instance ==
 
@@ -175,8 +177,21 @@ sudo mv /usr/java/jre1.8.0/lib/security/UnlimitedJCEPolicyJDK8/*.jar /usr/java/j
 
 == Install Postgresql ==
 
-`sudo yum install postgresql-server`
+{{{
+sudo yum install postgresql-server
+}}}
 
+Initialize the database
+{{{
+sudo service postgresql initdb
+}}}
+
+Start the database server and set it to run on boot
+
+{{{
+service postgresql start
+chkconfig postgresql on
+}}}
 
 = Post Install =
 
