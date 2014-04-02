@@ -235,6 +235,10 @@ Copy over directories from the archive to the correct location
 sudo cp -r /tmp/open-eSignForms-14.3.15/WebContent/* /usr/share/tomcat7/webapps/ROOT
 }}}
 
+{{{
+sudo cp /tmp/open-eSignForms-14.3.15/VAADIN-release-extras/VAADIN/themes/ /usr/share/tomcat7/webapps/ROOT/VAADIN/ -r
+}}}
+
 = Post Install =
 
 == Listen to HTTP requests on port 80 ==
