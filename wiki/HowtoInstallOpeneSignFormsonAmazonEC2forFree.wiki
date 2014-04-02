@@ -49,7 +49,7 @@ _Note: In a production environment, you may want another system to handle relay 
 
 Connect to your instance using the username *ec2-user* with the private key you downloaded earlier. The following command will work if you are connecting from a linux based system.
 
-`chmod 700 privatekey.pem`
+`chmod 700 privatekey.pem;`
 `ssh -i privatekey.pem ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com`
  
  
