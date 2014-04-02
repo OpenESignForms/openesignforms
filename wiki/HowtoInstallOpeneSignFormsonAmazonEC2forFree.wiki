@@ -171,11 +171,22 @@ This will create a folder under security entitled *UnlimitedJCEPolicyJDK8* with 
 sudo mv /usr/java/jre1.8.0/lib/security/UnlimitedJCEPolicyJDK8/*.jar /usr/java/jre1.8.0/lib/security/
 }}}
 
-== Install Tomcat ==
+== Install and Configure Tomcat ==
+
+Install Tomcat from the repositories. The system works well with Tomcat7.
 
 `sudo yum install tomcat7`
 
-== Install Postgresql ==
+Edit the server.xml file and set autoDeploy to false
+
+`sudo nano /usr/share/tomcat7/conf/server.xml`
+
+{{{
+<Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="*false*">
+}}}
+
+== Install and Configure Postgresql ==
 
 {{{
 sudo yum install postgresql-server
