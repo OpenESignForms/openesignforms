@@ -181,16 +181,17 @@ sudo mv /usr/java/jre1.8.0/lib/security/UnlimitedJCEPolicyJDK8/*.jar /usr/java/j
 sudo yum install postgresql-server
 }}}
 
-Initialize the database
+*Initialize the database*
+
 {{{
 sudo service postgresql initdb
 }}}
 
-Start the database server and set it to run on boot
+*Start the database server and set it to run on boot*
 
 {{{
-service postgresql start
-chkconfig postgresql on
+sudo service postgresql start
+sudo chkconfig postgresql on
 }}}
 
 = Post Install =
