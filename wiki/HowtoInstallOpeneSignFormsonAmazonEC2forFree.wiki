@@ -11,6 +11,11 @@ This guide will take you through installing Open eSignForms on a micro Amazon Li
 
 * Understanding of how to setup create and connect to an Amazon EC2 instance.
 
+=== Target Audience ===
+
+# System Administrators
+
+
 = Create an Instance =
 
 Launch a new Amazon Linux AMI. This tutorial was created using Amazon Linux AMI 2014.03. Choose the 64-bit version.
@@ -57,6 +62,19 @@ Connect to your instance using the username *ec2-user* with the private key you 
 Once connected, download the latest updates to the instance with the following command:
 
 `sudo yum update`
+
+== Configure Timezone ==
+
+Check that your instance has the correct time by issuing the following command:
+
+`date`
+
+If the date shown is incorrect, correct it using the following commands:
+
+{{{  sudo rm -f /etc/localtime
+sudo ln -s /usr/share/zoneinfo/America/Chicago /etc/localtime
+sudo nano /etc/sysconfig/clock
+}}}
  
 == Install Tomcat ==
 
