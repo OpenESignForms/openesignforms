@@ -142,6 +142,12 @@ Enter the number *2* to choose the latest version of Java
 
 `java -version`
 
+=== Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files ===
+
+Download the java cryptography extensions for the version of Java you installed above.
+
+The easiest way to get to the download page is just go to [http://oracle.com Oracle] website and type "Java Cryptography Extension" in the search box at the top right of the page.
+
 == Install Tomcat ==
 
 `sudo yum install tomcat7`
