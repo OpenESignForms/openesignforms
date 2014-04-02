@@ -1,4 +1,4 @@
-#summary HOWTO Install Open eSignForms on Amazon EC2 for Free
+#summary How-To Install Open eSignForms on Amazon EC2 for Free
 #labels Phase-Deploy
 
 <g:plusone size="medium"></g:plusone>
@@ -159,11 +159,15 @@ Copy this file onto your Amazon EC2 instance just like we did for java above.
 scp -i privatekey.pem jce_policy-8.zip ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com:/tmp
 }}}
 
-Extract the files to the following directory
+Extract the files:
 
-`/usr/java/jre1.8.0/lib/security`
+`sudo unzip /tmp/jce_policy-8.zip -d /usr/java/jre1.8.0/lib/security`
 
+This will create a folder under security entitled *UnlimitedJCEPolicyJDK8* with two JAR files (local_policy.jar & US_export_policy.jar). Move those jar files one directory below into the security folder overwriting the current files.
 
+{{{
+sudo mv /usr/java/jre1.8.0/lib/security/UnlimitedJCEPolicyJDK8/*.jar /usr/java/jre1.8.0/lib/security/
+}}}
 
 == Install Tomcat ==
 
