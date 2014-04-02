@@ -194,8 +194,24 @@ sudo mkdir -p /usr/share/tomcat7/webapps/ROOT
 
 == Install and Configure Postgresql ==
 
+*Install postgresql-server from the repositories*
+
 {{{
 sudo yum install postgresql-server
+}}}
+
+*Recommended minimum changes to postgresql.conf*
+
+Enable logging (un-comment parameters and change values where needed)
+
+`sudo nano /var/lib/pgsql9/data/postgresql.conf`
+
+{{{
+    logging_collector = on
+    log_directory = '../logs'
+    log_line_prefix = '%m %d'
+    log_connections = on
+    log_disconnections = on
 }}}
 
 *Initialize the database*
