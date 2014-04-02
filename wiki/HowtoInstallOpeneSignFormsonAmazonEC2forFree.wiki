@@ -82,13 +82,25 @@ sudo yum install -y iptables ntp logwatch dos2unix gpg bind-utils jwhois telnet 
 
 === Install wkhtmltopdf ===
 
-Download the wkhtmltopdf-0.11.0_rc1 static binary file 
+Download the wkhtmltopdf-0.11.0_rc1 static binary file from 
+[http://wkhtmltopdf.org/ wkhtmltopdf.org] website.
+
+
+_Note: Use this version of wkhtmltopdf as newer versions have known issues with Open eSignForms at the time of this writing_
+
+*Copy it to your Amazon EC2 instance*
 
 {{{
-wget https://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2 -o /tmp/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2
+scp -i privatekey.pem wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2 ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com:/tmp
 }}}
 
-_Note: Use this version of wkhtmltopdf as newer versions have known issues with Open eSignForms_
+*Unpack the archive*
+
+{{{
+cd /tmp
+tar jxvf wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2
+}}}
+
 
 == Configure Timezone ==
 
