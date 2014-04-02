@@ -124,23 +124,24 @@ scp -i *privatekey.pem* jre-8-linux-x64.rpm ec2-user@ec2-54-186-255-44.us-west-2
 
 
  
-# Install Java
-`sudo rpm -i jre-8-linux-x64.rpm `
+# Install the Java Runtime Environment
+`sudo rpm -ivh /tmp/jre-8-linux-x64.rpm`
  
-# Verify the Java is installed
+# Verify that Java installed correctly
 `java -version`
- 
-# Check if the default java version is set to sun jdk
-java -version
+
  
 # If not then lets create one more alternative for Java for Sun JDK
-sudo /usr/sbin/alternatives --install /usr/bin/java java /usr/java/jdk1.7.0_01/bin/java 20000
+`sudo /usr/sbin/alternatives --install /usr/bin/java java` `/usr/java/jre1.8.0/bin/java 1`
  
 # Set the SUN JDK as the default java
-sudo /usr/sbin/alternatives --config java
- 
-# Verify if change in SDK was done.
-java -version
+`sudo /usr/sbin/alternatives --config java`
+
+Enter the number *2* to choose the latest version of Java  
+# Verify installed runtime is *not* the OpenJDK version
+
+`java -version`
+
 == Install Tomcat ==
 
 `sudo yum install tomcat7`
