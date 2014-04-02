@@ -73,6 +73,12 @@ You won't be using all of these software packages for this demo but go ahead and
 sudo yum install iptables ntp logwatch dos2unix gpg bind-utils jwhois telnet traceroute make gcc libgcc gcc-c++ glibc-devel readline readline-devel ncurses ncurses-devel zlib zlib-devel zip unzip pam pam-devel postfix screen lynx dovecot rsync -y
 }}}
 
+== Create esignforms User Account ==
+
+{{{
+sudo useradd esignforms
+}}}
+
 == Configure Timezone ==
 
 Check that your instance has the correct time by issuing the following command:
