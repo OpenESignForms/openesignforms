@@ -326,6 +326,7 @@ nano ~/profile
 {{{
 PGDATA=/var/lib/pgsql9/data
 PGBIN=/usr/bin
+#MANPATH=$MANPATH:~/postgresql/pg92/man
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64/pgsql/ 
 }}}
 
@@ -337,7 +338,6 @@ JAVA_HOME=/usr/java/jre1.8.0
 *Configure Tomcat environment parameters*
 {{{
 CATALINA_HOME=/usr/share/tomcat7
-
 }}}
 = Post Install =
 
