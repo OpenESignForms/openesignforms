@@ -183,7 +183,13 @@ Edit the server.xml file and set autoDeploy to false
 
 {{{
 <Host name="localhost"  appBase="webapps"
-            unpackWARs="true" autoDeploy="*false*">
+            unpackWARs="true" autoDeploy="false">
+}}}
+
+Create a directory to store the Open eSignForms web application
+
+{{{
+sudo mkdir -p /usr/share/tomcat7/webapps/ROOT
 }}}
 
 == Install and Configure Postgresql ==
@@ -204,6 +210,10 @@ sudo service postgresql initdb
 sudo service postgresql start
 sudo chkconfig postgresql on
 }}}
+
+= Install Open eSignForms =
+
+Download the latest version of Open eSignForms from [https://drive.google.com/folderview?id=0B8C9MszRjx_yTnhna0N5VjkwRlU&usp=sharing Google Drive]
 
 = Post Install =
 
