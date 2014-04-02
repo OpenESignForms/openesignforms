@@ -267,6 +267,14 @@ sudo service postgresql start
 sudo chkconfig postgresql on
 }}}
 
+===Create esignforms database user===
+{{{
+sudo su
+su - postgres
+pgsql
+CREATE USER esignforms PASSWORD 'esignforms' SUPERUSER;
+}}}
+
 = Install Open eSignForms =
 
 Download the latest version of Open eSignForms from [https://drive.google.com/folderview?id=0B8C9MszRjx_yTnhna0N5VjkwRlU&usp=sharing Google Drive]
