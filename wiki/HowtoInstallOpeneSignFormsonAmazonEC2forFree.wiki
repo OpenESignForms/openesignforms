@@ -95,7 +95,12 @@ UTC=true
 
 
 _Note: Substitute *America/Chicago* with the timezone of your choice_
- 
+
+Start the network time daemon and set it to start on boot.
+{{{
+service ntpd start
+chkconfig ntpd on
+}}} 
 == Install Tomcat ==
 
 `sudo yum install tomcat7`
