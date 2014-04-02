@@ -51,5 +51,18 @@ Connect to your instance using the username *ec2-user* with the private key you 
 
 `chmod 700 privatekey.pem;`
 `ssh -i privatekey.pem ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com`
+
+== Update the Instance ==
+
+Once connected, download the latest updates to the instance with the following command:
+
+`sudo yum update`
  
+== Install Tomcat ==
+
+`sudo yum install tomcat7`
+
+== Install Postgresql ==
+
+`sudo yum install postgresql-server`
  
