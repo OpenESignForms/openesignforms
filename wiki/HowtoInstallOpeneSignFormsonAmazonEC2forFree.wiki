@@ -223,6 +223,18 @@ Copy the Open eSignForms zip file to your Amazon EC2 instance.
 scp -i privatekey.pem open-eSignForms-14.3.15.zip ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com:/tmp
 }}}
 
+*Unpack the archive into the /tmp directory*
+
+{{{
+unzip open-eSignForms-14.3.15.zip -d /tmp 
+}}}
+
+Copy over directories from the archive to the correct location
+
+{{{
+sudo cp -r /tmp/open-eSignForms-14.3.15/WebContent/* /usr/share/tomcat7/webapps/ROOT
+}}}
+
 = Post Install =
 
 == Listen to HTTP requests on port 80 ==
