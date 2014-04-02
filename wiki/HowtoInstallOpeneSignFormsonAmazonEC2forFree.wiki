@@ -325,9 +325,15 @@ cp -r /tmp/open-eSignForms-14.3.15/scripts/* ~/bin
 chmod 755 ~/bin/*
 }}}
 
-*Copy wkhtmltopdf to esignforms bin directory*
+*Copy database directory to esignforms home directory*
+{{{
+cp -r /tmp/open-eSignForms-14.3.15/database/ /home/esignforms/ 
+}}}
 
+*Copy wkhtmltopdf to esignforms bin directory*
+{{{
 cp /tmp/wkhtmltopdf-amd64 ~/bin/wkhtmltopdf
+}}}
 
 *Clean up*
 
@@ -349,6 +355,7 @@ nano ~/profile
 }}}
 
 *Configure Postgresql environment parameters*
+
 {{{
 PGDATA=/var/lib/pgsql9/data
 PGBIN=/usr/bin
@@ -358,15 +365,18 @@ export PATH LD_LIBRARY_PATH PGDATA PGBIN PGUSER PGPASSWORD
 }}}
 
 *Configure JAVA environment parameters*
+
 {{{
 JAVA_HOME=/usr/java/jre1.8.0
 JAVA_OPTS="-server -Xrunjdwp:transport=dt_socket,address=29090,server=y,suspend=n -Xms500m -Xmx500m -XX:PermSize=200m -XX:MaxPermSize=200m -Desf.deploybase=$ESF_DEPLOYMENT_BASE"
 }}}
 
 *Configure Tomcat environment parameters*
+
 {{{
 CATALINA_HOME=/usr/share/tomcat7
 }}}
+
 = Post Install =
 
 == Listen to HTTP requests on port 80 ==
