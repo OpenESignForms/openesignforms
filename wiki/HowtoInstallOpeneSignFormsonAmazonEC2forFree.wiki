@@ -35,8 +35,8 @@ For the purposes of our test, we will allow access to our instance from anywhere
 
 Configure security groups in Amazon EC2 management interface as follows:
 
-Port 80 Allow from 0.0.0.0 [Anywhere]
-Port 22 Allow from [Your IP Address]
+Port 80 Allow from 0.0.0.0 (Anywhere)
+Port 22 Allow from (Your IP Address)
 
 == Assigning and Elastic IP Address (optional) ==
 
