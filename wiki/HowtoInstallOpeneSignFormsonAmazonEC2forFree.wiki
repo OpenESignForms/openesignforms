@@ -1,4 +1,5 @@
 #summary How to Install Open eSignForms on Amazon EC2.
+#labels Phase-Deploy
 
 <g:plusone size="medium"></g:plusone>
 
@@ -44,5 +45,10 @@ For the best testing experience, we recommend assigning an Elastic IP address to
 
 _Note: In a production environment, you may want another system to handle relay e-mail for security and/or organization requirements._
 
+= Connect to the Instance =
+
+Connect to your instance using the username *ec2-user* with the private key you downloaded earlier. The following command will work if you are connecting from a linux based system.
+
+`ssh -i tutorialesigns.pem ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com`
  
  
