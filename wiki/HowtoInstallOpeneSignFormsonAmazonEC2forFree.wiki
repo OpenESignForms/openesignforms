@@ -215,12 +215,12 @@ sudo chkconfig postgresql on
 
 Download the latest version of Open eSignForms from [https://drive.google.com/folderview?id=0B8C9MszRjx_yTnhna0N5VjkwRlU&usp=sharing Google Drive]
 
-_Note: The latest version at this time of writing is open-eSignForms-14.1.4.zip_
+_Note: The latest version at this time of writing is open-eSignForms-14.3.15.zip_
 
 Copy the Open eSignForms zip file to your Amazon EC2 instance.
 
 {{{
-scp -i privatekey.pem open-eSignForms-14.1.4.zip ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com:/tmp
+scp -i privatekey.pem open-eSignForms-14.3.15.zip ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com:/tmp
 }}}
 
 = Post Install =
