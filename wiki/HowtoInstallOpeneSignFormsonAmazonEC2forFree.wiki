@@ -271,8 +271,11 @@ sudo chkconfig postgresql on
 {{{
 sudo su
 su - postgres
-pgsql
+psql
 CREATE USER esignforms PASSWORD 'esignforms' SUPERUSER;
+\q
+exit
+exit
 }}}
 
 = Install Open eSignForms =
