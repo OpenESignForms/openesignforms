@@ -302,6 +302,24 @@ cp -r /tmp/open-eSignForms-14.3.15/scripts/* ~/bin
 chmod 755 ~/bin/*
 }}}
 
+*Clean up*
+
+{{{ 
+cd ~/bin
+rm -rf CVS
+rm *.cygwin
+}}}
+
+*Copy profile into esignforms home directory*
+{{{
+cp ~/bin/profile ~/
+}}}
+
+*Edit profile*
+
+{{{
+nano ~/profile
+}}}
 = Post Install =
 
 == Listen to HTTP requests on port 80 ==
