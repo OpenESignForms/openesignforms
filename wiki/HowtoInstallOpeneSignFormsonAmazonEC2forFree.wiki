@@ -30,4 +30,19 @@ When creating the AMI, _leave all the defaults_ and click *Review and Launch*.
 
 _For maximum security, create a new dedicated keypair for this instance and download it (preferably to a dedicated USB drive)._
 
+== Granting Access ==
+For the purposes of our test, we will allow access to our instance from anywhere over the web by opening up the HTTP port. Since we only want to manage this instance from a single IP address, we will allow SSH access from only one IP address.
+
+Configure security groups in Amazon EC2 management interface as follows:
+
+Port 80 Allow from 0.0.0.0 [Anywhere]
+Port 22 Allow from [Your IP Address]
+
+== Assigning and Elastic IP Address (optional) ==
+
+For the best testing experience, we recommend assigning an Elastic IP address to your instance. This will ensure the Open eSignForms application will be able to send and receive e-mail properly.
+
+_Note: In a production environment, you may want another system to handle relay e-mail for security and/or organization requirements._
+
+ 
  
