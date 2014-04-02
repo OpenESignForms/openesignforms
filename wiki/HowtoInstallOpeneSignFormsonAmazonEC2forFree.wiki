@@ -71,7 +71,8 @@ Check that your instance has the correct time by issuing the following command:
 
 If the date shown is incorrect, correct it using the following commands:
 
-{{{  sudo rm -f /etc/localtime
+{{{  
+sudo rm -f /etc/localtime
 sudo ln -s /usr/share/zoneinfo/America/Chicago /etc/localtime
 sudo nano /etc/sysconfig/clock
 }}}
