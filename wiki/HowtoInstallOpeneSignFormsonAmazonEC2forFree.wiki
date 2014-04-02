@@ -59,6 +59,12 @@ Connect to your instance using the username *ec2-user* with the private key you 
 
 = Prepare the Environment =
 
+== Create esignforms User Account ==
+
+{{{
+sudo useradd esignforms
+}}}
+
 == Update the Instance ==
 
 Once connected, download the latest updates to the instance with the following command:
@@ -73,10 +79,13 @@ You won't be using all of these software packages for this demo but go ahead and
 sudo yum install -y iptables ntp logwatch dos2unix gpg bind-utils jwhois telnet traceroute make gcc libgcc gcc-c++ glibc-devel readline readline-devel ncurses ncurses-devel zlib zlib-devel zip unzip pam pam-devel postfix screen lynx dovecot rsync fontconfig libXrender libXext '*fonts*' openssl
 }}}
 
-== Create esignforms User Account ==
+
+=== Install wkhtmltopdf ===
+
+Download the wkhtmltopdf-0.11.0_rc1 static binary file 
 
 {{{
-sudo useradd esignforms
+wget https://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2
 }}}
 
 == Configure Timezone ==
