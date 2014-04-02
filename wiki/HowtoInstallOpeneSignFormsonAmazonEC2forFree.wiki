@@ -206,7 +206,7 @@ Install Tomcat from the repositories. The system works well with Tomcat7.
 
 `sudo yum install tomcat7`
 
-Edit the server.xml file and set autoDeploy to false
+*Edit the server.xml file and set autoDeploy to false*
 
 `sudo nano /usr/share/tomcat7/conf/server.xml`
 
@@ -215,7 +215,18 @@ Edit the server.xml file and set autoDeploy to false
             unpackWARs="true" autoDeploy="false">
 }}}
 
-Create a directory to store the Open eSignForms web application
+*Edit tomcat7.conf file*
+
+{{{
+sudo nano /etc/tomcat7/tomcat.conf
+}}}
+
+{{{
+JAVA_HOME=/usr/java/jre1.8.0
+JAVA_OPTS="-server -Xrunjdwp:transport=dt_socket,address=29090,server=y,suspend=n -Xms500m -Xmx500m -XX:PermSize=200m -XX:MaxPermSize=200m -Desf.deploybase=$ESF_DEPLOYMENT_BASE"
+}}}
+
+*Create a directory to store the Open eSignForms web application*
 
 {{{
 sudo mkdir -p /usr/share/tomcat7/webapps/ROOT
@@ -334,6 +345,7 @@ export PATH LD_LIBRARY_PATH PGDATA PGBIN PGUSER PGPASSWORD
 *Configure JAVA environment parameters*
 {{{
 JAVA_HOME=/usr/java/jre1.8.0
+JAVA_OPTS="-server -Xrunjdwp:transport=dt_socket,address=29090,server=y,suspend=n -Xms500m -Xmx500m -XX:PermSize=200m -XX:MaxPermSize=200m -Desf.deploybase=$ESF_DEPLOYMENT_BASE"
 }}}
 
 *Configure Tomcat environment parameters*
