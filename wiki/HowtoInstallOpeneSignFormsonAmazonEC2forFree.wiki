@@ -74,8 +74,20 @@ If the date shown is incorrect, correct it using the following commands:
 {{{  
 sudo rm -f /etc/localtime
 sudo ln -s /usr/share/zoneinfo/America/Chicago /etc/localtime
-sudo nano /etc/sysconfig/clock
 }}}
+
+Edit the /etc/sysconfig/clock to reflect your chosen timezone. Leave UTC set to true.
+
+{{{
+ZONE="America/Chicago"
+UTC=true
+}}}
+
+
+`sudo nano /etc/sysconfig/clock`
+
+
+_Note: Substitute *America/Chicago* with the timezone of your choice_
  
 == Install Tomcat ==
 
