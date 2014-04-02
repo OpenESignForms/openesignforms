@@ -24,13 +24,13 @@ For the purposes of this tutorial, the *Free tier eligible* instance will do.
 
 At this time, Micro Instances have the following specifications:
 
-* Size: t1.micro
-* ECUs: Up to 2
-* vCPUs: 1
-* Memory: .613 (GiB)
-* Instance Storage: EBS Only
-* EBS-Optimized Available: -
-* Network Performance: Very Low
+*Size: t1.micro
+*ECUs: Up to 2
+*vCPUs: 1
+*Memory: .613 (GiB)
+*Instance Storage: EBS Only
+*EBS-Optimized Available: -
+*Network Performance: Very Low
 
 When creating the AMI, _leave all the defaults_ and click *Review and Launch*.
 
