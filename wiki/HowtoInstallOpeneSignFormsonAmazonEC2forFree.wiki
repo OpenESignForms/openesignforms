@@ -3,6 +3,8 @@
 
 <g:plusone size="medium"></g:plusone>
 
+<wiki:toc max_depth="1" />
+
 = Introduction =
 
 This guide will take you through installing Open eSignForms on a micro Amazon Linux instance for the purposes of *testing* the web contracting application. If you find that the application meets your needs, we recommend seeking professional services through Yozons for help with a production setup for a quality deployment.
