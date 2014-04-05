@@ -1,6 +1,10 @@
 #summary Table of Contents
-
-	 [HowtoInstallOpeneSignFormsonAmazonEC2forFree	 How-To Install Open eSignForms on Amazon EC2 for Free]
+ * [Articles HOWTO articles]
+  * [HowtoInstallOpeneSignFormsonAmazonEC2forFree HOWTO Install Open eSignForms on Amazon EC2 for Free]
+ * [ArticlesDB Working with the database]
+  *[DatabaseUpdatesForNewReleases	 Database updates for new releases]
+  *[DdUpdatesPriorToVersion11_8_9	 Describes the DB updates prior to v11.8.9]
+	 
 	 [wkhtmltopdf	 Configuring wkhtmltopdf on Linux]
 	 [URLEncodingNameValueParams	 Summary of encoding name-value pairs for use in URLs and in HTTP(S) POST bodies]
 	 [UserGuide	 User's Guide for Open eSignForms]
@@ -15,8 +19,7 @@
 	 [CreateNewUserAccount	 Create a new user account] 
 	 [Videos	 How-To Videos on YozonsHTV channel of YouTube] 
 	 [AddNewFieldTemplateType	 Reminder tips for adding a new field type]	 
-	 [DatabaseUpdatesForNewReleases	 Database updates for new releases]
-	 [DdUpdatesPriorToVersion11_8_9	 Describes the DB updates prior to v11.8.9] 
+	 
   * [Articles HOWTO articles]
     * [ArticlesXSS Web security]
     * [ArticlesDom DOM manipulation]
