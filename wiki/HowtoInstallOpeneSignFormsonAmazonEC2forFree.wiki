@@ -9,7 +9,12 @@ This guide will take you through installing Open eSignForms on a micro Amazon Li
 
 === Pre-requisites ===
 
-* Understanding of how to setup create and connect to an Amazon EC2 instance.
+*Understanding of how to setup create and connect to an Amazon EC2 instance.
+
+==== Software Requirements ====
+*postgresql-9.3.4
+*apache-tomcat-7.0.52
+*jre1.7.0_51
 
 === Target Audience ===
 
