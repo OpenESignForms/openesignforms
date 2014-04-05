@@ -1,5 +1,6 @@
 #summary How-To Install Open eSignForms on Amazon EC2 for Free
 #labels Phase-Deploy
+#sidebar TableOfContents
 
 <g:plusone size="medium"></g:plusone>
 
