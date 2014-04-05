@@ -1,6 +1,7 @@
 #summary Table of Contents
  * [HowToGuides HOWTO Guides: Concepts, Tips & Tricks]
   * [HowtoInstallOpeneSignFormsonAmazonEC2forFree HOWTO Install Open eSignForms on Amazon EC2 for Free]
+  * [Videos How-To Videos on YozonsHTV channel of YouTube]
  * [ArticlesDB Working with the database]
   * [DatabaseUpdatesForNewReleases Database updates for new releases]
   * [DdUpdatesPriorToVersion11_8_9 Describes the DB updates prior to v11.8.9]
@@ -17,6 +18,6 @@
 	 [OpenESF_UI_Changes_v13_6_8	 The Open eSignForms user interface changed with the Vaadin 7 port in releaes 13.6.8]
 	 [ServerMigrationForLinux	 Tips for a server migration using CentOS Linux]
 	 [CreateNewUserAccount	 Create a new user account] 
-	 [Videos	 How-To Videos on YozonsHTV channel of YouTube] 
+	  
 	 [AddNewFieldTemplateType	 Reminder tips for adding a new field type]	 
 	 
