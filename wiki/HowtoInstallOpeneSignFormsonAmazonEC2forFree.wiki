@@ -9,13 +9,13 @@ This guide will take you through installing Open eSignForms on a micro Amazon Li
 
 === Pre-requisites ===
 
- *Understanding of how to setup create and connect to an Amazon EC2 instance.
+ * Understanding of how to setup create and connect to an Amazon EC2 instance.
 
 ==== Software Requirements ====
 
- *postgresql-9.3.4
- *apache-tomcat-7.0.52
- *jre1.7.0_51
+ * postgresql-9.3.4
+ * apache-tomcat-7.0.52
+ * jre1.7.0_51
 
 === Target Audience ===
 
@@ -30,13 +30,13 @@ For the purposes of this tutorial, the *Free tier eligible* instance will do.
 
 At this time, Micro Instances have the following specifications:
 
- *Size: t1.micro
- *ECUs: Up to 2
- *vCPUs: 1
- *Memory: .613 (GiB)
- *Instance Storage: EBS Only
- *EBS-Optimized Available: -
- *Network Performance: Very Low
+ * Size: t1.micro
+ * ECUs: Up to 2
+ * vCPUs: 1
+ * Memory: .613 (GiB)
+ * Instance Storage: EBS Only
+ * EBS-Optimized Available: -
+ * Network Performance: Very Low
 
 When creating the AMI, _leave all the defaults_ and click *Review and Launch*.
 
