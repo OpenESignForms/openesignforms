@@ -19,8 +19,9 @@ This guide will take you through installing Open eSignForms on a micro Amazon Li
 
 === Target Audience ===
 
-# System Administrators
-
+ # System Administrators
+ # IT Managers
+ 
 ----
 = Create an Instance on Amazon EC2 =
 
