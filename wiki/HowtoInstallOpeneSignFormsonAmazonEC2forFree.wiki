@@ -411,3 +411,9 @@ Tomcat by default runs on port 8080. Traffic can be redirected from port 80 to 8
 }}}
 
 You probably wouldn't want to do this in a production environment but for the purposes of testing Open eSignForms, this works nicely. 
+
+= Optimization =
+
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: :/home/esignforms/postgresql/pg92/lib:/home/esignforms/postgresql/pg92/lib:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
