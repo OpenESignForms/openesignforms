@@ -1,23 +1,25 @@
 #summary Table of Contents
- * [HowToGuides HOWTO Guides: Concepts, Tips & Tricks]
+ * [HowToGuides How-To Guides: Concepts, Tips & Tricks]
+ * [wkhtmltopdf	 Configuring wkhtmltopdf on Linux]
  * [InstallationUsingVaadin7 Basic installation instructions]
   * [HowtoInstallOpeneSignFormsonAmazonEC2forFree HOWTO Install Open eSignForms on Amazon EC2 for Free]
+  * [URLEncodingNameValueParams	Encoding name-value pairs for use in URLs and in HTTP(S) POST bodies]
+  * [AddNewFieldTemplateType Tips for adding a new field type]
   * [Videos How-To Videos on YozonsHTV channel of YouTube]
   * [DatabaseUpdatesForNewReleases Database updates for new releases]
    * [DdUpdatesPriorToVersion11_8_9 Describes the DB updates prior to v11.8.9]
  * [SPFAndSenderID Email tips including SPF and Sender ID setup to reduce spam-blocking]
+	  
 	 
-	 [wkhtmltopdf	 Configuring wkhtmltopdf on Linux]
-	 [URLEncodingNameValueParams	 Summary of encoding name-value pairs for use in URLs and in HTTP(S) POST bodies]
-	 [UserGuide	 User's Guide for Open eSignForms]
-	 [ProgrammingGuide	 Point & Click Programming Guide for Open eSignForms]
-	 [ProgrammingTutorial	 Point & Click Programming Tutorial for Open eSignForms]
+	 [UserGuide User's Guide for Open eSignForms]
+	 [ProgrammingGuide Point & Click Programming Guide for Open eSignForms]
+	 [ProgrammingTutorial Point & Click Programming Tutorial for Open eSignForms]
 	 	 
 	 
-	 [SystemAdminGuide	 System Administrator's Guide for Open eSignForms]
+	 [SystemAdminGuide System Administrator's Guide for Open eSignForms]
 	 [OpenESF_UI_Changes_v13_6_8	 The Open eSignForms user interface changed with the Vaadin 7 port in releaes 13.6.8]
 	 [ServerMigrationForLinux	 Tips for a server migration using CentOS Linux]
 	 [CreateNewUserAccount	 Create a new user account] 
 	  
-	 [AddNewFieldTemplateType	 Reminder tips for adding a new field type]	 
+	 	 
 	 
