@@ -20,7 +20,7 @@ This guide will take you through installing Open eSignForms on a micro Amazon Li
 
 # System Administrators
 
-
+----
 = Create an Instance on Amazon EC2 =
 
 Launch a new Amazon Linux AMI. This tutorial was created using Amazon Linux AMI 2014.03. Choose the 64-bit version.
@@ -61,7 +61,7 @@ Connect to your instance using the username *ec2-user* with the private key you 
 
 `chmod 700 privatekey.pem;`
 `ssh -i privatekey.pem ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com`
-
+----
 = Prepare the Environment =
 
 == Create esignforms User Account ==
@@ -282,7 +282,7 @@ CREATE USER esignforms PASSWORD 'esignforms' SUPERUSER;
 exit
 exit
 }}}
-
+----
 = Install Open eSignForms =
 
 Download the latest version of Open eSignForms from [https://drive.google.com/folderview?id=0B8C9MszRjx_yTnhna0N5VjkwRlU&usp=sharing Google Drive]
@@ -394,7 +394,7 @@ JAVA_OPTS="-server -Xrunjdwp:transport=dt_socket,address=29090,server=y,suspend=
 {{{
 CATALINA_HOME=/usr/share/tomcat7
 }}}
-
+----
 = Post Install =
 
 == Listen to HTTP requests on port 80 ==
