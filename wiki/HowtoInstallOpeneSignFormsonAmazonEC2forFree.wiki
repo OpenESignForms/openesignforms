@@ -9,12 +9,13 @@ This guide will take you through installing Open eSignForms on a micro Amazon Li
 
 === Pre-requisites ===
 
-*Understanding of how to setup create and connect to an Amazon EC2 instance.
+ *Understanding of how to setup create and connect to an Amazon EC2 instance.
 
 ==== Software Requirements ====
-*postgresql-9.3.4
-*apache-tomcat-7.0.52
-*jre1.7.0_51
+
+ *postgresql-9.3.4
+ *apache-tomcat-7.0.52
+ *jre1.7.0_51
 
 === Target Audience ===
 
@@ -29,13 +30,13 @@ For the purposes of this tutorial, the *Free tier eligible* instance will do.
 
 At this time, Micro Instances have the following specifications:
 
-*Size: t1.micro
-*ECUs: Up to 2
-*vCPUs: 1
-*Memory: .613 (GiB)
-*Instance Storage: EBS Only
-*EBS-Optimized Available: -
-*Network Performance: Very Low
+ *Size: t1.micro
+ *ECUs: Up to 2
+ *vCPUs: 1
+ *Memory: .613 (GiB)
+ *Instance Storage: EBS Only
+ *EBS-Optimized Available: -
+ *Network Performance: Very Low
 
 When creating the AMI, _leave all the defaults_ and click *Review and Launch*.
 
@@ -46,8 +47,8 @@ For the purposes of our test, we will allow access to our instance from anywhere
 
 Configure security groups in Amazon EC2 management interface as follows:
 
-Port 80 Allow from 0.0.0.0 (Anywhere)
-Port 22 Allow from (Your IP Address)
+ #Port 80 Allow from 0.0.0.0 (Anywhere)
+ #Port 22 Allow from (Your IP Address)
 
 == Assigning and Elastic IP Address (optional) ==
 
@@ -63,6 +64,8 @@ Connect to your instance using the username *ec2-user* with the private key you 
 `ssh -i privatekey.pem ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com`
 ----
 = Prepare the Environment =
+
+Now we prepare the server by performing system updates, creating user accounts, and installing necessary software.
 
 == Create esignforms User Account ==
 
@@ -93,13 +96,13 @@ Download the wkhtmltopdf-0.11.0_rc1 static binary file from
 
 _Note: Use this version of wkhtmltopdf as newer versions have known issues with Open eSignForms at the time of this writing_
 
-*Copy it to your Amazon EC2 instance*
+====Copy it to your Amazon EC2 instance====
 
 {{{
 scp -i privatekey.pem wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2 ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com:/tmp
 }}}
 
-*Unpack the archive*
+====Unpack the archive====
 
 {{{
 cd /tmp
@@ -239,13 +242,13 @@ sudo mkdir -p /usr/share/tomcat7/webapps/ROOT
 
 == Install and Configure Postgresql ==
 
-*Install postgresql-server from the repositories*
+===Install postgresql-server from the repositories===
 
 {{{
 sudo yum install postgresql-server
 }}}
 
-*Recommended minimum changes to postgresql.conf*
+===Recommended minimum changes to postgresql.conf===
 
 Enable logging (un-comment parameters and change values where needed)
 
@@ -259,13 +262,13 @@ Enable logging (un-comment parameters and change values where needed)
     log_disconnections = on
 }}}
 
-*Initialize the database*
+===Initialize the database===
 
 {{{
 sudo service postgresql initdb
 }}}
 
-*Start the database server and set it to run on boot*
+===Start the database server and set it to run on boot===
 
 {{{
 sudo service postgresql start
