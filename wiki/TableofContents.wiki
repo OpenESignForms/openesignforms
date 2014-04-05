@@ -2,8 +2,8 @@
  * [HowToGuides HOWTO Guides: Concepts, Tips & Tricks]
   * [HowtoInstallOpeneSignFormsonAmazonEC2forFree HOWTO Install Open eSignForms on Amazon EC2 for Free]
  * [ArticlesDB Working with the database]
-  *[DatabaseUpdatesForNewReleases Database updates for new releases]
-  *[DdUpdatesPriorToVersion11_8_9 Describes the DB updates prior to v11.8.9]
+  * [DatabaseUpdatesForNewReleases Database updates for new releases]
+  * [DdUpdatesPriorToVersion11_8_9 Describes the DB updates prior to v11.8.9]
 	 
 	 [wkhtmltopdf	 Configuring wkhtmltopdf on Linux]
 	 [URLEncodingNameValueParams	 Summary of encoding name-value pairs for use in URLs and in HTTP(S) POST bodies]
