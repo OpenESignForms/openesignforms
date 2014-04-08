@@ -22,7 +22,10 @@ We are using Eclipse Kepler version 4.3.2 (the latest available at this time of 
 
   # Download Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 
 
-  # Unzip these files into in your jre/lib/security folder, overwriting the files presently there.
+   # Extract the two jar files into C:\Program Files\Java\jdk1.8.0\jre\lib\security folder, overwriting the files presently there.
+
+   # Extract the two jar files into C:\Program Files\Java\jre8\lib\security. Overwriting the files presently there.
+
 
 == Cygwin ==
 
