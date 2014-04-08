@@ -73,3 +73,7 @@ This guide assumes you will be developing on a Microsoft Windows operating syste
    # Leave the default of *5432* as the port number the server should listen on
    # Leave the default locale as *[Default locale]*
    # *Uncheck* the checkbox to "launch Stack Builder at exit". 
+
+= Check Out the Code =
+
+http://i58.tinypic.com/10ok6eh.jpg
