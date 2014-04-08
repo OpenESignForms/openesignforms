@@ -89,7 +89,7 @@ sudo useradd esignforms
 
 Once connected, download the latest updates to the instance with the following command:
 
-`sudo yum update`
+`sudo yum update -y`
 
 == Install Dependencies ==
 
