@@ -29,6 +29,12 @@ http://www.apache.org/dist/ant/ivyde/updatesite
    # Extract the two jar files into C:\Program Files\Java\jdk1.8.0\jre\lib\security folder, overwriting the files presently there.
    # Extract the two jar files into C:\Program Files\Java\jre8\lib\security. Overwriting the files presently there.
 
+=== Install IvyDE plugin ===
+
+  # In Eclipse, Click Help > Install New Software menu
+  # In the box Work With: type http://www.apache.org/dist/ant/ivyde/updatesite and click the Add button
+  # Give it the name *Apache Ivy Update Site* and click OK.
+  # Select everything except the Apache IvyDE Resolve Visualizer
 
 == Cygwin ==
 
