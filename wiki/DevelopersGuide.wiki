@@ -2,18 +2,30 @@
 
 = Introduction =
 
-This guide walks you step-by-step to setting up the programming environment for developing Open eSignForms.
+This guide walks you step-by-step to setting up the programming environment for developing Open eSignForms. Updated for Java 8.
 
+
+This guide assumes you will be developing on a Microsoft Windows operating system.
 
 
 = Setup the Environment =
 
+== Eclipse IDE ==
   # [https://www.eclipse.org/downloads/ Download and Install Eclipse IDE for Java EE Developers]
 
 We are using Eclipse Kepler version 4.3.2 (the latest available at this time of writing).
+
+== Java 8 ==
 
   # Download Java SE Development Kit 8 (JDK 8) from Oracle's website.
 
   # Download Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 
 
   # Unzip these files into in your jre/lib/security folder, overwriting the files presently there.
+
+== Cygwin ==
+
+  * Perform a fresh install by running the setup program.
+   # When prompted, choose a download source "Install from Internet"
+   # We recommend leaving the default install directory *C:\cygwin64* if you are installing on a 64-bit system.
+   # Change the local package directory to *C:\packages*
