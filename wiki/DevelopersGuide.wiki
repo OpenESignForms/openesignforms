@@ -1,9 +1,10 @@
 #summary Guide to setting up the development environment for extending and/or customizing Open eSignForms.
 
+This guide is a work in progress! Please visit https://code.google.com/p/openesignforms/wiki/InstallationUsingVaadin7 for full instructions.
+
 = Introduction =
 
 This guide walks you step-by-step to setting up the programming environment for developing Open eSignForms. Updated for Java 8.
-
 
 This guide assumes you will be developing on a Microsoft Windows operating system.
 
