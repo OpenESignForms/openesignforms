@@ -42,3 +42,4 @@ We are using Eclipse Kepler version 4.3.2 (the latest available at this time of 
    # If you will only be developing Open eSignForms go ahead and type *esignforms* as the postgres database superuser password.
    # Leave the default of *5432* as the port number the server should listen on
    # Leave the default locale as *[Default locale]*
+   # *Uncheck* the checkbox to "launch Stack Builder at exit". 
