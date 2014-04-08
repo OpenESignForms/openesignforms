@@ -182,6 +182,7 @@ Next you will need to get this file unto your instance. In linux, I open a new t
 scp -i privatekey.pem jre-8-linux-x64.rpm ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com:/tmp
 }}}
 
+http://i58.tinypic.com/2iapwky.jpg
  
  # Install the Java Runtime Environment
 `sudo rpm -ivh /tmp/jre-8-linux-x64.rpm`
