@@ -48,6 +48,8 @@ When creating the AMI, _leave all the defaults_ and click *Review and Launch*.
 
 _For maximum security, create a new dedicated keypair for this instance and download it (preferably to a dedicated USB drive)._
 
+http://i62.tinypic.com/seophe.jpg
+
 == Granting Access ==
 For the purposes of our test, we will allow access to our instance from anywhere over the web by opening up the HTTP port. Since we only want to manage this instance from a single IP address, we will allow SSH access from only one IP address.
 
