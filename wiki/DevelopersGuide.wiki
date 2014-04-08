@@ -1,0 +1,13 @@
+#summary Guide to setting up the development environment for extending and/or customizing Open eSignForms.
+
+= Introduction =
+
+This guide walks you step-by-step to setting up the programming environment for developing Open eSignForms.
+
+
+
+= Setup the Environment =
+
+ # [https://www.eclipse.org/downloads/ Download and Install Eclipse IDE for Java EE Developers]
+
+We are using Eclipse Kepler version 4.3.2 (the latest available at this time of writing).
