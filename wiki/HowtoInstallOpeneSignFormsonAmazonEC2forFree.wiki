@@ -30,6 +30,8 @@ This guide will take you through installing Open eSignForms on a micro Amazon Li
 
 Launch a new Amazon Linux AMI. This tutorial was created using Amazon Linux AMI 2014.03. Choose the 64-bit version.
 
+http://i61.tinypic.com/27yxr9y.jpg
+
 For the purposes of this tutorial, the *Free tier eligible* instance will do. 
 
 At this time, Micro Instances have the following specifications:
