@@ -51,6 +51,7 @@ This guide assumes you will be developing on a Microsoft Windows operating syste
   # Give it the name _Vaadin Update Site_ and click *OK*
   # Select the *Vaadin Plug-in for Eclipse* and click Next
   # Review the package and accept the license agreement by clicking Next and then Finish
+  # Restart the IDE when prompted after the installation is completed 
 
 == Cygwin ==
 
