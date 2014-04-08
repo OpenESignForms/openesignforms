@@ -21,7 +21,7 @@ This guide assumes you will be developing on a Microsoft Windows operating syste
   # C:\Program Files\eclipse\eclipse.exe
   # Set Workspace to C:\project
   # Check the box _use this as the default and do not ask again_
-http://www.apache.org/dist/ant/ivyde/updatesite
+
 == Java 8 ==
   * Install the latest version of the Java SE Development kit.
    # Download Java SE Development Kit 8 (JDK 8) from Oracle's website.
@@ -34,7 +34,7 @@ http://www.apache.org/dist/ant/ivyde/updatesite
   # In Eclipse, Click Help > Install New Software menu
   # In the box Work With: type http://www.apache.org/dist/ant/ivyde/updatesite and click the Add button
   # Give it the name *Apache Ivy Update Site* and click OK.
-  # Select everything except the Apache IvyDE Resolve Visualizer
+  # Select everything except the Apache IvyDE Resolve Visualizer and click *Next*
 
 == Cygwin ==
 
@@ -44,7 +44,7 @@ http://www.apache.org/dist/ant/ivyde/updatesite
    # Change the local package directory to *C:\packages*
    # Choose a download site (we recommend staying away from .jp domain names or similar unless you live in that country)
    # Click next on the select packages screen
-   # Let the install process resolve any dependencies and click next
+   # Let the install process resolve any dependencies and click *Next*
 
 == PostgreSQL ==
 
