@@ -29,3 +29,6 @@ We are using Eclipse Kepler version 4.3.2 (the latest available at this time of 
    # When prompted, choose a download source "Install from Internet"
    # We recommend leaving the default install directory *C:\cygwin64* if you are installing on a 64-bit system.
    # Change the local package directory to *C:\packages*
+   # Choose a download site (we recommend staying away from .jp domain names or similar unless you live in that country)
+   # Click next on the select packages screen
+   # Let the install process resolve any dependencies and click next
