@@ -165,9 +165,9 @@ The Java Runtime Environment that comes pre-installed on the Amazon EC2 instance
 
 `yum remove -y java`
 
-Download the latest version of Java SE from Oracle's website. At the time of this writing, JRE 8 is available.
+[http://www.oracle.com/technetwork/java/javase/downloads/index.html Download the latest version of Java SE] from Oracle's website. At the time of this writing, JRE 8 is available. For the purposes of this tutorial, I chose Server JRE 8.
 
-[http://www.oracle.com/technetwork/java/javase/downloads/index.html JRE]
+
 
 Accept the license agreement and download the version for Linux x64. I prefer the folling RPM file but any current version should do.
 
