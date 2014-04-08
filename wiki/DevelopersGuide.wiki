@@ -33,3 +33,8 @@ We are using Eclipse Kepler version 4.3.2 (the latest available at this time of 
    # Choose a download site (we recommend staying away from .jp domain names or similar unless you live in that country)
    # Click next on the select packages screen
    # Let the install process resolve any dependencies and click next
+
+== PostgreSQL ==
+
+  * Download the graphical installer
+   # 
