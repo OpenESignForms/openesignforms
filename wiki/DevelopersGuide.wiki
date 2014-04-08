@@ -10,6 +10,11 @@ This guide assumes you will be developing on a Microsoft Windows operating syste
 
 = Setup the Environment =
 
+== Apache Tomcat ==
+
+ * We recommend using the latest stable version of Tomcat 7. We are using 7.0.53 for this guide.
+
+  # Download the windows zip file (not the installer) and extract it to a folder on your computer
 == Eclipse IDE ==
   * We recommend using Eclipse IDE although these instructions should work for other IDE systems (eg. Netbeans) as well.
    # [https://www.eclipse.org/downloads/ Download and Install Eclipse IDE for Java EE Developers]. We are using Eclipse Kepler version 4.3.2 (the latest available at this time of writing).
@@ -31,10 +36,19 @@ This guide assumes you will be developing on a Microsoft Windows operating syste
 
 === Install IvyDE plugin ===
 
-  # In Eclipse, Click Help > Install New Software menu
-  # In the box Work With: type http://www.apache.org/dist/ant/ivyde/updatesite and click the Add button
-  # Give it the name *Apache Ivy Update Site* and click OK.
+  # In Eclipse, Click the Help > Install New Software... menu
+  # In the box Work With: type _http://www.apache.org/dist/ant/ivyde/updatesite_ and click the *Add* button
+  # Give it the name _Apache Ivy Update Site_ and click *OK*.
   # Select everything except the Apache IvyDE Resolve Visualizer and click *Next*
+  # Accept the license, click *Next* followed by *Finish* to complete the installation. (click OK if you receive a warning about installing unsigned software)
+  # Do NOT restart when prompted as we will install Vaadin next
+
+=== Install Vaadin ===
+ * We will install the latest stable version, Vaadin 7 for the purpose of this guide.
+
+  # Click the Help > Install New Software... menu 
+  # In the box Work With: type http://vaadin.com/eclipse
+  # Give it the name _Vaadin Update Site_ and click *OK*
 
 == Cygwin ==
 
