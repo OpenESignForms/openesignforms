@@ -11,3 +11,9 @@ This guide walks you step-by-step to setting up the programming environment for 
  # [https://www.eclipse.org/downloads/ Download and Install Eclipse IDE for Java EE Developers]
 
 We are using Eclipse Kepler version 4.3.2 (the latest available at this time of writing).
+
+ # Download Java SE Development Kit 8 (JDK 8) from Oracle's website.
+
+ # Download Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 
+
+  # Unzip these files into in your jre/lib/security folder, overwriting the files presently there.
