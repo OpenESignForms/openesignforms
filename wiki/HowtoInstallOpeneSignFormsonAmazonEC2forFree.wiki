@@ -183,14 +183,14 @@ scp -i privatekey.pem jre-8-linux-x64.rpm ec2-user@ec2-54-186-255-44.us-west-2.c
 }}}
 
  
- #Install the Java Runtime Environment
+ # Install the Java Runtime Environment
 `sudo rpm -ivh /tmp/jre-8-linux-x64.rpm`
  
- #Verify that Java installed correctly
+ # Verify that Java installed correctly
 `java -version`
 
  
- #If not then lets create one more alternative for Java for Sun JDK
+ # If not then lets create one more alternative for Java for Sun JDK
 `sudo /usr/sbin/alternatives --install /usr/bin/java java` `/usr/java/jre1.8.0/bin/java 1`
  
  #Set the SUN JDK as the default java
@@ -198,7 +198,7 @@ scp -i privatekey.pem jre-8-linux-x64.rpm ec2-user@ec2-54-186-255-44.us-west-2.c
 
 Enter the number *2* to choose the latest version of Java  
 
- #Verify installed runtime is *not* the OpenJDK version
+ # Verify installed runtime is *not* the OpenJDK version
 
 `java -version`
 
