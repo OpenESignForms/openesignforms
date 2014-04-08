@@ -4,6 +4,10 @@
 
 <g:plusone size="medium"></g:plusone>
 
+This guide is a work in progress! Please visit https://code.google.com/p/openesignforms/wiki/InstallationUsingVaadin7 for generic install instructions. 
+
+*Table of Contents*
+
 <wiki:toc max_depth="1" />
 
 = Introduction =
