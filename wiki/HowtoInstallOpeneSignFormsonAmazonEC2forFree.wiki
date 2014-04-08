@@ -151,7 +151,7 @@ UTC=true
 }}}
 
 
-_Note: Substitute *America/Chicago* with the timezone of your choice. You can view  list of supported timezones here https://php.net/manual/en/timezones.php_
+_Note: Substitute *America/Chicago* with the timezone of your choice. You can [https://php.net/manual/en/timezones.php view list of supported timezones here]_ 
 
 Start the network time daemon and set it to start on boot.
 {{{
