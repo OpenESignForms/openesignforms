@@ -11,11 +11,17 @@ This guide assumes you will be developing on a Microsoft Windows operating syste
 = Setup the Environment =
 
 == Eclipse IDE ==
-  # [https://www.eclipse.org/downloads/ Download and Install Eclipse IDE for Java EE Developers]
+  * We recommend using Eclipse IDE although these instructions should work for other IDE systems (eg. Netbeans) as well.
+   # [https://www.eclipse.org/downloads/ Download and Install Eclipse IDE for Java EE Developers]. We are using Eclipse Kepler version 4.3.2 (the latest available at this time of writing).
+   # Unzip all files to C:\Program Files
 
-We are using Eclipse Kepler version 4.3.2 (the latest available at this time of writing).
+=== Configure the IDE ===
 
-  # Unzip all files to C:\Program Files
+* Launch the software from the install directory
+  # C:\Program Files\eclipse\eclipse.exe
+  # Set Workspace to C:\project
+  # Check the box _use this as the default and do not ask again_
+http://www.apache.org/dist/ant/ivyde/updatesite
 == Java 8 ==
   * Install the latest version of the Java SE Development kit.
    # Download Java SE Development Kit 8 (JDK 8) from Oracle's website.
