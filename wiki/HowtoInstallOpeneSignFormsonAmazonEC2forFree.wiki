@@ -103,8 +103,11 @@ sudo yum install -y iptables ntp logwatch dos2unix gpg bind-utils jwhois telnet 
 === Install wkhtmltopdf ===
 
 Download the wkhtmltopdf-0.11.0_rc1 static binary file from 
-[http://wkhtmltopdf.org/ wkhtmltopdf.org] website.
+[http://wkhtmltopdf.org/ wkhtmltopdf.org] website directly onto your instance using wget.
 
+{{{
+wget https://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2
+}}}
 
 _Note: Use this version of wkhtmltopdf as newer versions have known issues with Open eSignForms at the time of this writing_
 
