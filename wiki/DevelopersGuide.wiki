@@ -17,13 +17,10 @@ We are using Eclipse Kepler version 4.3.2 (the latest available at this time of 
 
   # Unzip all files to C:\Program Files
 == Java 8 ==
-
-  # Download Java SE Development Kit 8 (JDK 8) from Oracle's website.
-
-  # Download Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 
-
+  * Install the latest version of the Java SE Development kit.
+   # Download Java SE Development Kit 8 (JDK 8) from Oracle's website.
+   # Download Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 
    # Extract the two jar files into C:\Program Files\Java\jdk1.8.0\jre\lib\security folder, overwriting the files presently there.
-
    # Extract the two jar files into C:\Program Files\Java\jre8\lib\security. Overwriting the files presently there.
 
 
@@ -40,4 +37,8 @@ We are using Eclipse Kepler version 4.3.2 (the latest available at this time of 
 == PostgreSQL ==
 
   * Download the graphical installer
-   # 
+   # Leave the default install drectory as C:\Program Files\PostgreSQL\9.3
+   # Leave the default data directory as C:\Program Files\PostgreSQL\9.3\data
+   # If you will only be developing Open eSignForms go ahead and type *esignforms* as the postgres database superuser password.
+   # Leave the default of *5432* as the port number the server should listen on
+   # Leave the default locale as *[Default locale]*
