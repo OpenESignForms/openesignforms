@@ -15,6 +15,7 @@ This guide assumes you will be developing on a Microsoft Windows operating syste
 
 We are using Eclipse Kepler version 4.3.2 (the latest available at this time of writing).
 
+  # Unzip all files to C:\Program Files
 == Java 8 ==
 
   # Download Java SE Development Kit 8 (JDK 8) from Oracle's website.
