@@ -249,6 +249,19 @@ Install Tomcat from the repositories. The system works well with Tomcat7.
             unpackWARs="true" autoDeploy="false">
 }}}
 
+*Edit conf/web.xml*
+Add this line immediately below 
+
+`<servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>`
+
+
+{{{
+<init-param>
+  <param-name>development</param-name>
+  <param-value>true</param-value>
+</init-param>
+}}} 
+
 *Edit tomcat7.conf file*
 
 {{{
