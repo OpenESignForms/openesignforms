@@ -441,7 +441,7 @@ CATALINA_HOME=/usr/share/tomcat7
 
 == Listen to HTTP requests on port 80 ==
 
-Tomcat by default runs on port 8080. Traffic can be redirected from port 80 to 8080 by running the following commands:
+Tomcat by default runs on port 8080. Traffic can be redirected from port 80 to 8080 by running the following commands as root:
 
 {{{
 /sbin/iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
@@ -449,6 +449,12 @@ Tomcat by default runs on port 8080. Traffic can be redirected from port 80 to 8
 }}}
 
 You probably wouldn't want to do this in a production environment but for the purposes of testing Open eSignForms, this works nicely. 
+
+Don't forget to do this for localhost as well, otherwise images won't correctly render in PDF
+{{{
+iptables -t nat -A OUTPUT -d localhost -p tcp --dport 80 -j REDIRECT --to-port 8080
+/sbin/service iptables save
+}}}
 
 = Optimization =
 
