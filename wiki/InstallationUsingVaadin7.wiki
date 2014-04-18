@@ -71,10 +71,10 @@ export JAVA_OPTS
   * `conf/server.xml` - You can set up as you need, such as if you have an Apache HTTPD server front-end and use the APR, but for a simple stand-alone Tomcat, we make the following changes. Under the "Catalina" `<Service>` entry (of course, if you have SSL, you want to point to your keystore and its password). We also comment our the AJP Connector on port 8009, but you may need it if you put HTTP in front:
 {{{
     <Connector port="8080" protocol="org.apache.coyote.http11.Http11NioProtocol"
-               connectionTimeout="20000" acceptorThreadCount="2" redirectPort="443" />
+               connectionTimeout="20000" acceptorThreadCount="2" URIEncoding="UTF-8" redirectPort="443" />
 
     <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol" SSLEnabled="true"
-               connectionTimeout="20000" acceptorThreadCount="2"
+               connectionTimeout="20000" acceptorThreadCount="2" URIEncoding="UTF-8"
                maxThreads="100" scheme="https" secure="true"
                compression="on" compressableMimeType="text/html,text/xml,text/plain,application/xml,application/json,application/javascript,application/pdf"
                keystoreFile="keys/mykeys" keystorePass="PUT-KEYSTORE-PASSWORD-HERE"
