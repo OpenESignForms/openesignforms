@@ -313,6 +313,11 @@ Enable logging (un-comment parameters and change values where needed)
     log_disconnections = on
 }}}
 
+===Recommended minimum changes to pg_hba.conf===
+
+{{{
+nano /var/lib/pgsql/data/pg_hba.conf
+}}}
 ===Initialize the database===
 
 {{{
