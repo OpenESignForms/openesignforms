@@ -246,6 +246,10 @@ Install Tomcat from the repositories. The system works well with Tomcat7.
 
 `sudo yum install tomcat7`
 
+if that does not work
+
+`sudo yum install tomcat6`
+
 *Edit the server.xml file and set autoDeploy to false*
 
 `sudo nano /usr/share/tomcat7/conf/server.xml`
