@@ -313,11 +313,19 @@ Enable logging (un-comment parameters and change values where needed)
     log_disconnections = on
 }}}
 
-===Recommended minimum changes to pg_hba.conf===
+===Minimum changes to pg_hba.conf===
 
 {{{
 nano /var/lib/pgsql/data/pg_hba.conf
 }}}
+# "local" is for Unix domain socket connections only
+local   all         all                               *trust*
+# IPv4 local connections:
+host    all         all         127.0.0.1/32          *trust*
+# IPv6 local connections:
+host    all         all         ::1/128               *trust*
+
+
 ===Initialize the database===
 
 {{{
