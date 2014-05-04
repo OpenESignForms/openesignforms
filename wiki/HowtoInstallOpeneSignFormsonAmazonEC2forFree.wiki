@@ -453,7 +453,28 @@ JAVA_OPTS="-server -Xrunjdwp:transport=dt_socket,address=29090,server=y,suspend=
 {{{
 CATALINA_HOME=/usr/share/tomcat7
 }}}
+
+== Install the Open eSignForms Database ==
+
+{{{
+source /opt/esignforms/profile
+
+cd /opt/esignforms/database/postgresql/ddl/
+
+./create_db
+}}}
+
+Please enter the LOWERCASE name for the OpenESF database and user: *esignforms*
+
+Please enter the password to use for the OpenESF esfapp user esignforms: *esignforms*
+
+Creating DB User 'esignforms' and database 'esignforms' at location '/opt/esignforms/deployments/esignforms/current/db'.
+Is this okay? (y/n)*y*
+
+creating DB User 'esignforms' and database 'esignforms' at location...
+'/opt/esignforms/deployments/esignforms/current/db'.
 ----
+}}}
 = Post Install =
 
 == Listen to HTTP requests on port 80 ==
