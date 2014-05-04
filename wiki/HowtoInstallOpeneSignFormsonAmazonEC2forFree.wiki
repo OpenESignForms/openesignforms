@@ -488,6 +488,11 @@ Is this okay? (y/n)*y*
 creating DB User 'esignforms' and database 'esignforms' at location...
 '/opt/esignforms/deployments/esignforms/current/db'.
 
+{{{
+./rundbsetup
+}}}
+Please enter the webapp's context path (i.e. 'demo' or 'ROOT'): *ROOT*
+Use debugger options? (y/n) *n*
 
 = Post Install =
 
