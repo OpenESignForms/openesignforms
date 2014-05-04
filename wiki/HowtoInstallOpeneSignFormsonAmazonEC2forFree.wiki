@@ -178,7 +178,11 @@ Accept the license agreement and download the version for Linux x64. I prefer th
 `jre-8-linux-x64.rpm`
 
 *Server Version*
-`server-jre-8-linux-x64.tar.gz`
+`server-jre-8u5-linux-x64.tar.gz`
+{{{
+tar zxvf server-jre-8u5-linux-x64.tar.gz
+cp -r jdk1.8.0_05/ /usr/lib/java
+}}}
 
 Next you will need to get this file unto your instance. In linux, I open a new terminal window and issue the following command. Be sure to specify the correct path to your private key and downloaded JRE file.
 
