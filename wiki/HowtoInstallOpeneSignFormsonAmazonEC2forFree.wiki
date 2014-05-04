@@ -349,6 +349,12 @@ CREATE USER esignforms PASSWORD 'esignforms' SUPERUSER;
 exit
 exit
 }}}
+
+===Grant postgres access to deployment directory===
+{{{
+chown -R postgres.postgres /opt/esignforms/deployments/
+}}}
+
 ----
 = Install Open eSignForms =
 
