@@ -364,7 +364,7 @@ sudo cp -r /tmp/open-eSignForms-14.3.15/WebContent/* /usr/share/tomcat7/webapps/
 *Copy over any updated theme style sheets and files*
 
 {{{
-sudo cp /tmp/open-eSignForms-14.3.15/VAADIN-release-extras/VAADIN/themes/ /usr/share/tomcat7/webapps/ROOT/VAADIN/ -r
+sudo cp /tmp/open-eSignForms-14.3.15/VAADIN-release-extras/VAADIN/themes/openesf/* /usr/share/tomcat7/webapps/ROOT/VAADIN/themes/openesf -r
 }}}
 
 *Copy over jar files*
