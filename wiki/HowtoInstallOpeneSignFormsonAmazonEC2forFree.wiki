@@ -276,6 +276,8 @@ Add this line immediately below
 
 {{{
 sudo nano /etc/tomcat7/tomcat.conf
+or
+sudo nano /etc/tomcat6/tomcat6.conf
 }}}
 
 {{{
