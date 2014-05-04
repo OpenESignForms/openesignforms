@@ -182,6 +182,7 @@ Accept the license agreement and download the version for Linux x64. I prefer th
 {{{
 tar zxvf server-jre-8u5-linux-x64.tar.gz
 cp -r jdk1.8.0_05/ /usr/lib/java
+alternatives --install /usr/bin/java java /usr/lib/java/jdk1.8.0_05/jre/bin/java 1
 }}}
 
 Next you will need to get this file unto your instance. In linux, I open a new terminal window and issue the following command. Be sure to specify the correct path to your private key and downloaded JRE file.
@@ -201,6 +202,7 @@ http://i58.tinypic.com/2iapwky.jpg
  
  # If not then lets create one more alternative for Java for Sun JDK
 `sudo /usr/sbin/alternatives --install /usr/bin/java java` `/usr/java/jre1.8.0/bin/java 1`
+
  
  #Set the SUN JDK as the default java
 `sudo /usr/sbin/alternatives --config java`
