@@ -204,7 +204,7 @@ http://i58.tinypic.com/2iapwky.jpg
 `sudo /usr/sbin/alternatives --install /usr/bin/java java` `/usr/java/jre1.8.0/bin/java 1`
 
  
- #Set the SUN JDK as the default java
+ # Set the SUN JDK as the default java
 `sudo /usr/sbin/alternatives --config java`
 
 Enter the number *2* to choose the latest version of Java  
