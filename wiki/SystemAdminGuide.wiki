@@ -342,7 +342,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/deploymentProperties.png
   * The *Website URL Protocol+Address* is the domain name where your application runs and is used in all links sent out. Most deployments use the 'https://' protocol to ensure secure communications between the browser and the server.
   * The *Default country* is used to specify what country the deployment is for. It is used, for example, to aid in phone numbers being entered and interpreted correctly.
   * The *Default locale* specifies the language the application runs as. Currently, we only support US English.
-  * The *Default date format* specifies how dates are displayed by default.
+  * The *Default date format* specifies how dates are displayed by default. There is a known issue as of the 14.6.7 release if you use the DateComparison condition in an action and your date format is not one of the top 3 options. We recommend you only use the top 3 for your date formats (15-Feb-2011, 02/15/2011 or 2011-02-15) as these can be correctly transformed back into date objects.
   * The *Default log/detailed date format* specifies how dates are displayed in various logs and other places where full dates are displayed.
   * The *Default time zone* specifies the default time zone used. This can be overridden on a per-user basis.
   * The *Default time format* specifies how times are displayed by default. Most people only show times through minutes.
