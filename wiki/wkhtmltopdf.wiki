@@ -29,6 +29,39 @@ These are just some quick notes on setting up *wkhtmltopdf* on our CentOS Linux 
 
      (i.e. `yum install fontconfig.i686 libXrender.i686 openssl.i686 libzip.i686 libXext.i686 libstdc++.i686`)
 
+  * If your fonts have kerning issues, as described at https://github.com/wkhtmltopdf/wkhtmltopdf/issues/45 (see entry dandersson commented on Feb 8), you may want to add this file /etc/fonts/conf.avail/10-wkhtmltopdf.conf and then add a softlink `ln -s /etc/fonts/conf.avail/10-wkhtmltopdf.conf /etc/fonts/conf.d/10-wkhtmltopdf.conf` to activate it for fontconfig. You can use `fc-cache -fv` to force the fontconfig cache to be rebuilt. 
+{{{
+<?xml version='1.0'?>
+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
+<fontconfig>
+ <match target="font">
+  <edit mode="assign" name="rgba">
+   <const>rgb</const>
+  </edit>
+ </match>
+ <match target="font">
+  <edit mode="assign" name="hinting">
+   <bool>true</bool>
+  </edit>
+ </match>
+ <match target="font">
+  <edit mode="assign" name="hintstyle">
+   <const>hintslight</const>
+  </edit>
+ </match>
+ <match target="font">
+  <edit mode="assign" name="antialias">
+   <bool>true</bool>
+  </edit>
+ </match>
+  <match target="font">
+    <edit mode="assign" name="lcdfilter">
+      <const>lcddefault</const>
+    </edit>
+  </match>
+</fontconfig>
+}}}
+
 = Windows Developers =
 
 There is generally a Windows installer version for this program that can be used on Windows platforms. Our developers typically are on Windows, and so they make use of the Windows version if they need the PDF export capability.  
