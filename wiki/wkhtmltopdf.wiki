@@ -3,32 +3,27 @@
 
 = Introduction =
 
-*NOTE 3/21/2014* We seem to have some issues with blank pages appearing before the document using the 0.12.0 version. We are currently running on 0.11.0 rc1 at this time.
-
 These are just some quick notes on setting up *wkhtmltopdf* on our CentOS Linux servers. As we gain expertise, I'm sure we'll iron out the details a bit better.
 
 
 = Details =
 
-  * Download wkhtmltopdf-0.12.0 from [https://github.com/wkhtmltopdf/wkhtmltopdf/releases/tag/0.12.0 wkhtmltopdf on GITHUB]. Tested on CentOS 6.4.
+  * Download [http://wkhtmltopdf.org/downloads.html wkhtmltopdf-0.12.1]. Tested on CentOS 6.4. 
 
-  * If necessary, ensure you have 'xz' installed (install as root):
-    {{{yum install xz}}}
-
-  * Unzip using tar 
-    {{{tar xvJf wkhtmltox-linux-i386_0.12.0-03c001d.tar.xz}}}
+  * Install using rpm (while logged in as 'root')
+    {{{rpm -ivh wkhtmltox-0.12.1_linux-centos6-amd64.rpm}}}
 
   * Install dependencies via yum:
     {{{yum install fontconfig libXrender libXext '*fonts*' openssl}}}
 
     (In particular you want urw-fonts, but you probably want others too, like xorg-x11-fonts-truetype for CentOS 5.  Sourceforge has a [http://corefonts.sourceforge.net/ CoreFonts project] that has instructions for creating RPMs for your system. Sourceforge also has a [http://mscorefonts2.sourceforge.net/ MSCoreFonts project] that has instructions for installing from pre-built RPMs which is what we use. We use this to get the [http://www.cabextract.org.uk/ cabextract RPM].
 
-  * Either put the file `wkhtmltopdf` into your `~/bin` directory named `wkhtmltopdf` or create softlink, such as `cd ~bin` and `ln -s ../wkhtmltox/wkhtmltopdf wkhtmltopdf`.
+  * The RPM will install in /usr/local/bin.  If it's not in the PATH for the user account that runs Tomcat/Java, make sure it is added.
 
   * For our HTML, we typically use options:
-    {{{wkhtmltopdf --page-size Letter --encoding utf-8 --print-media-type --disable-external-links --image-quality 100 --margin-left 5mm --margin-right 5mm --margin-top 5mm --margin-bottom 5mm}}}
+    {{{wkhtmltopdf --dpi 96 --page-size Letter --encoding utf-8 --print-media-type --disable-external-links --image-quality 100 --margin-left 0mm --margin-right 0mm --margin-top 2mm --margin-bottom 2mm}}}
 
-    Try running the command `wkhtmltopdf` to ensure it can be found in your PATH and that it shows no missing components.
+    Try running the command `wkhtmltopdf --version` to ensure it can be found in your PATH and that it shows no missing components.
 
   * For the 32-bit static builds, assuming you are on 64-bit Linux, you'll want to make sure you have these components with i386/i686 architecture. If you have the 64-bit versions, you can use `yum whatprovides fontconfig` to discover the component details for the 32-bit version (in this case, fontconfig-2.4.1-7.el5.i386 or fontconfig-2.8.0-3.el6.i686).  This includes `fontconfig`, `libXrender`, `openssl`, `libzip`, `libXext` and `libstdc++`.
 
@@ -38,6 +33,6 @@ These are just some quick notes on setting up *wkhtmltopdf* on our CentOS Linux 
 
 There is generally a Windows installer version for this program that can be used on Windows platforms. Our developers typically are on Windows, and so they make use of the Windows version if they need the PDF export capability.  
 
-We downloaded 'wkhtmltox-win32_0.12.0-03c001d.exe' and when run, it installed the tool in {{{C:\Program Files (x86)\wkhtmltopdf}}}
+We downloaded [http://wkhtmltopdf.org/downloads.html wkhtmltopdf-0.12.1] and when run, it installed the tool in {{{C:\Program Files (x86)\wkhtmltopdf}}}
 
 For Tomcat+Java on Windows 7, we found we had to add that path to Windows PATH. For Windows 7, we did this by clicking on the Windows icon, Right-click on Computer->Properties, click on Advanced system settings, click on Environment Variables button, under System variables scroll and click on Path, click the Edit button, then append at the end: {{{;C:\Program Files (x86)\wkhtmltopdf\bin}}}
