@@ -590,6 +590,11 @@ sysctl -w net.ipv6.conf.default.disable_ipv6=1
 NETWORKING_IPV6=no
 }}}
 
+  * You may want to turn it off for Postfix, too, in /etc/postfix/main.cf:
+{{{
+inet_protocols=ipv4
+}}}
+
 = Upgrading to new releases =
 
 In general, all new release need the following pattern of updates from the release code to the corresponding deployment location.
