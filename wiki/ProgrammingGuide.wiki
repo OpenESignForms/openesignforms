@@ -797,16 +797,33 @@ public interface EsfDocumentPageInterface
 	public String getFieldSpecValue(String fieldSpec);
 
 	/**
+	 * @param fieldSpec the String field specification, such as ${firstName} to get the field firstName from the document
+	 * @return the String value associated with the field spec. If the field spec is not transformed at all, it returns an empty string.
+	 */
+	public String getFieldSpecValueOrBlankIfNotFound(String fieldSpec);
+
+	/**
 	 * @param v the String to check if it's blank (null, empty or just spaces)
 	 * @return true if 'v' is blank
 	 */
 	public boolean isBlank(String v);
+	/**
+	 * @param fieldSpec the String field specification, such as ${firstName} to get the field firstName from the document
+	 * @return true if the resulting field spec is blank (or has no other value we can transform to).  This is
+	 * essentially isBlank(getFieldSpecValueOrBlankIfNotFound(fieldSpec))
+	 */
+	public boolean isFieldSpecBlank(String fieldSpec);
 
 	/**
 	 * @param v the String to check if it's non-blank (not null, not empty and not just spaces)
 	 * @return true if 'v' is non-blank
 	 */
 	public boolean isNonBlank(String v);
+	/**
+	 * @param fieldSpec the String field specification, such as ${firstName} to get the field firstName from the document
+	 * @return true if the resulting field spec is nonblank.  This is essentially isNonBlank(getFieldSpecValueOrBlankIfNotFound(fieldSpec))
+	 */
+	public boolean isFieldSpecNonBlank(String fieldSpec);
 }
 }}}
 
