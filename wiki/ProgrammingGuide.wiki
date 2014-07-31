@@ -1880,7 +1880,7 @@ You can drag to re-order existing field mappings to control the order they will 
 
   * In the *Document* drop down select the document from the package where the field to be mapped resides.
   * In the *Field* drop down select the field in the selected document to map to a report field.
-  * In the *Save value as report field* drop down, select an existing report field that applies. If no such report field exists, select the "+Create new report field" option and a new report field of the same name and appropriate type will be created.
+  * In the *Save value as report field* drop down, select an existing report field that applies. If no such report field exists, type a new name (a + will appear before the name to indicate it's being created new if not already present) to create a new report field with an appropriate type.
   * Check *Show To Do* to have this field appear in the To Do queue for internal users who will process transactions this way.
 
 Click the *Ok* button to keep your changes (you will need to do this if you re-order fields, too). Otherwise click *Cancel* to discard them.
