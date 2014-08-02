@@ -13,6 +13,8 @@
   * [UserGuide User's Guide]
   * [SystemAdminGuide System Administrator's Guide]
   * [ProgrammingGuide Point & Click Programming Guide]
+  * [ProgrammingGuide_Integration_API Point & Click Programming Integration API Guide]
+  * *[ProgrammingTutorial Point & Click Programming Tutorial]* (this guide)
 
 ==== Table of contents ====
 <wiki:toc max_depth="3" />
