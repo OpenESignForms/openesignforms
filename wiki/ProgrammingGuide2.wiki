@@ -460,7 +460,7 @@ The top left corner of the image is considered to be a top position 0, left posi
 http://open.esignforms.com/images/HowToGuidesWiki/imageOverlayFieldPosition.png
 
   * The *Field EsfName* is displayed to remind you which field is being positioned.
-  * The *Display mode* is generally "Field" for a standard field overlay (similar to using ${field:XXXX} in the HTML document editor), or "Display only" to just show the field's value (similar to using ${out:XXXX}). You may also select "Field+Label" to position the field and it's label, but this is generally rare for image overlays.
+  * The *Display mode* is generally "Field" for a standard field overlay (similar to using `${field:XXXX}` in the HTML document editor), or "Display only" to just show the field's value (similar to using `${out:XXXX}`). You may also select "Field+Label" to position the field and it's label, but this is generally rare for image overlays.
   * Choose the *Background color* to use for the overlay field. By default, it'll just place the value on top of the image, which is the most typical need.  But you may select a color, such as "White", to make the field stand out more if the image underneath the field would otherwise make it hard to read.
   * Specify the *Left offset (px)* to specify how far in pixels from the left edge of the image where your field's upper left corner will be in.
   * Specify the *Top offset (px)* to specify how far in pixels from the top edge of the image where your field's upper left corner will be in.
@@ -1008,7 +1008,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/emailTemplate.png
   * *BCC:* specifies any BCC recipients (blind-copy so will not appear to other recipients).
   * *Subject* is the subject of the email.
   * *Text version* is the email text to show for clients who cannot or will not allow HTML-based emails. A text version is required as it's guaranteed to be used by all email clients.  You may specify the field `${LINK}` anywhere the party's pickup link should appear. Each party has a unique `${LINK}` value to ensure the system knows who is retrieving the package of documents.  In the package's custom logic action for sending an email option `For party (${LINK})` allows you to control which value to use. Emails sent to a given party will use that party's unique link value.
-  * *HTML version* is the HTML version of the email for clients that support HTML. Generally, it should be similar to the text version, but you can use various stylings to make the email more attractive.  You may put ${LINK} anywhere you need the party's unique pickup link to appear. If the actual URL of the link is not shown in your HTML version, we recommend showing the full link at the bottom, in a smaller font, with something like this:
+  * *HTML version* is the HTML version of the email for clients that support HTML. Generally, it should be similar to the text version, but you can use various stylings to make the email more attractive.  You may put `${LINK}` anywhere you need the party's unique pickup link to appear. If the actual URL of the link is not shown in your HTML version, we recommend showing the full link at the bottom, in a smaller font, with something like this:
 
 {{{
 If the above link is not active (e.g. nothing happens when you click on it), please copy the link below exactly as shown into your web browser's address or location field:
@@ -1283,7 +1283,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/packageParty.png
   * Select a *To Do Party EsfName* if this party actually belongs to a group of users. In a Library, you can define a Party template that is associated with a To Do Group so that anybody who belongs to the group can process the transaction via the To Do work queue. Select that Party name defined in a Library and be sure it has a group associated with. Note that by creating transaction templates with separate branding libraries, it is easy to set up a package where such a party belongs to different groups, such as when running the service for multiple companies or departments.
   * In *Renotify* select the various intervals that you'd like an email re-notification to be sent to the party until the party step is completed (and the transaction is in progress). It is good to be able to remind a user to complete a document, but you don't want to pester them either.
   * Check *Email All To Do Parties* if you've also set a *To Do Party EsfName* if you would like all users who belong to the group associated with the party to receive an email notification.
-  * In *Notify email address spec (${EMAIL})* enter an email address or a document and field specification that contains the email address of the person to notify when this party is activated. The value will replace the ${EMAIL} specification used in the Email template.
+  * In *Notify email address spec (`${EMAIL}`)* enter an email address or a document and field specification that contains the email address of the person to notify when this party is activated. The value will replace the `${EMAIL}` specification used in the Email template.
   * In *Notify Email EsfName* specify the Email template to use to notify this party.
   * In *On completed redirect link/URL spec* you can put in a literal URL or any combination of field and property specifications. If specified, when the party completes all documents in the package, the party will be redirected this URL rather than be shown the completed package page.
   * In *Not completed redirect link/URL spec* you can put in a literal URL or any combination of field and property specifications. If specified, when the party has not yet completed the package of documents, the package will show a "Go back (not completing now)" button that will redirect the user back to this URL to indicate that they have chosen not to complete the package at this time.
@@ -1442,7 +1442,7 @@ You can negate this condition by checking the *Negate condition (NOT)* box.
     * *Shorter than or same length* will match if the field's value is shorter than or the same length as the other value.
     * *Longer than* will match if the field's value is longer than the length of the other value.
     * *Longer than or same length* will match if the field's value is longer than or the same length as the other value.
-  * Set the *Literal or field spec (${})* to the value to check against the specified field. It can be a simple string literal, or it can contains a field specification like ${DocumentName.FieldName} to compare against another field value.
+  * Set the *Literal or field spec (`${}`)* to the value to check against the specified field. It can be a simple string literal, or it can contains a field specification like `${DocumentName.FieldName}` to compare against another field value.
   * Check the *Case sensitive?* box if you want the comparison to be case sensitive (uppercase and lowercase letters must match exactly). The default (unchecked) allows a match regardless, so "Bob" would be equal to "BOB".
  
 If you negate this condition (NOT COMPARISON), it passes if the field does not match the specified value.
@@ -1555,8 +1555,8 @@ When you need to send an email other than the party activation email (which is s
 http://open.esignforms.com/images/HowToGuidesWiki/sendEmailAction.png
 
   * For *Email template* choose the email template to send.
-  * For *For party (${LINK})* select the party whose unique link will be used anywhere `${LINK}` is specified in the selected email template. Note that whoever receives such a link will be able to act as that party.
-  * For *Email address spec (${EMAIL})* enter an email address or `${ }` field specification that will resolve to the email address to send to. This will replace the `${EMAIL}` wherever used in the selected email template. If the *For party* above is selected and this email address specification is blank (or set to `${EMAIL}` -- better to leave blank), the system will attempt to use the configured package party's email notification specification.
+  * For *For party (`${LINK}`)* select the party whose unique link will be used anywhere `${LINK}` is specified in the selected email template. Note that whoever receives such a link will be able to act as that party.
+  * For *Email address spec (`${EMAIL}`)* enter an email address or `${ }` field specification that will resolve to the email address to send to. This will replace the `${EMAIL}` wherever used in the selected email template. If the *For party* above is selected and this email address specification is blank (or set to `${EMAIL}` -- better to leave blank), the system will attempt to use the configured package party's email notification specification.
   * For *Attach document(s)* select one or more documents from the package to send with the email. This will be the document snapshot that exists for the selected document and party. Of course, you can also choose the "Latest" party for a document to send whatever is the latest snapshot of that document at the time the email is being sent.
   * Check *Attach as PDF* to combine the document snapshots into a single PDF file rather than sending them as attached HTML files. If any of the selected documents is configured for 'Landscape' orientation then all documents will be rendered as landscape in the PDF.
   * If *Attach as PDF* is selected, a *PDF file name spec* is shown so you can give the file name of the attached PDF. It's can be a simple file name, such as `Agreement.pdf`, or it may include field specifications and properties for a customized name, such as `Agreement for ${firstName} ${lastName}.pdf`.
@@ -1769,7 +1769,7 @@ If you report an error or warning on the review step, the user will not be able 
 
 http://open.esignforms.com/images/HowToGuidesWiki/showErrorAction.png
 
-  * For *Error/message spec* enter the message or error to show the user. It may contain field specifications (${}).
+  * For *Error/message spec* enter the message or error to show the user. It may contain field specifications (`${}`).
   * Choose the message type: *Error*, *Warning*, *Success* or *Info*.
   * Check *HTML?* if the error/message is in HTML format already (contains HTML tags). Leave it blank normally.
 
