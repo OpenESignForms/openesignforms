@@ -13,6 +13,7 @@
   * [UserGuide User's Guide] (Read first)
   * *[SystemAdminGuide System Administrator's Guide]* (this guide)
   * [ProgrammingGuide Point & Click Programming Guide]
+  * [ProgrammingGuide_Integration_API Point & Click Programming Integration API Guide]
   * [ProgrammingTutorial Point & Click Programming Tutorial]
 
 ==== Table of contents ====
