@@ -1581,7 +1581,7 @@ When you need to send data to another system (integration of applications), use 
 http://open.esignforms.com/images/HowToGuidesWiki/HTTPSendAction.png
 
   * For *Method* choose the HTTP method to send the data to the specified URL, either a GET or a POST. In general, use POST unless a GET is all that you can use as GET requests will generally record all of your data parameters into web server logs that may not be secure if the data you are sending should be secure.
-  * For *URL* specify the URL that will accept your data. It must begin with `http://` (data is in the clear over the Internet) or `https://` (data will be encrypted over the Internet) or a `${` field spec that expands to a valid URL, then have the server domain name and optional port number, along with any path specifiers. You can even include some hard-coded name-value params.  A typical URL looks like `https://open.esignforms.com/demo/HttpVariableTester.jsp`.  Note that every deployment has just such an URL available using your deployment's server name and application name. You can use this when testing as it will echo back all of the data it receives and can be used to help ensure you are sending the data you expect. When your URL changes based on Test versus Production modes, we recommend using a propertyset to configure the URL along with the same property name with _TEST added. You can then set the HTTP Send Action's URL to something like `${property:MyConfig.URL}` which will expand at run-time (and when in test mode, it will automatically find property `MyConfig.URL_TEST` if you have defined it).
+  * For *URL* specify the URL that will accept your data. It must begin with `http://` (data is in the clear over the Internet) or `https://` (data will be encrypted over the Internet), then have the server domain name and optional port number, along with any path specifiers. Alternatively, you can start with `${urlspec}` that expands to the URL. You can even include some hard-coded name-value params with optional field specs.  A typical URL looks like `https://open.esignforms.com/demo/HttpVariableTester.jsp`.  Note that every deployment has just such an URL available using your deployment's server name and application name. You can use this when testing as it will echo back all of the data it receives and can be used to help ensure you are sending the data you expect. If your URL needs to change based on Test versus Production modes, we recommend using a propertyset to configure the URL so that when in test mode it will use the same property name with `_TEST` added as a suffix. You can then set the HTTP Send Action's URL to something like `${property:MyConfig.URL}` which will expand at run-time (and when in test mode, it will automatically find property `MyConfig.URL_TEST` if you have defined it).
   * For *Max attempts* enter the number of times to attempt to send the data. Each attempt is recorded, including both the request sent and the response received. If the attempt is considered a success, no further attempts will be made.  If the attempt is not considered a success, it will try again if you specify a value greater than 1.
   * For *Retry (minutes)* select the number of minutes that should pass before a retry is attempted. This only has meaning if *Max attempts* is greater than 1.
   * For *Limit successful HTTP status codes* enter one or more numbers (standard HTTP status codes) separated by semicolons (;) that must be returned by the URL to indicate a successful send. Note that '200' is the normal HTTP status for a successful request. Leave this field blank if the HTTP status code should be ignored.
@@ -2109,119 +2109,5 @@ Click the *Delete* button to remove the selected report field template if it's n
 While a transaction exists, parties can use their unique links (and users can access their work via the [UserGuide#To_Do To Do queue]) to access the package of documents.
 
 If a transaction is canceled or suspended, no access is given to any party.
-
-<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
-
-= Integration Interface (API) =
-
-There are various ways to integrate other applications and web sites with Open eSignForms. They all assume the ability to access HTTPS links to the web site.
-
-Each transaction template shows the "Start URL" which is used to start a new transaction of its type.  There are two standard options you can include on the URL (or as HTTPS POST parameters):
-
-  * `ESFTEST=Yes` means that you want to start a Test transaction. We recommend using this during all integration testing.  If you omit this parameter, it will be assume to be a Production transaction, but you can send it as `ESFTEST=No` to make it explicit.
-  * `ESFLIKEPRODUCTION=Yes` is only examined if `ESFTEST=Yes` is also included and controls whether the Test transaction should run using any Test versions found or not. When set to `Yes` it means even though it is a Test transaction, it will only select Production-level versions. We recommend setting this to `Yes` on your final integration tests to ensure it is working as expected using only Production-level versions. If this param is not present, it is assumed to have a `No` value.
-
-== From an email you send out, inline process ==
-
-If you already have an email generating system, or you manually send them out, you can start a new transaction by embedding the transaction template's "Start URL" in the email you send out.  When external users click on your link, it will take them to your Open eSignForms site where they can complete and sign as necessary.
-
-The external user will start the transaction and act as the first party defined for the package of document(s).
-
-Note that the transaction template must allow for "External users" to have "Start" permission on the transaction.
-
-We call this "inline process" because the external user works on the document directly after clicking on the link.
-
-== From your web site, inline process ==
-
-If you already have a web site, you can start a new transaction by embedding the transaction template's "Start URL" in your web site.  When external users click on your link, it will take them to your Open eSignForms site where they can complete and sign as necessary. The link may also be embedded in an IFRAME or FORM, with the FORM allowing you to post some initial data collected from your form or provided by your web site.
-
-The external user will start the transaction and act as the first party defined for the package of document(s).
-
-Note that the transaction template must allow for "External users" to have "Start" permission on the transaction.
-
-We call this "inline process" because the external user works on the document directly after clicking on the link.
-
-== From another web site or web-accessible application, inline process == 
-
-Like above, this processing allows you to start the transaction as a specific user of Open eSignForms rather than an external user. This is often done from other web portals and applications where the user is authenticated in that system, and now you want to tie that user together with the Open eSignForms user. The link may also be embedded in an IFRAME or FORM, with the FORM allowing you to post some initial data collected from your form or provided by your web site.
-
-To do this, you must include the following two additional HTTPS POST params (we do not recommend you ever including username and passwords in the URL as those values will be recorded in web server logs as well as the user's browser cache):
-
-  * `ESFLOGINUSER=useremail@example.com` specifies the user's login email address to authenticate the user who will start the transaction.
-  * `ESFLOGINPASSWORD=user+password` specifies the user's login password to authenticate the user who will start the transaction.
-
-You must include both params as the system will not attempt authentication without both. That is, it will be treated just the same as an "external user" starting the transaction.
-
-Note that the transaction template must allow for a group that the user belongs to to have "Start" permission on the transaction. You generally would not allow "external users" to start this type of transaction as the purpose is to run only user-authenticated transactions that are tied to the specified user.
-
-We call this "inline process" because the user works on the document directly after clicking on the link.
-
-== From another web site or web-accessible application, email process (API) == 
-
-Unlike the process above, this is suitable for full-API integration where your other application will start a new transaction without any user interactions. This API uses web-standard HTTPS POST of name-value pairs and will receive a simple text response for easy parsing of success or failure. Generally, the first party is fully processed and then the second party is notified by email for external users (or perhaps via the To Do queue for an internal user) to process the transaction.
-
-Unlike the previous "inline process" versions, no web page is returned because it is assumed that the user is not present to handle the documents immediately.
-
-Add the following additional HTTPS POST params for API-processing:
-  * `ESFLOGINUSER=useremail@example.com` specifies the user's login email address to authenticate the user who will start the transaction in API mode.
-  * `ESFLOGINPASSWORD=user+password` specifies the user's login password to authenticate the user who will start the transaction in API mode.
-  * `ESFAUTOCOMPLETEFIRSTPARTY=Yes` means that the first party, as defined by the required `ESFLOGINUSER` and `ESFLOGINPASSWORD` params, will be completed as a result of this API request, with any second party then notified.
-
-Since no user is actually present, a standard web page response is not returned. Instead of a `text/html` (content/mime type) response, a `text/plain` response is sent as follows:
-  * If the request is not even processed due to an error, an HTTP 404 response code is sent to indicate the error.
-  * `OK:transaction-id` is returned if the transaction was successfully started and includes the transaction id after the colon.
-  * `ERROR:error-mesage` is returned if there was an error in user authentication or other transaction processing error, such as data validation errors. The error message may span more than one line with embedded newlines if more than one error was detected.
-
-We call this "email process" because the next user will only gain access to the transaction after receiving an email containing their unique link. The link the user receives will not be the "Start URL" at all, but will be a pickup-link to retrieve an existing transaction. Of course, if there is no second party, the transaction will complete as expected.
-
-_Note that no document snapshots will exist for the first party since the documents were not, in fact, presented in Review mode. Data snapshots still are done._
-
-<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
-
-== Sending data back to your system ==
-
-Please view the custom logic setup for the [#HTTP_send_data_action HTTP Send Data Action] for details on sending back data to your system.  This allows you to do an HTTP(S) GET/POST of name-value pairs including fields defined in your documents.
-
-<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
-
-== Retrieve CSV data back to your system ==
-
-Assuming you have built a Report to list the fields you want to retrieve, you can run a CSV Report by using a special link/URL (HTTPS POST of name-value pairs is best) that will run that report and return the data in CSV format.
-
-The CSV data fields will be separated by a comma. When necessary, data values will be quoted (such as if the data value contains quotes or commas).  Each line ends with a CR+LF.  On successful retrieval, the content-type returned will be `text/csv; charset=UTF-8`
-
-The base URL to retrieve CSV data is:
-
-`https://example.com/WEBAPP/csv/YourReportPathNameHere`
-
-`YourReportPathNameHere` must be the EsfPathName of the report you created and have permission to run, as well as permission to export CSV data.
-
-`WEBAPP` is the name of your deployment. For those who run their own systems, this may not be present if you are using the ROOT webapp. For most hosted customers, this will be the same name you use when you login.
-
-Next, you can add various named-value parameters to control the CSV export process:
-
-  * *rid* - Optional report template id; if present, this is the report template ID to use to find the report if `YourReportPathNameHere` could not be found.
-  * *ESFLOGINUSER* - Required user name; the email address of the user account used to authenticate the request to run the report.
-  * *ESFLOGINPASSWORD* - Required user password; the password to authenticate the request.
-  * *ESFTEST* - Optional type of transactions to retrieve; if not present, assumes Production transactions should be retrieved. If present, assumes Test transactions unless the value is set to N or F or 0 to turn it off.
-  * *dateType* - Optional meaning of the startDate/endDate; assumes *started* unless set to *lastUpdated*.
-  * *startDate* - Optional start date (oldest to retrieve); assumes *now* (today at 00:00:00 in the user's default time zone). Use -1 for yesterday or -N for N days ago. Use YYYY-MM-DD format to specify a particular date.
-  * *endDate* - Optional end date (most recent to retrieve); assumes *now* (today at 23:59:59 in the user's default time zone). Use -1 for yesterday or -N for N days ago. Use YYYY-MM-DD format to specify a particular date.
-  * *startedByMe* - Optional; assumes *Y*. If *N*, you must allow one of the two other 'started by' options or this will still assume *Y*.
-  * *startedByAnyUser* - Optional; assumes *Y* if the user has such permissions specified in the report, otherwise *N*.
-  * *startedByExternalParties* - Optional; assumes *Y* if the user has such permissions specified in the report, otherwise *N*.
-  * *showInProgress* - Optional; assumes *N* to not include in progress transactions. If *Y* transactions that are still in progress will be included.
-  * *showCompleted* - Optional; assumes *Y* to include completed transactions. If *N* transactions that are completed will not be included.
-  * *showCanceled* - Optional; assumes *N* to not include canceled transactions. If *Y* transactions that are canceled will be included.
-  * *showSuspended* - Optional; assumes *N* to not include suspended transactions. If *Y* transactions that are suspended will be included.
-  * *includeHeaderLine* - Optional; assumes *Y* to include the first line in the CSV data that lists the field names; If *N* then that line will not be included and you will just get CSV data records.
-
-For example, assuming a report named `API/ContactReport` in a customer webapp named `demo`, to retrieve production transactions completed yesterday, the URL would be:
-
-{{{https://example.com/demo/csv/API/ContactReport?ESFLOGINUSER=demo@example.com&ESFLOGINPASSWORD=demopass&dateType=lastUpdated&startDate=-1&endDate=-1}}}
-
-When possible, we recommend using an HTTPS POST instead of a simple URL/link like above to ensure none of the parameters are recorded in server logs. With an HTTPS POST, you use the same name-value pairs, just sent as the body of the request instead of on the URL/link.
-
-_Note: The value of all params must be URL encoded as per the standard for HTTP._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
