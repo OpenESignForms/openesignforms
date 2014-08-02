@@ -129,6 +129,6 @@ For example, assuming a report named `API/ContactReport` in a customer webapp na
 
 When possible, we recommend using an HTTPS POST instead of a simple URL/link like above to ensure none of the parameters are recorded in server logs. With an HTTPS POST, you use the same name-value pairs, just sent as the body of the request instead of on the URL/link.
 
-_Note: The value of all params must be URL encoded as per the standard for HTTP._
+_Note: The value of all params must be [URLEncodingNameValueParams URL encoded] as per the standard for HTTP._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
