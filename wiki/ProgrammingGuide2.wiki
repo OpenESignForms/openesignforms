@@ -1580,20 +1580,7 @@ When you need to send data to another system (integration of applications), use 
 
 http://open.esignforms.com/images/HowToGuidesWiki/HTTPSendAction.png
 
-  * For *Method* choose the HTTP method to send the data to the specified URL, either a GET or a POST. In general, use POST unless a GET is all that you can use as GET requests will generally record all of your data parameters into web server logs that may not be secure if the data you are sending should be secure.
-  * For *Max attempts* enter the number of times to attempt to send the data. Each attempt is recorded, including both the request sent and the response received. If the attempt is considered a success, no further attempts will be made.  If the attempt is not considered a success, it will try again if you specify a value greater than 1.
-  * For *Retry (minutes)* select the number of minutes that should pass before a retry is attempted. This only has meaning if *Max attempts* is greater than 1.
-  * For *Limit successful HTTP status codes* enter one or more numbers (standard HTTP status codes) separated by semicolons (;) that must be returned by the URL to indicate a successful send. Note that '200' is the normal HTTP status for a successful request. Leave this field blank if the HTTP status code should be ignored.
-  * For *Purpose/reason spec* enter a literal and/or field specification that explains why the HTTP Send is taking place. It's used for logging.
-  * For *Match type* select the type of match to apply to the response returned from the URL to determine if it was a successful request. 
-    * The match type *Anything* means that any response would indicate a success (this is not recommended unless you can rely on the HTTP status codes instead). 
-    * *Must contain* means that the response must contain the associated value somewhere in the response to be considered successful.
-    * *Must not contain* means that the response must not contain the associated value anywhere in the response to be considered successful.
-    * *Must start with* means that the response must start with the associated value to be considered successful.
-    * *Must not start with* means that the response must not start with the associated value to be considered successful.
-    * *Must match regular expression* means that the [http://docs.oracle.com/javase/tutorial/essential/regex/ Java regular expression] must find a match in the response to be considered successful.
-    * *Must not match regular expression* means that the [http://docs.oracle.com/javase/tutorial/essential/regex/ Java regular expression] must not find a match in the response to be considered successful.
-  * For *Successful response it matches this value* specify a literal string (or a regular expression if the match type is for a regular expression) to apply based on the selected match type. This is generally a value that is included in the response that indicates it was successfully received.
+  * For *URL* specify the URL that will accept your data. It must begin with `http://` (data is in the clear over the Internet) or `https://` (data will be encrypted over the Internet), then have the server domain name and optional port number, along with any path specifiers. Alternatively, you can start with `${urlspec}` that expands to the URL. You can even include some hard-coded name-value params with optional field specs.  A typical URL looks like `https://open.esignforms.com/demo/HttpVariableTester.jsp`.  Note that every deployment has just such an URL available using your deployment's server name and application name. You can use this when testing as it will echo back all of the data it receives and can be used to help ensure you are sending the data you expect. If your URL needs to change based on Test versus Production modes, we recommend using a propertyset to configure the URL so that when in test mode it will use the same property name with `_TEST` added as a suffix. You can then set the HTTP Send Action's URL to something like `${property:MyConfig.URL}` which will expand at run-time (and when in test mode, it will automatically find property `MyConfig.URL_TEST` if you have defined it).
 
 _(See below for more information about specifying the name-value pairs to send.)_
 
