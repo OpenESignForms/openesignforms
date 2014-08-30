@@ -29,6 +29,14 @@ Each transaction template shows the "Start URL" which is used to start a new tra
   * `ESFTEST=Yes` means that you want to start a Test transaction. We recommend using this during all integration testing.  If you omit this parameter, it will be assume to be a Production transaction, but you can send it as `ESFTEST=No` to make it explicit.
   * `ESFLIKEPRODUCTION=Yes` is only examined if `ESFTEST=Yes` is also included and controls whether the Test transaction should run using any Test versions found or not. When set to `Yes` it means even though it is a Test transaction, it will only select Production-level versions. We recommend setting this to `Yes` on your final integration tests to ensure it is working as expected using only Production-level versions. If this param is not present, it is assumed to have a `No` value.
 
+== Initial data ==
+
+When integrating, you may pass name-value params, typically via an HTTPS POST, that will automatically prefill fields of the same name as the param names in your documents.  If the names do not match, you will need to set up custom logic to map the document fields from the transaction data values that hold all of the initial data submitted.  Each HTTPS POST name-value is stored in the transaction data regardless. See [ProgrammingGuide#Document_page_editor_cheatsheet the document page editor cheatsheet] for details on the syntax for referencing transaction data fields.
+
+You may also pre-populate file upload fields by sending the file contents, Base64-encoded (and then URL encoded). Assuming the file upload field in your document is named MyFile, you can submit a param named MyFile with the file's base-64 encoded data as the value.  You may also provide the file name to use via the suffix `__fileName` and the file's MIME/content type via the suffix `__fileMimeType`.  So, in this example, you could also send the param `MyFile__fileName=ExampleFile.pdf` and param `MyFile__fileMimeType=application/pdf` to indicate it is a PDF file.  If no file name is provided, the param name of the file will be used, and if no mime type is provided, it will be assumed to be `application/octet-stream`.
+
+_Note: The name and value of all params must be [URLEncodingNameValueParams URL encoded] as per the standard for HTTP._
+
 == From an email you send out, inline process ==
 
 If you already have an email generating system, or you manually send them out, you can start a new transaction by embedding the transaction template's "Start URL" in the email you send out.  When external users click on your link, it will take them to your Open eSignForms site where they can complete and sign as necessary.
@@ -130,6 +138,6 @@ For example, assuming a report named `API/ContactReport` in a customer webapp na
 
 When possible, we recommend using an HTTPS POST instead of a simple URL/link like above to ensure none of the parameters are recorded in server logs. With an HTTPS POST, you use the same name-value pairs, just sent as the body of the request instead of on the URL/link.
 
-_Note: The value of all params must be [URLEncodingNameValueParams URL encoded] as per the standard for HTTP._
+_Note: The name and value of all params must be [URLEncodingNameValueParams URL encoded] as per the standard for HTTP._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
