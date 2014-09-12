@@ -1475,9 +1475,9 @@ http://open.esignforms.com/images/HowToGuidesWiki/setFieldValueAction.png
     * *Compress whitespace* will convert multiple whitespace characters into a single space. This is most useful when concatenating fields, some of which may have not value, so extra spaces are removed.
     * *Strip whitespace* will remove all whitespace characters.
     * *Trim whitespace* will remove all leading and trailing whitespace characters.
-    * *Numbers only* will remove all characters that are not digits.
-    * *Alphabetic only* will remove all characters that are not letters.
-    * *Alphanumeric only* will remove all characters tat are not letters or numbers.
+    * *Numbers only* will remove all characters that are not digits or whitespace.
+    * *Alphabetic only* will remove all characters that are not letters or whitespace.
+    * *Alphanumeric only* will remove all characters that are not letters, numbers or whitespace.
     * *First character only* will remove all characters after the first. This is a shorthand for using a substring offset of 0 with a length of 1.
   * *Subtring offset* is used to extract a portion of the value. The offset specifies the number of characters to skip from the beginning. Leave blank to keep the entire value. Specify 0 to include from the beginning.
   * *Substring length* (appears only if a substring offset is specified) is the number of characters after skipping the specified number of offset characters. If blank (or number less than 1 or longer than the actual number of remaining characters), it will return all characters after the offset characters are skipped. In the string "1234567890" if the offset is 5 and the length is 4, you end u with "6789".
