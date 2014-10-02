@@ -649,6 +649,7 @@ This is the best place to put document-specific extra data validations. Just sel
     * *Party review document* occurs when a party has filled out the form or is signing and clicks the review button. The party cannot continue to review the completed document if any action produces an error or warning message.
     * *Party completed document* occurs when a party completes a given document. The party cannot complete the document if any action produces an error or warning message.
     * *Party view completed document* occurs when a party views a document that has already been completed.
+    * *Party saved document* occurs when a party clicks the 'Save' button, such as updating a document via the ESF_reports_access party when accessing the transaction from a report.
   * In *Limit only to pages (optional)* check any pages where the actions should only fire when the selected event(s) occur, but also only when the specified page is being processed. If you do not select any, then it will not matter which page is involved.
   * In *Limit only to parties (optional)* check any parties if the actions should only fire when the selected event(s) occur, but also only when the specified party is processing the document. If you do no select any, then it will not matter which party is involved.
   * In *Actions* you can drag to re-order existing actions or click the *Delete* button to remove it.
