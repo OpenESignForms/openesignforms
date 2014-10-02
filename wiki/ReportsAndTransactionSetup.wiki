@@ -79,6 +79,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/reportTemplate.png
   * In *Description* enter a short description of this report.
   * In *Comments* enter any information you want to remember about this report.
   * In *Tran templates* select one or more transaction types to be included this report. Of course, for the report to run as expected, the report fields must make sense across the various transaction types. Any report field that is not mapped by the transaction's package will be blank in the report.
+  * In *Limit access to selected documents* select all documents that should be made available to those running the report. By default, no limits are in place, so all documents in the selected transactions are made available. However, there may be times when a report for a particular set of users must limit access to only a subset of documents, and this allows such a limit to be configured.
 
 The report template has standard List, View Details, Create Like, Update and Delete permissions under *Permissions to access this report template*.
 
@@ -94,6 +95,8 @@ It also has special permissions related to the reports that are specified under 
   * *View/download document snapshots* specifies who can see and download document snapshots.
   * *View/download data and uploaded files* specifies who can see and download data snapshots, which includes the data values stored in documents as well as files uploaded to a given field.
   * *Download complete transaction archives* specifies who can download a complete transaction archive.
+  * *View live documents in a transaction* specifies who can view "live" documents in a transaction. By default, users only are allowed to see completed documents by each party (document snapshots created as each party completes a document). A "live" view means it will render the documents as they currently are.  Users with this permission will use the special ESF_reports_access party to view the documents. All document access is logged in the transaction's audit trail.
+  * *Update live documents in a transaction* specifies who can update "live" documents in a transaction. By default, each party is able to update documents and fields based on their configuration when the party is active. A "live" view means it will render the documents as they currently are.  Users with this permission will use the special ESF_reports_access party to update the documents. All document access is logged in the transaction's audit trail. This feature is designed for transactions that are to be treated more like "records" that are updated repeatedly rather than for transactions that are processed by parties. However, it may be used to also correct data in a live transaction before subsequent parties access it. If a package doesn't define this party, one will be auto-created with view only access to all documents. You must specifically give the special ESF_reports_access party the ability to play an updating party in order to change any data. You may also define the party on a document to give it fine control over the fields and validation that take place for updating via the reports.
 
 Click on the *[#Fields_in_report Fields in report]* button http://open.esignforms.com/images/HowToGuidesWiki/fieldsInReportButton.png to configure the report fields that will appear in the custom report.
 
