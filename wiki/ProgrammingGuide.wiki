@@ -367,6 +367,8 @@ http://open.esignforms.com/images/HowToGuidesWiki/partyInDocumentList.png
 
 This shows all parties defined in the document. You only need to define parties who are expected to fill out portions of the document.  You do not need to specify any parties who will only view the document.  You can drag to reorder the parties listed so that they appear in the expected order that the document will be completed.
 
+Use the special party ESF_reports_template to define special access for updating this document via the reports when the report is configured to allow such updating.
+
 Click on a party to change its configuration:
 
 http://open.esignforms.com/images/HowToGuidesWiki/partyEditor.png
@@ -1201,13 +1203,13 @@ Most parties, of course, are [#Parties_to_document defined in the document].
 
 The main purposes for a party template defined in a library are 1) to create a "standardized" name for your parties so that as you create multiple documents, you tend use the same name for the same roles across those documents; and 2) if you configure a party in a package as a [UserGuide#To_Do 'To Do'] party, then you can define the [SystemAdminGuide#Groups group] that represents members of the party so that any member in the group can process transactions when the party is active.
 
-If the package party is defined for To Do purposes, specify the *To Do Group* that represents the users who will be able to place this role. Also, if you support multiple companies, each branding library is able to set their own group to play the given role. So if you have an "Approver" role, you can set it to be one group for one company, but another group for the other company.
+If the package party is defined for To Do purposes, specify the *Production To Do Group* and *Test To Do Group* that represents the users who will be able to play this role. Also, if you support multiple companies, each branding library is able to set their own group to play the given role. So if you have an "Approver" role, you can set it to be one group for one company, but another group for the other company. The production versus test settings allow different users to play the role based on whether doing a production or test transaction.
 
 ===To Do configuration===
 To use To Do, do the following:
 
-  # Check if there there is an existing Group of users (listed under Access control) defined that represents the people who will play the role of the party? If not, create one like the most similar existing group and update the users who belong in it.
-  # Inside the Library, under the Parties, create a new Party and set the "To Do Group" to the group determined in step 1.
+  # Check if there there is an existing Group of users (listed under Access control) defined that represents the people who will play the role of the party. If not, create one like the most similar existing group and update the users who belong in it.
+  # Inside the Library, under the Parties, create a new Party and set the "Production To Do Group" and "Test To Do Group" to the group determined in step 1.
   # In the Package, select the party listed in the package that needs access to the To Do. Then set its "To Do Party EsfName" to be the party created in step 2.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
