@@ -656,6 +656,7 @@ This is the best place to put document-specific extra data validations. Just sel
   * Click the *Add action* button to add the actions you'd like to occur when the specified event arises, possibly limited based on the documents and parties selected.  
     * Choose *Set field action* to change any field values in your documents. 
     * Choose *Calculate field value* to calculate a value (add, subtract, multiply, divide). 
+    * Choose *Calculate date value* to calculate a date by adding a positive (future) or negative (past) number of days, weeks, months or years. 
     * Choose *Calculate monthly payment* to calculate a monthly payment amount based on the loan amount, term in months, and interest rate (APR).
     * Choose *Show error/message* to display a message or report an error to the user (mostly used during the *Party review document* and *Party completed page* events).
     * Choose *Change File field access* to specify block or make optional the need for a party to view/download the files associated with this field. Of course, if the party is supposed to upload files, this has no bearing.
@@ -1333,6 +1334,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
   * Click the *Add action* button to add the actions you'd like to occur when the specified event arises, possibly limited based on the documents and parties selected.  
     * Choose *Set field action* to change any field values in your documents. 
     * Choose *Calculate field value* to calculate a value (add, subtract, multiply, divide). 
+    * Choose *Calculate date value* to calculate a date by adding a positive (future) or negative (past) number of days, weeks, months or years. 
     * Choose *Calculate monthly payment* to calculate a monthly payment amount based on the loan amount, term in months, and interest rate (APR).
     * Choose *Send email* to send an email. You only need to send emails that are not invitations for a party. Party invitations are specified in the package party configuration.
     * Choose *HTTP send data* to send data to another system via HTTP(S) GET/POST.
