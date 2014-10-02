@@ -1320,6 +1320,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
     * *Party review document* occurs when a package party has filled out the form or is signing and clicks the review button. The party cannot continue to review the completed document if any action produces an error or warning message.
     * *Party completed document* occurs when a package party completes a given document. The party cannot complete the document if any action produces an error or warning message.
     * *Party view completed document* occurs when a package party views a document that has already been completed.
+    * *Party saved document* occurs when a party clicks the 'Save' button, such as updating a document via the ESF_reports_access party when accessing the transaction from a report.
     * *Party completed* occurs when a package party complete all documents in the package that are assigned to him or her.
     * *Party transferred* occurs if a user transfers a given package party to another person through the transaction details page in reports and general transaction search. This occurs when a transaction is started and it turns out there was an error, such as invalid email address, or you find another person actually needs to process it.
     * *Transaction started* occurs when the transaction is first started.
