@@ -888,6 +888,8 @@ The button message set specifies optional package and document footers, the butt
 Under the *Package buttons* section:
   * *Continue button label (has documents to do)* and *Tooltip to show the party* define the continue button when a party has a list of documents that need to be processed.
   * *Continue button label (all documents completed)* and *Tooltip to show the party* define the continue button when a party has completed all documents and can be used to show the first document.
+  * *Edit button label (reports access)* and *Tooltip to show the party* define the edit button that only appears if accessing the transaction as the ESF_reports_access party (update access from a report).
+  * *View button label (document complete)* and *Tooltip to show the party* define the view button that only appears if returning to the package after having completed some of the documents. It also appears when accessing the transaction as the ESF_reports_access party (view access from a report).
   * *Delete button label (only if no signatures and party authorized)* and *Tooltip to show the party* define the transaction delete button that only appears if no signature have been applied and the party defined in the package has been enabled to delete it.
   * *Return/not-completing button label (only if a not-completing URL is defined)* and *Tooltip to show the party* define the button label the party can press if they elect not to complete the documents at this time. It is only present if the party in the package has such an URL defined. It can be used when integrating a document process flow so that if they decide not to sign they can be returned to a page where you'll know they did not complete the documents.
   * *Download PDF button label (only when party completed)* and *Tooltip to show the party* define the download button that bundles all completed documents in a PDF.
@@ -900,6 +902,7 @@ Under the *Document buttons* section is a common button shown to a parties:
 Under the *Document buttons (party can fill/edit)* section are the buttons shown to a party when they can fill, edit and/or sign a document:
   * *Next page button label* and *Tooltip to show the party* define the next page button to go to the next page in a multi-page document.
   * *Previous page button label* and *Tooltip to show the party* define the previous page button to go to the previous page in a multi-page document.
+  * *Save button label* and *Tooltip to show the party* defines the save button that allows a party to save the data they've entered so far without attempting to go into review mode (and without doing data validations). This button is also shown for update access to the ESF_reports_access party when accessing from a report.
   * *Continue to review button label*, *Tooltip to show the party* and *Message to show the party* define the button when the next step is to review the finalized document that contains all their updates.
 
 === Document buttons (party review after fill/edit) ===
