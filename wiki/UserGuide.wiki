@@ -35,7 +35,7 @@ Contact your system administrator if you need a new account so you can login, ca
 
 A typical login page looks like this:
 
-http://open.esignforms.com/images/HowToGuidesWiki/loginPage.png
+https://open.esignforms.com/images/HowToGuidesWiki/loginPage.png
 
 Your company's logo will appear at the top, along with your company name in the heading.
 
@@ -47,7 +47,7 @@ If you have forgotten your password, click on the *[#Forgot_your_password Forgot
 
 After you login, at the bottom of the web page, it will show when you logged in, when you previously logged, as well as the time when your browser last communicated with the server:
 
-http://open.esignforms.com/images/HowToGuidesWiki/loginTimeFooter.png
+https://open.esignforms.com/images/HowToGuidesWiki/loginTimeFooter.png
 
 You may want to check the previous login time and IP address to see if any unauthorized logins to your account took place. Also, most user sessions last about 30 minutes, so if your browser has not sent anything in that amount of time, your session will terminate, you will lose any unsaved work, and you'll have to login again. Clicking on anything in the application will likely communicate with the server and keep your session active.
 
@@ -55,7 +55,7 @@ When you login, you will see a welcome screen that includes links you may be int
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Logoff http://open.esignforms.com/images/HowToGuidesWiki/logoffIcon.png =
+= Logoff https://open.esignforms.com/images/HowToGuidesWiki/logoffIcon.png =
 
 Whenever you are done using the application, you should logoff. This not only protects access to your account, but it also frees server resources. If you just close your browser, go to another web site (URL) or remain idle for a long period of time, the web server will eventually time out your session.
 
@@ -69,7 +69,7 @@ When you login, the mode and tabs you had open when you last logged off will be 
 
 The current mode is displayed first in the black menu bar. It's a drop down list so click on it to change modes.
 
-http://open.esignforms.com/images/HowToGuidesWiki/modeList.png
+https://open.esignforms.com/images/HowToGuidesWiki/modeList.png
 
 == PRODUCTION: Live mode ==
 
@@ -91,11 +91,11 @@ In *TEST: Development* mode, the header and footer backgrounds will change to a 
 
 This is the mode suitable to the programmer or tester of new documents and process flows before they are put into production. 
 
-= To Do http://open.esignforms.com/images/HowToGuidesWiki/toDoIcon.png =
+= To Do https://open.esignforms.com/images/HowToGuidesWiki/toDoIcon.png =
 
 Click on *To Do* from the main navigation bar to shows all active transactions that are queued for you to work on.
 
-http://open.esignforms.com/images/HowToGuidesWiki/toDoQueue.png
+https://open.esignforms.com/images/HowToGuidesWiki/toDoQueue.png
 
 All work is shown grouped by the type of transaction. Several column headers are fixed:
   * *Party* is the party name for the current processing step of the transaction.
@@ -122,11 +122,11 @@ To use To Do, do the following:
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Start a transaction http://open.esignforms.com/images/HowToGuidesWiki/startTransactionIcon.png =
+= Start a transaction https://open.esignforms.com/images/HowToGuidesWiki/startTransactionIcon.png =
 
 To start a transaction, click the *Start transaction* menu to list transactions you are authorized to start manually.
 
-http://open.esignforms.com/images/HowToGuidesWiki/startTransactionMenuListing.png
+https://open.esignforms.com/images/HowToGuidesWiki/startTransactionMenuListing.png
 
 Click on the transaction name to start that transaction using your currently selected mode. A new window will pop up to allow you to work on that transaction. Close that window when you are done. If the transaction allows it, you can delete it from the package's document list using the *Delete this transaction* button. The package document list is either the first page you see, or while in edit mode, you can click on the *Return to the document list*  button to show it.
 
@@ -142,7 +142,7 @@ There are instances where using the sophisticated Web 2.0 interface is not suita
 
 If you have started a transaction, but never submitted it, it will be listed at the top in a To Do box so you can resume where you left off.
 
-http://open.esignforms.com/images/HowToGuidesWiki/StartTranHTMLPage.png
+https://open.esignforms.com/images/HowToGuidesWiki/StartTranHTMLPage.png
 
 You will still have to login, but you will be presented with a list of transactions you can you start.
 
@@ -152,7 +152,7 @@ You can also add additional start links for testing purposes by adding the param
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Reports http://open.esignforms.com/images/HowToGuidesWiki/reportsIcon.png =
+= Reports https://open.esignforms.com/images/HowToGuidesWiki/reportsIcon.png =
 
 To list reports you are allowed to run, click on the Reports menu item. Click on one listed to run that report.
 
@@ -172,7 +172,7 @@ Reports allow you to view the data stored in documents in your transactions, as 
 
 Below is a typical search and filtering control for reports. 
 
-http://open.esignforms.com/images/HowToGuidesWiki/reportSearch.png
+https://open.esignforms.com/images/HowToGuidesWiki/reportSearch.png
 
 The search will select production transactions if your current mode is *PRODUCTION: Live*, otherwise it will list test transactions.  You can also search for transactions based on who started them, or who was a party to them.
 
@@ -217,7 +217,7 @@ Generally, you can hover your mouse over such a field for a tips reminder. If it
 
 Below is a typical detail screen for a transaction:
 
-http://open.esignforms.com/images/HowToGuidesWiki/reportTranDetail.png
+https://open.esignforms.com/images/HowToGuidesWiki/reportTranDetail.png
 
   * The upper left field will either be *Test Transaction* if it's a test transaction, or *Production Transaction* if it's a production transaction. Under it is the transaction template name, or type.
   * The *Package* field shows the name of the package defined for the transaction template.
@@ -258,7 +258,7 @@ Note that for those transactions that fully skip documents (meaning all parties 
 
 You can use the report's transaction activity log to follow every step the transaction has taken:
 
-http://open.esignforms.com/images/HowToGuidesWiki/reportTranActivityLog.png
+https://open.esignforms.com/images/HowToGuidesWiki/reportTranActivityLog.png
 
 Select the *From date* and *To date* to narrow the range, or leave both blank to include the oldest through the newest records.  Check *General* to include general log records, those that relate to the basic process flow. Check *Basic trace* to include more details about the processing steps. And check *Detail trace* to include the most details about the processing steps.  The latter two are particularly important when programming test transactions to determine what may be wrong with your configuration.  You may also search for a particular string in the *Log record contains* field. Click the *Find matching* button to list all matching log records related to the transaction.
 
@@ -268,7 +268,7 @@ Select the *From date* and *To date* to narrow the range, or leave both blank to
 
 You can see the HTTP send requests and responses by clicking on the *Vew HTTP Send* button from the transaction detail page.
 
-http://open.esignforms.com/images/HowToGuidesWiki/HTTPSendLog.png
+https://open.esignforms.com/images/HowToGuidesWiki/HTTPSendLog.png
 
 Each request and response is listed, with the response tied under the request.  Click on a row to view the request information and parameters, or the response values.  The request is considered completed when it gets a successful response or has used up all of its attempts with failure responses.
 
@@ -452,7 +452,7 @@ If you download the data associated with a document, you will receive something 
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Tran search http://open.esignforms.com/images/HowToGuidesWiki/generalTranSearchIcon.png =
+= Tran search https://open.esignforms.com/images/HowToGuidesWiki/generalTranSearchIcon.png =
 
 The general transaction search feature is very similar to [#Reports Reports], except that is has fixed fields in the listing instead of custom field selections. This feature provides full access to the transaction and thus has less control than with custom reports. It is recommended this feature only be given to system administrators or other power users who have full control over the transactions they can list. 
 
@@ -464,7 +464,7 @@ This view provide basic control and monitoring of transactions that a user has L
 
 Below is a typical search and filtering control for general transaction search. 
 
-http://open.esignforms.com/images/HowToGuidesWiki/generalTranSearch.png
+https://open.esignforms.com/images/HowToGuidesWiki/generalTranSearch.png
 
   * If your current mode is *PRODUCTION: Live* then you will search for production transactions, otherwise it will search for test transactions.
   * Select one or more transaction types you'd like to list (only those transactions you are allowed to List are shown).
@@ -493,15 +493,15 @@ See [#Report_transaction_activity_log report transaction activity log] for detai
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Change my password http://open.esignforms.com/images/HowToGuidesWiki/changeMyPasswordIcon.png =
+= Change my password https://open.esignforms.com/images/HowToGuidesWiki/changeMyPasswordIcon.png =
 
 To change your password, as well as the forgotten password question and answer, you will be presented with this view:
 
-http://open.esignforms.com/images/HowToGuidesWiki/changeMyPasswordStep1.png
+https://open.esignforms.com/images/HowToGuidesWiki/changeMyPasswordStep1.png
 
 Enter your current password, then click the *Verify my current password* button to see the set password view:
 
-http://open.esignforms.com/images/HowToGuidesWiki/changeMyPasswordStep2.png
+https://open.esignforms.com/images/HowToGuidesWiki/changeMyPasswordStep2.png
 
 Enter your new password or phrase two times to ensure you have typed the expected value. The password will be masked like a regular password field and is a phrase that can be a mix of letters, numbers, spaces and special characters. It is case sensitive. We recommend longer pass phrases, such as 10 characters or more, over shorter ones, even if the shorter one seems more cryptic.
 
@@ -513,23 +513,23 @@ _Note that an email will be sent to you every time your password is changed, so 
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
-= Forgot your password http://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordLink.png =
+= Forgot your password https://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordLink.png =
 
 If you have forgotten your password, shame on you! But assuming you set up a useful question and answer, you should be able to choose a new password automatically.
 
 From the login page, click the *Forgot your password?* link to show this page:
 
-http://open.esignforms.com/images/HowToGuidesWiki/requestPasswordReset.png
+https://open.esignforms.com/images/HowToGuidesWiki/requestPasswordReset.png
 
 Type in the email address you use to login, then click the *Send email to reset my password* button. 
 
 Then, check your email for a unique link that is sent to you to continue with the reset process. This step prevents people who do not control your email account from even attempting to reset your password. You should receive an email like the following:
 
-http://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordEmail.png
+https://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordEmail.png
 
 Click on the link in the email and you will be presented with the question you set up when you set your password like the following:
 
-http://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordQuestion.png
+https://open.esignforms.com/images/HowToGuidesWiki/forgotPasswordQuestion.png
 
 Type in the answer to your question. Note that it will be displayed, so do this in private. Unlike a password, the answer is _not_ case sensitive and non-alphanumeric characters (letters and numbers) are ignored. Click the *Continue* button.
 
@@ -541,7 +541,7 @@ Assuming you gave the correct answer, you will then be prompted to set a new pas
 
 To set your password, as well as the forgotten password question and answer, you will be presented with this page:
 
-http://open.esignforms.com/images/HowToGuidesWiki/setMyPassword.png
+https://open.esignforms.com/images/HowToGuidesWiki/setMyPassword.png
 
 Enter your password two times to ensure you have typed the expected value. The password will be masked like a regular password field and is a phrase that can be a mix of letters, numbers, spaces and special characters. It is case sensitive. We recommend longer pass phrases, such as 10 characters or more, over shorter ones, even if the shorter one seems more cryptic.
 
@@ -559,7 +559,7 @@ In order to keep your user account safe should you stop using it, or if you just
 
 If you click on something and see the following:
 
-http://open.esignforms.com/images/HowToGuidesWiki/sessionExpired.png
+https://open.esignforms.com/images/HowToGuidesWiki/sessionExpired.png
 
 it means your session expired due to lack of recent usage. Note any changes you may have made (if they were not already saved, they will be lost) and click on the red box to continue and [#Login login again].
 
@@ -571,7 +571,7 @@ It is possible that while you were logged in, your application was restarted, su
 
 If you click on something and see the following (or any other red box error):
 
-http://open.esignforms.com/images/HowToGuidesWiki/communicationProblem.png
+https://open.esignforms.com/images/HowToGuidesWiki/communicationProblem.png
 
 it means your session was terminated unexpectedly. Note any changes you may have made (if they were not already saved, they will be lost) and click on the red box to continue and [#Login login again].
 
@@ -583,7 +583,7 @@ It is possible for errors to occur, including various user-errors such as access
 
 When such errors occur, you will see a page like this:
 
-http://open.esignforms.com/images/HowToGuidesWiki/ErrorPage.png
+https://open.esignforms.com/images/HowToGuidesWiki/ErrorPage.png
 
 Under the logo is the general error that occurred, such as "request not found" (bad URL generally), "invalid request", "request not allowed" (no permission), or an expected application error.
 
