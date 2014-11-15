@@ -595,6 +595,19 @@ NETWORKING_IPV6=no
 inet_protocols=ipv4
 }}}
 
+=== Other considerations ===
+
+If your installation reports errors like the following:
+{{{
+su: PAM adding faulty module: /lib64/security/pam_fprintd.so
+su: PAM unable to dlopen(/lib64/security/pam_fprintd.so): /lib64/security/pam_fprintd.so: cannot open shared object file: No such file or directory
+}}}
+
+You may want to run the command to suppress them: 
+{{{
+authconfig --disablefingerprint --update
+}}}
+
 = Upgrading to new releases =
 
 In general, all new release need the following pattern of updates from the release code to the corresponding deployment location.
