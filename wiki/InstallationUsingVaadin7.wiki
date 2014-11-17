@@ -126,7 +126,7 @@ You are free to setup Tomcat's keystore for HTTPS/SSL using any standard scheme.
 
   # Create the Java keystore that Tomcat will use to control SSL. In this case, the keystore file name is 'tomcatkeys'.  You must use the alias name 'tomcat'.:
 {{{    
-keytool -genkeypair -keyalf RSA -keysize 2048 -alias tomcat -keystore tomcatkeys
+keytool -genkeypair -keyalg RSA -keysize 2048 -alias tomcat -keystore tomcatkeys
 }}}
     When prompted, you first enter the web site domain name, such as `esign.example.com` along with the other information requested. Choose a good password for the keystore, and then set the keystore file name and password in the Tomcat's `conf/server.xml`.
   # Generate the CSR to request your SSL certificate from your favorite CA:
