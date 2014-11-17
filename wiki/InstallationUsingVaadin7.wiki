@@ -121,6 +121,25 @@ export JAVA_OPTS
 
   * `keys` - We put our Tomcat SSL certificate and keys in this folder. When upgrading, be sure to copy over this folder that matches the location of specified in the SSL entry's Connector of server.xml attribute 'keystoreFile'.
 
+===Tomcat's Java Keystore for HTTPS/SSL===
+You are free to setup Tomcat's keystore for HTTPS/SSL using any standard scheme.  But here are a few key commands you that will get this going if you are not familiar with the procedure.
+
+  # Create the Java keystore that Tomcat will use to control SSL. In this case, the keystore file name is 'tomcatkeys'.  You must use the alias name 'tomcat'.:
+{{{    
+keytool -genkeypair -keyalf RSA -keysize 2048 -alias tomcat -keystore tomcatkeys
+}}}
+    When prompted, you first enter the web site domain name, such as `esign.example.com` along with the other information requested. Choose a good password for the keystore, and then set the keystore file name and password in the Tomcat's `conf/server.xml`.
+  # Generate the CSR to request your SSL certificate from your favorite CA:
+{{{
+keytool -certreq -alias tomcat -keyalg RSA -file certreq.csr -keystore tomcatkeys
+}}}
+    You can then submit the contents of `certreq.csr` when ordering your SSL certificate.
+  # Once your CA has issued your certificate, install it into the keystore:
+{{{
+keytool -import -alias tomcat -trustcacerts -file YOURCERT.crt -keystore tomcatkeys
+}}}
+  # Restart Tomcat after you have updated Tomcat's `conf/server.xml` for the HTTPS connector's keystore and password.
+
 ==Eclipse==
 
 Install the latest version of [http://www.eclipse.org] Eclipse IDE for Java EE] developers.  The version tested here is Kepler (4.3) Windows x64. We extract all to c:\Program Files.  We set our workspace to c:\project.
