@@ -73,7 +73,7 @@ export JAVA_OPTS
     <Connector port="8080" protocol="org.apache.coyote.http11.Http11NioProtocol"
                connectionTimeout="20000" acceptorThreadCount="2" URIEncoding="UTF-8" redirectPort="443" />
 
-    <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol" sslEnabledProtocols="TLSv1,TLSv1.1,TLSv1.2"jjj
+    <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
                connectionTimeout="20000" acceptorThreadCount="2" URIEncoding="UTF-8"
                maxThreads="100" scheme="https" secure="true"
                compression="on" compressableMimeType="text/html,text/xml,text/plain,application/xml,application/json,application/javascript,application/pdf"
@@ -98,7 +98,7 @@ export JAVA_OPTS
                 SSL_RSA_WITH_RC4_128_MD5,
                 TLS_RSA_WITH_CAMELLIA_256_CBC_SHA,
                 TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA"
-               clientAuth="false" sslProtocol="TLS" />
+               clientAuth="false" sslEnabledProtocols="TLSv1,TLSv1.1,TLSv1.2" />
 
 <!--
     <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
