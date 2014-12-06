@@ -12,9 +12,9 @@ These instructions are pretty high level right now, so we'll want to nail it dow
 
 = Details =
 
-==Java 7==
+==Java 8==
 
-We start by installing the latest version of [http://www.oracle.com/technetwork/java/javase/downloads/ Java 7 SE] available. It appears that these days you just need the JRE, but you may find the JDK useful if you need to generate keystores and the like. The version tested here was 7.0.24.
+We start by installing the latest version of [http://www.oracle.com/technetwork/java/javase/downloads/ Java 8 SE] available. It appears that these days you just need the JRE, but you may find the JDK useful if you need to generate keystores and the like. The version tested here was 8.0.25. The class files are still compiled targeting Java 7, but our runtime is Java 8.
 
 Because of the sophisticated encryption we use, you'll need the Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files installed in your jre/lib/security folder. Note that encryption entails issues with the U.S. government's misguided and impractical export rules. For Windows, be careful you may have 32-bit and 64-bit JREs installed and you'll want to update both as much depends on which Eclipse uses when it starts Tomcat, of if you run Tomcat directly yourself.  You can download these files from the Java download site (often at the bottom of the page).
 
@@ -40,12 +40,12 @@ If you find that scripts won't run on Linux or via Cygwin's shell, you may need 
 
 ==Apache Tomcat==
 
-For testing, we generally run Tomcat from Eclipse, so it's best to download and install Tomcat next. If you plan on running Tomcat as a Windows service, there's a special installer for it. But we just download the ZIP file and really only run it via Eclipse, extracting to C:\. The version tested here was 7.0.42. (There is a bug in Tomcat prior to the 7.0.21 release that caused errors in the import of esf.js file because of the new javascript mime type standard that changed from text/javascript to application/javascript.)
+For testing, we generally run Tomcat from Eclipse, so it's best to download and install Tomcat next. If you plan on running Tomcat as a Windows service, there's a special installer for it. But we just download the ZIP file and really only run it via Eclipse, extracting to C:\. The version tested here was 8.0.15. Tomcat 7 may be used, but it's not recommend if you enable Vaadin server push.
 
 On Tomcat version upgrades, we basically make the following changes on Linux:
   * `bin/startup.sh` - add the following before the last 'exec' line (only include the debug info if you remotely debug your Tomcat, and your memory values will need to match your server):
 {{{
-JAVA_OPTS="-server  -Xdebug -Xrunjdwp:transport=dt_socket,address=29090,server=y,suspend=n -Xms500m -Xmx500m -XX:PermSize=200m -XX:MaxPermSize=200m -Desf.deploybase=$ESF_DEPLOYMENT_BASE"
+JAVA_OPTS="-server -Xms500m -Xmx500m -XX:MetaspaceSize=200m -XX:MaxMetaspaceSize=200m -Desf.deploybase=$ESF_DEPLOYMENT_BASE"
 export JAVA_OPTS
 }}}
 
@@ -68,9 +68,17 @@ export JAVA_OPTS
   <user username="admin" password="PUT-SECURE-PASSWORD-HERE" roles="manager-gui"/>
 }}}
 
+  * `conf\catalina.properties` - Not required, but may speed up startup times, add to the `tomcat.util.scan.StandardJarScanFilter.jarsToSkip` setting: 
+{{{
+vaadin-push-*.jar,vaadin-server-*.jar,vaadin-sass-compiler-*.jar,vaadin-themes-*.jar,vaadin-slf4j-jdk14-*.jar,vaadin-shared-*.jar,\
+json-*.jar,flute-*.jar,guava-*.jar,cssparser-*.jar,streamhtmlparser-jsilver-*.jar,atmosphere-runtime-*.jar,jsoup-*.jar,sac-*.jar,\
+ButtonGroup-*.jar,confirmdialog-*.jar,dragdroplayouts-*.jar,animator-*.jar,popupbutton-*.jar,resetbuttonfortextfield-*.jar,tableexport-for-vaadin-*.jar,vaadinckeditor*.jar,\
+bcprov-jdk15on-*.jar,bcpkix-jdk15on-*.jar,libphonenumber-*.jar,postgresql-*.jar,poi-*.jar,jempbox-*.jar,pdfbox-*.jar,javax.mail-*.jar,fontbox-*.jar,urlrewritefilter-*.jar
+}}}
+
   * `conf/server.xml` - You can set up as you need, such as if you have an Apache HTTPD server front-end and use the APR, but for a simple stand-alone Tomcat, we make the following changes. Under the "Catalina" `<Service>` entry (of course, if you have SSL, you want to point to your keystore and its password). We also comment our the AJP Connector on port 8009, but you may need it if you put HTTP in front:
 {{{
-    <Connector port="8080" protocol="org.apache.coyote.http11.Http11NioProtocol"
+    <Connector port="8080" protocol="HTTP/1.1"
                connectionTimeout="20000" acceptorThreadCount="2" URIEncoding="UTF-8" redirectPort="443" />
 
     <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
@@ -387,8 +395,8 @@ For Linux deployment servers, we use a layout like this in the home directory fo
   * `~/deployments` contains the `template` folder hierarchy and is used to store the PostgreSQL database per web app deployment (via PostgreSQL's tablespace directive).
   * `~/java` is where we install our Java 7 Runtime Environment, such as jre7u21, and we create a softlink of that to 'jdk1.7' which is referenced in the `profile`. This allows updates to Java by changing where the softlink points. (i.e. `ln -s jdk1.7.0_21 jdk1.7`)
   * `~/postgresql` contains the location where PostgreSQL is installed. It has folders like `bin`, `data92` (where the main db is stored, but each web app's tablespace puts those databases in the `deployments` folder), `ddl`, `logs`, `pg92` (where PostgreSQL installs to) and `postgresql-9.2.4` (were we unzipped PostgreSQL and compiled it).
-  * `~/tomcat` where we unzipped Tomcat into a folder like apache-tomcat-7.0.39, and then we create a softlink from that version to `tomcat7.0` which is referenced in the `profile` script. (i.e. `ln -s apache-tomcat-7.0.39 tomcat7.0`)
-  * `~/wkhtmltopdf_0.11.0` which contains the code to [wkhtmltopdf generate PDFs from HTML]. We then create a softlink of the executable to our `bin` with something like `ln -s ../wkhtmltopdf_0.11.0/wkhtmltopdf-i386 wkhtmltopdf` (command run from the `bin` directory).
+  * `~/tomcat` where we unzipped Tomcat into a folder like apache-tomcat-8.0.15, and then we create a softlink from that version to `tomcat8.0` which is referenced in the `profile` script. (i.e. `ln -s apache-tomcat-8.0.15 tomcat8.0`)
+  * `~/wkhtmltox-0.12.1` which contains the code to [wkhtmltopdf generate PDFs from HTML]. We then create a softlink of the executable to our `bin` with something like `ln -s ../wkhtmltox-0.12.1/bin/wkhtmltopdf wkhtmltopdf` (command run from the `bin` directory).
 
 == Mapping code from the Eclipse project to Linux paths ==
 
@@ -493,8 +501,8 @@ COMMIT
 -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
 -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp -s localhost.localdomain -d localhost.localdomain --dport 143 -j ACCEPT
 -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
-# 29090 is the tomcat debug port
-# -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 29090 -j ACCEPT
+# 9090 is the tomcat debug port
+# -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 9090 -j ACCEPT
 -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
 -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8443 -j ACCEPT
 -A RH-Firewall-1-INPUT -j REJECT --reject-with icmp-host-prohibited
