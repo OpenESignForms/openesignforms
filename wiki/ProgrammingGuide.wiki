@@ -18,7 +18,7 @@
   * [ProgrammingTutorial Point & Click Programming Tutorial]
 
 ==== Table of contents ====
-<wiki:toc max_depth="3" />
+<wiki:toc max_depth="4" />
 
 = Introduction =
 
@@ -624,6 +624,21 @@ For example, these are valid field specifications:
   * `StoresIn${state}` - This combines a literal *StoresIn* with the current document field *state*, assuming the state of Washington would result in something like: *StoresInWA*
   * `${firstName} ${lastName}` - This combines the field *firstName* with a space literal and another field *lastName* to create a full name, resulting in something like: *Steven Gates*
 
+Most fields that supporting entering such a field spec will show `${}` on the right side.
+
+http://open.esignforms.com/images/HowToGuidesWiki/FieldSpecLookupTextField.png
+
+Click on the `${}` to open the field spec lookup tool:
+
+http://open.esignforms.com/images/HowToGuidesWiki/FieldSpecLookup.png
+
+  * Click *Field spec type* to choose if you are looking for a field defined in a document, a property in a property set (regular or HTML properties), serial generator or one of the built-in fields for a document or transaction.
+  * Select *In library* to select the library, when appropriate.
+  * Select *In document* to select the document, when appropriate.
+  * Select *Choose field* to select a field in a document, when appropriate.
+
+Note that the *Field spec to copy/use* will hold the field specification string you can copy and paste as needed, or click the *Append* button to add it to the text field you clicked the `${}` icon in.
+
 ==== Links to advanced configuration options ====
 There are a few data types that allow for customization using Java's built in capabilities, but they are a bit technical. For advanced folks who need them, here are some useful links to documentation that describe these more.
 
@@ -707,7 +722,7 @@ _put your custom styles here_
 
 {{{</style>}}}
 
-==== JavaScript ====
+==== `JavaScript` ====
 You can add your own javascript just by including a standard HTML script tag at the top of your document:
 
 {{{<script type="text/javascript">}}}
