@@ -14,7 +14,7 @@ These instructions are pretty high level right now, so we'll want to nail it dow
 
 ==Java 8==
 
-We start by installing the latest version of [http://www.oracle.com/technetwork/java/javase/downloads/ Java 8 SE] available. It appears that these days you just need the JRE, but you may find the JDK useful if you need to generate keystores and the like. The version tested here was 8.0.25. The class files are still compiled targeting Java 7, but our runtime is Java 8.
+We start by installing the latest version of [http://www.oracle.com/technetwork/java/javase/downloads/ Java 8 SE] available. It appears that these days you just need the JRE, but you may find the JDK useful if you need to generate keystores, monitor the JVM and the like. The version tested here was 8.0.25. The class files are still compiled targeting Java 7, but our runtime is Java 8.
 
 Because of the sophisticated encryption we use, you'll need the Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files installed in your jre/lib/security folder. Note that encryption entails issues with the U.S. government's misguided and impractical export rules. For Windows, be careful you may have 32-bit and 64-bit JREs installed and you'll want to update both as much depends on which Eclipse uses when it starts Tomcat, of if you run Tomcat directly yourself.  You can download these files from the Java download site (often at the bottom of the page).
 
@@ -45,7 +45,7 @@ For testing, we generally run Tomcat from Eclipse, so it's best to download and 
 On Tomcat version upgrades, we basically make the following changes on Linux:
   * `bin/startup.sh` - add the following before the last 'exec' line (only include the debug info if you remotely debug your Tomcat, and your memory values will need to match your server):
 {{{
-JAVA_OPTS="-server -Xms500m -Xmx500m -XX:MetaspaceSize=200m -XX:MaxMetaspaceSize=200m -Desf.deploybase=$ESF_DEPLOYMENT_BASE"
+JAVA_OPTS="-server -Xms500m -Xmx500m -Desf.deploybase=$ESF_DEPLOYMENT_BASE"
 export JAVA_OPTS
 }}}
 
