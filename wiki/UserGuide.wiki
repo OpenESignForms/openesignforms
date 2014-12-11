@@ -152,6 +152,39 @@ You can also add additional start links for testing purposes by adding the param
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
+== CSV Upload to Mass Start Transactions https://open.esignforms.com/images/HowToGuidesWiki/CSVUploadButton.png ==
+
+There are times when you need to mass start transactions using initial data stored elsewhere.  When [ProgrammingGuide_Integration_API API integration] will not work, if you can create a CSV file (comma separated value), you can use it to upload the initial data for starting any type of transaction.
+
+First, be sure you have set the correct mode for test or production transactions, and then click Start transaction->CSV Upload. You can select any transaction type you are allowed to start.
+
+The first line (header line) of the CSV file must be the list of field names to set.  These fields must be valid [HowToGuides#EsfNames_and_PathNames EsfNames] (generally, 1-50 letters and numbers and '_').
+
+Each subsequent data line of the CSV file represents the initial data to start a transaction.  The header line specifies the field names to set, while the data line has the values to set those fields to.  Blank lines are ignored, as are those that start with `//##` (a way to comment out a line if you don't want to use it).  Finally, any line starting with `,,` will be treated as "end of file" and no subsequent lines will be processed.
+
+Example CSV file contents:
+{{{
+companyName,firstName,lastName,phone,ccv,todayDate,amount,quantity,percent
+"Company1","First1","Last1","800-555-1111","111",01/01/14,"100.11","1",1.00%
+"Company2","First2","Last2","800-555-2222","222",02/02/14,"200.22","2",2.00% 
+}}}
+
+In the above case, when you upload that file, you specify which transaction type to start, and then it will start 2 transactions with the initial data coming from the CSV file, so companyName=Company1, firstName=First1, etc. would be used to start the first transaction, and companyName=Company2, firstName=First2, etc. would be used to start the second transaction., etc. 
+
+https://open.esignforms.com/images/HowToGuidesWiki/CSVUploadStep1.png
+
+  * If your transaction has been setup so the first party is assumed to be an automated party, check *Auto complete first party?* and the data posted will be validated per the setup for the first party. If unchecked, the transaction is started, but it will not complete the first party and you will have to complete them otherwise, such as via the To Do list.
+  * Select the *Transaction type to start*.
+  * Click *Upload CSV file* to select and upload a CSV file from your computer.  
+
+It will then show you the header line and number of data rows found.  If all looks okay, click the *Start N transactions* button.
+
+https://open.esignforms.com/images/HowToGuidesWiki/CSVUploadStep2.png
+
+Please take care to ensure your CSV files are valid and tested to avoid creating a large number of "bad/invalid" transactions.
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
 = Reports https://open.esignforms.com/images/HowToGuidesWiki/reportsIcon.png =
 
 To list reports you are allowed to run, click on the Reports menu item. Click on one listed to run that report.
