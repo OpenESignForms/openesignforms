@@ -1,5 +1,5 @@
 #summary Describes the DB updates prior to v11.8.9
-#labels Phase-Deploy
+#labels Phase-Deploy,Deprecated
 
 = Introduction =
 
