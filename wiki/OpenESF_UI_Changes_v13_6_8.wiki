@@ -1,5 +1,5 @@
 #summary The Open eSignForms user interface changed with the Vaadin 7 port in releaes 13.6.8
-#labels Phase-Support
+#labels Phase-Support,Deprecated
 
 <h1>Updated Open eSignForms User Interface for v13.6.8</h1> 
 
