@@ -21,7 +21,7 @@ These are just some quick notes on setting up *wkhtmltopdf* on our CentOS Linux 
   * The RPM will install in /usr/local/bin.  If it's not in the PATH for the user account that runs Tomcat/Java, make sure it is added.
 
   * For our HTML, we typically use options:
-    {{{wkhtmltopdf --dpi 96 --page-size Letter --encoding utf-8 --print-media-type --disable-external-links --image-quality 100 --margin-left 0mm --margin-right 0mm --margin-top 2mm --margin-bottom 2mm}}}
+    {{{wkhtmltopdf --javascript-delay 1000 --page-size Letter --encoding utf-8 --print-media-type --disable-external-links --image-quality 100 --margin-left 5mm --margin-right 5mm --margin-top 5mm --margin-bottom 5mm}}}
 
     Try running the command `wkhtmltopdf --version` to ensure it can be found in your PATH and that it shows no missing components.
 
