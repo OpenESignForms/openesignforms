@@ -14,7 +14,7 @@ These are just some quick notes on setting up *wkhtmltopdf* on our CentOS Linux 
     {{{rpm -ivh wkhtmltox-0.12.1_linux-centos6-amd64.rpm}}}
 
   * Install dependencies via yum:
-    {{{yum install fontconfig libXrender libXext '*fonts*' openssl}}}
+    {{{yum install fontconfig libXrender libXext xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi freetype libpng zlib libjpeg-turbo openssl}}}
 
     (In particular you want urw-fonts, but you probably want others too, like xorg-x11-fonts-truetype for CentOS 5.  Sourceforge has a [http://corefonts.sourceforge.net/ CoreFonts project] that has instructions for creating RPMs for your system. Sourceforge also has a [http://mscorefonts2.sourceforge.net/ MSCoreFonts project] that has instructions for installing from pre-built RPMs which is what we use. We use this to get the [http://www.cabextract.org.uk/ cabextract RPM].
 
