@@ -8,7 +8,7 @@
 
 <h1>Point & Click Programming Guide</h1>
 
-==== How-To Guides ====
+*How-To Guides*
   * [HowToGuides Concepts, Tips & Tricks] (Read first)
   * [UserGuide User's Guide] (Read first)
   * [SystemAdminGuide System Administrator's Guide]
@@ -17,7 +17,7 @@
   * [ProgrammingGuide_Integration_API Point & Click Programming Integration API Guide]
   * [ProgrammingTutorial Point & Click Programming Tutorial]
 
-==== Table of contents ====
+*Table of contents*
 <wiki:toc max_depth="4" />
 
 = Introduction =
