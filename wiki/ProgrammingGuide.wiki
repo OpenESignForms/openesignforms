@@ -1343,7 +1343,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
     * *Transaction started* occurs when the transaction is first started.
     * *Transaction completed* occurs when the transaction is completed.
     * *Transaction canceled* occurs when the transaction is canceled.
-    * *Timer expired* occurs when a user-defined timer expires. Because a timer fires independently in the future (no party is processing a document at the time), you should not select limiting documents or parties.
+    * *Timer expired* occurs when a user-defined timer expires. Because a timer fires independently in the future (no party is processing a document at the time), you should not select limiting documents or parties. A timer expired event can fire even after the transaction is completed, but it will be ignored if the transaction is canceled or suspended at the time it expires.
   * In *Limit only to documents (optional)* check any documents if the actions should only fire when the selected event(s) occur, but also only when the specified document is being processed. If you do not select any, then it will not matter which document is involved.
   * In *Limit only to parties (optional)* check any parties if the actions should only fire when the selected event(s) occur, but also only when the specified party is processing the transaction. If you do no select any, then it will not matter which party is involved.
   * In *Actions* you can drag to re-order existing actions or click the *Delete* button to remove it.
@@ -1358,7 +1358,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
     * Choose *Show error/message* to display a message or report an error to the user (mostly used during the *Party review document* and *Party completed page* events).
     * Choose *PayPal direct charge* to specify credit card fields in your document that will be submitted to the PayPal NVP API for a credit card sale.
     * Choose *Change File field access* to block or make optional the need for a party to view/download the files associated with this field. Of course, if the party is supposed to upload files, this has no bearing. 
-    * Choose *Set/cancel timer* to set a new timer that will fire a *Timer expired* event in the future, or to cancel a named (or all) timer.
+    * Choose *Set/cancel timer* to set a new timer that will fire a *Timer expired* event in the future, or to cancel a previously set timer. You may also cancel all timers.
 
 http://open.esignforms.com/images/HowToGuidesWiki/packageAddActionButton.png
 
@@ -1486,15 +1486,13 @@ _Tip: To save your changes, you will want to click the *Ok* button on the custom
 
 ==== Expired timer condition ====
 
-Click on an existing *Timer expired:* condition to change which timer is checked to see if just expired. You can specify one or more timers to check. A popup editor will appear.
-
-Click the *Add expired timer check* button to specify a new timer to check if expired.
+Click the *Add expired timer check* button to specify a new timer to check if it just expired.
 
 http://open.esignforms.com/images/HowToGuidesWiki/ConditionsOnPackageActionsTimerExpiredForm.png
 
-  * Specify the name of the timer to check if it expired. The timer name is not case sensitive. The corresponding timer is named in the SET TIMER action.
+  * Specify the name of the timer to check if it expired. The timer name is not case sensitive. The corresponding timer is named in a SET TIMER action.
  
-If your condition should be true if more than one timer expired, simply add additional timers. The condition will be true if any one of the listed timers expired.  You can think of this as a list of timers checked with an OR condition.
+If your condition should be true if any one of several timers expired, simply add additional timers. The condition will be true if any one of the listed timers expired.  You can think of this as a list of timers checked with an OR condition. A 'timer expired' event will occur only after one timer has expired.
 
 Like always, click *Ok* to save your changes. Click *Cancel* to abandon the change. Click *Close* to close the popup window. Click *Delete* to delete a selected field check.
 
@@ -1634,7 +1632,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/HTTPSendAction.png
   * For *Max attempts* enter the number of times to attempt to send the data. Each attempt is recorded, including both the request sent and the response received. If the attempt is considered a success, no further attempts will be made.  If the attempt is not considered a success, it will try again if you specify a value greater than 1.
   * For *Retry (minutes)* select the number of minutes that should pass before a retry is attempted. This only has meaning if *Max attempts* is greater than 1.
   * For *Limit successful HTTP status codes* enter one or more numbers (standard HTTP status codes) separated by semicolons (;) that must be returned by the URL to indicate a successful send. Note that '200' is the normal HTTP status for a successful request. Leave this field blank if the HTTP status code should be ignored.
-  * For *Purpose/reason spec* enter a literal and/or field specification that explains why the HTTP Send is taking place. It's used for logging.
+  * For *Purpose/reason spec* enter a literal and/or field specification that explains why the HTTP Send is taking place. The reason appears in the transaction activity log.
   * For *Match type* select the type of match to apply to the response returned from the URL to determine if it was a successful request. 
     * The match type *Anything* means that any response would indicate a success (this is not recommended unless you can rely on the HTTP status codes instead). 
     * *Must contain* means that the response must contain the associated value somewhere in the response to be considered successful.
@@ -1738,7 +1736,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/cancelTransactionAction.png
   * For *Status change type* choose 'Cancel transaction'.
   * For *#* specify the number of *Cancel time* units before the transaction is canceled. This has no meaning for Now or Forever cancel times.
   * For *Cancel time* choose when the transaction should be canceled. If you select Now, the transaction will be canceled when this action takes place. You can specify a future date so it will cancel automatically in the future if it's not completed or the cancel transaction is turned off later.
-  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the transaction is being canceled.
+  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the transaction is being canceled. The reason appears in the transaction activity log.
   * If you'd like to reduce the default retention for such auto-canceled transactions (from the value set in the transaction template for production/test modes), check *Reduce retention on cancel* and choose a new retention value. This is generally used to remove new transactions that do not get past the first step.
 
 ==== Clear cancel transaction action ====
@@ -1748,7 +1746,7 @@ If you set a future date for a transaction to auto-cancel if it has not yet comp
 http://open.esignforms.com/images/HowToGuidesWiki/clearCancelTransactionAction.png
 
   * For *Status change type* choose 'Clear cancel transaction'.
-  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the transaction is no longer going to be canceled.
+  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the transaction is no longer going to be canceled. The reason appears in the transaction activity log.
 
 ==== Skip document action ====
 
@@ -1757,7 +1755,7 @@ Change the *Status change type* to 'Skip document':
 http://open.esignforms.com/images/HowToGuidesWiki/skipDocumentAction.png
 
   * For *Status change type* choose 'Skip document'.
-  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the document is being skipped.
+  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the document is being skipped. The reason appears in the transaction activity log.
   * For *Documents to skip* select one or more documents to skip.
 
 Click the *Ok* button to keep your changes, or click *Cancel*.
@@ -1775,7 +1773,7 @@ Change the *Status change type* to 'Skip party':
 http://open.esignforms.com/images/HowToGuidesWiki/skipPartyAction.png
 
   * For *Status change type* choose 'Skip party'.
-  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the party is being skipped.
+  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the party is being skipped. The reason appears in the transaction activity log.
   * For *Parties to skip* select one or more parties to skip.
 
 Click the *Ok* button to keep your changes, or click *Cancel*.
@@ -1797,7 +1795,7 @@ Change the *Status change type* to 'Activate party':
 http://open.esignforms.com/images/HowToGuidesWiki/activatePartyAction.png
 
   * For *Status change type* choose 'Activate party'.
-  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the party is being activated (out of the normal party order).
+  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the party is being activated (out of the normal party order). The reason appears in the transaction activity log.
   * For *Parties to skip* select one or more parties to skip.
 
 Click the *Ok* button to keep your changes, or click *Cancel*.
@@ -1909,7 +1907,7 @@ _Tip: To save your changes, you will want to click the *Ok* button on the custom
 
 === Set/cancel timer action ===
 
-When you need to set a timer to trigger a future action, or to cancel an existing named timer, or cancel all timers, use the *Set/cancel timer* action.  Click the *Add timer action* button http://open.esignforms.com/images/HowToGuidesWiki/addTimerActionButton.png to add a new timer action. Or you can click on a previously created action to update it.
+When you need to set a timer to trigger a future action, or to cancel an existing named timer, or to cancel all timers, use the *Set/cancel timer* action.  Click the *Add timer action* button http://open.esignforms.com/images/HowToGuidesWiki/addTimerActionButton.png to add a new timer action. Or you can click on a previously created action to update it.
 
 ==== Set timer action ====
 
@@ -1918,8 +1916,8 @@ Change the *Timer type* to 'Set timer':
 http://open.esignforms.com/images/HowToGuidesWiki/setTimerAction.png
 
   * For *Timer type* choose 'Set timer'.
-  * For *Timer name* specify the name for this timer. The name is not case sensitive. You may use this name to reset the timer in another Set timer action using the same name, or you can use it to cancel the timer. 
-  * For *Expire timestamp spec* specify a date-time field specification `${ }` that holds the date-time the timer should expire, or use literals like +1 to mean 1 day from now.
+  * For *Timer name* specify the name for this timer. The name is not case sensitive. You may use this name to reset the timer in another 'Set timer action' using the same name, or you can use it to cancel the timer. 
+  * For *Expire timestamp spec* specify a date-time field specification `${ }` that holds the date-time the timer should expire, or use literals like +1 to mean 1 day from now. Time values like 'now' and '+0' or any negative time specification will cause the timer to fire soon after. Note that a timer will not necessarily fire exactly at the specified time, but it should fire within a minute of the time specified.
   * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the timer is being set. The reason appears in the transaction activity log.
 
 ==== Cancel timer action ====
