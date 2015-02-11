@@ -1343,6 +1343,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
     * *Transaction started* occurs when the transaction is first started.
     * *Transaction completed* occurs when the transaction is completed.
     * *Transaction canceled* occurs when the transaction is canceled.
+    * *Timer expired* occurs when a user-defined timer expires. Because a timer fires independently in the future (no party is processing a document at the time), you should not select limiting documents or parties.
   * In *Limit only to documents (optional)* check any documents if the actions should only fire when the selected event(s) occur, but also only when the specified document is being processed. If you do not select any, then it will not matter which document is involved.
   * In *Limit only to parties (optional)* check any parties if the actions should only fire when the selected event(s) occur, but also only when the specified party is processing the transaction. If you do no select any, then it will not matter which party is involved.
   * In *Actions* you can drag to re-order existing actions or click the *Delete* button to remove it.
@@ -1357,6 +1358,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/customLogic.png
     * Choose *Show error/message* to display a message or report an error to the user (mostly used during the *Party review document* and *Party completed page* events).
     * Choose *PayPal direct charge* to specify credit card fields in your document that will be submitted to the PayPal NVP API for a credit card sale.
     * Choose *Change File field access* to block or make optional the need for a party to view/download the files associated with this field. Of course, if the party is supposed to upload files, this has no bearing. 
+    * Choose *Set/cancel timer* to set a new timer that will fire a *Timer expired* event in the future, or to cancel a named (or all) timer.
 
 http://open.esignforms.com/images/HowToGuidesWiki/packageAddActionButton.png
 
@@ -1400,6 +1402,7 @@ http://open.esignforms.com/images/HowToGuidesWiki/ConditionsOnPackageActionsList
   * Click *Add ALL FIELDS BLANK check* to add a condition in which all fields you specify must be blank (have no value). If you negate this check, it means "ANY FIELD is NON-BLANK," that is, it's true if any of the list fields has a value. You can just specify a single field to check.
   * Click *Add ANY FIELD BLANK check* to add a condition in which any (at least one) of the fields you specify must be blank. If you negate this check, it means "ALL FIELDS are NON-BLANK," that is, it's true if all of the list of fields have a value. You can just specify a single field to check.
   * Click *Add SOME BUT NOT ALL FIELDS BLANK check* to add a condition in which at least one field is blank and at least one field has a value. To work as expected, you must specify at least two fields.
+  * Click *Add EXPIRED TIMER check* to add a condition that checks if a specific timer expired. Generally, this is only used when the custom logic action is for a *Timer expired* event.
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
@@ -1413,7 +1416,7 @@ You can also negate this condition by checking the *Negate condition (NOT)* box.
 
 Click on the *All blank:* condition to change which fields are checked to be blank. You can specify one or more fields to check. A popup editor will appear.
 
-http://open.esignforms.com/images/HowToGuidesWiki/ConditionsOnPackageActionsAllBlankList.png
+http://open.esignforms.com/images/HowToGuidesWiki/ConditionsOnPackageActionsAllBlank.png
 
 Click the *Add field to check if blank* button to specify a new field to check that it's blank (has no value).
 
@@ -1478,6 +1481,24 @@ If you negate this condition (NOT COMPARISON), it passes if the field does not m
 Like always, click *Ok* to save your changes. Click *Cancel* to abandon the change. Click *Close* to close the popup window. 
 
 _Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
+
+<p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+==== Expired timer condition ====
+
+Click on an existing *Timer expired:* condition to change which timer is checked to see if just expired. You can specify one or more timers to check. A popup editor will appear.
+
+Click the *Add expired timer check* button to specify a new timer to check if expired.
+
+http://open.esignforms.com/images/HowToGuidesWiki/ConditionsOnPackageActionsTimerExpiredForm.png
+
+  * Specify the name of the timer to check if it expired. The timer name is not case sensitive. The corresponding timer is named in the SET TIMER action.
+ 
+If your condition should be true if more than one timer expired, simply add additional timers. The condition will be true if any one of the listed timers expired.  You can think of this as a list of timers checked with an OR condition.
+
+Like always, click *Ok* to save your changes. Click *Cancel* to abandon the change. Click *Close* to close the popup window. Click *Delete* to delete a selected field check.
+
+_Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package. Once you do, when  you click on the *IF condition* button, your conditions will be updated._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
 
@@ -1885,6 +1906,40 @@ Note that you can set multiple parties and file upload fields to skip at the sam
 _Tip: To save your changes, you will want to click the *Ok* button on the custom logic rule as well as click the *Save* button for the package._
 
 <p align="right"><font size="1">[#Table_of_contents Table of contents]</font></p>
+
+=== Set/cancel timer action ===
+
+When you need to set a timer to trigger a future action, or to cancel an existing named timer, or cancel all timers, use the *Set/cancel timer* action.  Click the *Add timer action* button http://open.esignforms.com/images/HowToGuidesWiki/addTimerActionButton.png to add a new timer action. Or you can click on a previously created action to update it.
+
+==== Set timer action ====
+
+Change the *Timer type* to 'Set timer':
+
+http://open.esignforms.com/images/HowToGuidesWiki/setTimerAction.png
+
+  * For *Timer type* choose 'Set timer'.
+  * For *Timer name* specify the name for this timer. The name is not case sensitive. You may use this name to reset the timer in another Set timer action using the same name, or you can use it to cancel the timer. 
+  * For *Expire timestamp spec* specify a date-time field specification `${ }` that holds the date-time the timer should expire, or use literals like +1 to mean 1 day from now.
+  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the timer is being set. The reason appears in the transaction activity log.
+
+==== Cancel timer action ====
+
+Change the *Timer type* to 'Cancel timer':
+
+http://open.esignforms.com/images/HowToGuidesWiki/cancelTimerAction.png
+
+  * For *Timer type* choose 'Cancel timer'.
+  * For *Timer name* specify the name for a previously set timer. The name is not case sensitive. 
+  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why the timer is being canceled. The reason appears in the transaction activity log.
+
+==== Cancel all timers action ====
+
+Change the *Timer type* to 'Cancel all timers':
+
+http://open.esignforms.com/images/HowToGuidesWiki/cancelAllTimersAction.png
+
+  * For *Timer type* choose 'Cancel all timers'.
+  * For *Reason spec* provide a reason (it can include field specifications `${ }` for variable substitution) why all timers are being canceled. The reason appears in the transaction activity log.
 
 === Common conditional scenarios ===
 
