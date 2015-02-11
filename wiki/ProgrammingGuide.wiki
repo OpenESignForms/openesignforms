@@ -17,7 +17,7 @@
   * [ProgrammingGuide_Integration_API Point & Click Programming Integration API Guide]
   * [ProgrammingTutorial Point & Click Programming Tutorial]
 
-*Table of contents*
+=====Table of contents=====
 <wiki:toc max_depth="4" />
 
 = Introduction =
