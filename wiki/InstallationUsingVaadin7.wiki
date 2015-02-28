@@ -406,7 +406,7 @@ As `root` do the following on your new Linux instance:
   * `passwd root`  (be sure to set good passwords)
   * `passwd esignforms`  (be sure to set good passwords)
   * `yum update`  (to ensure you are up-to-date with everything)
-  * `yum install iptables ntp logwatch dos2unix gpg bind-utils jwhois telnet traceroute make gcc libgcc gcc-c++ glibc-devel readline readline-devel ncurses ncurses-devel zlib zlib-devel zip unzip bzip2 pam pam-devel postfix screen lynx dovecot rsync fontconfig`
+  * `yum install iptables ntp logwatch dos2unix gpg bind-utils jwhois telnet traceroute make gcc libgcc gcc-c++ glibc-devel readline readline-devel ncurses ncurses-devel zlib zlib-devel zip unzip bzip2 pam pam-devel postfix screen lynx dovecot rsync`
   * See the [wkhtmltopdf wkhtmltopdf wiki] for other components you need, including using the 32-bit versions of some libraries.
   * Put `ALL: ALL` in `/etc/hosts.deny`
   * Put `sshd: ALL` in `/etc/hosts.allow`
