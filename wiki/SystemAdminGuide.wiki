@@ -296,11 +296,13 @@ We do not recommend changing permissions here much as it is generally best to se
   * ReportTemplateView controls *Programming->Report templates*
   * SystemLogView controls *System config->System logs*
   * ToDoListingView controls *To Do*
+  * TransactionCsvStartView controls *Start transaction->CVS Upload*
   * TransactionListingView controls *General tran search*
   * TransactionTemplateView controls *Programming->Tran templates*
-  * UIView controls this view *Access control->UI Views*
+  * UIView controls *Access control->UI Views*
+  * UserChangePasswordView controls *Access control->Change my password*
   * UserView controls *Access control->Users*
-  * UserSessionView control *Access control->Who's on now?*
+  * UserSessionView control *Access control->Who's on now?*.  'Delete' permission allows the user to end any user session listed.
   * AccessControlTipsEditView controls *System config->Access control link*
   * AccessControlTipsView controls *Access control*
   * ProgrammingTipsEditView controls *System config->Program link*
