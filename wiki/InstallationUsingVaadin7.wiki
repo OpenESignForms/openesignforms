@@ -148,7 +148,7 @@ Install the latest version of [http://www.eclipse.org] Eclipse IDE for Java EE] 
 
 Install the [https://vaadin.com/book/vaadin7/-/page/getting-started.eclipse.html Apache IvyDE plugin and Vaadin Eclipse plugin] as instructed on their book.
 
-We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Server->Servers.  If no servers appear, right-click New->Server; then choose Apache->Tomcat v8.0 Server, click Next and choose the location where you installed Tomcat (i.e. something like C:\apache-tomcat-8.0.15). Double-click your server (named Tomcat v8.0 Server at localhost or whatever version you are using) so you display the Overview and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin7 for us -- see below for downloading the project code first) click the Edit button to uncheck the 'Auto reloading enabled'. 
+We find that for debugging on your local computer, it's nice to be able to make changes without having the webapp reload, which you can often do because of the hotspot code changes Java allows.  Open the view "Servers" -- if the "tab" is not shown at the bottom of your edit area along with Problems, Console, Error, History, etc., you can use the Window->Show View->Other to pick Server->Servers.  If no servers appear, right-click New->Server; then choose Apache->Tomcat v8.0 Server, click Next and choose the location where you installed Tomcat (i.e. something like C:\apache-tomcat-8.0.15). Double-click your server (named Tomcat v8.0 Server at localhost or whatever version you are using) so you display the Overview and Modules "tabs". Click on Modules, then for your project (/open-eSignFormsVaadin for us -- see below for downloading the project code first) click the Edit button to uncheck the 'Auto reloading enabled'. 
 
 Using the same Servers configuration, we make the following changes:
 
@@ -335,8 +335,8 @@ Open eSignForms creates a folder called `LIBRARYGENERATED-KEEP` in the webapp's 
 
 You will see the errors in the esf.log during startup for your deployment when this is the case.  Here's an example we get from time to time:
 {{{
-ERROR (com.esignforms.open.prog.DocumentVersion) generateCode() could not create read/write/execute document version directory: C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp2\wtpwe
-bapps\open-eSignFormsVaadin7\LIBRARYGENERATED-KEEP\document\279d0d44-5e41-4b95-a2cb-6f56547b3462\d775b182-e500-4bbf-bd27-f8e9db600654
+ERROR (com.esignforms.open.prog.DocumentVersion) generateCode() could not create read/write/execute document version directory: C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwe
+bapps\open-eSignFormsVaadin\LIBRARYGENERATED-KEEP\document\279d0d44-5e41-4b95-a2cb-6f56547b3462\d775b182-e500-4bbf-bd27-f8e9db600654
 }}}
 
 Unfortunately, while we manage to resolve this suitable for a developer's personal deployment, we never really know which of our various attempts at setting up Windows security is the correct way.  Surely if you expect to run on Windows, this needs more attention.  In general, we struggle with folder permissions and granting permission so that the application can create files/folders/subfolders in this directory as needed.  If you have Windows expertise and know just want to do to make this happen, please let us know and we'll update this section.
