@@ -1,0 +1,537 @@
+
+
+This guide is a work in progress! Please visit https://code.google.com/p/openesignforms/wiki/InstallationUsingVaadin7 for generic install instructions.
+
+**Table of Contents**
+
+
+
+# Introduction #
+
+This guide will take you through installing Open eSignForms on a micro Amazon Linux instance for the purposes of **testing** the web contracting application. If you find that the application meets your needs, we recommend seeking professional services through Yozons for help with a production setup for a quality deployment.
+
+### Pre-requisites ###
+
+  * Understanding of how to setup create and connect to an Amazon EC2 instance.
+
+#### Software Requirements ####
+
+  * postgresql-9.3.4
+  * apache-tomcat-7.0.52
+  * jre1.7.0\_51
+
+### Target Audience ###
+
+  1. System Administrators
+  1. IT Managers
+
+
+---
+
+# Create an Instance on Amazon EC2 #
+
+Launch a new Amazon Linux AMI. This tutorial was created using Amazon Linux AMI 2014.03. Choose the 64-bit version.
+
+![http://i62.tinypic.com/2v334ht.jpg](http://i62.tinypic.com/2v334ht.jpg)
+
+For the purposes of this tutorial, the **Free tier eligible** instance will do.
+
+At this time, Micro Instances have the following specifications:
+
+  * Size: t1.micro
+  * ECUs: Up to 2
+  * vCPUs: 1
+  * Memory: .613 (GiB)
+  * Instance Storage: EBS Only
+  * EBS-Optimized Available: -
+  * Network Performance: Very Low
+
+When creating the AMI, _leave all the defaults_ and click **Review and Launch**.
+
+_For maximum security, create a new dedicated keypair for this instance and download it (preferably to a dedicated USB drive)._
+
+![http://i62.tinypic.com/seophe.jpg](http://i62.tinypic.com/seophe.jpg)
+
+## Granting Access ##
+For the purposes of our test, we will allow access to our instance from anywhere over the web by opening up the HTTP port. Since we only want to manage this instance from a single IP address, we will allow SSH access from only one IP address.
+
+Configure security groups in Amazon EC2 management interface as follows:
+
+  1. Port 80 Allow from 0.0.0.0 (Anywhere)
+  1. Port 22 Allow from (Your IP Address)
+
+![http://i61.tinypic.com/2q88x04.jpg](http://i61.tinypic.com/2q88x04.jpg)
+
+## Assigning and Elastic IP Address (optional) ##
+
+For the best testing experience, we recommend assigning an Elastic IP address to your instance. This will ensure the Open eSignForms application will be able to send and receive e-mail properly.
+
+_Note: In a production environment, you may want another system to handle relay e-mail for security and/or organization requirements._
+
+# Connect to the Instance #
+
+Connect to your instance using the username **ec2-user** with the private key you downloaded earlier. The following command will work if you are connecting from a linux based system.
+
+`chmod 700 privatekey.pem;`
+`ssh -i privatekey.pem ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com`
+
+![http://i59.tinypic.com/35koq9z.jpg](http://i59.tinypic.com/35koq9z.jpg)
+
+---
+
+# Prepare the Environment #
+
+Now we prepare the server by performing system updates, creating user accounts, and installing necessary software.
+
+## Create esignforms User Account ##
+
+```
+sudo useradd esignforms
+```
+
+## Update the Instance ##
+
+Once connected, download the latest updates to the instance with the following command:
+
+`sudo yum update -y`
+
+## Install Dependencies ##
+
+You won't be using all of these software packages for this demo but go ahead and install them just in case.
+
+```
+sudo yum install -y iptables ntp logwatch dos2unix gpg bind-utils jwhois telnet traceroute make gcc libgcc gcc-c++ glibc-devel readline readline-devel ncurses ncurses-devel zlib zlib-devel zip unzip pam pam-devel postfix screen lynx dovecot rsync fontconfig libXrender libXext '*fonts*' openssl wget nano
+```
+
+
+### Install wkhtmltopdf ###
+
+Download the wkhtmltopdf-0.11.0\_rc1 static binary file from
+[wkhtmltopdf.org](http://wkhtmltopdf.org/) website directly onto your instance using wget.
+
+```
+cd /tmp
+wget https://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2
+```
+
+_Note: Use this version of wkhtmltopdf as newer versions have known issues with Open eSignForms at the time of this writing_
+
+#### Or Copy it to your Amazon EC2 instance from your pc ####
+
+```
+scp -i privatekey.pem wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2 ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com:/tmp
+```
+
+#### Unpack the archive ####
+
+Issue the following commands on the Amazon EC2 instance
+```
+cd /tmp
+tar jxvf wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2
+mv wkhtmltopdf-amd64 wkhtmltopdf
+```
+
+
+## Configure Timezone ##
+
+Check that your instance has the correct time by issuing the following command:
+
+`date`
+
+If the date shown is incorrect, correct it using the following commands:
+
+```
+sudo rm -f /etc/localtime
+sudo ln -s /usr/share/zoneinfo/America/Chicago /etc/localtime
+```
+
+Edit the /etc/sysconfig/clock to reflect your chosen timezone. Leave UTC set to true.
+
+`sudo nano /etc/sysconfig/clock`
+
+```
+ZONE="America/Chicago"
+UTC=true
+```
+
+
+_Note: Substitute **America/Chicago** with the timezone of your choice. You can [view list of supported timezones here](https://php.net/manual/en/timezones.php)_
+
+Start the network time daemon and set it to start on boot.
+```
+sudo service ntpd start
+sudo chkconfig ntpd on
+```
+
+## Install Sun Java ##
+
+The Java Runtime Environment that comes pre-installed on the Amazon EC2 instance is insufficient for our needs. Go ahead and uninstall it:
+
+`yum remove -y java`
+
+[Download the latest version of Java SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html) from Oracle's website. At the time of this writing, JRE 8 is available. For the purposes of this tutorial, I chose Server JRE 8.
+
+![http://i62.tinypic.com/14o89bc.jpg](http://i62.tinypic.com/14o89bc.jpg)
+
+Accept the license agreement and download the version for Linux x64. I prefer the folling RPM file but any current version should do.
+
+`jre-8-linux-x64.rpm`
+
+**Server Version**
+`server-jre-8u5-linux-x64.tar.gz`
+```
+tar zxvf server-jre-8u5-linux-x64.tar.gz
+cp -r jdk1.8.0_05/ /usr/lib/java
+alternatives --install /usr/bin/java java /usr/lib/java/jdk1.8.0_05/jre/bin/java 1
+```
+
+Next you will need to get this file unto your instance. In linux, I open a new terminal window and issue the following command. Be sure to specify the correct path to your private key and downloaded JRE file.
+
+```
+scp -i privatekey.pem jre-8-linux-x64.rpm ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com:/tmp
+```
+
+![http://i58.tinypic.com/2iapwky.jpg](http://i58.tinypic.com/2iapwky.jpg)
+
+  1. Install the Java Runtime Environment
+`sudo rpm -ivh /tmp/jre-8-linux-x64.rpm`
+
+  1. Verify that Java installed correctly
+`java -version`
+
+
+  1. If not then lets create one more alternative for Java for Sun JDK
+`sudo /usr/sbin/alternatives --install /usr/bin/java java` `/usr/java/jre1.8.0/bin/java 1`
+
+
+  1. Set the SUN JDK as the default java
+`sudo /usr/sbin/alternatives --config java`
+
+Enter the number **2** to choose the latest version of Java
+
+  1. Verify installed runtime is **not** the OpenJDK version
+
+`java -version`
+
+### Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files ###
+
+Download the java cryptography extensions for the version of Java you installed above.
+
+The easiest way to get to the download page is just go to [Oracle](http://oracle.com) website and type "Java Cryptography Extension" in the search box at the top right of the page.
+
+Accept the license agreement and download the file. The extensions for Java 8 are in the zip file:
+
+`jce_policy-8.zip`
+
+
+Copy this file onto your Amazon EC2 instance just like we did for java above.
+
+```
+scp -i privatekey.pem jce_policy-8.zip ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com:/tmp
+```
+
+Extract the files:
+
+`sudo unzip /tmp/jce_policy-8.zip -d /usr/java/jre1.8.0/lib/security`
+
+This will create a folder under security entitled **UnlimitedJCEPolicyJDK8** with two JAR files (local\_policy.jar & US\_export\_policy.jar). Move those jar files one directory below into the security folder overwriting the current files.
+
+```
+sudo mv /usr/java/jre1.8.0/lib/security/UnlimitedJCEPolicyJDK8/*.jar /usr/java/jre1.8.0/lib/security/
+```
+
+## Install and Configure Tomcat ##
+
+Install Tomcat from the repositories. The system works well with Tomcat7.
+
+`sudo yum install tomcat7`
+
+if that does not work
+
+`sudo yum install tomcat6`
+
+**Edit the server.xml file and set autoDeploy to false**
+
+`sudo nano /usr/share/tomcat7/conf/server.xml`
+
+```
+<Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="false">
+```
+
+**Edit conf/web.xml**
+Add this line immediately below
+
+`<servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>`
+
+
+```
+<init-param>
+  <param-name>development</param-name>
+  <param-value>true</param-value>
+</init-param>
+```
+
+**Edit tomcat7.conf file**
+
+```
+sudo nano /etc/tomcat7/tomcat.conf
+or
+sudo nano /etc/tomcat6/tomcat6.conf
+```
+
+```
+JAVA_HOME=/usr/java/jre1.8.0
+JAVA_OPTS="-server -Xrunjdwp:transport=dt_socket,address=29090,server=y,suspend=n -Xms500m -Xmx500m -XX:PermSize=200m -XX:MaxPermSize=200m -Desf.deploybase=$ESF_DEPLOYMENT_BASE"
+```
+
+**Create a directory to store the Open eSignForms web application**
+
+```
+sudo mkdir -p /usr/share/tomcat7/webapps/ROOT
+```
+
+## Install and Configure Postgresql ##
+
+### Install postgresql-server from the repositories ###
+
+```
+sudo yum install postgresql-server
+```
+
+### Recommended minimum changes to postgresql.conf ###
+
+Enable logging (un-comment parameters and change values where needed)
+
+`sudo nano /var/lib/pgsql9/data/postgresql.conf`
+
+```
+    logging_collector = on
+    log_directory = '../logs'
+    log_line_prefix = '%m %d'
+    log_connections = on
+    log_disconnections = on
+```
+
+### Minimum changes to pg\_hba.conf ###
+
+```
+nano /var/lib/pgsql/data/pg_hba.conf
+```
+# "local" is for Unix domain socket connections only
+local   all         all                               **trust**
+# IPv4 local connections:
+host    all         all         127.0.0.1/32          **trust**
+# IPv6 local connections:
+host    all         all         ::1/128               **trust**
+
+
+### Initialize the database ###
+
+```
+sudo service postgresql initdb
+```
+
+### Start the database server and set it to run on boot ###
+
+```
+sudo service postgresql start
+sudo chkconfig postgresql on
+```
+
+### Create esignforms database user ###
+```
+sudo su
+su - postgres
+psql
+CREATE USER esignforms PASSWORD 'esignforms' SUPERUSER;
+\q
+exit
+exit
+```
+
+### Grant postgres access to deployment directory ###
+```
+chown -R postgres.postgres /opt/esignforms/deployments/
+```
+
+
+---
+
+# Install Open eSignForms #
+
+Download the latest version of Open eSignForms from [Google Drive](https://drive.google.com/folderview?id=0B8C9MszRjx_yTnhna0N5VjkwRlU&usp=sharing)
+
+_Note: The latest version at this time of writing is open-eSignForms-14.3.15.zip_
+
+Copy the Open eSignForms zip file to your Amazon EC2 instance.
+
+```
+scp -i privatekey.pem open-eSignForms-14.3.15.zip ec2-user@ec2-54-186-255-44.us-west-2.compute.amazonaws.com:/tmp
+```
+
+**Unpack the archive into the /tmp directory**
+
+```
+unzip open-eSignForms-14.3.15.zip -d /tmp 
+```
+
+Copy over directories from the archive to the correct location
+
+```
+sudo cp -r /tmp/open-eSignForms-14.3.15/WebContent/* /usr/share/tomcat7/webapps/ROOT
+```
+
+**Copy over any updated theme style sheets and files**
+
+```
+sudo cp /tmp/open-eSignForms-14.3.15/VAADIN-release-extras/VAADIN/themes/openesf/* /usr/share/tomcat7/webapps/ROOT/VAADIN/themes/openesf -r
+```
+
+**Copy over jar files**
+
+```
+sudo cp /tmp/open-eSignForms-14.3.15/lib/*.jar /usr/share/tomcat7/webapps/ROOT/WEB-INF/lib -r
+```
+
+**Copy scripts into esignforms home directory under bin and make deployment directory**
+
+```
+sudo su
+sudo - esignforms
+mkdir ~/bin
+mkdir ~/deployments
+cp -r /tmp/open-eSignForms-14.3.15/scripts/* ~/bin
+chmod 755 ~/bin/*
+```
+
+**Copy database directory to esignforms home directory**
+```
+cp -r /tmp/open-eSignForms-14.3.15/database/ /home/esignforms/ 
+```
+
+**Make files executable, clean-up, and dos2unix**
+```
+chmod +x /home/esignforms/database/postgresql/ddl/*
+rm -rf /home/esignforms/database/postgresql/ddl/CVS
+dos2unix /home/esignforms/database/postgresql/ddl/*
+```
+
+**Copy wkhtmltopdf to esignforms bin directory**
+```
+cp /tmp/wkhtmltopdf-amd64 ~/bin/wkhtmltopdf
+```
+
+**Clean up**
+
+```
+cd ~/bin
+rm -rf CVS
+rm *.cygwin
+dos2unix ~/bin/*
+```
+
+**Copy contents of ~/bin/bashrc to .bashrc in esignforms home directory**
+```
+cat ~/bin/bashrc >>~/.bashrc 
+```
+
+**Copy profile into esignforms home directory**
+```
+cp ~/bin/profile ~/
+```
+
+**Edit profile**
+
+```
+nano ~/profile
+```
+
+**Configure Postgresql environment parameters**
+
+```
+PGDATA=/var/lib/pgsql9/data
+PGBIN=/usr/bin
+#MANPATH=$MANPATH:~/postgresql/pg92/man
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64/pgsql/
+export PATH LD_LIBRARY_PATH PGDATA PGBIN PGUSER PGPASSWORD
+```
+
+**Configure JAVA environment parameters**
+
+```
+JAVA_HOME=/usr/java/jre1.8.0
+JAVA_OPTS="-server -Xrunjdwp:transport=dt_socket,address=29090,server=y,suspend=n -Xms500m -Xmx500m -XX:PermSize=200m -XX:MaxPermSize=200m -Desf.deploybase=$ESF_DEPLOYMENT_BASE"
+```
+
+**Configure Tomcat environment parameters**
+
+```
+CATALINA_HOME=/usr/share/tomcat7
+```
+
+## Modify Open eSignForms Database config file ##
+```
+nano /usr/share/tomcat6/webapps/ROOT/WEB-INF/classes/connectionpools.properties
+
+/usr/share/tomcat6/webapps/ROOT/WEB-INF/classes
+```
+
+Change:
+esf.dbURL=jdbc:postgresql://localhost.localdomain/test
+
+To:
+esf.dbURL=jdbc:postgresql://localhost.localdomain/**esignforms**
+
+
+## Install the Open eSignForms Database ##
+
+```
+source /opt/esignforms/profile
+
+cd /opt/esignforms/database/postgresql/ddl/
+
+./create_db
+```
+
+Please enter the LOWERCASE name for the OpenESF database and user: **esignforms**
+
+Please enter the password to use for the OpenESF esfapp user esignforms: **esignforms**
+
+Creating DB User 'esignforms' and database 'esignforms' at location '/opt/esignforms/deployments/esignforms/current/db'.
+Is this okay? (y/n)**y**
+
+creating DB User 'esignforms' and database 'esignforms' at location...
+'/opt/esignforms/deployments/esignforms/current/db'.
+
+```
+./rundbsetup
+```
+Please enter the webapp's context path (i.e. 'demo' or 'ROOT'): **ROOT**
+Use debugger options? (y/n) **n**
+
+# Post Install #
+
+## Listen to HTTP requests on port 80 ##
+
+Tomcat by default runs on port 8080. Traffic can be redirected from port 80 to 8080 by running the following commands as root:
+
+```
+/sbin/iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+/sbin/service iptables save
+```
+
+You probably wouldn't want to do this in a production environment but for the purposes of testing Open eSignForms, this works nicely.
+
+Don't forget to do this for localhost as well, otherwise images won't correctly render in PDF
+
+```
+iptables -t nat -A OUTPUT -d localhost -p tcp --dport 80 -j REDIRECT --to-port 8080
+/sbin/service iptables save
+```
+
+# Optimization #
+
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: :/home/esignforms/postgresql/pg92/lib:/home/esignforms/postgresql/pg92/lib:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib

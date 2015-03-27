@@ -1,0 +1,22 @@
+# URL Encoding #
+
+This is a useful tip for those who do integration with Open eSignForms.  When you post data (or add to an URL), both the parameter name and parameter value should be URL encode.
+
+Source is from PayPal: https://developer.paypal.com/docs/classic/api/NVPAPIOverview/
+
+Use the following methods to URL-encode or URL-decode your NVP strings:
+
+Table 1. Encoding and decoding methods for URLs
+```
+Language 		Method
+ASP.NET 	Encode 	System.Web.HttpUtility.UrlEncode(buffer, Encoding.Default)
+		Decode 	System.Web.HttpUtility.UrlDecode(buffer, Encoding.Default)
+Classic ASP 	Encode 	Server.URLEncode
+		Decode 	No built-in function. Several implementation examples are available on the Internet.
+Java 		Encode 	java.net.URLEncoder.encode
+		Decode 	java.net.URLDecoder.decode
+PHP 		Encode 	urlencode()
+		Decode 	urldecode()
+ColdFusion 	Encode 	URLEncodedFormatstring [, charset]
+		Decode 	URLDecodeurlEncodedString[, charset])
+```

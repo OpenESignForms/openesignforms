@@ -1,0 +1,59 @@
+# Introduction #
+
+SPF is used to determine if email sent from a given system is allowed to send email using your domain name.  It is configured in DNS TXT records for your domain (the one used in your email addresses).
+
+## Tips to reduce false spam-blocking ##
+
+Of course, there are also steps you can do with the content of your email messages to reduce having your emails falsely labeled as spam:
+  * Avoid "spamy" keywords in your message body and subject that sound like a sales pitch.
+  * Include the party's name in the subject and message body whenever possible to ensure each email is distinct and personalized
+  * Provide both TEXT and HTML versions.
+  * Keep the email brief, but not so terse that it appears like a trick to get them to click on a link.
+  * Include your company name and contact information.
+  * Ensure you don't send spam or bulk email using your domain name (and certainly this is prohibited when using the e-sign system) to keep a good reputation. In general, newly registered domain names are more suspect than established domain names, provided it was never used for spamming in the past.
+  * If parties do receive email in their spam/bulk email folders, request that they click "Not spam" to indicate that the email received is not spam as this will help you grow a good reputation. Note that such parties who do receive the email may mark your email as spam if you give them poor service, thus hurting your anti-spam reputation.
+  * There is no single fix for this issue as every receiving system has its own rules and tricks for detecting spam. Setting up SPF is a good step, though, as it shows you have taken the time to set up your domain to establish the valid sending systems and thus improves your credibility.
+
+# Recommendation #
+
+Add and SPF record that includes all of the systems that send out emails using your domain name. This includes your mail servers and third party services like Yozons operates.  So, here's a typical DNS TXT record for SPF:
+
+```
+"v=spf1 mx ip4:N.N.N.N -all"
+```
+
+Replace the `N.N.N.N` with the actual IP address of the Yozons esign server you are on, such as if your esign system is running on the `esign-contracts.com` server it would be:
+
+```
+"v=spf1 mx ip4:166.78.63.200 -all"
+```
+
+If your SPF record is not too long, you can use a simpler A record reference that will also adjust its IP address should we migrate our server to a new IP address, which occurs from time to time.  But note that you do not want any more than 10 such non-IP-specific addresses, like the 'mx' or 'a' or 'include' options, since that's the maximum number of DNS lookups most receiving systems will use to determine a valid SPF record.  Then it would be something like the following if your Yozons esign system is running on the server named `esign-contracts.com`:
+
+```
+"v=spf1 mx a:esign-contracts.com -all"
+```
+
+Lastly, if you are not sure you have all systems that send out email using your domain name listed, change the `-all` at the end to `~all` to reduce the rigor associated with your configuration.
+
+# Sender ID problems #
+
+Unfortunately, some email receiving systems implement Sender ID, a now-defunct system that Microsoft hijacked from the perfectly good SPF.  We recommend, unless you are sure your Sender ID records are valid, to specify an empty Sender ID DNS TXT record as follows:
+
+```
+"spf2.0/pra"
+```
+
+Some choose to define their Sender ID `spf2.0/pra` record to be just like their SPF `v=spf1` record, which may be okay for you, but it also may be causing unexpected issues with services like Open eSignForms that send out emails with a valid return-path (`MAIL FROM`) in the envelope and a `Sender:` header, though the `FROM` header may vary depending on who you'd like to appear as the FROM email address.
+
+# Review #
+
+So, Yozons generally recommends you setup both the SPF and empty Sender ID records in your DNS TXT records.  Remember the double quotes around the entries unless you have a system that will put those quotes in for you when it's actually published to DNS.  Here's a typical setup, and feel free to see how we've done ours for the yozons.com domain by checking out our DNS TXT records.
+
+```
+"spf2.0/pra"
+"v=spf1 mx a:esign-contracts.com -all"
+```
+
+# For more information #
+For details, please read more at: http://www.openspf.org/SPF_vs_Sender_ID

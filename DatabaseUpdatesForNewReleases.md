@@ -1,0 +1,50 @@
+# Introduction #
+
+Often, a new version release will require updates to existing tables, creation of new tables, etc.
+
+
+# General scripts in CVS #
+
+All of the database update scripts are maintained in CVS in `database/postgresql/ddl`.
+
+The script `create_db` is used to create a new database. `create_db` also runs the script `create_tables`, which in turn runs `table_grants`.
+
+The script `drop_db` is used to drop an existing database. **Obviously, use this with care as all data will be lost.**
+
+The script `table_grants` is used to provide the standard TABLE GRANT statements to ensure the tables are accessible. In general, this script should be safe to run at any time and is even repeatable to ensure your tables are set with the right permissions.
+
+The file `tables.sql` is a PostgreSQL command file that creates all of the tables and related indexes.
+
+## Version-specific scripts ##
+
+There are also various directories that are for upgrading from the prior version to the named version. For example, in October 2011 we had folders for v110809, v110910 and v111014.
+
+So, when upgrading from 11.9.10 to 11.10.14, as an example, you'd need to run the scripts in v111014.
+
+In each version-specific folder will be SQL scripts named `pre.sql`, `post.sql`, or just `update.sql`.
+
+If you find `pre.sql`, then you should run that script BEFORE you
+run dbsetup.  A `pre.sql` script implies that dbsetup needs to be run with
+a conversion.
+
+If you find `post.sql`, then you should run that script AFTER you run dbsetup.  A `post.sql` script implies that dbsetup needs to be run with a conversion.
+
+If you just find `update.sql`, then no dbsetup needs to be run for this version update, but you do need to update your database configuration to include this.
+
+_We recommend running the {{{table\_grants} script after all upgrades to ensure the table permissions are as expected by the application._
+
+If you are doing multiple version updates at once, you basically need to do them in order to ensure a smooth upgrade.  That is, first do the optional `pre.sql`, rundbsetup and optional `post.sql` -- or more likely just the `update.sql` without any rundbsetup -- set for each version update.
+
+We recommend you stay up-to-date with versions to ease this process as we have no plans to support multiple version upgrades at once. It is also possible that you will actually have to install each release, upgrade it, then install the next release and upgrade, etc. as the DbSetup program generally only supports an upgrade/conversion to its version release.
+
+If you run multiple deployments, you need to do this for each database.
+
+# DbSetup #
+
+In the release JAR is a program called DbSetup that handles new installations as well as the current upgrade when needed. This conversion step does more than can be handled in the SQL scripts above.
+
+If the release you are upgrading to has a pre.sql or post.sql, you will need to run DbSetup to do a conversion as well.
+
+There is a script `rundbsetup` that we use to run DbSetup with the right environment. For example, to upgrade to the 11.10.14 release, assuming you have installed the code in a webapp called 'demo' and run the `pre.sql` on its database, you will run `rundbsetup demo` to launch DbSetup using the JARs located in the 'demo' webapp (i.e. `webapp/demo/WEB-INF/lib`). The command to run is `convert11.10.14`.
+
+If you run multiple deployments, you need to do this for each webapp.

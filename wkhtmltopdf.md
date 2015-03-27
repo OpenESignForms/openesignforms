@@ -1,0 +1,75 @@
+# Introduction #
+
+These are just some quick notes on setting up **wkhtmltopdf** on our CentOS Linux servers. As we gain expertise, I'm sure we'll iron out the details a bit better.
+
+
+# Details #
+
+  * Download [wkhtmltopdf-0.12.1](http://wkhtmltopdf.org/downloads.html). Tested on CentOS 6.4.
+
+  * Install using rpm (while logged in as 'root')
+> > `rpm -ivh wkhtmltox-0.12.1_linux-centos6-amd64.rpm`
+
+  * Install dependencies via yum:
+> > `yum install fontconfig libXrender libXext xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi freetype libpng zlib libjpeg-turbo openssl`
+
+
+> (In particular you want urw-fonts, but you probably want others too, like xorg-x11-fonts-truetype for CentOS 5.  Sourceforge has a [CoreFonts project](http://corefonts.sourceforge.net/) that has instructions for creating RPMs for your system. Sourceforge also has a [MSCoreFonts project](http://mscorefonts2.sourceforge.net/) that has instructions for installing from pre-built RPMs which is what we use. We use this to get the [cabextract RPM](http://www.cabextract.org.uk/).
+
+  * The RPM will install in /usr/local/bin.  If it's not in the PATH for the user account that runs Tomcat/Java, make sure it is added.
+
+  * For our HTML, we typically use options:
+> > `wkhtmltopdf --javascript-delay 1000 --page-size Letter --encoding utf-8 --print-media-type --disable-external-links --image-quality 100 --margin-left 5mm --margin-right 5mm --margin-top 5mm --margin-bottom 5mm`
+
+
+> Try running the command `wkhtmltopdf --version` to ensure it can be found in your PATH and that it shows no missing components.
+
+  * For the 32-bit static builds, assuming you are on 64-bit Linux, you'll want to make sure you have these components with i386/i686 architecture. If you have the 64-bit versions, you can use `yum whatprovides fontconfig` to discover the component details for the 32-bit version (in this case, fontconfig-2.4.1-7.el5.i386 or fontconfig-2.8.0-3.el6.i686).  This includes `fontconfig`, `libXrender`, `openssl`, `libzip`, `libXext` and `libstdc++`.
+
+> (i.e. `yum install fontconfig.i686 libXrender.i686 openssl.i686 libzip.i686 libXext.i686 libstdc++.i686`)
+
+  * If your fonts have kerning issues, as described at https://github.com/wkhtmltopdf/wkhtmltopdf/issues/45 (see entry dandersson commented on Feb 8), you may want to add this file /etc/fonts/conf.avail/10-wkhtmltopdf.conf and then add a softlink `ln -s /etc/fonts/conf.avail/10-wkhtmltopdf.conf /etc/fonts/conf.d/10-wkhtmltopdf.conf` to activate it for fontconfig. You can use `fc-cache -fv` to force the fontconfig cache to be rebuilt.
+```
+<?xml version='1.0'?>
+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
+<fontconfig>
+ <match target="font">
+  <edit mode="assign" name="rgba">
+   <const>rgb</const>
+  </edit>
+ </match>
+ <match target="font">
+  <edit mode="assign" name="hinting">
+   <bool>true</bool>
+  </edit>
+ </match>
+ <match target="font">
+  <edit mode="assign" name="hintstyle">
+   <const>hintslight</const>
+  </edit>
+ </match>
+ <match target="font">
+  <edit mode="assign" name="antialias">
+   <bool>true</bool>
+  </edit>
+ </match>
+ <match target="font">
+  <edit mode="assign" name="lcdfilter">
+   <const>lcddefault</const>
+  </edit>
+ </match>
+ <match target="font">
+  <edit mode="assign" name="embeddedbitmap">
+   <bool>false</bool>
+  </edit>
+ </match>
+</fontconfig>
+```
+
+# Windows Developers #
+
+There is generally a Windows installer version for this program that can be used on Windows platforms. Our developers typically are on Windows, and so they make use of the Windows version if they need the PDF export capability.
+
+We downloaded [wkhtmltopdf-0.12.1](http://wkhtmltopdf.org/downloads.html) and when run, it installed the tool in `C:\Program Files (x86)\wkhtmltopdf`
+
+For Tomcat+Java on Windows 7, we found we had to add that path to Windows PATH. For Windows 7, we did this by clicking on the Windows icon, Right-click on Computer->Properties, click on Advanced system settings, click on Environment Variables button, under System variables scroll and click on Path, click the Edit button, then append at the end: `;C:\Program Files (x86)\wkhtmltopdf\bin`
