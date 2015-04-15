@@ -34,7 +34,7 @@ Let's ensure Open eSignForms has all of the features needed to satisfy myriad e-
 
 ## Make money selling custom forms development
 
-If you gain the skills to develop custom forms on Open eSignForms, consider being a partner and [http://www.yozons.com/partners/201401.html make money providing your web contracting forms].
+If you gain the skills to develop custom forms on Open eSignForms, consider being a partner and [make money providing your web contracting forms](http://www.yozons.com/partners/201401.html).
 
 ## Building blocks
 
