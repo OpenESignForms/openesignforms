@@ -7,6 +7,8 @@ Open eSignForms can help your school, non-profit, medical facility, or business 
 ### Open Source GNU AGPL
 It is licensed under the *GNU Affero General Public License ([AGPL](http://www.gnu.org/licenses/agpl.html))*.
 
+Versions may be [downloaded from here](https://drive.google.com/folderview?id=0B8C9MszRjx_yTnhna0N5VjkwRlU&usp=sharing).
+
 ** [References to third-party licenses used by Open eSignForms](http://open.esignforms.com/thirdPartySoftware.jsp).
 
 ### Commercial license
