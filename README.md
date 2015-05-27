@@ -32,10 +32,6 @@ All patches and code suggestions (via forums, emails and the like) that are acce
 
 Let's ensure Open eSignForms has all of the features needed to satisfy myriad e-document and e-signing needs. Can open source really be better than those offered by DocuSign, EchoSign and Silanis, to name a few proprietary, closed source alternatives?
 
-## Make money selling custom forms development
-
-If you gain the skills to develop custom forms on Open eSignForms, consider being a partner and [make money providing your web contracting forms](http://www.yozons.com/partners/201401.html).
-
 ## Building blocks
 
 It is developed using Java 7 (though we use the Java 8 runtime), with the user interface developed using Vaadin 7 on top of Google Web Toolkit (GWT). Of course, it's always changing, so refer to the [version history page](http://open.esignforms.com/demo/versionHistory.jsp) for details.
