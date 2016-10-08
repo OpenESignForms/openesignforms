@@ -30,11 +30,11 @@ Open eSignForms is driven by Yozons™, a long-time (since 2000) leader in web-b
 ## Help keep Open eSignForms world-class
 All patches and code suggestions (via forums, emails and the like) that are accepted as part of Open eSignForms will become part of the common code base under the Yozons copyright so that all people can benefit unless your communications clearly label it as "Not a Contribution." All more substantial software and work contributed by a third party committer will be invited to electronically sign a [Contributor License Agreement (CLA)](http://open.esignforms.com/OpeneSignFormsIndividualCLA.html). This allows you to own any code you write and contribute, while ensuring that others are properly protected by granting them unfettered usage rights.
 
-Let's ensure Open eSignForms has all of the features needed to satisfy myriad e-document and e-signing needs. Can open source really be better than those offered by DocuSign, EchoSign and Silanis, to name a few proprietary, closed source alternatives?
+Let's ensure Open eSignForms has all of the features needed to satisfy myriad e-document and e-signing needs. Can open source really be better than those offered by DocuSign, Adobe Sign and eSignLive, to name a few proprietary, closed source alternatives?
 
 ## Building blocks
 
-It is developed using Java 7 (though we use the Java 8 runtime), with the user interface developed using Vaadin 7 on top of Google Web Toolkit (GWT). Of course, it's always changing, so refer to the [version history page](http://open.esignforms.com/demo/versionHistory.jsp) for details.
+It is developed using Java 8 (and requires at least Java 8 as of version 16.10.8), with the user interface developed using Vaadin 7 on top of Google Web Toolkit (GWT). Of course, it's always changing, so refer to the [version history page](http://open.esignforms.com/demo/versionHistory.jsp) for details.
 
 We normally deploy on Linux, but it runs fine under Windows (though our experience on Windows is mostly with developer PCs/laptops, not production servers). We even have deployed it on Windows Azure and Amazon EC3 instances.
 
