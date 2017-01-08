@@ -58,6 +58,6 @@ Check out the [online demo](https://open.esignforms.com/demo/). Unfortunately, a
 
 Just login using the values below, except without the spaces between the letters:
 
-  U: ``` d e m o @ y o z o n s . c o m }}}```<br>
+  U: ``` d e m o @ y o z o n s . c o m ```<br>
   P: ``` d e m o 2 0 1 7 ```
 
