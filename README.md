@@ -34,7 +34,7 @@ Let's ensure Open eSignForms has all of the features needed to satisfy myriad e-
 
 ## Building blocks
 
-It is developed using Java 8 (and requires at least Java 8 as of version 16.10.8), with the user interface developed using Vaadin 7 on top of Google Web Toolkit (GWT). Of course, it's always changing, so refer to the [version history page](http://open.esignforms.com/demo/versionHistory.jsp) for details.
+It is developed using Java 10 (and requires at least Java 8 as of version 16.10.8), with the user interface developed using Vaadin 7 on top of Google Web Toolkit (GWT). Of course, it's always changing, so refer to the [version history page](http://open.esignforms.com/demo/versionHistory.jsp) for details.
 
 We normally deploy on Linux, but it runs fine under Windows (though our experience on Windows is mostly with developer PCs/laptops, not production servers). We even have deployed it on Windows Azure and Amazon EC3 instances.
 
