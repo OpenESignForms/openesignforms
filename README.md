@@ -45,7 +45,7 @@ Open eSignForms strives to use standardized technologies to achieve a high quali
   * Documents are maintained in HTML format, with PDF exports.
   * 256-bit AES for data and document encryption, BCrypt for password hashing
   * HTTP, TLS/SSL, SMTP, IMAP, NTP, DNS
-  * Java (JDK 8, JCE, JDBC, JSP/Servlets, JavaMail), HTML/XHTML, XML/DOM, CSS, JavaScript/JSON
+  * Java (JDK 10, JCE, JDBC, JSP/Servlets, JavaMail), HTML/XHTML, XML/DOM, CSS, JavaScript/JSON
   * SQL database
   * Linux and Windows
   * Full transaction exporting for long-term storage outside of the application.
@@ -59,5 +59,5 @@ Check out the [online demo](https://open.esignforms.com/demo/). Unfortunately, a
 Just login using the values below, except without the spaces between the letters:
 
   U: ``` d e m o @ y o z o n s . c o m ```<br>
-  P: ``` d e m o 2 0 1 8 ```
+  P: ``` d e m o 2 0 1 9 ```
 
