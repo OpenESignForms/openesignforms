@@ -56,7 +56,7 @@ Open eSignForms strives to use standardized technologies to achieve a high quali
 ## Demo
 Check out the [online demo](https://open.esignforms.com/demo/). Unfortunately, a few lame adolescent types have made the demo mostly just a view-only system in terms of configuration, but you can certainly run the demo transactions and reports.
 
-Just login using the values below, except without the spaces between the letters:
+Just login using the values below, except without the spaces between the letters (and the password does change with the new year):
 
   U: ``` d e m o @ y o z o n s . c o m ```<br>
   P: ``` d e m o 2 0 1 9 ```
