@@ -56,6 +56,8 @@ Open eSignForms strives to use standardized technologies to achieve a high quali
 ## Demo
 Check out the [online demo](https://open.esignforms.com/demo/). Unfortunately, a few lame adolescent types have made the demo mostly just a view-only system in terms of configuration, but you can certainly run the demo transactions and reports.
 
+**DO NOT SPAM: Please use your email address to receive sample email notifications, or use test@example.com or noemail@yozons.com if you don't care.**
+
 Just login using the values below, except without the spaces between the letters (and the password does change with the new year):
 
   U: ``` d e m o @ y o z o n s . c o m ```<br>
